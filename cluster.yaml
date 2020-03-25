@@ -1,0 +1,7 @@
+__default__:
+    output: '{rule}.{wildcards}.%J'
+    error: '{rule}.{wildcards}.%J'
+    queue: 'research-rh74'
+    name: 'Subtypes.{rule}.{wildcards}'
+    memory: 4096 
+
