@@ -1,3 +1,21 @@
+
+rule sift4g_variants:
+    """
+    Generate variants list for SIFT4G
+    """
+    input:
+        fa = "data/fasta/{gene}.fa"
+
+    output:
+        "data/sift/{gene}.subst"
+
+    log:
+        "logs/sift4g_variants/{gene}.log"
+
+    shell:
+        "python bin/sift_variants.py {input.fa} > {output} 2> {log}"
+
+# TODO can easily multi-thread sift here if needed
 rule sift4g:
     """
     Run SIFT4G on a FASTA file, assessing all possible variants.
@@ -6,6 +24,7 @@ rule sift4g:
     """
     input:
         fa = "data/fasta/{gene}.fa",
+        subst = "data/sift/{gene}.subst"
         db = config['sift']['uniref90_fa_path']
 
     output:
@@ -18,4 +37,4 @@ rule sift4g:
         mem_mb = 8000
 
     shell:
-        "sift4g -q {input.fa} -d {input.db} --out data/sift 2> {log}"
+        "sift4g --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift 2> {log}"
