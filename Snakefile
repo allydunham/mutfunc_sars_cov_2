@@ -1,13 +1,14 @@
 """
 Master pipeline for the COVID19 Mutfunc project
 """
-
-# TODO finish
+import os
+from pathlib import Path
 
 configfile: 'snakemake.yaml'
 localrules:
     all, split_fasta
 
+# List of genes expected from the Uniprot FASTA (TODO: automate/make this better)
 GENES = [
     'P0DTD1_nsp1', 'P0DTD1_nsp2', 'P0DTD1_nsp3',
     'P0DTD1_nsp4', 'P0DTD1_nsp5', 'P0DTD1_nsp6',
@@ -21,6 +22,9 @@ GENES = [
     'P0DTD3_orf14'
 ]
 
+# List of all structures present
+v
+
 include: 'pipeline/misc.smk'
 include: 'pipeline/sift.smk'
 include: 'pipeline/foldx.smk'
@@ -31,3 +35,26 @@ rule all:
     """
     input:
         [f'data/sift/{g}.SIFTprediction' for g in GENES]
+        [f'data/foldx/{s}/{s}.average_{s}.fxout' for s in STRUCTURES]
+
+rule setup_directories:
+    """
+    Setup initial project directory structure for all generated files. Assumes bin, src & docs
+    exist. Plus many of the others will often already exist for various reasons, but this rule
+    ensures everything is setup correctly
+    """
+    run:
+        # data
+        shell('mkdir data && echo "mkdir data" || true')
+        dirs = ['foldx', 'pdb', 'sift', 'fasta']
+
+        for d in dirs:
+            shell(f'mkdir data/{d} && echo "mkdir data/{d}" || true')
+
+        # logs
+        shell('mkdir logs && echo "mkdir logs" || true')
+        dirs = ['foldx_combine', 'foldx_model', 'foldx_repair',
+                'foldx_split', 'foldx_variants', 'sift4g', 'sift4g_variants']
+
+        for d in dirs:
+            shell(f'mkdir logs/{d} && echo "mkdir logs/{d}" || true')
