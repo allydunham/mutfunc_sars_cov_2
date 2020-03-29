@@ -1,0 +1,10 @@
+The files in this directory provide pre-release access to the Severe Acute
+Respiratory Syndrome-related coronavirus 2 (SARS-CoV-2) protein sequences from
+the current public health emergency.
+
+The data is provided as it will be published in UniProtKB release 2020_02 of
+April 22nd. Please note that this release was prepared before the WHO officially
+named the virus "Severe acute respiratory syndrome coronavirus 2" and therefore
+uses the scientific name that was published by the NCBI taxonomy database at
+that time (meanwhile classified as an "equivalent name" at
+https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=2697049).

@@ -1,0 +1,8 @@
+uniprot_id: 'P0DTC9'
+name: 'nc'
+source: 'https://swissmodel.expasy.org/interactive/UfqxZJ/models/05'
+template: '2jw8.1.A'
+sections:
+  - chain: 'A'
+    positions: '247:364'
+

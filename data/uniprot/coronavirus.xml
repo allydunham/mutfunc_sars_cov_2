@@ -1,0 +1,3818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uniprot xmlns="http://uniprot.org/uniprot"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTD1</accession>
+  <name>R1AB_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Replicase polyprotein 1ab</fullName>
+      <shortName>pp1ab</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>ORF1ab polyprotein</fullName>
+    </alternativeName>
+    <component>
+      <recommendedName>
+        <fullName>Host translation inhibitor nsp1</fullName>
+        <shortName>nsp1</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>Leader protein</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 2</fullName>
+        <shortName>nsp2</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>p65 homolog</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Papain-like proteinase</fullName>
+        <shortName>PL-PRO</shortName>
+        <ecNumber>3.4.19.12</ecNumber>
+        <ecNumber>3.4.22.69</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>Non-structural protein 3</fullName>
+        <shortName>nsp3</shortName>
+      </alternativeName>
+      <alternativeName>
+        <fullName>PL2-PRO</fullName>
+      </alternativeName>
+      <alternativeName>
+        <fullName>SARS coronavirus main proteinase</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 4</fullName>
+        <shortName>nsp4</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>3C-like proteinase</fullName>
+        <shortName>3CL-PRO</shortName>
+        <shortName>3CLp</shortName>
+        <ecNumber>3.4.22.-</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp5</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 6</fullName>
+        <shortName>nsp6</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 7</fullName>
+        <shortName>nsp7</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 8</fullName>
+        <shortName>nsp8</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 9</fullName>
+        <shortName>nsp9</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 10</fullName>
+        <shortName>nsp10</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>Growth factor-like peptide</fullName>
+        <shortName>GFL</shortName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>RNA-directed RNA polymerase</fullName>
+        <shortName>Pol</shortName>
+        <shortName>RdRp</shortName>
+        <ecNumber>2.7.7.48</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp12</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Helicase</fullName>
+        <shortName>Hel</shortName>
+        <ecNumber>3.6.4.12</ecNumber>
+        <ecNumber>3.6.4.13</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp13</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Guanine-N7 methyltransferase</fullName>
+        <shortName>ExoN</shortName>
+        <ecNumber>2.1.1.-</ecNumber>
+        <ecNumber>3.1.13.-</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp14</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Uridylate-specific endoribonuclease</fullName>
+        <ecNumber>3.1.-.-</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>NendoU</fullName>
+      </alternativeName>
+      <alternativeName>
+        <fullName>nsp15</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>2'-O-methyltransferase</fullName>
+        <ecNumber>2.1.1.-</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp16</fullName>
+      </alternativeName>
+    </component>
+  </protein>
+  <gene>
+    <name type="primary">rep</name>
+    <name type="ORF">1a-1b</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <reference key="2">
+    <citation type="submission" date="2020-02" db="PDB data bank">
+      <title>The crytal structure of 2019-nCoV main protease in complex with an inhibitor N3.</title>
+      <authorList>
+        <person name="Liu X."/>
+        <person name="Zhang B."/>
+        <person name="Jin Z."/>
+        <person name="Yang H."/>
+        <person name="Rao Z."/>
+      </authorList>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.16 ANGSTROMS) OF 3C-LIKE PROTEINASE</scope>
+  </reference>
+  <comment type="function">
+    <molecule>Replicase polyprotein 1ab</molecule>
+    <text evidence="2">Multifunctional protein involved in the transcription and replication of viral RNAs. Contains the proteinases responsible for the cleavages of the polyprotein.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Host translation inhibitor nsp1</molecule>
+    <text evidence="2">Inhibits host translation by interacting with the 40S ribosomal subunit. The nsp1-40S ribosome complex further induces an endonucleolytic cleavage near the 5'UTR of host mRNAs, targeting them for degradation. Viral mRNAs are not susceptible to nsp1-mediated endonucleolytic RNA cleavage thanks to the presence of a 5'-end leader sequence and are therefore protected from degradation. By suppressing host gene expression, nsp1 facilitates efficient viral gene expression in infected cells and evasion from host immune response.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 2</molecule>
+    <text evidence="2">May play a role in the modulation of host cell survival signaling pathway by interacting with host PHB and PHB2. Indeed, these two proteins play a role in maintaining the functional integrity of the mitochondria and protecting cells from various stresses.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Papain-like proteinase</molecule>
+    <text evidence="2">Responsible for the cleavages located at the N-terminus of the replicase polyprotein. In addition, PL-PRO possesses a deubiquitinating/deISGylating activity and processes both 'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from cellular substrates. Participates together with nsp4 in the assembly of virally-induced cytoplasmic double-membrane vesicles necessary for viral replication. Antagonizes innate immune induction of type I interferon by blocking the phosphorylation, dimerization and subsequent nuclear translocation of host IRF3. Prevents also host NF-kappa-B signaling.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 4</molecule>
+    <text evidence="2">Participates in the assembly of virally-induced cytoplasmic double-membrane vesicles necessary for viral replication.</text>
+  </comment>
+  <comment type="function">
+    <molecule>3C-like proteinase</molecule>
+    <text evidence="2">Cleaves the C-terminus of replicase polyprotein at 11 sites. Recognizes substrates containing the core sequence [ILMVF]-Q-|-[SGACN]. Also able to bind an ADP-ribose-1''-phosphate (ADRP).</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 6</molecule>
+    <text evidence="2">Plays a role in the initial induction of autophagosomes from host reticulum endoplasmic. Later, limits the expansion of these phagosomes that are no longer able to deliver viral components to lysosomes.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 7</molecule>
+    <text evidence="2">Forms a hexadecamer with nsp8 (8 subunits of each) that may participate in viral replication by acting as a primase. Alternatively, may synthesize substantially longer products than oligonucleotide primers.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 8</molecule>
+    <text evidence="2">Forms a hexadecamer with nsp7 (8 subunits of each) that may participate in viral replication by acting as a primase. Alternatively, may synthesize substantially longer products than oligonucleotide primers.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 9</molecule>
+    <text evidence="2">May participate in viral replication by acting as a ssRNA-binding protein.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 10</molecule>
+    <text evidence="2">Plays a pivotal role in viral transcription by stimulating both nsp14 3'-5' exoribonuclease and nsp16 2'-O-methyltransferase activities. Therefore plays an essential role in viral mRNAs cap methylation.</text>
+  </comment>
+  <comment type="function">
+    <molecule>RNA-directed RNA polymerase</molecule>
+    <text evidence="2">Responsible for replication and transcription of the viral RNA genome.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Helicase</molecule>
+    <text evidence="2">Multi-functional protein with a zinc-binding domain in N-terminus displaying RNA and DNA duplex-unwinding activities with 5' to 3' polarity. Activity of helicase is dependent on magnesium.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Guanine-N7 methyltransferase</molecule>
+    <text evidence="2">Enzyme possessing two different activities: an exoribonuclease activity acting on both ssRNA and dsRNA in a 3' to 5' direction and a N7-guanine methyltransferase activity.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Uridylate-specific endoribonuclease</molecule>
+    <text evidence="2">Mn(2+)-dependent, uridylate-specific enzyme, which leaves 2'-3'-cyclic phosphates 5' to the cleaved bond.</text>
+  </comment>
+  <comment type="function">
+    <molecule>2'-O-methyltransferase</molecule>
+    <text evidence="2">Methyltransferase that mediates mRNA cap 2'-O-ribose methylation to the 5'-cap structure of viral mRNAs. N7-methyl guanosine cap is a prerequisite for binding of nsp16. Therefore plays an essential role in viral mRNAs cap methylation which is essential to evade immune system.</text>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="2">
+      <text>a ribonucleoside 5'-triphosphate + RNA(n) = diphosphate + RNA(n+1)</text>
+      <dbReference type="Rhea" id="RHEA:21248"/>
+      <dbReference type="Rhea" id="RHEA-COMP:11128"/>
+      <dbReference type="Rhea" id="RHEA-COMP:11129"/>
+      <dbReference type="ChEBI" id="CHEBI:33019"/>
+      <dbReference type="ChEBI" id="CHEBI:61557"/>
+      <dbReference type="ChEBI" id="CHEBI:83400"/>
+      <dbReference type="EC" id="2.7.7.48"/>
+    </reaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="2">
+      <text>ATP + H2O = ADP + H(+) + phosphate</text>
+      <dbReference type="Rhea" id="RHEA:13065"/>
+      <dbReference type="ChEBI" id="CHEBI:15377"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:43474"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="3.6.4.12"/>
+    </reaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="2">
+      <text>ATP + H2O = ADP + H(+) + phosphate</text>
+      <dbReference type="Rhea" id="RHEA:13065"/>
+      <dbReference type="ChEBI" id="CHEBI:15377"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:43474"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="3.6.4.13"/>
+    </reaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="2">
+      <text>TSAVLQ-|-SGFRK-NH(2) and SGVTFQ-|-GKFKK the two peptides corresponding to the two self-cleavage sites of the SARS 3C-like proteinase are the two most reactive peptide substrates. The enzyme exhibits a strong preference for substrates containing Gln at P1 position and Leu at P2 position.</text>
+      <dbReference type="EC" id="3.4.22.69"/>
+    </reaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="2">
+      <text>Thiol-dependent hydrolysis of ester, thioester, amide, peptide and isopeptide bonds formed by the C-terminal Gly of ubiquitin (a 76-residue protein attached to proteins as an intracellular targeting signal).</text>
+      <dbReference type="EC" id="3.4.19.12"/>
+    </reaction>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 2</molecule>
+    <text evidence="2">Interacts with host PHB and PHB2.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>3C-like proteinase</molecule>
+    <text evidence="2">3CL-PRO exists as monomer and homodimer. Only the homodimer shows catalytic activity.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 4</molecule>
+    <text evidence="2">Interacts with PL-PRO and nsp6.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 7</molecule>
+    <text evidence="2">Eight copies of nsp7 and eight copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling ring structure.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 8</molecule>
+    <text evidence="2">Eight copies of nsp7 and eight copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling ring structure.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 9</molecule>
+    <text evidence="2">Is a dimer.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 10</molecule>
+    <text evidence="2">Forms a dodecamer and interacts with nsp14 and nsp16; these interactions enhance nsp14 and nsp16 enzymatic activities.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Guanine-N7 methyltransferase</molecule>
+    <text evidence="2">Interacts (via N-terminus) with DDX1. Interacts with nsp10.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>2'-O-methyltransferase</molecule>
+    <text evidence="2">Interacts with nsp10.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Papain-like proteinase</molecule>
+    <subcellularLocation>
+      <location evidence="2">Host membrane</location>
+      <topology evidence="2">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="2">Host cytoplasm</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 4</molecule>
+    <subcellularLocation>
+      <location evidence="2">Host membrane</location>
+      <topology evidence="2">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="2">Host cytoplasm</location>
+    </subcellularLocation>
+    <text evidence="2">Localizes in virally-induced cytoplasmic double-membrane vesicles.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 6</molecule>
+    <subcellularLocation>
+      <location evidence="2">Host membrane</location>
+      <topology evidence="2">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 7</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 8</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 9</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 10</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Helicase</molecule>
+    <subcellularLocation>
+      <location evidence="2">Host endoplasmic reticulum-Golgi intermediate compartment</location>
+    </subcellularLocation>
+    <text evidence="3">The helicase interacts with the N protein in membranous complexes and colocalizes with sites of synthesis of new viral RNA.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Uridylate-specific endoribonuclease</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="alternative products">
+    <event type="ribosomal frameshifting"/>
+    <isoform>
+      <id>P0DTD1-1</id>
+      <name>Replicase polyprotein 1ab</name>
+      <sequence type="displayed"/>
+    </isoform>
+    <isoform>
+      <id>P0DTC1-1</id>
+      <name>Replicase polyprotein 1a</name>
+      <sequence type="external"/>
+    </isoform>
+    <text>Normal translation results in Replicase polyprotein 1a. Ribosomal frameshifting at the end of this protein occurs at low frequency and produces Replicase polyprotein 1ab.</text>
+  </comment>
+  <comment type="domain">
+    <text evidence="2">The hydrophobic domains (HD) could mediate the membrane association of the replication complex and thereby alter the architecture of the host cell membrane.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="2">Specific enzymatic cleavages in vivo by its own proteases yield mature proteins. 3CL-PRO and PL-PRO proteinases are autocatalytically processed.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <molecule>Replicase polyprotein 1ab</molecule>
+    <text evidence="2">Produced by -1 ribosomal frameshifting at the 1a-1b genes boundary.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="11">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="11">Belongs to the coronaviruses polyprotein 1ab family.</text>
+  </comment>
+  <dbReference type="EC" id="3.4.19.12"/>
+  <dbReference type="EC" id="3.4.22.69"/>
+  <dbReference type="EC" id="3.4.22.-"/>
+  <dbReference type="EC" id="2.7.7.48"/>
+  <dbReference type="EC" id="3.6.4.12"/>
+  <dbReference type="EC" id="3.6.4.13"/>
+  <dbReference type="EC" id="2.1.1.-"/>
+  <dbReference type="EC" id="3.1.13.-"/>
+  <dbReference type="EC" id="3.1.-.-"/>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43415.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="PDB" id="6LU7">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.16 A"/>
+    <property type="chains" value="A=3264-3569"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005524">
+    <property type="term" value="F:ATP binding"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0004197">
+    <property type="term" value="F:cysteine-type endopeptidase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008234">
+    <property type="term" value="F:cysteine-type peptidase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0016896">
+    <property type="term" value="F:exoribonuclease activity, producing 5'-phosphomonoesters"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008168">
+    <property type="term" value="F:methyltransferase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003676">
+    <property type="term" value="F:nucleic acid binding"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008242">
+    <property type="term" value="F:omega peptidase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003723">
+    <property type="term" value="F:RNA binding"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003968">
+    <property type="term" value="F:RNA-directed 5'-3' RNA polymerase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0016740">
+    <property type="term" value="F:transferase activity"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008270">
+    <property type="term" value="F:zinc ion binding"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006508">
+    <property type="term" value="P:proteolysis"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006351">
+    <property type="term" value="P:transcription, DNA-templated"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019079">
+    <property type="term" value="P:viral genome replication"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019082">
+    <property type="term" value="P:viral protein processing"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0039694">
+    <property type="term" value="P:viral RNA genome replication"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="CDD" id="cd15239">
+    <property type="entry name" value="7tm_YRO2_fungal-like"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="CDD" id="cd17934">
+    <property type="entry name" value="DEXXQc_Upf1-like"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="CDD" id="cd18808">
+    <property type="entry name" value="SF1_C_Upf1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.10.150.420">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.10.1840.10">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.10.8.1190">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.10.8.370">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.20.25.360">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.30.30.590">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.40.10.10">
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.40.10.250">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.40.10.290">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.10.20.350">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.10.20.540">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.220.10">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.220.20">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.220.30">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.50.11020">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.50.11580">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.50.150">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.50.300">
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.90.70.90">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR027351">
+    <property type="entry name" value="(+)RNA_virus_helicase_core_dom"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR032505">
+    <property type="entry name" value="Corona_NSP4_C"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009461">
+    <property type="entry name" value="Coronavirus_NSP16"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR027352">
+    <property type="entry name" value="CV_ZBD"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037227">
+    <property type="entry name" value="EndoU-like"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR002589">
+    <property type="entry name" value="Macro_dom"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR032592">
+    <property type="entry name" value="NAR_dom"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR042570">
+    <property type="entry name" value="NAR_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR021590">
+    <property type="entry name" value="NSP1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR036333">
+    <property type="entry name" value="NSP10_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009466">
+    <property type="entry name" value="NSP11"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR042515">
+    <property type="entry name" value="Nsp15_N"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR038030">
+    <property type="entry name" value="NSP1_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR024375">
+    <property type="entry name" value="Nsp3_coronavir"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR038400">
+    <property type="entry name" value="Nsp3_coronavir_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR022733">
+    <property type="entry name" value="Nsp3_PL2pro"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR038166">
+    <property type="entry name" value="Nsp3_PL2pro_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR038123">
+    <property type="entry name" value="NSP4_C_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014828">
+    <property type="entry name" value="NSP7"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037204">
+    <property type="entry name" value="NSP7_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014829">
+    <property type="entry name" value="NSP8"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037230">
+    <property type="entry name" value="NSP8_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014822">
+    <property type="entry name" value="NSP9"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR036499">
+    <property type="entry name" value="NSP9_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR027417">
+    <property type="entry name" value="P-loop_NTPase"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR008740">
+    <property type="entry name" value="Peptidase_C30"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR013016">
+    <property type="entry name" value="Peptidase_C30/C16"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009003">
+    <property type="entry name" value="Peptidase_S1_PA"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR038083">
+    <property type="entry name" value="R1a/1ab"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR007094">
+    <property type="entry name" value="RNA-dir_pol_PSvirus"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009469">
+    <property type="entry name" value="RNA_pol_N_coronovir"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR018995">
+    <property type="entry name" value="RNA_synth_NSP10_coronavirus"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR029063">
+    <property type="entry name" value="SAM-dependent_MTases"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR024358">
+    <property type="entry name" value="SARS-CoV_Nsp3_N"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014827">
+    <property type="entry name" value="Viral_protease"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF13604">
+    <property type="entry name" value="AAA_30"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF16348">
+    <property type="entry name" value="Corona_NSP4_C"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF06478">
+    <property type="entry name" value="Corona_RPol_N"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF12379">
+    <property type="entry name" value="DUF3655"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF01661">
+    <property type="entry name" value="Macro"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF16251">
+    <property type="entry name" value="NAR"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF11501">
+    <property type="entry name" value="Nsp1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF09401">
+    <property type="entry name" value="NSP10"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF06471">
+    <property type="entry name" value="NSP11"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF06460">
+    <property type="entry name" value="NSP16"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF12124">
+    <property type="entry name" value="Nsp3_PL2pro"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08716">
+    <property type="entry name" value="nsp7"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08717">
+    <property type="entry name" value="nsp8"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08710">
+    <property type="entry name" value="nsp9"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF05409">
+    <property type="entry name" value="Peptidase_C30"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF11633">
+    <property type="entry name" value="SUD-M"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08715">
+    <property type="entry name" value="Viral_protease"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SMART" id="SM00506">
+    <property type="entry name" value="YBR022w_8"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF101816">
+    <property type="entry name" value="SSF101816"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF140367">
+    <property type="entry name" value="SSF140367"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF142877">
+    <property type="entry name" value="SSF142877"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF143076">
+    <property type="entry name" value="SSF143076"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF144246">
+    <property type="entry name" value="SSF144246"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF159936">
+    <property type="entry name" value="SSF159936"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF160099">
+    <property type="entry name" value="SSF160099"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF50494">
+    <property type="entry name" value="SSF50494"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF52540">
+    <property type="entry name" value="SSF52540"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF52949">
+    <property type="entry name" value="SSF52949"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF53335">
+    <property type="entry name" value="SSF53335"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF56672">
+    <property type="entry name" value="SSF56672"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS00867">
+    <property type="entry name" value="CPSASE_2"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51653">
+    <property type="entry name" value="CV_ZBD"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS00213">
+    <property type="entry name" value="LIPOCALIN"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51442">
+    <property type="entry name" value="M_PRO"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51154">
+    <property type="entry name" value="MACRO"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51124">
+    <property type="entry name" value="PEPTIDASE_C16"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51657">
+    <property type="entry name" value="PSRV_HELICASE"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS50507">
+    <property type="entry name" value="RDRP_SSRNA_POS"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="evidence at protein level"/>
+  <keyword id="KW-0002">3D-structure</keyword>
+  <keyword id="KW-1072">Activation of host autophagy by virus</keyword>
+  <keyword id="KW-0067">ATP-binding</keyword>
+  <keyword id="KW-1132">Decay of host mRNAs by virus</keyword>
+  <keyword id="KW-0255">Endonuclease</keyword>
+  <keyword id="KW-1262">Eukaryotic host gene expression shutoff by virus</keyword>
+  <keyword id="KW-1193">Eukaryotic host translation shutoff by virus</keyword>
+  <keyword id="KW-0269">Exonuclease</keyword>
+  <keyword id="KW-0347">Helicase</keyword>
+  <keyword id="KW-1035">Host cytoplasm</keyword>
+  <keyword id="KW-1190">Host gene expression shutoff by virus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-1192">Host mRNA suppression by virus</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-0378">Hydrolase</keyword>
+  <keyword id="KW-1090">Inhibition of host innate immune response by virus</keyword>
+  <keyword id="KW-1114">Inhibition of host interferon signaling pathway by virus</keyword>
+  <keyword id="KW-1095">Inhibition of host ISG15 by virus</keyword>
+  <keyword id="KW-1100">Inhibition of host NF-kappa-B by virus</keyword>
+  <keyword id="KW-0433">Leucine-rich repeat</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0479">Metal-binding</keyword>
+  <keyword id="KW-0489">Methyltransferase</keyword>
+  <keyword id="KW-1127">Modulation of host ubiquitin pathway by viral deubiquitinase</keyword>
+  <keyword id="KW-1130">Modulation of host ubiquitin pathway by virus</keyword>
+  <keyword id="KW-0540">Nuclease</keyword>
+  <keyword id="KW-0547">Nucleotide-binding</keyword>
+  <keyword id="KW-0548">Nucleotidyltransferase</keyword>
+  <keyword id="KW-0645">Protease</keyword>
+  <keyword id="KW-0677">Repeat</keyword>
+  <keyword id="KW-0688">Ribosomal frameshifting</keyword>
+  <keyword id="KW-0694">RNA-binding</keyword>
+  <keyword id="KW-0696">RNA-directed RNA polymerase</keyword>
+  <keyword id="KW-0788">Thiol protease</keyword>
+  <keyword id="KW-0808">Transferase</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-0833">Ubl conjugation pathway</keyword>
+  <keyword id="KW-0899">Viral immunoevasion</keyword>
+  <keyword id="KW-0693">Viral RNA replication</keyword>
+  <keyword id="KW-0862">Zinc</keyword>
+  <keyword id="KW-0863">Zinc-finger</keyword>
+  <feature type="chain" id="PRO_0000449618" description="Replicase polyprotein 1ab">
+    <location>
+      <begin position="1"/>
+      <end position="7096"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449619" description="Host translation inhibitor nsp1" evidence="1">
+    <location>
+      <begin position="1"/>
+      <end position="180"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449620" description="Non-structural protein 2" evidence="1">
+    <location>
+      <begin position="181"/>
+      <end position="818"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449621" description="Papain-like proteinase" evidence="1">
+    <location>
+      <begin position="819"/>
+      <end position="2763"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449622" description="Non-structural protein 4" evidence="1">
+    <location>
+      <begin position="2764"/>
+      <end position="3263"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449623" description="3C-like proteinase" evidence="1">
+    <location>
+      <begin position="3264"/>
+      <end position="3569"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449624" description="Non-structural protein 6" evidence="1">
+    <location>
+      <begin position="3570"/>
+      <end position="3859"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449625" description="Non-structural protein 7" evidence="1">
+    <location>
+      <begin position="3860"/>
+      <end position="3942"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449626" description="Non-structural protein 8" evidence="1">
+    <location>
+      <begin position="3943"/>
+      <end position="4140"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449627" description="Non-structural protein 9" evidence="1">
+    <location>
+      <begin position="4141"/>
+      <end position="4253"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449628" description="Non-structural protein 10" evidence="1">
+    <location>
+      <begin position="4254"/>
+      <end position="4392"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449629" description="RNA-directed RNA polymerase" evidence="1">
+    <location>
+      <begin position="4393"/>
+      <end position="5324"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449630" description="Helicase" evidence="1">
+    <location>
+      <begin position="5325"/>
+      <end position="5925"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449631" description="Guanine-N7 methyltransferase" evidence="1">
+    <location>
+      <begin position="5926"/>
+      <end position="6452"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449632" description="Uridylate-specific endoribonuclease" evidence="1">
+    <location>
+      <begin position="6453"/>
+      <end position="6798"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449633" description="2'-O-methyltransferase" evidence="1">
+    <location>
+      <begin position="6799"/>
+      <end position="7096"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2226"/>
+      <end position="2246"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2318"/>
+      <end position="2338"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2339"/>
+      <end position="2359"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2361"/>
+      <end position="2381"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2776"/>
+      <end position="2796"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3045"/>
+      <end position="3065"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3077"/>
+      <end position="3097"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3100"/>
+      <end position="3120"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3128"/>
+      <end position="3148"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3165"/>
+      <end position="3185"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3587"/>
+      <end position="3607"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3609"/>
+      <end position="3629"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3635"/>
+      <end position="3655"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3674"/>
+      <end position="3694"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3730"/>
+      <end position="3750"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3779"/>
+      <end position="3799"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 1" evidence="4">
+    <location>
+      <begin position="545"/>
+      <end position="569"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 2" evidence="4">
+    <location>
+      <begin position="697"/>
+      <end position="719"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Macro" evidence="6">
+    <location>
+      <begin position="1025"/>
+      <end position="1194"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Peptidase C16" evidence="5">
+    <location>
+      <begin position="1634"/>
+      <end position="1898"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 3" evidence="4">
+    <location>
+      <begin position="1680"/>
+      <end position="1702"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 4" evidence="4">
+    <location>
+      <begin position="3185"/>
+      <end position="3206"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Peptidase C30" evidence="8">
+    <location>
+      <begin position="3264"/>
+      <end position="3569"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 5" evidence="4">
+    <location>
+      <begin position="3935"/>
+      <end position="3959"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 6" evidence="4">
+    <location>
+      <begin position="3977"/>
+      <end position="4004"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 7" evidence="4">
+    <location>
+      <begin position="4591"/>
+      <end position="4616"/>
+    </location>
+  </feature>
+  <feature type="domain" description="RdRp catalytic" evidence="7">
+    <location>
+      <begin position="5004"/>
+      <end position="5166"/>
+    </location>
+  </feature>
+  <feature type="domain" description="CV ZBD" evidence="9">
+    <location>
+      <begin position="5325"/>
+      <end position="5408"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 8" evidence="4">
+    <location>
+      <begin position="5552"/>
+      <end position="5572"/>
+    </location>
+  </feature>
+  <feature type="domain" description="(+)RNA virus helicase ATP-binding" evidence="10">
+    <location>
+      <begin position="5581"/>
+      <end position="5762"/>
+    </location>
+  </feature>
+  <feature type="domain" description="(+)RNA virus helicase C-terminal" evidence="10">
+    <location>
+      <begin position="5763"/>
+      <end position="5932"/>
+    </location>
+  </feature>
+  <feature type="repeat" description="LRR 9" evidence="4">
+    <location>
+      <begin position="6817"/>
+      <end position="6841"/>
+    </location>
+  </feature>
+  <feature type="zinc finger region" description="C4-type" evidence="5">
+    <location>
+      <begin position="1752"/>
+      <end position="1789"/>
+    </location>
+  </feature>
+  <feature type="nucleotide phosphate-binding region" description="NTP" evidence="10">
+    <location>
+      <begin position="5606"/>
+      <end position="5613"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For PL1-PRO activity" evidence="5">
+    <location>
+      <position position="1674"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For PL2-PRO activity" evidence="5">
+    <location>
+      <position position="1835"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For 3CL-PRO activity" evidence="8">
+    <location>
+      <position position="3304"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For 3CL-PRO activity" evidence="8">
+    <location>
+      <position position="3408"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 1" evidence="9">
+    <location>
+      <position position="5329"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 1" evidence="9">
+    <location>
+      <position position="5332"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 2" evidence="9">
+    <location>
+      <position position="5340"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 1" evidence="9">
+    <location>
+      <position position="5343"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 1" evidence="9">
+    <location>
+      <position position="5350"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 2; via tele nitrogen" evidence="9">
+    <location>
+      <position position="5353"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 2; via pros nitrogen" evidence="9">
+    <location>
+      <position position="5357"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 2" evidence="9">
+    <location>
+      <position position="5363"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 3" evidence="9">
+    <location>
+      <position position="5374"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 3; via pros nitrogen" evidence="9">
+    <location>
+      <position position="5379"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 3" evidence="9">
+    <location>
+      <position position="5396"/>
+    </location>
+  </feature>
+  <feature type="metal ion-binding site" description="Zinc 3" evidence="9">
+    <location>
+      <position position="5399"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="1">
+    <location>
+      <begin position="180"/>
+      <end position="181"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="1">
+    <location>
+      <begin position="818"/>
+      <end position="819"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="1">
+    <location>
+      <begin position="2763"/>
+      <end position="2764"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="3263"/>
+      <end position="3264"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; aby 3CL-PRO" evidence="1">
+    <location>
+      <begin position="3569"/>
+      <end position="3570"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="3859"/>
+      <end position="3860"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="3942"/>
+      <end position="3943"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="4140"/>
+      <end position="4141"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="4253"/>
+      <end position="4254"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="4392"/>
+      <end position="4393"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="5324"/>
+      <end position="5325"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="5925"/>
+      <end position="5926"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="6452"/>
+      <end position="6453"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="1">
+    <location>
+      <begin position="6798"/>
+      <end position="6799"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6V3"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000250" key="2">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6X7"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000250" key="3">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6X9"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="4"/>
+  <evidence type="ECO:0000255" key="5">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00444"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="6">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00490"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="7">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00539"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="8">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00772"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="9">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00986"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="10">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00990"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="11"/>
+  <sequence length="7096" mass="794058" checksum="A4E62D97150BB8CC" modified="2020-04-22" version="1">MESLVPGFNEKTHVQLSLPVLQVRDVLVRGFGDSVEEVLSEARQHLKDGTCGLVEVEKGVLPQLEQPYVFIKRSDARTAPHGHVMVELVAELEGIQYGRSGETLGVLVPHVGEIPVAYRKVLLRKNGNKGAGGHSYGADLKSFDLGDELGTDPYEDFQENWNTKHSSGVTRELMRELNGGAYTRYVDNNFCGPDGYPLECIKDLLARAGKASCTLSEQLDFIDTKRGVYCCREHEHEIAWYTERSEKSYELQTPFEIKLAKKFDTFNGECPNFVFPLNSIIKTIQPRVEKKKLDGFMGRIRSVYPVASPNECNQMCLSTLMKCDHCGETSWQTGDFVKATCEFCGTENLTKEGATTCGYLPQNAVVKIYCPACHNSEVGPEHSLAEYHNESGLKTILRKGGRTIAFGGCVFSYVGCHNKCAYWVPRASANIGCNHTGVVGEGSEGLNDNLLEILQKEKVNINIVGDFKLNEEIAIILASFSASTSAFVETVKGLDYKAFKQIVESCGNFKVTKGKAKKGAWNIGEQKSILSPLYAFASEAARVVRSIFSRTLETAQNSVRVLQKAAITILDGISQYSLRLIDAMMFTSDLATNNLVVMAYITGGVVQLTSQWLTNIFGTVYEKLKPVLDWLEEKFKEGVEFLRDGWEIVKFISTCACEIVGGQIVTCAKEIKESVQTFFKLVNKFLALCADSIIIGGAKLKALNLGETFVTHSKGLYRKCVKSREETGLLMPLKAPKEIIFLEGETLPTEVLTEEVVLKTGDLQPLEQPTSEAVEAPLVGTPVCINGLMLLEIKDTEKYCALAPNMMVTNNTFTLKGGAPTKVTFGDDTVIEVQGYKSVNITFELDERIDKVLNEKCSAYTVELGTEVNEFACVVADAVIKTLQPVSELLTPLGIDLDEWSMATYYLFDESGEFKLASHMYCSFYPPDEDEEEGDCEEEEFEPSTQYEYGTEDDYQGKPLEFGATSAALQPEEEQEEDWLDDDSQQTVGQQDGSEDNQTTTIQTIVEVQPQLEMELTPVVQTIEVNSFSGYLKLTDNVYIKNADIVEEAKKVKPTVVVNAANVYLKHGGGVAGALNKATNNAMQVESDDYIATNGPLKVGGSCVLSGHNLAKHCLHVVGPNVNKGEDIQLLKSAYENFNQHEVLLAPLLSAGIFGADPIHSLRVCVDTVRTNVYLAVFDKNLYDKLVSSFLEMKSEKQVEQKIAEIPKEEVKPFITESKPSVEQRKQDDKKIKACVEEVTTTLEETKFLTENLLLYIDINGNLHPDSATLVSDIDITFLKKDAPYIVGDVVQEGVLTAVVIPTKKAGGTTEMLAKALRKVPTDNYITTYPGQGLNGYTVEEAKTVLKKCKSAFYILPSIISNEKQEILGTVSWNLREMLAHAEETRKLMPVCVETKAIVSTIQRKYKGIKIQEGVVDYGARFYFYTSKTTVASLINTLNDLNETLVTMPLGYVTHGLNLEEAARYMRSLKVPATVSVSSPDAVTAYNGYLTSSSKTPEEHFIETISLAGSYKDWSYSGQSTQLGIEFLKRGDKSVYYTSNPTTFHLDGEVITFDNLKTLLSLREVRTIKVFTTVDNINLHTQVVDMSMTYGQQFGPTYLDGADVTKIKPHNSHEGKTFYVLPNDDTLRVEAFEYYHTTDPSFLGRYMSALNHTKKWKYPQVNGLTSIKWADNNCYLATALLTLQQIELKFNPPALQDAYYRARAGEAANFCALILAYCNKTVGELGDVRETMSYLFQHANLDSCKRVLNVVCKTCGQQQTTLKGVEAVMYMGTLSYEQFKKGVQIPCTCGKQATKYLVQQESPFVMMSAPPAQYELKHGTFTCASEYTGNYQCGHYKHITSKETLYCIDGALLTKSSEYKGPITDVFYKENSYTTTIKPVTYKLDGVVCTEIDPKLDNYYKKDNSYFTEQPIDLVPNQPYPNASFDNFKFVCDNIKFADDLNQLTGYKKPASRELKVTFFPDLNGDVVAIDYKHYTPSFKKGAKLLHKPIVWHVNNATNKATYKPNTWCIRCLWSTKPVETSNSFDVLKSEDAQGMDNLACEDLKPVSEEVVENPTIQKDVLECNVKTTEVVGDIILKPANNSLKITEEVGHTDLMAAYVDNSSLTIKKPNELSRVLGLKTLATHGLAAVNSVPWDTIANYAKPFLNKVVSTTTNIVTRCLNRVCTNYMPYFFTLLLQLCTFTRSTNSRIKASMPTTIAKNTVKSVGKFCLEASFNYLKSPNFSKLINIIIWFLLLSVCLGSLIYSTAALGVLMSNLGMPSYCTGYREGYLNSTNVTIATYCTGSIPCSVCLSGLDSLDTYPSLETIQITISSFKWDLTAFGLVAEWFLAYILFTRFFYVLGLAAIMQLFFSYFAVHFISNSWLMWLIINLVQMAPISAMVRMYIFFASFYYVWKSYVHVVDGCNSSTCMMCYKRNRATRVECTTIVNGVRRSFYVYANGGKGFCKLHNWNCVNCDTFCAGSTFISDEVARDLSLQFKRPINPTDQSSYIVDSVTVKNGSIHLYFDKAGQKTYERHSLSHFVNLDNLRANNTKGSLPINVIVFDGKSKCEESSAKSASVYYSQLMCQPILLLDQALVSDVGDSAEVAVKMFDAYVNTFSSTFNVPMEKLKTLVATAEAELAKNVSLDNVLSTFISAARQGFVDSDVETKDVVECLKLSHQSDIEVTGDSCNNYMLTYNKVENMTPRDLGACIDCSARHINAQVAKSHNIALIWNVKDFMSLSEQLRKQIRSAAKKNNLPFKLTCATTRQVVNVVTTKIALKGGKIVNNWLKQLIKVTLVFLFVAAIFYLITPVHVMSKHTDFSSEIIGYKAIDGGVTRDIASTDTCFANKHADFDTWFSQRGGSYTNDKACPLIAAVITREVGFVVPGLPGTILRTTNGDFLHFLPRVFSAVGNICYTPSKLIEYTDFATSACVLAAECTIFKDASGKPVPYCYDTNVLEGSVAYESLRPDTRYVLMDGSIIQFPNTYLEGSVRVVTTFDSEYCRHGTCERSEAGVCVSTSGRWVLNNDYYRSLPGVFCGVDAVNLLTNMFTPLIQPIGALDISASIVAGGIVAIVVTCLAYYFMRFRRAFGEYSHVVAFNTLLFLMSFTVLCLTPVYSFLPGVYSVIYLYLTFYLTNDVSFLAHIQWMVMFTPLVPFWITIAYIICISTKHFYWFFSNYLKRRVVFNGVSFSTFEEAALCTFLLNKEMYLKLRSDVLLPLTQYNRYLALYNKYKYFSGAMDTTSYREAACCHLAKALNDFSNSGSDVLYQPPQTSITSAVLQSGFRKMAFPSGKVEGCMVQVTCGTTTLNGLWLDDVVYCPRHVICTSEDMLNPNYEDLLIRKSNHNFLVQAGNVQLRVIGHSMQNCVLKLKVDTANPKTPKYKFVRIQPGQTFSVLACYNGSPSGVYQCAMRPNFTIKGSFLNGSCGSVGFNIDYDCVSFCYMHHMELPTGVHAGTDLEGNFYGPFVDRQTAQAAGTDTTITVNVLAWLYAAVINGDRWFLNRFTTTLNDFNLVAMKYNYEPLTQDHVDILGPLSAQTGIAVLDMCASLKELLQNGMNGRTILGSALLEDEFTPFDVVRQCSGVTFQSAVKRTIKGTHHWLLLTILTSLLVLVQSTQWSLFFFLYENAFLPFAMGIIAMSAFAMMFVKHKHAFLCLFLLPSLATVAYFNMVYMPASWVMRIMTWLDMVDTSLSGFKLKDCVMYASAVVLLILMTARTVYDDGARRVWTLMNVLTLVYKVYYGNALDQAISMWALIISVTSNYSGVVTTVMFLARGIVFMCVEYCPIFFITGNTLQCIMLVYCFLGYFCTCYFGLFCLLNRYFRLTLGVYDYLVSTQEFRYMNSQGLLPPKNSIDAFKLNIKLLGVGGKPCIKVATVQSKMSDVKCTSVVLLSVLQQLRVESSSKLWAQCVQLHNDILLAKDTTEAFEKMVSLLSVLLSMQGAVDINKLCEEMLDNRATLQAIASEFSSLPSYAAFATAQEAYEQAVANGDSEVVLKKLKKSLNVAKSEFDRDAAMQRKLEKMADQAMTQMYKQARSEDKRAKVTSAMQTMLFTMLRKLDNDALNNIINNARDGCVPLNIIPLTTAAKLMVVIPDYNTYKNTCDGTTFTYASALWEIQQVVDADSKIVQLSEISMDNSPNLAWPLIVTALRANSAVKLQNNELSPVALRQMSCAAGTTQTACTDDNALAYYNTTKGGRFVLALLSDLQDLKWARFPKSDGTGTIYTELEPPCRFVTDTPKGPKVKYLYFIKGLNNLNRGMVLGSLAATVRLQAGNATEVPANSTVLSFCAFAVDAAKAYKDYLASGGQPITNCVKMLCTHTGTGQAITVTPEANMDQESFGGASCCLYCRCHIDHPNPKGFCDLKGKYVQIPTTCANDPVGFTLKNTVCTVCGMWKGYGCSCDQLREPMLQSADAQSFLNRVCGVSAARLTPCGTGTSTDVVYRAFDIYNDKVAGFAKFLKTNCCRFQEKDEDDNLIDSYFVVKRHTFSNYQHEETIYNLLKDCPAVAKHDFFKFRIDGDMVPHISRQRLTKYTMADLVYALRHFDEGNCDTLKEILVTYNCCDDDYFNKKDWYDFVENPDILRVYANLGERVRQALLKTVQFCDAMRNAGIVGVLTLDNQDLNGNWYDFGDFIQTTPGSGVPVVDSYYSLLMPILTLTRALTAESHVDTDLTKPYIKWDLLKYDFTEERLKLFDRYFKYWDQTYHPNCVNCLDDRCILHCANFNVLFSTVFPPTSFGPLVRKIFVDGVPFVVSTGYHFRELGVVHNQDVNLHSSRLSFKELLVYAADPAMHAASGNLLLDKRTTCFSVAALTNNVAFQTVKPGNFNKDFYDFAVSKGFFKEGSSVELKHFFFAQDGNAAISDYDYYRYNLPTMCDIRQLLFVVEVVDKYFDCYDGGCINANQVIVNNLDKSAGFPFNKWGKARLYYDSMSYEDQDALFAYTKRNVIPTITQMNLKYAISAKNRARTVAGVSICSTMTNRQFHQKLLKSIAATRGATVVIGTSKFYGGWHNMLKTVYSDVENPHLMGWDYPKCDRAMPNMLRIMASLVLARKHTTCCSLSHRFYRLANECAQVLSEMVMCGGSLYVKPGGTSSGDATTAYANSVFNICQAVTANVNALLSTDGNKIADKYVRNLQHRLYECLYRNRDVDTDFVNEFYAYLRKHFSMMILSDDAVVCFNSTYASQGLVASIKNFKSVLYYQNNVFMSEAKCWTETDLTKGPHEFCSQHTMLVKQGDDYVYLPYPDPSRILGAGCFVDDIVKTDGTLMIERFVSLAIDAYPLTKHPNQEYADVFHLYLQYIRKLHDELTGHMLDMYSVMLTNDNTSRYWEPEFYEAMYTPHTVLQAVGACVLCNSQTSLRCGACIRRPFLCCKCCYDHVISTSHKLVLSVNPYVCNAPGCDVTDVTQLYLGGMSYYCKSHKPPISFPLCANGQVFGLYKNTCVGSDNVTDFNAIATCDWTNAGDYILANTCTERLKLFAAETLKATEETFKLSYGIATVREVLSDRELHLSWEVGKPRPPLNRNYVFTGYRVTKNSKVQIGEYTFEKGDYGDAVVYRGTTTYKLNVGDYFVLTSHTVMPLSAPTLVPQEHYVRITGLYPTLNISDEFSSNVANYQKVGMQKYSTLQGPPGTGKSHFAIGLALYYPSARIVYTACSHAAVDALCEKALKYLPIDKCSRIIPARARVECFDKFKVNSTLEQYVFCTVNALPETTADIVVFDEISMATNYDLSVVNARLRAKHYVYIGDPAQLPAPRTLLTKGTLEPEYFNSVCRLMKTIGPDMFLGTCRRCPAEIVDTVSALVYDNKLKAHKDKSAQCFKMFYKGVITHDVSSAINRPQIGVVREFLTRNPAWRKAVFISPYNSQNAVASKILGLPTQTVDSSQGSEYDYVIFTQTTETAHSCNVNRFNVAITRAKVGILCIMSDRDLYDKLQFTSLEIPRRNVATLQAENVTGLFKDCSKVITGLHPTQAPTHLSVDTKFKTEGLCVDIPGIPKDMTYRRLISMMGFKMNYQVNGYPNMFITREEAIRHVRAWIGFDVEGCHATREAVGTNLPLQLGFSTGVNLVAVPTGYVDTPNNTDFSRVSAKPPPGDQFKHLIPLMYKGLPWNVVRIKIVQMLSDTLKNLSDRVVFVLWAHGFELTSMKYFVKIGPERTCCLCDRRATCFSTASDTYACWHHSIGFDYVYNPFMIDVQQWGFTGNLQSNHDLYCQVHGNAHVASCDAIMTRCLAVHECFVKRVDWTIEYPIIGDELKINAACRKVQHMVVKAALLADKFPVLHDIGNPKAIKCVPQADVEWKFYDAQPCSDKAYKIEELFYSYATHSDKFTDGVCLFWNCNVDRYPANSIVCRFDTRVLSNLNLPGCDGGSLYVNKHAFHTPAFDKSAFVNLKQLPFFYYSDSPCESHGKQVVSDIDYVPLKSATCITRCNLGGAVCRHHANEYRLYLDAYNMMISAGFSLWVYKQFDTYNLWNTFTRLQSLENVAFNVVNKGHFDGQQGEVPVSIINNTVYTKVDGVDVELFENKTTLPVNVAFELWAKRNIKPVPEVKILNNLGVDIAANTVIWDYKRDAPAHISTIGVCSMTDIAKKPTETICAPLTVFFDGRVDGQVDLFRNARNGVLITEGSVKGLQPSVGPKQASLNGVTLIGEAVKTQFNYYKKVDGVVQQLPETYFTQSRNLQEFKPRSQMEIDFLELAMDEFIERYKLEGYAFEHIVYGDFSHSQLGGLHLLIGLAKRFKESPFELEDFIPMDSTVKNYFITDAQTGSSKCVCSVIDLLLDDFVEIIKSQDLSVVSKVVKVTIDYTEISFMLWCKDGHVETFYPKLQSSQAWQPGVAMPNLYKMQRMLLEKCDLQNYGDSATLPKGIMMNVAKYTQLCQYLNTLTLAVPYNMRVIHFGAGSDKGVAPGTAVLRQWLPTGTLLVDSDLNDFVSDADSTLIGDCATVHTANKWDLIISDMYDPKTKNVTKENDSKEGFFTYICGFIQQKLALGGSVAIKITEHSWNADLYKLMGHFAWWTAFVTNVNASSSEAFLIGCNYLGKPREQIDGYVMHANYIFWRNTNPIQLSSYSLFDMSKFPLKLRGTAVMSLKEGQINDMILSLLSKGRLIIRENNRVVISSDVLVNN</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC1</accession>
+  <name>R1A_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Replicase polyprotein 1a</fullName>
+      <shortName>pp1a</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>ORF1a polyprotein</fullName>
+    </alternativeName>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 1</fullName>
+        <shortName>nsp1</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>Leader protein</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 2</fullName>
+        <shortName>nsp2</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>p65 homolog</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 3</fullName>
+        <shortName>nsp3</shortName>
+        <ecNumber>3.4.19.12</ecNumber>
+        <ecNumber>3.4.22.69</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>PL2-PRO</fullName>
+      </alternativeName>
+      <alternativeName>
+        <fullName>Papain-like proteinase</fullName>
+        <shortName>PL-PRO</shortName>
+      </alternativeName>
+      <alternativeName>
+        <fullName>SARS coronavirus main proteinase</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 4</fullName>
+        <shortName>nsp4</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>3C-like proteinase</fullName>
+        <shortName>3CL-PRO</shortName>
+        <shortName>3CLp</shortName>
+        <ecNumber>3.4.22.-</ecNumber>
+      </recommendedName>
+      <alternativeName>
+        <fullName>nsp5</fullName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 6</fullName>
+        <shortName>nsp6</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 7</fullName>
+        <shortName>nsp7</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 8</fullName>
+        <shortName>nsp8</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 9</fullName>
+        <shortName>nsp9</shortName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 10</fullName>
+        <shortName>nsp10</shortName>
+      </recommendedName>
+      <alternativeName>
+        <fullName>Growth factor-like peptide</fullName>
+        <shortName>GFL</shortName>
+      </alternativeName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Non-structural protein 11</fullName>
+        <shortName>nsp11</shortName>
+      </recommendedName>
+    </component>
+  </protein>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">The papain-like proteinase (PL-PRO) is responsible for the cleavages located at the N-terminus of replicase polyprotein. In addition, PL-PRO possesses a deubiquitinating/deISGylating activity and processes both 'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from cellular substrates. Antagonizes innate immune induction of type I interferon by blocking the phosphorylation, dimerization and subsequent nuclear translocation of host IRF-3.</text>
+  </comment>
+  <comment type="function">
+    <molecule>3C-like proteinase</molecule>
+    <text evidence="1">Responsible for the majority of cleavages as it cleaves the C-terminus of replicase polyprotein at 11 sites. Recognizes substrates containing the core sequence [ILMVF]-Q-|-[SGACN]. Inhibited by the substrate-analog Cbz-Val-Asn-Ser-Thr-Leu-Gln-CMK. Also contains an ADP-ribose-1''-phosphate (ADRP)-binding function.</text>
+  </comment>
+  <comment type="function">
+    <text evidence="1">Nsp7-nsp8 hexadecamer may possibly confer processivity to the polymerase, maybe by binding to dsRNA or by producing primers utilized by the latter.</text>
+  </comment>
+  <comment type="function">
+    <text evidence="1">Nsp9 is a ssRNA-binding protein.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Non-structural protein 1</molecule>
+    <text evidence="1">binds to the 40S ribosomal subunit and inhibits host translation. The nsp1-40S ribosome complex further induces an endonucleolytic cleavage near the 5'UTR of host mRNAs, targeting them for degradation. Viral mRNAs are not susceptible to nsp1-mediated endonucleolytic RNA cleavage thanks to the presence of a 5'-end leader sequence and are therefore protected from degradation. By suppressing host gene expression, nsp1 facilitates efficient viral gene expression in infected cells and evasion from host immune response.</text>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="1">
+      <text>Thiol-dependent hydrolysis of ester, thioester, amide, peptide and isopeptide bonds formed by the C-terminal Gly of ubiquitin (a 76-residue protein attached to proteins as an intracellular targeting signal).</text>
+      <dbReference type="EC" id="3.4.19.12"/>
+    </reaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="1">
+      <text>TSAVLQ-|-SGFRK-NH(2) and SGVTFQ-|-GKFKK the two peptides corresponding to the two self-cleavage sites of the SARS 3C-like proteinase are the two most reactive peptide substrates. The enzyme exhibits a strong preference for substrates containing Gln at P1 position and Leu at P2 position.</text>
+      <dbReference type="EC" id="3.4.22.69"/>
+    </reaction>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 7</molecule>
+    <text evidence="1">Eight copies of nsp7 and eight copies of nsp8 assemble to form a heterohexadecamer.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 8</molecule>
+    <text evidence="1">Eight copies of nsp7 and eight copies of nsp8 assemble to form a heterohexadecamer.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 9</molecule>
+    <text evidence="1">Is a dimer.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Non-structural protein 10</molecule>
+    <text evidence="1">Forms a dodecamer.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 3</molecule>
+    <subcellularLocation>
+      <location evidence="1">Host membrane</location>
+      <topology evidence="1">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 4</molecule>
+    <subcellularLocation>
+      <location evidence="1">Host membrane</location>
+      <topology evidence="1">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 6</molecule>
+    <subcellularLocation>
+      <location evidence="1">Host membrane</location>
+      <topology evidence="1">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 7</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 8</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 9</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="subcellular location">
+    <molecule>Non-structural protein 10</molecule>
+    <subcellularLocation>
+      <location evidence="3">Host cytoplasm</location>
+      <location evidence="3">Host perinuclear region</location>
+    </subcellularLocation>
+    <text evidence="3">nsp7, nsp8, nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear. Late in infection, they merge into confluent complexes.</text>
+  </comment>
+  <comment type="alternative products">
+    <event type="ribosomal frameshifting"/>
+    <isoform>
+      <id>P0DTC1-1</id>
+      <name>Replicase polyprotein 1a</name>
+      <sequence type="displayed"/>
+    </isoform>
+    <isoform>
+      <id>P0DTD1-1</id>
+      <name>Replicase polyprotein 1ab</name>
+      <sequence type="external"/>
+    </isoform>
+    <text>Normal translation results in Replicase polyprotein 1a. Ribosomal frameshifting at the end of this protein occurs at low frequency and produces Replicase polyprotein 1ab.</text>
+  </comment>
+  <comment type="domain">
+    <text evidence="1">The hydrophobic domains (HD) could mediate the membrane association of the replication complex and thereby alter the architecture of the host cell membrane.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="3">Specific enzymatic cleavages in vivo by its own proteases yield mature proteins. 3CL-PRO and PL-PRO proteinases are autocatalytically processed.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <molecule>Replicase polyprotein 1a</molecule>
+    <text evidence="1">Produced by conventional translation.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="8">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="8">Belongs to the coronaviruses polyprotein 1ab family.</text>
+  </comment>
+  <dbReference type="EC" id="3.4.19.12"/>
+  <dbReference type="EC" id="3.4.22.69"/>
+  <dbReference type="EC" id="3.4.22.-"/>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43415.1"/>
+    <property type="status" value="ALT_FRAME"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS00867">
+    <property type="entry name" value="CPSASE_2"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51442">
+    <property type="entry name" value="M_PRO"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51154">
+    <property type="entry name" value="MACRO"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51124">
+    <property type="entry name" value="PEPTIDASE_C16"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-1072">Activation of host autophagy by virus</keyword>
+  <keyword id="KW-1132">Decay of host mRNAs by virus</keyword>
+  <keyword id="KW-0255">Endonuclease</keyword>
+  <keyword id="KW-1262">Eukaryotic host gene expression shutoff by virus</keyword>
+  <keyword id="KW-1193">Eukaryotic host translation shutoff by virus</keyword>
+  <keyword id="KW-1035">Host cytoplasm</keyword>
+  <keyword id="KW-1190">Host gene expression shutoff by virus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-1192">Host mRNA suppression by virus</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-0378">Hydrolase</keyword>
+  <keyword id="KW-1090">Inhibition of host innate immune response by virus</keyword>
+  <keyword id="KW-1114">Inhibition of host interferon signaling pathway by virus</keyword>
+  <keyword id="KW-1092">Inhibition of host IRF3 by virus</keyword>
+  <keyword id="KW-1095">Inhibition of host ISG15 by virus</keyword>
+  <keyword id="KW-1113">Inhibition of host RLR pathway by virus</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0479">Metal-binding</keyword>
+  <keyword id="KW-1127">Modulation of host ubiquitin pathway by viral deubiquitinase</keyword>
+  <keyword id="KW-1130">Modulation of host ubiquitin pathway by virus</keyword>
+  <keyword id="KW-0540">Nuclease</keyword>
+  <keyword id="KW-0645">Protease</keyword>
+  <keyword id="KW-0677">Repeat</keyword>
+  <keyword id="KW-0688">Ribosomal frameshifting</keyword>
+  <keyword id="KW-0694">RNA-binding</keyword>
+  <keyword id="KW-0788">Thiol protease</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-0833">Ubl conjugation pathway</keyword>
+  <keyword id="KW-0899">Viral immunoevasion</keyword>
+  <keyword id="KW-0862">Zinc</keyword>
+  <keyword id="KW-0863">Zinc-finger</keyword>
+  <feature type="chain" id="PRO_0000449634" description="Replicase polyprotein 1a" evidence="1">
+    <location>
+      <begin position="1"/>
+      <end position="4405"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449635" description="Non-structural protein 1" evidence="2">
+    <location>
+      <begin position="1"/>
+      <end position="180"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449636" description="Non-structural protein 2" evidence="2">
+    <location>
+      <begin position="181"/>
+      <end position="818"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449637" description="Non-structural protein 3" evidence="2">
+    <location>
+      <begin position="819"/>
+      <end position="2763"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449638" description="Non-structural protein 4" evidence="2">
+    <location>
+      <begin position="2764"/>
+      <end position="3263"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449639" description="3C-like proteinase" evidence="2">
+    <location>
+      <begin position="3264"/>
+      <end position="3569"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449640" description="Non-structural protein 6" evidence="2">
+    <location>
+      <begin position="3570"/>
+      <end position="3859"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449641" description="Non-structural protein 7" evidence="2">
+    <location>
+      <begin position="3860"/>
+      <end position="3942"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449642" description="Non-structural protein 8" evidence="2">
+    <location>
+      <begin position="3943"/>
+      <end position="4140"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449643" description="Non-structural protein 9" evidence="2">
+    <location>
+      <begin position="4141"/>
+      <end position="4253"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449644" description="Non-structural protein 10" evidence="2">
+    <location>
+      <begin position="4254"/>
+      <end position="4392"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449645" description="Non-structural protein 11" evidence="2">
+    <location>
+      <begin position="4393"/>
+      <end position="4405"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2226"/>
+      <end position="2246"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2318"/>
+      <end position="2338"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2339"/>
+      <end position="2359"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2361"/>
+      <end position="2381"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="2776"/>
+      <end position="2796"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3045"/>
+      <end position="3065"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3077"/>
+      <end position="3097"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3100"/>
+      <end position="3120"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3128"/>
+      <end position="3148"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3165"/>
+      <end position="3185"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3587"/>
+      <end position="3607"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3609"/>
+      <end position="3629"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3635"/>
+      <end position="3655"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3674"/>
+      <end position="3694"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3730"/>
+      <end position="3750"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="4">
+    <location>
+      <begin position="3779"/>
+      <end position="3799"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Macro" evidence="6">
+    <location>
+      <begin position="1025"/>
+      <end position="1194"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Peptidase C16" evidence="5">
+    <location>
+      <begin position="1634"/>
+      <end position="1898"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Peptidase C30" evidence="7">
+    <location>
+      <begin position="3264"/>
+      <end position="3569"/>
+    </location>
+  </feature>
+  <feature type="zinc finger region" description="C4-type" evidence="5">
+    <location>
+      <begin position="1752"/>
+      <end position="1789"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For PL1-PRO activity" evidence="5">
+    <location>
+      <position position="1674"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For PL2-PRO activity" evidence="5">
+    <location>
+      <position position="1835"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For 3CL-PRO activity" evidence="7">
+    <location>
+      <position position="3304"/>
+    </location>
+  </feature>
+  <feature type="active site" description="For 3CL-PRO activity" evidence="7">
+    <location>
+      <position position="3408"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="2">
+    <location>
+      <begin position="180"/>
+      <end position="181"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="2">
+    <location>
+      <begin position="818"/>
+      <end position="819"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by PL-PRO" evidence="2">
+    <location>
+      <begin position="2763"/>
+      <end position="2764"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="3263"/>
+      <end position="3264"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="3569"/>
+      <end position="3570"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="3859"/>
+      <end position="3860"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="3942"/>
+      <end position="3943"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="4140"/>
+      <end position="4141"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="4253"/>
+      <end position="4254"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage; by 3CL-PRO" evidence="2">
+    <location>
+      <begin position="4392"/>
+      <end position="4393"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6U8"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000250" key="2">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6V3"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000250" key="3">
+    <source>
+      <dbReference type="UniProtKB" id="P0C6X7"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="4"/>
+  <evidence type="ECO:0000255" key="5">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00444"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="6">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00490"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="7">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU00772"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="8"/>
+  <sequence length="4405" mass="489989" checksum="7F8A21148A7A7E2A" modified="2020-04-22" version="1">MESLVPGFNEKTHVQLSLPVLQVRDVLVRGFGDSVEEVLSEARQHLKDGTCGLVEVEKGVLPQLEQPYVFIKRSDARTAPHGHVMVELVAELEGIQYGRSGETLGVLVPHVGEIPVAYRKVLLRKNGNKGAGGHSYGADLKSFDLGDELGTDPYEDFQENWNTKHSSGVTRELMRELNGGAYTRYVDNNFCGPDGYPLECIKDLLARAGKASCTLSEQLDFIDTKRGVYCCREHEHEIAWYTERSEKSYELQTPFEIKLAKKFDTFNGECPNFVFPLNSIIKTIQPRVEKKKLDGFMGRIRSVYPVASPNECNQMCLSTLMKCDHCGETSWQTGDFVKATCEFCGTENLTKEGATTCGYLPQNAVVKIYCPACHNSEVGPEHSLAEYHNESGLKTILRKGGRTIAFGGCVFSYVGCHNKCAYWVPRASANIGCNHTGVVGEGSEGLNDNLLEILQKEKVNINIVGDFKLNEEIAIILASFSASTSAFVETVKGLDYKAFKQIVESCGNFKVTKGKAKKGAWNIGEQKSILSPLYAFASEAARVVRSIFSRTLETAQNSVRVLQKAAITILDGISQYSLRLIDAMMFTSDLATNNLVVMAYITGGVVQLTSQWLTNIFGTVYEKLKPVLDWLEEKFKEGVEFLRDGWEIVKFISTCACEIVGGQIVTCAKEIKESVQTFFKLVNKFLALCADSIIIGGAKLKALNLGETFVTHSKGLYRKCVKSREETGLLMPLKAPKEIIFLEGETLPTEVLTEEVVLKTGDLQPLEQPTSEAVEAPLVGTPVCINGLMLLEIKDTEKYCALAPNMMVTNNTFTLKGGAPTKVTFGDDTVIEVQGYKSVNITFELDERIDKVLNEKCSAYTVELGTEVNEFACVVADAVIKTLQPVSELLTPLGIDLDEWSMATYYLFDESGEFKLASHMYCSFYPPDEDEEEGDCEEEEFEPSTQYEYGTEDDYQGKPLEFGATSAALQPEEEQEEDWLDDDSQQTVGQQDGSEDNQTTTIQTIVEVQPQLEMELTPVVQTIEVNSFSGYLKLTDNVYIKNADIVEEAKKVKPTVVVNAANVYLKHGGGVAGALNKATNNAMQVESDDYIATNGPLKVGGSCVLSGHNLAKHCLHVVGPNVNKGEDIQLLKSAYENFNQHEVLLAPLLSAGIFGADPIHSLRVCVDTVRTNVYLAVFDKNLYDKLVSSFLEMKSEKQVEQKIAEIPKEEVKPFITESKPSVEQRKQDDKKIKACVEEVTTTLEETKFLTENLLLYIDINGNLHPDSATLVSDIDITFLKKDAPYIVGDVVQEGVLTAVVIPTKKAGGTTEMLAKALRKVPTDNYITTYPGQGLNGYTVEEAKTVLKKCKSAFYILPSIISNEKQEILGTVSWNLREMLAHAEETRKLMPVCVETKAIVSTIQRKYKGIKIQEGVVDYGARFYFYTSKTTVASLINTLNDLNETLVTMPLGYVTHGLNLEEAARYMRSLKVPATVSVSSPDAVTAYNGYLTSSSKTPEEHFIETISLAGSYKDWSYSGQSTQLGIEFLKRGDKSVYYTSNPTTFHLDGEVITFDNLKTLLSLREVRTIKVFTTVDNINLHTQVVDMSMTYGQQFGPTYLDGADVTKIKPHNSHEGKTFYVLPNDDTLRVEAFEYYHTTDPSFLGRYMSALNHTKKWKYPQVNGLTSIKWADNNCYLATALLTLQQIELKFNPPALQDAYYRARAGEAANFCALILAYCNKTVGELGDVRETMSYLFQHANLDSCKRVLNVVCKTCGQQQTTLKGVEAVMYMGTLSYEQFKKGVQIPCTCGKQATKYLVQQESPFVMMSAPPAQYELKHGTFTCASEYTGNYQCGHYKHITSKETLYCIDGALLTKSSEYKGPITDVFYKENSYTTTIKPVTYKLDGVVCTEIDPKLDNYYKKDNSYFTEQPIDLVPNQPYPNASFDNFKFVCDNIKFADDLNQLTGYKKPASRELKVTFFPDLNGDVVAIDYKHYTPSFKKGAKLLHKPIVWHVNNATNKATYKPNTWCIRCLWSTKPVETSNSFDVLKSEDAQGMDNLACEDLKPVSEEVVENPTIQKDVLECNVKTTEVVGDIILKPANNSLKITEEVGHTDLMAAYVDNSSLTIKKPNELSRVLGLKTLATHGLAAVNSVPWDTIANYAKPFLNKVVSTTTNIVTRCLNRVCTNYMPYFFTLLLQLCTFTRSTNSRIKASMPTTIAKNTVKSVGKFCLEASFNYLKSPNFSKLINIIIWFLLLSVCLGSLIYSTAALGVLMSNLGMPSYCTGYREGYLNSTNVTIATYCTGSIPCSVCLSGLDSLDTYPSLETIQITISSFKWDLTAFGLVAEWFLAYILFTRFFYVLGLAAIMQLFFSYFAVHFISNSWLMWLIINLVQMAPISAMVRMYIFFASFYYVWKSYVHVVDGCNSSTCMMCYKRNRATRVECTTIVNGVRRSFYVYANGGKGFCKLHNWNCVNCDTFCAGSTFISDEVARDLSLQFKRPINPTDQSSYIVDSVTVKNGSIHLYFDKAGQKTYERHSLSHFVNLDNLRANNTKGSLPINVIVFDGKSKCEESSAKSASVYYSQLMCQPILLLDQALVSDVGDSAEVAVKMFDAYVNTFSSTFNVPMEKLKTLVATAEAELAKNVSLDNVLSTFISAARQGFVDSDVETKDVVECLKLSHQSDIEVTGDSCNNYMLTYNKVENMTPRDLGACIDCSARHINAQVAKSHNIALIWNVKDFMSLSEQLRKQIRSAAKKNNLPFKLTCATTRQVVNVVTTKIALKGGKIVNNWLKQLIKVTLVFLFVAAIFYLITPVHVMSKHTDFSSEIIGYKAIDGGVTRDIASTDTCFANKHADFDTWFSQRGGSYTNDKACPLIAAVITREVGFVVPGLPGTILRTTNGDFLHFLPRVFSAVGNICYTPSKLIEYTDFATSACVLAAECTIFKDASGKPVPYCYDTNVLEGSVAYESLRPDTRYVLMDGSIIQFPNTYLEGSVRVVTTFDSEYCRHGTCERSEAGVCVSTSGRWVLNNDYYRSLPGVFCGVDAVNLLTNMFTPLIQPIGALDISASIVAGGIVAIVVTCLAYYFMRFRRAFGEYSHVVAFNTLLFLMSFTVLCLTPVYSFLPGVYSVIYLYLTFYLTNDVSFLAHIQWMVMFTPLVPFWITIAYIICISTKHFYWFFSNYLKRRVVFNGVSFSTFEEAALCTFLLNKEMYLKLRSDVLLPLTQYNRYLALYNKYKYFSGAMDTTSYREAACCHLAKALNDFSNSGSDVLYQPPQTSITSAVLQSGFRKMAFPSGKVEGCMVQVTCGTTTLNGLWLDDVVYCPRHVICTSEDMLNPNYEDLLIRKSNHNFLVQAGNVQLRVIGHSMQNCVLKLKVDTANPKTPKYKFVRIQPGQTFSVLACYNGSPSGVYQCAMRPNFTIKGSFLNGSCGSVGFNIDYDCVSFCYMHHMELPTGVHAGTDLEGNFYGPFVDRQTAQAAGTDTTITVNVLAWLYAAVINGDRWFLNRFTTTLNDFNLVAMKYNYEPLTQDHVDILGPLSAQTGIAVLDMCASLKELLQNGMNGRTILGSALLEDEFTPFDVVRQCSGVTFQSAVKRTIKGTHHWLLLTILTSLLVLVQSTQWSLFFFLYENAFLPFAMGIIAMSAFAMMFVKHKHAFLCLFLLPSLATVAYFNMVYMPASWVMRIMTWLDMVDTSLSGFKLKDCVMYASAVVLLILMTARTVYDDGARRVWTLMNVLTLVYKVYYGNALDQAISMWALIISVTSNYSGVVTTVMFLARGIVFMCVEYCPIFFITGNTLQCIMLVYCFLGYFCTCYFGLFCLLNRYFRLTLGVYDYLVSTQEFRYMNSQGLLPPKNSIDAFKLNIKLLGVGGKPCIKVATVQSKMSDVKCTSVVLLSVLQQLRVESSSKLWAQCVQLHNDILLAKDTTEAFEKMVSLLSVLLSMQGAVDINKLCEEMLDNRATLQAIASEFSSLPSYAAFATAQEAYEQAVANGDSEVVLKKLKKSLNVAKSEFDRDAAMQRKLEKMADQAMTQMYKQARSEDKRAKVTSAMQTMLFTMLRKLDNDALNNIINNARDGCVPLNIIPLTTAAKLMVVIPDYNTYKNTCDGTTFTYASALWEIQQVVDADSKIVQLSEISMDNSPNLAWPLIVTALRANSAVKLQNNELSPVALRQMSCAAGTTQTACTDDNALAYYNTTKGGRFVLALLSDLQDLKWARFPKSDGTGTIYTELEPPCRFVTDTPKGPKVKYLYFIKGLNNLNRGMVLGSLAATVRLQAGNATEVPANSTVLSFCAFAVDAAKAYKDYLASGGQPITNCVKMLCTHTGTGQAITVTPEANMDQESFGGASCCLYCRCHIDHPNPKGFCDLKGKYVQIPTTCANDPVGFTLKNTVCTVCGMWKGYGCSCDQLREPMLQSADAQSFLNGFAV</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC2</accession>
+  <name>SPIKE_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Spike glycoprotein</fullName>
+      <shortName>S glycoprotein</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>E2</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Peplomer protein</fullName>
+    </alternativeName>
+    <component>
+      <recommendedName>
+        <fullName>Spike protein S1</fullName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Spike protein S2</fullName>
+      </recommendedName>
+    </component>
+    <component>
+      <recommendedName>
+        <fullName>Spike protein S2'</fullName>
+      </recommendedName>
+    </component>
+  </protein>
+  <gene>
+    <name type="primary">S</name>
+    <name type="ORF">2</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <molecule>Spike protein S1</molecule>
+    <text evidence="1">attaches the virion to the cell membrane by interacting with host receptor, initiating the infection. Binding to human ACE2 and CLEC4M/DC-SIGNR receptors and internalization of the virus into the endosomes of the host cell induces conformational changes in the S glycoprotein. Proteolysis by cathepsin CTSL may unmask the fusion peptide of S2 and activate membranes fusion within endosomes.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Spike protein S2</molecule>
+    <text evidence="1">mediates fusion of the virion and cellular membranes by acting as a class I viral fusion protein. Under the current model, the protein has at least three conformational states: pre-fusion native state, pre-hairpin intermediate state, and post-fusion hairpin state. During viral and target cell membrane fusion, the coiled coil regions (heptad repeats) assume a trimer-of-hairpins structure, positioning the fusion peptide in close proximity to the C-terminal region of the ectodomain. The formation of this structure appears to drive apposition and subsequent fusion of viral and target cell membranes.</text>
+  </comment>
+  <comment type="function">
+    <molecule>Spike protein S2'</molecule>
+    <text evidence="1">Acts as a viral fusion peptide which is unmasked following S2 cleavage occurring upon virus endocytosis.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Spike glycoprotein</molecule>
+    <text evidence="1">Homotrimer; each monomer consists of a S1 and a S2 subunit. The resulting peplomers protrude from the virus surface as spikes. Interacts with the accessory proteins 3a and 7a.</text>
+  </comment>
+  <comment type="subunit">
+    <molecule>Spike protein S1</molecule>
+    <text evidence="3">Binds to human ACE2.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location>Virion membrane</location>
+      <topology>Single-pass type I membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location>Host endoplasmic reticulum-Golgi intermediate compartment membrane</location>
+      <topology>Single-pass type I membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location>Host cell membrane</location>
+      <topology>Single-pass type I membrane protein</topology>
+    </subcellularLocation>
+    <text evidence="1">Accumulates in the endoplasmic reticulum-Golgi intermediate compartment, where it participates in virus particle assembly. Colocalizes with S in the host endoplasmic reticulum-Golgi intermediate compartment. Some S oligomers are transported to the host plasma membrane, where they may mediate cell-cell fusion.</text>
+  </comment>
+  <comment type="domain">
+    <text evidence="1">The KxHxx motif seems to function as an ER retrieval and binds COPI in vitro.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="1">The cytoplasmic Cys-rich domain is palmitoylated.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="1">Specific enzymatic cleavages in vivo yield mature proteins. The precursor is processed into S1 and S2 by host cell furin or another cellular protease to yield the mature S1 and S2 proteins. Additionally, a second cleavage leads to the release of a fusion peptide after viral attachment to host cell receptor.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="3">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="3">Belongs to the betacoronaviruses spike protein family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43416.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0016021">
+    <property type="term" value="C:integral component of membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019031">
+    <property type="term" value="C:viral envelope"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0061025">
+    <property type="term" value="P:membrane fusion"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0046813">
+    <property type="term" value="P:receptor-mediated virion attachment to host cell"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.20.5.300">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="1.20.5.790">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.30.70.1840">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR002552">
+    <property type="entry name" value="Corona_S2"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR027400">
+    <property type="entry name" value="S_HR2"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR018548">
+    <property type="entry name" value="Spike_rcpt-bd"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR036326">
+    <property type="entry name" value="Spike_rcpt-bd_sf"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF01601">
+    <property type="entry name" value="Corona_S2"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF09408">
+    <property type="entry name" value="Spike_rec_bind"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF111474">
+    <property type="entry name" value="SSF111474"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF143587">
+    <property type="entry name" value="SSF143587"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0175">Coiled coil</keyword>
+  <keyword id="KW-1015">Disulfide bond</keyword>
+  <keyword id="KW-1170">Fusion of virus membrane with host endosomal membrane</keyword>
+  <keyword id="KW-1168">Fusion of virus membrane with host membrane</keyword>
+  <keyword id="KW-0325">Glycoprotein</keyword>
+  <keyword id="KW-1032">Host cell membrane</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-0449">Lipoprotein</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0564">Palmitate</keyword>
+  <keyword id="KW-0732">Signal</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-1161">Viral attachment to host cell</keyword>
+  <keyword id="KW-0261">Viral envelope protein</keyword>
+  <keyword id="KW-1162">Viral penetration into host cytoplasm</keyword>
+  <keyword id="KW-0946">Virion</keyword>
+  <keyword id="KW-0843">Virulence</keyword>
+  <keyword id="KW-1160">Virus entry into host cell</keyword>
+  <feature type="signal peptide" evidence="2">
+    <location>
+      <begin position="1"/>
+      <end position="13"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449646" description="Spike glycoprotein" evidence="1">
+    <location>
+      <begin position="14"/>
+      <end position="1273"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449647" description="Spike protein S1" evidence="1">
+    <location>
+      <begin position="14"/>
+      <end position="685"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449648" description="Spike protein S2" evidence="1">
+    <location>
+      <begin position="686"/>
+      <end position="1273"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449649" description="Spike protein S2'" evidence="1">
+    <location>
+      <begin position="816"/>
+      <end position="1273"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="1214"/>
+      <end position="1234"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Receptor-binding domain" evidence="1">
+    <location>
+      <begin position="319"/>
+      <end position="541"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Receptor-binding motif; binding to human ACE2" evidence="1">
+    <location>
+      <begin position="437"/>
+      <end position="508"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Fusion peptide" evidence="1">
+    <location>
+      <begin position="788"/>
+      <end position="806"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Heptad repeat 1" evidence="1">
+    <location>
+      <begin position="920"/>
+      <end position="970"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Heptad repeat 2" evidence="1">
+    <location>
+      <begin position="1163"/>
+      <end position="1202"/>
+    </location>
+  </feature>
+  <feature type="coiled-coil region" evidence="2">
+    <location>
+      <begin position="1176"/>
+      <end position="1203"/>
+    </location>
+  </feature>
+  <feature type="short sequence motif" description="KxHxx" evidence="1">
+    <location>
+      <begin position="1269"/>
+      <end position="1273"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage" evidence="1">
+    <location>
+      <begin position="685"/>
+      <end position="686"/>
+    </location>
+  </feature>
+  <feature type="site" description="Cleavage" evidence="1">
+    <location>
+      <begin position="815"/>
+      <end position="816"/>
+    </location>
+  </feature>
+  <feature type="disulfide bond" evidence="1">
+    <location>
+      <begin position="336"/>
+      <end position="361"/>
+    </location>
+  </feature>
+  <feature type="disulfide bond" evidence="1">
+    <location>
+      <begin position="379"/>
+      <end position="432"/>
+    </location>
+  </feature>
+  <feature type="disulfide bond" evidence="1">
+    <location>
+      <begin position="480"/>
+      <end position="488"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59594"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2"/>
+  <evidence type="ECO:0000305" key="3"/>
+  <sequence length="1273" mass="141178" checksum="B17BE6D9F1C4EA34" modified="2020-04-22" version="1" precursor="true">MFVFLVLLPLVSSQCVNLTTRTQLPPAYTNSFTRGVYYPDKVFRSSVLHSTQDLFLPFFSNVTWFHAIHVSGTNGTKRFDNPVLPFNDGVYFASTEKSNIIRGWIFGTTLDSKTQSLLIVNNATNVVIKVCEFQFCNDPFLGVYYHKNNKSWMESEFRVYSSANNCTFEYVSQPFLMDLEGKQGNFKNLREFVFKNIDGYFKIYSKHTPINLVRDLPQGFSALEPLVDLPIGINITRFQTLLALHRSYLTPGDSSSGWTAGAAAYYVGYLQPRTFLLKYNENGTITDAVDCALDPLSETKCTLKSFTVEKGIYQTSNFRVQPTESIVRFPNITNLCPFGEVFNATRFASVYAWNRKRISNCVADYSVLYNSASFSTFKCYGVSPTKLNDLCFTNVYADSFVIRGDEVRQIAPGQTGKIADYNYKLPDDFTGCVIAWNSNNLDSKVGGNYNYLYRLFRKSNLKPFERDISTEIYQAGSTPCNGVEGFNCYFPLQSYGFQPTNGVGYQPYRVVVLSFELLHAPATVCGPKKSTNLVKNKCVNFNFNGLTGTGVLTESNKKFLPFQQFGRDIADTTDAVRDPQTLEILDITPCSFGGVSVITPGTNTSNQVAVLYQDVNCTEVPVAIHADQLTPTWRVYSTGSNVFQTRAGCLIGAEHVNNSYECDIPIGAGICASYQTQTNSPRRARSVASQSIIAYTMSLGAENSVAYSNNSIAIPTNFTISVTTEILPVSMTKTSVDCTMYICGDSTECSNLLLQYGSFCTQLNRALTGIAVEQDKNTQEVFAQVKQIYKTPPIKDFGGFNFSQILPDPSKPSKRSFIEDLLFNKVTLADAGFIKQYGDCLGDIAARDLICAQKFNGLTVLPPLLTDEMIAQYTSALLAGTITSGWTFGAGAALQIPFAMQMAYRFNGIGVTQNVLYENQKLIANQFNSAIGKIQDSLSSTASALGKLQDVVNQNAQALNTLVKQLSSNFGAISSVLNDILSRLDKVEAEVQIDRLITGRLQSLQTYVTQQLIRAAEIRASANLAATKMSECVLGQSKRVDFCGKGYHLMSFPQSAPHGVVFLHVTYVPAQEKNFTTAPAICHDGKAHFPREGVFVSNGTHWFVTQRNFYEPQIITTDNTFVSGNCDVVIGIVNNTVYDPLQPELDSFKEELDKYFKNHTSPDVDLGDISGINASVVNIQKEIDRLNEVAKNLNESLIDLQELGKYEQYIKWPWYIWLGFIAGLIAIVMVTIMLCCMTSCCSCLKGCCSCGSCCKFDEDDSEPVLKGVKLHYT</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC3</accession>
+  <name>AP3A_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Protein 3a</fullName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Accessory protein 3a</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Protein U274</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Protein X1</fullName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name type="ORF">3a</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">Forms homotetrameric potassium sensitive ion channels (viroporin) and may modulate virus release. Up-regulates expression of fibrinogen subunits FGA, FGB and FGG in host lung epithelial cells. Induces apoptosis in cell culture. Downregulates the type 1 interferon receptor by inducing serine phosphorylation within the IFN alpha-receptor subunit 1 (IFNAR1) degradation motif and increasing IFNAR1 ubiquitination.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1">Homotetramer composed of two homodimers linked non covalently. Interacts with M, S and E proteins. Also interacts with the accessory protein 7a.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Virion</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host Golgi apparatus membrane</location>
+      <topology evidence="1">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host cell membrane</location>
+      <topology evidence="1">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Secreted</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host cytoplasm</location>
+    </subcellularLocation>
+    <text evidence="1">The cell surface expressed protein can undergo endocytosis. The protein is secreted in association with membranous structures.</text>
+  </comment>
+  <comment type="domain">
+    <text evidence="1">The second or the third transmembrane region are responsible for Golgi localization.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="1">Exists in both O-glycosylated and non-glycosylated forms. The glycosylated form is associated with the virion.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43417.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR024407">
+    <property type="entry name" value="SARS_coronavirus_Orf3/3a"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF11289">
+    <property type="entry name" value="APA3_viroporin"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0325">Glycoprotein</keyword>
+  <keyword id="KW-1032">Host cell membrane</keyword>
+  <keyword id="KW-1035">Host cytoplasm</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0964">Secreted</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-0946">Virion</keyword>
+  <feature type="chain" id="PRO_0000449650" description="Protein 3a">
+    <location>
+      <begin position="1"/>
+      <end position="275"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="35"/>
+      <end position="55"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="71"/>
+      <end position="91"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="94"/>
+      <end position="114"/>
+    </location>
+  </feature>
+  <feature type="site" description="Involved in polymerization" evidence="1">
+    <location>
+      <position position="133"/>
+    </location>
+  </feature>
+  <feature type="glycosylation site" description="O-linked (GalNAc...) threonine; by host" evidence="1">
+    <location>
+      <position position="32"/>
+    </location>
+  </feature>
+  <feature type="glycosylation site" description="O-linked (GalNAc...) threonine; by host" evidence="2">
+    <location>
+      <position position="34"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59632"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2"/>
+  <sequence length="275" mass="31123" checksum="4688E6D477E031C4" modified="2020-04-22" version="1">MDLFMRIFTIGTVTLKQGEIKDATPSDFVRATATIPIQASLPFGWLIVGVALLAVFQSASKIITLKKRWQLALSKGVHFVCNLLLLFVTVYSHLLLVAAGLEAPFLYLYALVYFLQSINFVRIIMRLWLCWKCRSKNPLLYDANYFLCWHTNCYDYCIPYNSVTSSIVITSGDGTTSPISEHDYQIGGYTEKWESGVKDCVVLHSYFTSDYYQLYSTQLSTDTGVEHVTFFIYNKIVDEPEEHVQIHTIDGSSGVVNPVMEPIYDEPTTTTSVPL</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC4</accession>
+  <name>VEMP_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName evidence="2">Envelope small membrane protein</fullName>
+      <shortName evidence="2">E protein</shortName>
+      <shortName evidence="2">sM protein</shortName>
+    </recommendedName>
+  </protein>
+  <gene>
+    <name evidence="2" type="primary">E</name>
+    <name type="ORF">4</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="2">Plays a central role in virus morphogenesis and assembly. Acts as a viroporin and self-assembles in host membranes forming pentameric protein-lipid pores that allow ion transport. Also plays a role in the induction of apoptosis.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1 2">Homopentamer. Interacts with membrane protein M in the budding compartment of the host cell, which is located between endoplasmic reticulum and the Golgi complex. Interacts with Nucleoprotein (By similarity). Interacts with the accessory proteins 3a and 7a. Interacts (via C-terminus) with human MPP5 (via PDZ domain); this inhibits the interaction between human MPP5 and human CRB3, and causes delayed tight junction formation and defective cell polarity (By similarity).</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="2">Host Golgi apparatus membrane</location>
+      <topology evidence="2">Single-pass type III membrane protein</topology>
+    </subcellularLocation>
+    <text evidence="2">The cytoplasmic tail functions as a Golgi complex-targeting signal.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="3">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="2">Belongs to the betacoronaviruses E protein family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43418.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044177">
+    <property type="term" value="C:host cell Golgi apparatus"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044178">
+    <property type="term" value="C:host cell Golgi membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0016021">
+    <property type="term" value="C:integral component of membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044662">
+    <property type="term" value="P:disruption by virus of host cell membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0046760">
+    <property type="term" value="P:viral budding from Golgi membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="HAMAP" id="MF_04204">
+    <property type="entry name" value="BETA_CORONA_E"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR003873">
+    <property type="entry name" value="NS3/E"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF02723">
+    <property type="entry name" value="NS3_envE"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0053">Apoptosis</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <feature type="chain" id="PRO_0000449651" description="Envelope small membrane protein">
+    <location>
+      <begin position="1"/>
+      <end position="75"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Virion surface" evidence="2">
+    <location>
+      <begin position="1"/>
+      <end position="16"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="17"/>
+      <end position="37"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Intravirion" evidence="2">
+    <location>
+      <begin position="38"/>
+      <end position="75"/>
+    </location>
+  </feature>
+  <feature type="short sequence motif" description="PDZ-binding; required for interaction with human MPP5" evidence="1">
+    <location>
+      <begin position="72"/>
+      <end position="75"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59637"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2">
+    <source>
+      <dbReference type="HAMAP-Rule" id="MF_04204"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="3"/>
+  <sequence length="75" mass="8365" checksum="5C431BD2AA1B6B99" modified="2020-04-22" version="1">MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC5</accession>
+  <name>VME1_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName evidence="2">Membrane protein</fullName>
+      <shortName evidence="2">M protein</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName evidence="2">E1 glycoprotein</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName evidence="2">Matrix glycoprotein</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName evidence="2">Membrane glycoprotein</fullName>
+    </alternativeName>
+  </protein>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="2">Component of the viral envelope that plays a central role in virus morphogenesis and assembly via its interactions with other viral proteins.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1 2">Homomultimer. Interacts with envelope E protein in the budding compartment of the host cell, which is located between endoplasmic reticulum and the Golgi complex. Forms a complex with HE and S proteins. Interacts with nucleocapsid N protein. This interaction probably participates in RNA packaging into the virus (By similarity). Interacts with the accessory proteins 3a and 7a (By similarity).</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="2">Virion membrane</location>
+      <topology evidence="2">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="2">Host Golgi apparatus membrane</location>
+      <topology evidence="2">Multi-pass membrane protein</topology>
+    </subcellularLocation>
+    <text evidence="2">Largely embedded in the lipid bilayer.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="3">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="2">Belongs to the betacoronaviruses M protein family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43419.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0030430">
+    <property type="term" value="C:host cell cytoplasm"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044178">
+    <property type="term" value="C:host cell Golgi membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0016021">
+    <property type="term" value="C:integral component of membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019031">
+    <property type="term" value="C:viral envelope"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0055036">
+    <property type="term" value="C:virion membrane"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0039660">
+    <property type="term" value="F:structural constituent of virion"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019058">
+    <property type="term" value="P:viral life cycle"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="HAMAP" id="MF_04202">
+    <property type="entry name" value="BETA_CORONA_M"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR002574">
+    <property type="entry name" value="Corona_M"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF01635">
+    <property type="entry name" value="Corona_M"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0325">Glycoprotein</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-0261">Viral envelope protein</keyword>
+  <keyword id="KW-0899">Viral immunoevasion</keyword>
+  <keyword id="KW-0468">Viral matrix protein</keyword>
+  <keyword id="KW-0946">Virion</keyword>
+  <feature type="chain" id="PRO_0000449652" description="Membrane protein">
+    <location>
+      <begin position="1"/>
+      <end position="222"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Virion surface" evidence="2">
+    <location>
+      <begin position="2"/>
+      <end position="19"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="20"/>
+      <end position="40"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Intravirion" evidence="2">
+    <location>
+      <begin position="41"/>
+      <end position="50"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="51"/>
+      <end position="71"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Virion surface" evidence="2">
+    <location>
+      <begin position="72"/>
+      <end position="79"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="80"/>
+      <end position="100"/>
+    </location>
+  </feature>
+  <feature type="topological domain" description="Intravirion" evidence="2">
+    <location>
+      <begin position="101"/>
+      <end position="222"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59596"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2">
+    <source>
+      <dbReference type="HAMAP-Rule" id="MF_04202"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="3"/>
+  <sequence length="222" mass="25147" checksum="ED44D84C3BB9A6DB" modified="2020-04-22" version="1">MADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC6</accession>
+  <name>NS6_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Non-structural protein 6</fullName>
+      <shortName>ns6</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Accessory protein 6</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Protein X3</fullName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name type="ORF">6</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">Could be a determinant of virus virulence, since, when expressed in an otherwise attenuated JHM strain of murine coronavirus, it can dramatically increase the lethality of the latter. Seems to stimulate cellular DNA synthesis in vitro.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Host endoplasmic reticulum membrane</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host Golgi apparatus membrane</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="2">Belongs to the coronaviruses accessory protein 6 family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43420.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR022736">
+    <property type="entry name" value="SARS_NS6"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF12133">
+    <property type="entry name" value="Sars6"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-1038">Host endoplasmic reticulum</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0843">Virulence</keyword>
+  <feature type="chain" id="PRO_0000449653" description="Non-structural protein 6">
+    <location>
+      <begin position="1"/>
+      <end position="61"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59634"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="2"/>
+  <sequence length="61" mass="7273" checksum="B21BD303F59A1D0A" modified="2020-04-22" version="1">MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC7</accession>
+  <name>NS7A_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Protein 7a</fullName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Accessory protein 7a</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Protein U122</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>Protein X4</fullName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name type="ORF">7a</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">Non-structural protein which is dispensable for virus replication in cell culture.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1">Interacts with the spike glycoprotein, M protein, E protein and the accessory protein 3a. Interacts with human SGT.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Virion</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host endoplasmic reticulum membrane</location>
+      <topology evidence="1">Single-pass membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host endoplasmic reticulum-Golgi intermediate compartment membrane</location>
+      <topology evidence="1">Single-pass type I membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host Golgi apparatus membrane</location>
+      <topology evidence="1">Single-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="domain">
+    <text evidence="1">The di-lysine motif confers endoplasmic reticulum localization for type I membrane proteins.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="3">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43421.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="2.60.40.1550">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014888">
+    <property type="entry name" value="SARS_X4"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR036495">
+    <property type="entry name" value="SARS_X4_sf"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08779">
+    <property type="entry name" value="SARS_X4"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF117066">
+    <property type="entry name" value="SSF117066"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-1077">G0/G1 host cell cycle checkpoint dysregulation by virus</keyword>
+  <keyword id="KW-1038">Host endoplasmic reticulum</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-1121">Modulation of host cell cycle by virus</keyword>
+  <keyword id="KW-0732">Signal</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <keyword id="KW-0946">Virion</keyword>
+  <feature type="signal peptide" evidence="2">
+    <location>
+      <begin position="1"/>
+      <end position="15"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449654" description="Protein 7a" evidence="2">
+    <location>
+      <begin position="16"/>
+      <end position="121"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="96"/>
+      <end position="116"/>
+    </location>
+  </feature>
+  <feature type="short sequence motif" description="Di-lysine motif" evidence="1">
+    <location>
+      <begin position="117"/>
+      <end position="121"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59635"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2"/>
+  <evidence type="ECO:0000305" key="3"/>
+  <sequence length="121" mass="13744" checksum="891E7EAB9E8A5BA9" modified="2020-04-22" version="1" precursor="true">MKIILFLALITLATCELYHYQECVRGTTVLLKEPCSSGTYEGNSPFHPLADNKFALTCFSTQFAFACPDGVKHVYQLRARSVSPKLFIRQEEVQELYSPIFLIVAAIVFITLCFTLKRKTE</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTD8</accession>
+  <name>NS7B_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Protein non-structural 7b</fullName>
+      <shortName>ns7b</shortName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Accessory protein 7b</fullName>
+    </alternativeName>
+  </protein>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Host membrane</location>
+      <topology evidence="1">Single-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <feature type="chain" id="PRO_0000449799" description="Protein non-structural 7b">
+    <location>
+      <begin position="1"/>
+      <end position="43"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="2">
+    <location>
+      <begin position="9"/>
+      <end position="29"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="Q7TFA1"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="2"/>
+  <sequence length="43" mass="5180" checksum="33DE6E3EBAEF1D9F" modified="2020-04-22" version="1">MIELSLIDFYLCFLAFLLFLVLIMLIIFWFSLELQDHNETCHA</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC8</accession>
+  <name>NS8_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Non-structural protein 8</fullName>
+      <shortName>ns8</shortName>
+    </recommendedName>
+  </protein>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="2">May play a role in host-virus interaction.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">Simnilar to some Bat coronavirus ns8 genes, but is entirely different from SARS ns8a or Ns8b.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43422.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR022722">
+    <property type="entry name" value="Corona_NS8"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF12093">
+    <property type="entry name" value="Corona_NS8"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0732">Signal</keyword>
+  <feature type="signal peptide" evidence="1">
+    <location>
+      <begin position="1"/>
+      <end position="15"/>
+    </location>
+  </feature>
+  <feature type="chain" id="PRO_0000449655" description="Non-structural protein 8">
+    <location>
+      <begin position="16"/>
+      <end position="121"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000255" key="1"/>
+  <evidence type="ECO:0000305" key="2"/>
+  <sequence length="121" mass="13831" checksum="912AD9E147A64907" modified="2020-04-22" version="1" precursor="true">MKFLVFLGIITTVAAFHQECSLQSCTQHQPYVVDDPCPIHFYSKWYIRVGARKSAPLIELCVDEAGSKSPIQYIDIGNYTVSCLPFTINCQEPKLGSLVVRCSFYEDFLEYHDVRVVLDFI</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTC9</accession>
+  <name>NCAP_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName evidence="1">Nucleoprotein</fullName>
+    </recommendedName>
+    <alternativeName>
+      <fullName evidence="1">Nucleocapsid protein</fullName>
+      <shortName evidence="1">NC</shortName>
+      <shortName evidence="1">Protein N</shortName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name evidence="1" type="primary">N</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">Packages the positive strand viral genome RNA into a helical ribonucleocapsid (RNP) and plays a fundamental role during virion assembly through its interactions with the viral genome and membrane protein M. Plays an important role in enhancing the efficiency of subgenomic viral RNA transcription as well as viral replication.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1">Homooligomer. Both monomeric and oligomeric forms interact with RNA. Interacts with protein M. Interacts with NSP3; this interaction serves to tether the genome to the newly translated replicase-transcriptase complex at a very early stage of infection.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Virion</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host endoplasmic reticulum-Golgi intermediate compartment</location>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host Golgi apparatus</location>
+    </subcellularLocation>
+    <text evidence="1">Located inside the virion, complexed with the viral RNA. Probably associates with ER-derived membranes where it participates in viral RNA synthesis and virus budding.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="1">ADP-ribosylated. The ADP-ribosylation is retained in the virion during infection.</text>
+  </comment>
+  <comment type="PTM">
+    <text evidence="1">Phosphorylated on serine and threonine residues.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="1">Belongs to the betacoronavirus nucleocapsid protein family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHD43423.2"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044172">
+    <property type="term" value="C:host cell endoplasmic reticulum-Golgi intermediate compartment"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-SubCell"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0044177">
+    <property type="term" value="C:host cell Golgi apparatus"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-SubCell"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019013">
+    <property type="term" value="C:viral nucleocapsid"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003723">
+    <property type="term" value="F:RNA binding"/>
+    <property type="evidence" value="ECO:0000501"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="HAMAP" id="MF_04096">
+    <property type="entry name" value="BETA_CORONA_NCAP"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR001218">
+    <property type="entry name" value="Corona_nucleocap"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037179">
+    <property type="entry name" value="Nucleocapsid_C"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037195">
+    <property type="entry name" value="Nucleocapsid_N"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF00937">
+    <property type="entry name" value="Corona_nucleoca"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PIRSF" id="PIRSF003888">
+    <property type="entry name" value="NCAP_CRV"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF103068">
+    <property type="entry name" value="SSF103068"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF110304">
+    <property type="entry name" value="SSF110304"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0013">ADP-ribosylation</keyword>
+  <keyword id="KW-1040">Host Golgi apparatus</keyword>
+  <keyword id="KW-0597">Phosphoprotein</keyword>
+  <keyword id="KW-0687">Ribonucleoprotein</keyword>
+  <keyword id="KW-0694">RNA-binding</keyword>
+  <keyword id="KW-0804">Transcription</keyword>
+  <keyword id="KW-0805">Transcription regulation</keyword>
+  <keyword id="KW-0543">Viral nucleoprotein</keyword>
+  <keyword id="KW-0946">Virion</keyword>
+  <feature type="chain" id="PRO_0000449656" description="Nucleoprotein">
+    <location>
+      <begin position="1"/>
+      <end position="419"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="RNA-binding" evidence="1">
+    <location>
+      <begin position="41"/>
+      <end position="186"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Dimerization" evidence="1">
+    <location>
+      <begin position="258"/>
+      <end position="361"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphoserine; by host" evidence="1">
+    <location>
+      <position position="176"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000255" key="1">
+    <source>
+      <dbReference type="HAMAP-Rule" id="MF_04096"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="2"/>
+  <sequence length="419" mass="45626" checksum="56688DB785414E81" modified="2020-04-22" version="1">MSDNGPQNQRNAPRITFGGPSDSTGSNQNGERSGARSKQRRPQGLPNNTASWFTALTQHGKEDLKFPRGQGVPINTNSSPDDQIGYYRRATRRIRGGDGKMKDLSPRWYFYYLGTGPEAGLPYGANKDGIIWVATEGALNTPKDHIGTRNPANNAAIVLQLPQGTTLPKGFYAEGSRGGSQASSRSSSRSRNSSRNSTPGSSRGTSPARMAGNGGDAALALLLLDRLNQLESKMSGKGQQQQGQTVTKKSAAEASKKPRQKRTATKAYNVTQAFGRRGPEQTQGNFGDQELIRQGTDYKHWPQIAQFAPSASAFFGMSRIGMEVTPSGTWLTYTGAIKLDDKDPNFKDQVILLNKHIDAYKTFPPTEPKKDKKKKADETQALPQRQKKQQTVTLLPAADLDDFSKQLQQSMSSADSTQA</sequence>
+</entry>
+<entry dataset="TrEMBL" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>A0A663DJA2</accession>
+  <name>A0A663DJA2_9BETC</name>
+  <protein>
+    <submittedName>
+      <fullName evidence="1">ORF10 protein</fullName>
+    </submittedName>
+  </protein>
+  <gene>
+    <name evidence="1" type="primary">ORF10</name>
+  </gene>
+  <organism evidence="1">
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference evidence="1" key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE</scope>
+    <source>
+      <strain evidence="1">Wuhan-Hu-1</strain>
+    </source>
+  </reference>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="protein sequence ID" value="QHI42199.1"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <proteinExistence type="evidence at transcript level"/>
+  <evidence type="ECO:0000313" key="1">
+    <source>
+      <dbReference type="EMBL" id="QHI42199.1"/>
+    </source>
+  </evidence>
+  <sequence length="38" mass="4449" checksum="AE48AE9E0598073C" modified="2020-04-22" version="1">MGYINVFAFPFTIYSLLLCRMNSRNYIAQVDVVNFNLT</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTD2</accession>
+  <name>ORF9B_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Protein 9b</fullName>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Accessory protein 9b</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName>ORF-9b</fullName>
+    </alternativeName>
+  </protein>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="2">May play a role in host-virus interaction.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="1">Homodimer.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Host cytoplasmic vesicle membrane</location>
+      <topology evidence="1">Peripheral membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="1">Host cytoplasm</location>
+    </subcellularLocation>
+    <text evidence="1">Binds non-covalently to intracellular lipid bilayers.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="1">The gene encoding this protein is included within the N gene (alternative ORF).</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="2">Belongs to the coronavirus group 2 protein 9b family.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-1035">Host cytoplasm</keyword>
+  <keyword id="KW-1036">Host cytoplasmic vesicle</keyword>
+  <keyword id="KW-1043">Host membrane</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <feature type="chain" id="PRO_0000449657" description="Protein 9b" evidence="1">
+    <location>
+      <begin position="1"/>
+      <end position="97"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P59636"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="2"/>
+  <sequence length="97" mass="10797" checksum="62CFB65C1804545E" modified="2020-04-22" version="1">MDPKISEMHPALRLVDPQIQLAVTRMENAVGRDQNNVGPKVYPIILRLGSPLSLNMARKTLNSLEDKAFQLTPIAVQMTKLATTEELPDEFVVVTVK</sequence>
+</entry>
+<entry dataset="Swiss-Prot" created="2020-04-22" modified="2020-04-22" version="1" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DTD3</accession>
+  <name>Y14_WCPV</name>
+  <protein>
+    <recommendedName>
+      <fullName>Uncharacterized protein 14</fullName>
+    </recommendedName>
+  </protein>
+  <gene>
+    <name type="ORF">ORF14</name>
+  </gene>
+  <organism>
+    <name type="scientific">Wuhan seafood market pneumonia virus</name>
+    <dbReference type="NCBI Taxonomy" id="2697049"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Riboviria</taxon>
+      <taxon>Nidovirales</taxon>
+      <taxon>Cornidovirineae</taxon>
+      <taxon>Coronaviridae</taxon>
+      <taxon>Orthocoronavirinae</taxon>
+      <taxon>Betacoronavirus</taxon>
+      <taxon>unclassified Betacoronavirus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="submission" date="2020-01" db="EMBL/GenBank/DDBJ databases">
+      <title>A novel coronavirus associated with a respiratory disease in Wuhan of Hubei province, China.</title>
+      <authorList>
+        <person name="Wu F."/>
+        <person name="Zhao S."/>
+        <person name="Yu B."/>
+        <person name="Chen Y.-M."/>
+        <person name="Wang W."/>
+        <person name="Hu Y."/>
+        <person name="Song Z.-G."/>
+        <person name="Tao Z.-W."/>
+        <person name="Tian J.-H."/>
+        <person name="Pei Y.-Y."/>
+        <person name="Yuan M.L."/>
+        <person name="Zhang Y.-L."/>
+        <person name="Dai F.-H."/>
+        <person name="Liu Y."/>
+        <person name="Wang Q.-M."/>
+        <person name="Zheng J.-J."/>
+        <person name="Xu L."/>
+        <person name="Holmes E.C."/>
+        <person name="Zhang Y.-Z."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC RNA]</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="2">May play a role in host-virus interaction.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="1">Membrane</location>
+      <topology evidence="1">Single-pass membrane protein</topology>
+    </subcellularLocation>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">nCoV is the prototype of the virus isolated during the severe coronavirus outbreak in originated in Wuhan in 2020.</text>
+  </comment>
+  <dbReference type="EMBL" id="MN908947">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_RNA"/>
+  </dbReference>
+  <proteinExistence type="inferred from homology"/>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0812">Transmembrane</keyword>
+  <keyword id="KW-1133">Transmembrane helix</keyword>
+  <feature type="chain" id="PRO_0000449658" description="Uncharacterized protein 14">
+    <location>
+      <begin position="1"/>
+      <end position="73"/>
+    </location>
+  </feature>
+  <feature type="transmembrane region" description="Helical" evidence="1">
+    <location>
+      <begin position="47"/>
+      <end position="67"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000255" key="1"/>
+  <evidence type="ECO:0000305" key="2"/>
+  <sequence length="73" mass="8050" checksum="8CCDEF1C0EA37D06" modified="2020-04-22" version="1">MLQSCYNFLKEQHCQKASTQKGAEAAVKPLLVPHHVVATVQEIQLQAAVGELLLLEWLAMAVMLLLLCCCLTD</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>

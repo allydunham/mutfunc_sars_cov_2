@@ -1,0 +1,8 @@
+uniprot_id: 'P0DTD1'
+name: 'nsp10'
+source: 'https://swissmodel.expasy.org/interactive/3xFkkB/models/01#'
+template: '6w4h.1.B'
+sections:
+  - chain: 'B'
+    positions: '18:133'
+

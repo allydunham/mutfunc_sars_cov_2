@@ -1,0 +1,2062 @@
+ID   R1AB_WCPV               Reviewed;        7096 AA.
+AC   P0DTD1;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Replicase polyprotein 1ab;
+DE            Short=pp1ab;
+DE   AltName: Full=ORF1ab polyprotein;
+DE   Contains:
+DE     RecName: Full=Host translation inhibitor nsp1;
+DE              Short=nsp1;
+DE     AltName: Full=Leader protein;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 2;
+DE              Short=nsp2;
+DE     AltName: Full=p65 homolog;
+DE   Contains:
+DE     RecName: Full=Papain-like proteinase;
+DE              Short=PL-PRO;
+DE              EC=3.4.19.12;
+DE              EC=3.4.22.69;
+DE     AltName: Full=Non-structural protein 3;
+DE              Short=nsp3;
+DE     AltName: Full=PL2-PRO;
+DE     AltName: Full=SARS coronavirus main proteinase;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 4;
+DE              Short=nsp4;
+DE   Contains:
+DE     RecName: Full=3C-like proteinase;
+DE              Short=3CL-PRO;
+DE              Short=3CLp;
+DE              EC=3.4.22.-;
+DE     AltName: Full=nsp5;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 6;
+DE              Short=nsp6;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 7;
+DE              Short=nsp7;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 8;
+DE              Short=nsp8;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 9;
+DE              Short=nsp9;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 10;
+DE              Short=nsp10;
+DE     AltName: Full=Growth factor-like peptide;
+DE              Short=GFL;
+DE   Contains:
+DE     RecName: Full=RNA-directed RNA polymerase;
+DE              Short=Pol;
+DE              Short=RdRp;
+DE              EC=2.7.7.48;
+DE     AltName: Full=nsp12;
+DE   Contains:
+DE     RecName: Full=Helicase;
+DE              Short=Hel;
+DE              EC=3.6.4.12;
+DE              EC=3.6.4.13;
+DE     AltName: Full=nsp13;
+DE   Contains:
+DE     RecName: Full=Guanine-N7 methyltransferase;
+DE              Short=ExoN;
+DE              EC=2.1.1.-;
+DE              EC=3.1.13.-;
+DE     AltName: Full=nsp14;
+DE   Contains:
+DE     RecName: Full=Uridylate-specific endoribonuclease;
+DE              EC=3.1.-.-;
+DE     AltName: Full=NendoU;
+DE     AltName: Full=nsp15;
+DE   Contains:
+DE     RecName: Full=2'-O-methyltransferase;
+DE              EC=2.1.1.-;
+DE     AltName: Full=nsp16;
+GN   Name=rep; ORFNames=1a-1b;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+RN   [2]
+RP   X-RAY CRYSTALLOGRAPHY (2.16 ANGSTROMS) OF 3C-LIKE PROTEINASE.
+RA   Liu X., Zhang B., Jin Z., Yang H., Rao Z.;
+RT   "The crytal structure of 2019-nCoV main protease in complex with an
+RT   inhibitor N3.";
+RL   Submitted (FEB-2020) to the PDB data bank.
+CC   -!- FUNCTION: [Replicase polyprotein 1ab]: Multifunctional protein involved
+CC       in the transcription and replication of viral RNAs. Contains the
+CC       proteinases responsible for the cleavages of the polyprotein.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Host translation inhibitor nsp1]: Inhibits host translation
+CC       by interacting with the 40S ribosomal subunit. The nsp1-40S ribosome
+CC       complex further induces an endonucleolytic cleavage near the 5'UTR of
+CC       host mRNAs, targeting them for degradation. Viral mRNAs are not
+CC       susceptible to nsp1-mediated endonucleolytic RNA cleavage thanks to the
+CC       presence of a 5'-end leader sequence and are therefore protected from
+CC       degradation. By suppressing host gene expression, nsp1 facilitates
+CC       efficient viral gene expression in infected cells and evasion from host
+CC       immune response. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 2]: May play a role in the modulation
+CC       of host cell survival signaling pathway by interacting with host PHB
+CC       and PHB2. Indeed, these two proteins play a role in maintaining the
+CC       functional integrity of the mitochondria and protecting cells from
+CC       various stresses. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Papain-like proteinase]: Responsible for the cleavages
+CC       located at the N-terminus of the replicase polyprotein. In addition,
+CC       PL-PRO possesses a deubiquitinating/deISGylating activity and processes
+CC       both 'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from cellular
+CC       substrates. Participates together with nsp4 in the assembly of virally-
+CC       induced cytoplasmic double-membrane vesicles necessary for viral
+CC       replication. Antagonizes innate immune induction of type I interferon
+CC       by blocking the phosphorylation, dimerization and subsequent nuclear
+CC       translocation of host IRF3. Prevents also host NF-kappa-B signaling.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 4]: Participates in the assembly of
+CC       virally-induced cytoplasmic double-membrane vesicles necessary for
+CC       viral replication. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [3C-like proteinase]: Cleaves the C-terminus of replicase
+CC       polyprotein at 11 sites. Recognizes substrates containing the core
+CC       sequence [ILMVF]-Q-|-[SGACN]. Also able to bind an ADP-ribose-1''-
+CC       phosphate (ADRP). {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 6]: Plays a role in the initial
+CC       induction of autophagosomes from host reticulum endoplasmic. Later,
+CC       limits the expansion of these phagosomes that are no longer able to
+CC       deliver viral components to lysosomes. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 7]: Forms a hexadecamer with nsp8 (8
+CC       subunits of each) that may participate in viral replication by acting
+CC       as a primase. Alternatively, may synthesize substantially longer
+CC       products than oligonucleotide primers. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 8]: Forms a hexadecamer with nsp7 (8
+CC       subunits of each) that may participate in viral replication by acting
+CC       as a primase. Alternatively, may synthesize substantially longer
+CC       products than oligonucleotide primers. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 9]: May participate in viral
+CC       replication by acting as a ssRNA-binding protein.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Non-structural protein 10]: Plays a pivotal role in viral
+CC       transcription by stimulating both nsp14 3'-5' exoribonuclease and nsp16
+CC       2'-O-methyltransferase activities. Therefore plays an essential role in
+CC       viral mRNAs cap methylation. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [RNA-directed RNA polymerase]: Responsible for replication
+CC       and transcription of the viral RNA genome.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Helicase]: Multi-functional protein with a zinc-binding
+CC       domain in N-terminus displaying RNA and DNA duplex-unwinding activities
+CC       with 5' to 3' polarity. Activity of helicase is dependent on magnesium.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Guanine-N7 methyltransferase]: Enzyme possessing two
+CC       different activities: an exoribonuclease activity acting on both ssRNA
+CC       and dsRNA in a 3' to 5' direction and a N7-guanine methyltransferase
+CC       activity. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [Uridylate-specific endoribonuclease]: Mn(2+)-dependent,
+CC       uridylate-specific enzyme, which leaves 2'-3'-cyclic phosphates 5' to
+CC       the cleaved bond. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- FUNCTION: [2'-O-methyltransferase]: Methyltransferase that mediates
+CC       mRNA cap 2'-O-ribose methylation to the 5'-cap structure of viral
+CC       mRNAs. N7-methyl guanosine cap is a prerequisite for binding of nsp16.
+CC       Therefore plays an essential role in viral mRNAs cap methylation which
+CC       is essential to evade immune system. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=a ribonucleoside 5'-triphosphate + RNA(n) = diphosphate +
+CC         RNA(n+1); Xref=Rhea:RHEA:21248, Rhea:RHEA-COMP:11128, Rhea:RHEA-
+CC         COMP:11129, ChEBI:CHEBI:33019, ChEBI:CHEBI:61557, ChEBI:CHEBI:83400;
+CC         EC=2.7.7.48; Evidence={ECO:0000250|UniProtKB:P0C6X7};
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=ATP + H2O = ADP + H(+) + phosphate; Xref=Rhea:RHEA:13065,
+CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:30616,
+CC         ChEBI:CHEBI:43474, ChEBI:CHEBI:456216; EC=3.6.4.12;
+CC         Evidence={ECO:0000250|UniProtKB:P0C6X7};
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=ATP + H2O = ADP + H(+) + phosphate; Xref=Rhea:RHEA:13065,
+CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:30616,
+CC         ChEBI:CHEBI:43474, ChEBI:CHEBI:456216; EC=3.6.4.13;
+CC         Evidence={ECO:0000250|UniProtKB:P0C6X7};
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=TSAVLQ-|-SGFRK-NH(2) and SGVTFQ-|-GKFKK the two peptides
+CC         corresponding to the two self-cleavage sites of the SARS 3C-like
+CC         proteinase are the two most reactive peptide substrates. The enzyme
+CC         exhibits a strong preference for substrates containing Gln at P1
+CC         position and Leu at P2 position.; EC=3.4.22.69;
+CC         Evidence={ECO:0000250|UniProtKB:P0C6X7};
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=Thiol-dependent hydrolysis of ester, thioester, amide, peptide
+CC         and isopeptide bonds formed by the C-terminal Gly of ubiquitin (a 76-
+CC         residue protein attached to proteins as an intracellular targeting
+CC         signal).; EC=3.4.19.12; Evidence={ECO:0000250|UniProtKB:P0C6X7};
+CC   -!- SUBUNIT: [Non-structural protein 2]: Interacts with host PHB and PHB2.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [3C-like proteinase]: 3CL-PRO exists as monomer and homodimer.
+CC       Only the homodimer shows catalytic activity.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 4]: Interacts with PL-PRO and nsp6.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 7]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling
+CC       ring structure. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 8]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer dsRNA-encircling
+CC       ring structure. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 9]: Is a dimer.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Non-structural protein 10]: Forms a dodecamer and interacts
+CC       with nsp14 and nsp16; these interactions enhance nsp14 and nsp16
+CC       enzymatic activities. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [Guanine-N7 methyltransferase]: Interacts (via N-terminus)
+CC       with DDX1. Interacts with nsp10. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBUNIT: [2'-O-methyltransferase]: Interacts with nsp10.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Papain-like proteinase]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 4]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P0C6X7}. Note=Localizes in virally-induced
+CC       cytoplasmic double-membrane vesicles. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 6]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6X7}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 7]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 8]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 9]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 10]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X9}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Helicase]: Host endoplasmic reticulum-Golgi
+CC       intermediate compartment {ECO:0000250|UniProtKB:P0C6X7}. Note=The
+CC       helicase interacts with the N protein in membranous complexes and
+CC       colocalizes with sites of synthesis of new viral RNA.
+CC       {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- SUBCELLULAR LOCATION: [Uridylate-specific endoribonuclease]: Host
+CC       cytoplasm, host perinuclear region {ECO:0000250|UniProtKB:P0C6X9}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Ribosomal frameshifting; Named isoforms=2;
+CC         Comment=Normal translation results in Replicase polyprotein 1a.
+CC         Ribosomal frameshifting at the end of this protein occurs at low
+CC         frequency and produces Replicase polyprotein 1ab.;
+CC       Name=Replicase polyprotein 1ab;
+CC         IsoId=P0DTD1-1; Sequence=Displayed;
+CC       Name=Replicase polyprotein 1a;
+CC         IsoId=P0DTC1-1; Sequence=External;
+CC   -!- DOMAIN: The hydrophobic domains (HD) could mediate the membrane
+CC       association of the replication complex and thereby alter the
+CC       architecture of the host cell membrane. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- PTM: Specific enzymatic cleavages in vivo by its own proteases yield
+CC       mature proteins. 3CL-PRO and PL-PRO proteinases are autocatalytically
+CC       processed. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- MISCELLANEOUS: [Replicase polyprotein 1ab]: Produced by -1 ribosomal
+CC       frameshifting at the 1a-1b genes boundary.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the coronaviruses polyprotein 1ab family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43415.1; -; Genomic_RNA.
+DR   PDB; 6LU7; X-ray; 2.16 A; A=3264-3569.
+DR   GO; GO:0005524; F:ATP binding; IEA:InterPro.
+DR   GO; GO:0004197; F:cysteine-type endopeptidase activity; IEA:InterPro.
+DR   GO; GO:0008234; F:cysteine-type peptidase activity; IEA:InterPro.
+DR   GO; GO:0016896; F:exoribonuclease activity, producing 5'-phosphomonoesters; IEA:InterPro.
+DR   GO; GO:0008168; F:methyltransferase activity; IEA:InterPro.
+DR   GO; GO:0003676; F:nucleic acid binding; IEA:InterPro.
+DR   GO; GO:0008242; F:omega peptidase activity; IEA:InterPro.
+DR   GO; GO:0003723; F:RNA binding; IEA:InterPro.
+DR   GO; GO:0003968; F:RNA-directed 5'-3' RNA polymerase activity; IEA:InterPro.
+DR   GO; GO:0016740; F:transferase activity; IEA:InterPro.
+DR   GO; GO:0008270; F:zinc ion binding; IEA:InterPro.
+DR   GO; GO:0006508; P:proteolysis; IEA:InterPro.
+DR   GO; GO:0006351; P:transcription, DNA-templated; IEA:InterPro.
+DR   GO; GO:0019079; P:viral genome replication; IEA:InterPro.
+DR   GO; GO:0019082; P:viral protein processing; IEA:InterPro.
+DR   GO; GO:0039694; P:viral RNA genome replication; IEA:InterPro.
+DR   CDD; cd15239; 7tm_YRO2_fungal-like; 1.
+DR   CDD; cd17934; DEXXQc_Upf1-like; 1.
+DR   CDD; cd18808; SF1_C_Upf1; 1.
+DR   Gene3D; 1.10.150.420; -; 1.
+DR   Gene3D; 1.10.1840.10; -; 1.
+DR   Gene3D; 1.10.8.1190; -; 1.
+DR   Gene3D; 1.10.8.370; -; 1.
+DR   Gene3D; 2.20.25.360; -; 1.
+DR   Gene3D; 2.30.30.590; -; 1.
+DR   Gene3D; 2.40.10.10; -; 2.
+DR   Gene3D; 2.40.10.250; -; 1.
+DR   Gene3D; 2.40.10.290; -; 1.
+DR   Gene3D; 3.10.20.350; -; 1.
+DR   Gene3D; 3.10.20.540; -; 1.
+DR   Gene3D; 3.40.220.10; -; 1.
+DR   Gene3D; 3.40.220.20; -; 1.
+DR   Gene3D; 3.40.220.30; -; 1.
+DR   Gene3D; 3.40.50.11020; -; 1.
+DR   Gene3D; 3.40.50.11580; -; 1.
+DR   Gene3D; 3.40.50.150; -; 1.
+DR   Gene3D; 3.40.50.300; -; 2.
+DR   Gene3D; 3.90.70.90; -; 1.
+DR   InterPro; IPR027351; (+)RNA_virus_helicase_core_dom.
+DR   InterPro; IPR032505; Corona_NSP4_C.
+DR   InterPro; IPR009461; Coronavirus_NSP16.
+DR   InterPro; IPR027352; CV_ZBD.
+DR   InterPro; IPR037227; EndoU-like.
+DR   InterPro; IPR002589; Macro_dom.
+DR   InterPro; IPR032592; NAR_dom.
+DR   InterPro; IPR042570; NAR_sf.
+DR   InterPro; IPR021590; NSP1.
+DR   InterPro; IPR036333; NSP10_sf.
+DR   InterPro; IPR009466; NSP11.
+DR   InterPro; IPR042515; Nsp15_N.
+DR   InterPro; IPR038030; NSP1_sf.
+DR   InterPro; IPR024375; Nsp3_coronavir.
+DR   InterPro; IPR038400; Nsp3_coronavir_sf.
+DR   InterPro; IPR022733; Nsp3_PL2pro.
+DR   InterPro; IPR038166; Nsp3_PL2pro_sf.
+DR   InterPro; IPR038123; NSP4_C_sf.
+DR   InterPro; IPR014828; NSP7.
+DR   InterPro; IPR037204; NSP7_sf.
+DR   InterPro; IPR014829; NSP8.
+DR   InterPro; IPR037230; NSP8_sf.
+DR   InterPro; IPR014822; NSP9.
+DR   InterPro; IPR036499; NSP9_sf.
+DR   InterPro; IPR027417; P-loop_NTPase.
+DR   InterPro; IPR008740; Peptidase_C30.
+DR   InterPro; IPR013016; Peptidase_C30/C16.
+DR   InterPro; IPR009003; Peptidase_S1_PA.
+DR   InterPro; IPR038083; R1a/1ab.
+DR   InterPro; IPR007094; RNA-dir_pol_PSvirus.
+DR   InterPro; IPR009469; RNA_pol_N_coronovir.
+DR   InterPro; IPR018995; RNA_synth_NSP10_coronavirus.
+DR   InterPro; IPR029063; SAM-dependent_MTases.
+DR   InterPro; IPR024358; SARS-CoV_Nsp3_N.
+DR   InterPro; IPR014827; Viral_protease.
+DR   Pfam; PF13604; AAA_30; 1.
+DR   Pfam; PF16348; Corona_NSP4_C; 1.
+DR   Pfam; PF06478; Corona_RPol_N; 1.
+DR   Pfam; PF12379; DUF3655; 1.
+DR   Pfam; PF01661; Macro; 1.
+DR   Pfam; PF16251; NAR; 1.
+DR   Pfam; PF11501; Nsp1; 1.
+DR   Pfam; PF09401; NSP10; 1.
+DR   Pfam; PF06471; NSP11; 1.
+DR   Pfam; PF06460; NSP16; 1.
+DR   Pfam; PF12124; Nsp3_PL2pro; 1.
+DR   Pfam; PF08716; nsp7; 1.
+DR   Pfam; PF08717; nsp8; 1.
+DR   Pfam; PF08710; nsp9; 1.
+DR   Pfam; PF05409; Peptidase_C30; 1.
+DR   Pfam; PF11633; SUD-M; 1.
+DR   Pfam; PF08715; Viral_protease; 1.
+DR   SMART; SM00506; YBR022w_8; 1.
+DR   SUPFAM; SSF101816; SSF101816; 1.
+DR   SUPFAM; SSF140367; SSF140367; 1.
+DR   SUPFAM; SSF142877; SSF142877; 1.
+DR   SUPFAM; SSF143076; SSF143076; 1.
+DR   SUPFAM; SSF144246; SSF144246; 1.
+DR   SUPFAM; SSF159936; SSF159936; 1.
+DR   SUPFAM; SSF160099; SSF160099; 1.
+DR   SUPFAM; SSF50494; SSF50494; 1.
+DR   SUPFAM; SSF52540; SSF52540; 1.
+DR   SUPFAM; SSF52949; SSF52949; 1.
+DR   SUPFAM; SSF53335; SSF53335; 1.
+DR   SUPFAM; SSF56672; SSF56672; 1.
+DR   PROSITE; PS00867; CPSASE_2; 1.
+DR   PROSITE; PS51653; CV_ZBD; 1.
+DR   PROSITE; PS00213; LIPOCALIN; 1.
+DR   PROSITE; PS51442; M_PRO; 1.
+DR   PROSITE; PS51154; MACRO; 1.
+DR   PROSITE; PS51124; PEPTIDASE_C16; 1.
+DR   PROSITE; PS51657; PSRV_HELICASE; 1.
+DR   PROSITE; PS50507; RDRP_SSRNA_POS; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Activation of host autophagy by virus; ATP-binding;
+KW   Decay of host mRNAs by virus; Endonuclease;
+KW   Eukaryotic host gene expression shutoff by virus;
+KW   Eukaryotic host translation shutoff by virus; Exonuclease; Helicase;
+KW   Host cytoplasm; Host gene expression shutoff by virus; Host membrane;
+KW   Host mRNA suppression by virus; Host-virus interaction; Hydrolase;
+KW   Inhibition of host innate immune response by virus;
+KW   Inhibition of host interferon signaling pathway by virus;
+KW   Inhibition of host ISG15 by virus; Inhibition of host NF-kappa-B by virus;
+KW   Leucine-rich repeat; Membrane; Metal-binding; Methyltransferase;
+KW   Modulation of host ubiquitin pathway by viral deubiquitinase;
+KW   Modulation of host ubiquitin pathway by virus; Nuclease;
+KW   Nucleotide-binding; Nucleotidyltransferase; Protease; Repeat;
+KW   Ribosomal frameshifting; RNA-binding; RNA-directed RNA polymerase;
+KW   Thiol protease; Transferase; Transmembrane; Transmembrane helix;
+KW   Ubl conjugation pathway; Viral immunoevasion; Viral RNA replication; Zinc;
+KW   Zinc-finger.
+FT   CHAIN           1..7096
+FT                   /note="Replicase polyprotein 1ab"
+FT                   /id="PRO_0000449618"
+FT   CHAIN           1..180
+FT                   /note="Host translation inhibitor nsp1"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449619"
+FT   CHAIN           181..818
+FT                   /note="Non-structural protein 2"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449620"
+FT   CHAIN           819..2763
+FT                   /note="Papain-like proteinase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449621"
+FT   CHAIN           2764..3263
+FT                   /note="Non-structural protein 4"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449622"
+FT   CHAIN           3264..3569
+FT                   /note="3C-like proteinase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449623"
+FT   CHAIN           3570..3859
+FT                   /note="Non-structural protein 6"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449624"
+FT   CHAIN           3860..3942
+FT                   /note="Non-structural protein 7"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449625"
+FT   CHAIN           3943..4140
+FT                   /note="Non-structural protein 8"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449626"
+FT   CHAIN           4141..4253
+FT                   /note="Non-structural protein 9"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449627"
+FT   CHAIN           4254..4392
+FT                   /note="Non-structural protein 10"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449628"
+FT   CHAIN           4393..5324
+FT                   /note="RNA-directed RNA polymerase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449629"
+FT   CHAIN           5325..5925
+FT                   /note="Helicase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449630"
+FT   CHAIN           5926..6452
+FT                   /note="Guanine-N7 methyltransferase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449631"
+FT   CHAIN           6453..6798
+FT                   /note="Uridylate-specific endoribonuclease"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449632"
+FT   CHAIN           6799..7096
+FT                   /note="2'-O-methyltransferase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449633"
+FT   TRANSMEM        2226..2246
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2318..2338
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2339..2359
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2361..2381
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2776..2796
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3045..3065
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3077..3097
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3100..3120
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3128..3148
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3165..3185
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3587..3607
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3609..3629
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3635..3655
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3674..3694
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3730..3750
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3779..3799
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   REPEAT          545..569
+FT                   /note="LRR 1"
+FT                   /evidence="ECO:0000255"
+FT   REPEAT          697..719
+FT                   /note="LRR 2"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          1025..1194
+FT                   /note="Macro"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00490"
+FT   DOMAIN          1634..1898
+FT                   /note="Peptidase C16"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   REPEAT          1680..1702
+FT                   /note="LRR 3"
+FT                   /evidence="ECO:0000255"
+FT   REPEAT          3185..3206
+FT                   /note="LRR 4"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          3264..3569
+FT                   /note="Peptidase C30"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   REPEAT          3935..3959
+FT                   /note="LRR 5"
+FT                   /evidence="ECO:0000255"
+FT   REPEAT          3977..4004
+FT                   /note="LRR 6"
+FT                   /evidence="ECO:0000255"
+FT   REPEAT          4591..4616
+FT                   /note="LRR 7"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          5004..5166
+FT                   /note="RdRp catalytic"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00539"
+FT   DOMAIN          5325..5408
+FT                   /note="CV ZBD"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   REPEAT          5552..5572
+FT                   /note="LRR 8"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          5581..5762
+FT                   /note="(+)RNA virus helicase ATP-binding"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00990"
+FT   DOMAIN          5763..5932
+FT                   /note="(+)RNA virus helicase C-terminal"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00990"
+FT   REPEAT          6817..6841
+FT                   /note="LRR 9"
+FT                   /evidence="ECO:0000255"
+FT   ZN_FING         1752..1789
+FT                   /note="C4-type"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   NP_BIND         5606..5613
+FT                   /note="NTP"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00990"
+FT   ACT_SITE        1674
+FT                   /note="For PL1-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        1835
+FT                   /note="For PL2-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        3304
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   ACT_SITE        3408
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   METAL           5329
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5332
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5340
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5343
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5350
+FT                   /note="Zinc 1"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5353
+FT                   /note="Zinc 2; via tele nitrogen"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5357
+FT                   /note="Zinc 2; via pros nitrogen"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5363
+FT                   /note="Zinc 2"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5374
+FT                   /note="Zinc 3"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5379
+FT                   /note="Zinc 3; via pros nitrogen"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5396
+FT                   /note="Zinc 3"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   METAL           5399
+FT                   /note="Zinc 3"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00986"
+FT   SITE            180..181
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            818..819
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            2763..2764
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3263..3264
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3569..3570
+FT                   /note="Cleavage; aby 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3859..3860
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3942..3943
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4140..4141
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4253..4254
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4392..4393
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            5324..5325
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            5925..5926
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            6452..6453
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            6798..6799
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+SQ   SEQUENCE   7096 AA;  794058 MW;  A4E62D97150BB8CC CRC64;
+     MESLVPGFNE KTHVQLSLPV LQVRDVLVRG FGDSVEEVLS EARQHLKDGT CGLVEVEKGV
+     LPQLEQPYVF IKRSDARTAP HGHVMVELVA ELEGIQYGRS GETLGVLVPH VGEIPVAYRK
+     VLLRKNGNKG AGGHSYGADL KSFDLGDELG TDPYEDFQEN WNTKHSSGVT RELMRELNGG
+     AYTRYVDNNF CGPDGYPLEC IKDLLARAGK ASCTLSEQLD FIDTKRGVYC CREHEHEIAW
+     YTERSEKSYE LQTPFEIKLA KKFDTFNGEC PNFVFPLNSI IKTIQPRVEK KKLDGFMGRI
+     RSVYPVASPN ECNQMCLSTL MKCDHCGETS WQTGDFVKAT CEFCGTENLT KEGATTCGYL
+     PQNAVVKIYC PACHNSEVGP EHSLAEYHNE SGLKTILRKG GRTIAFGGCV FSYVGCHNKC
+     AYWVPRASAN IGCNHTGVVG EGSEGLNDNL LEILQKEKVN INIVGDFKLN EEIAIILASF
+     SASTSAFVET VKGLDYKAFK QIVESCGNFK VTKGKAKKGA WNIGEQKSIL SPLYAFASEA
+     ARVVRSIFSR TLETAQNSVR VLQKAAITIL DGISQYSLRL IDAMMFTSDL ATNNLVVMAY
+     ITGGVVQLTS QWLTNIFGTV YEKLKPVLDW LEEKFKEGVE FLRDGWEIVK FISTCACEIV
+     GGQIVTCAKE IKESVQTFFK LVNKFLALCA DSIIIGGAKL KALNLGETFV THSKGLYRKC
+     VKSREETGLL MPLKAPKEII FLEGETLPTE VLTEEVVLKT GDLQPLEQPT SEAVEAPLVG
+     TPVCINGLML LEIKDTEKYC ALAPNMMVTN NTFTLKGGAP TKVTFGDDTV IEVQGYKSVN
+     ITFELDERID KVLNEKCSAY TVELGTEVNE FACVVADAVI KTLQPVSELL TPLGIDLDEW
+     SMATYYLFDE SGEFKLASHM YCSFYPPDED EEEGDCEEEE FEPSTQYEYG TEDDYQGKPL
+     EFGATSAALQ PEEEQEEDWL DDDSQQTVGQ QDGSEDNQTT TIQTIVEVQP QLEMELTPVV
+     QTIEVNSFSG YLKLTDNVYI KNADIVEEAK KVKPTVVVNA ANVYLKHGGG VAGALNKATN
+     NAMQVESDDY IATNGPLKVG GSCVLSGHNL AKHCLHVVGP NVNKGEDIQL LKSAYENFNQ
+     HEVLLAPLLS AGIFGADPIH SLRVCVDTVR TNVYLAVFDK NLYDKLVSSF LEMKSEKQVE
+     QKIAEIPKEE VKPFITESKP SVEQRKQDDK KIKACVEEVT TTLEETKFLT ENLLLYIDIN
+     GNLHPDSATL VSDIDITFLK KDAPYIVGDV VQEGVLTAVV IPTKKAGGTT EMLAKALRKV
+     PTDNYITTYP GQGLNGYTVE EAKTVLKKCK SAFYILPSII SNEKQEILGT VSWNLREMLA
+     HAEETRKLMP VCVETKAIVS TIQRKYKGIK IQEGVVDYGA RFYFYTSKTT VASLINTLND
+     LNETLVTMPL GYVTHGLNLE EAARYMRSLK VPATVSVSSP DAVTAYNGYL TSSSKTPEEH
+     FIETISLAGS YKDWSYSGQS TQLGIEFLKR GDKSVYYTSN PTTFHLDGEV ITFDNLKTLL
+     SLREVRTIKV FTTVDNINLH TQVVDMSMTY GQQFGPTYLD GADVTKIKPH NSHEGKTFYV
+     LPNDDTLRVE AFEYYHTTDP SFLGRYMSAL NHTKKWKYPQ VNGLTSIKWA DNNCYLATAL
+     LTLQQIELKF NPPALQDAYY RARAGEAANF CALILAYCNK TVGELGDVRE TMSYLFQHAN
+     LDSCKRVLNV VCKTCGQQQT TLKGVEAVMY MGTLSYEQFK KGVQIPCTCG KQATKYLVQQ
+     ESPFVMMSAP PAQYELKHGT FTCASEYTGN YQCGHYKHIT SKETLYCIDG ALLTKSSEYK
+     GPITDVFYKE NSYTTTIKPV TYKLDGVVCT EIDPKLDNYY KKDNSYFTEQ PIDLVPNQPY
+     PNASFDNFKF VCDNIKFADD LNQLTGYKKP ASRELKVTFF PDLNGDVVAI DYKHYTPSFK
+     KGAKLLHKPI VWHVNNATNK ATYKPNTWCI RCLWSTKPVE TSNSFDVLKS EDAQGMDNLA
+     CEDLKPVSEE VVENPTIQKD VLECNVKTTE VVGDIILKPA NNSLKITEEV GHTDLMAAYV
+     DNSSLTIKKP NELSRVLGLK TLATHGLAAV NSVPWDTIAN YAKPFLNKVV STTTNIVTRC
+     LNRVCTNYMP YFFTLLLQLC TFTRSTNSRI KASMPTTIAK NTVKSVGKFC LEASFNYLKS
+     PNFSKLINII IWFLLLSVCL GSLIYSTAAL GVLMSNLGMP SYCTGYREGY LNSTNVTIAT
+     YCTGSIPCSV CLSGLDSLDT YPSLETIQIT ISSFKWDLTA FGLVAEWFLA YILFTRFFYV
+     LGLAAIMQLF FSYFAVHFIS NSWLMWLIIN LVQMAPISAM VRMYIFFASF YYVWKSYVHV
+     VDGCNSSTCM MCYKRNRATR VECTTIVNGV RRSFYVYANG GKGFCKLHNW NCVNCDTFCA
+     GSTFISDEVA RDLSLQFKRP INPTDQSSYI VDSVTVKNGS IHLYFDKAGQ KTYERHSLSH
+     FVNLDNLRAN NTKGSLPINV IVFDGKSKCE ESSAKSASVY YSQLMCQPIL LLDQALVSDV
+     GDSAEVAVKM FDAYVNTFSS TFNVPMEKLK TLVATAEAEL AKNVSLDNVL STFISAARQG
+     FVDSDVETKD VVECLKLSHQ SDIEVTGDSC NNYMLTYNKV ENMTPRDLGA CIDCSARHIN
+     AQVAKSHNIA LIWNVKDFMS LSEQLRKQIR SAAKKNNLPF KLTCATTRQV VNVVTTKIAL
+     KGGKIVNNWL KQLIKVTLVF LFVAAIFYLI TPVHVMSKHT DFSSEIIGYK AIDGGVTRDI
+     ASTDTCFANK HADFDTWFSQ RGGSYTNDKA CPLIAAVITR EVGFVVPGLP GTILRTTNGD
+     FLHFLPRVFS AVGNICYTPS KLIEYTDFAT SACVLAAECT IFKDASGKPV PYCYDTNVLE
+     GSVAYESLRP DTRYVLMDGS IIQFPNTYLE GSVRVVTTFD SEYCRHGTCE RSEAGVCVST
+     SGRWVLNNDY YRSLPGVFCG VDAVNLLTNM FTPLIQPIGA LDISASIVAG GIVAIVVTCL
+     AYYFMRFRRA FGEYSHVVAF NTLLFLMSFT VLCLTPVYSF LPGVYSVIYL YLTFYLTNDV
+     SFLAHIQWMV MFTPLVPFWI TIAYIICIST KHFYWFFSNY LKRRVVFNGV SFSTFEEAAL
+     CTFLLNKEMY LKLRSDVLLP LTQYNRYLAL YNKYKYFSGA MDTTSYREAA CCHLAKALND
+     FSNSGSDVLY QPPQTSITSA VLQSGFRKMA FPSGKVEGCM VQVTCGTTTL NGLWLDDVVY
+     CPRHVICTSE DMLNPNYEDL LIRKSNHNFL VQAGNVQLRV IGHSMQNCVL KLKVDTANPK
+     TPKYKFVRIQ PGQTFSVLAC YNGSPSGVYQ CAMRPNFTIK GSFLNGSCGS VGFNIDYDCV
+     SFCYMHHMEL PTGVHAGTDL EGNFYGPFVD RQTAQAAGTD TTITVNVLAW LYAAVINGDR
+     WFLNRFTTTL NDFNLVAMKY NYEPLTQDHV DILGPLSAQT GIAVLDMCAS LKELLQNGMN
+     GRTILGSALL EDEFTPFDVV RQCSGVTFQS AVKRTIKGTH HWLLLTILTS LLVLVQSTQW
+     SLFFFLYENA FLPFAMGIIA MSAFAMMFVK HKHAFLCLFL LPSLATVAYF NMVYMPASWV
+     MRIMTWLDMV DTSLSGFKLK DCVMYASAVV LLILMTARTV YDDGARRVWT LMNVLTLVYK
+     VYYGNALDQA ISMWALIISV TSNYSGVVTT VMFLARGIVF MCVEYCPIFF ITGNTLQCIM
+     LVYCFLGYFC TCYFGLFCLL NRYFRLTLGV YDYLVSTQEF RYMNSQGLLP PKNSIDAFKL
+     NIKLLGVGGK PCIKVATVQS KMSDVKCTSV VLLSVLQQLR VESSSKLWAQ CVQLHNDILL
+     AKDTTEAFEK MVSLLSVLLS MQGAVDINKL CEEMLDNRAT LQAIASEFSS LPSYAAFATA
+     QEAYEQAVAN GDSEVVLKKL KKSLNVAKSE FDRDAAMQRK LEKMADQAMT QMYKQARSED
+     KRAKVTSAMQ TMLFTMLRKL DNDALNNIIN NARDGCVPLN IIPLTTAAKL MVVIPDYNTY
+     KNTCDGTTFT YASALWEIQQ VVDADSKIVQ LSEISMDNSP NLAWPLIVTA LRANSAVKLQ
+     NNELSPVALR QMSCAAGTTQ TACTDDNALA YYNTTKGGRF VLALLSDLQD LKWARFPKSD
+     GTGTIYTELE PPCRFVTDTP KGPKVKYLYF IKGLNNLNRG MVLGSLAATV RLQAGNATEV
+     PANSTVLSFC AFAVDAAKAY KDYLASGGQP ITNCVKMLCT HTGTGQAITV TPEANMDQES
+     FGGASCCLYC RCHIDHPNPK GFCDLKGKYV QIPTTCANDP VGFTLKNTVC TVCGMWKGYG
+     CSCDQLREPM LQSADAQSFL NRVCGVSAAR LTPCGTGTST DVVYRAFDIY NDKVAGFAKF
+     LKTNCCRFQE KDEDDNLIDS YFVVKRHTFS NYQHEETIYN LLKDCPAVAK HDFFKFRIDG
+     DMVPHISRQR LTKYTMADLV YALRHFDEGN CDTLKEILVT YNCCDDDYFN KKDWYDFVEN
+     PDILRVYANL GERVRQALLK TVQFCDAMRN AGIVGVLTLD NQDLNGNWYD FGDFIQTTPG
+     SGVPVVDSYY SLLMPILTLT RALTAESHVD TDLTKPYIKW DLLKYDFTEE RLKLFDRYFK
+     YWDQTYHPNC VNCLDDRCIL HCANFNVLFS TVFPPTSFGP LVRKIFVDGV PFVVSTGYHF
+     RELGVVHNQD VNLHSSRLSF KELLVYAADP AMHAASGNLL LDKRTTCFSV AALTNNVAFQ
+     TVKPGNFNKD FYDFAVSKGF FKEGSSVELK HFFFAQDGNA AISDYDYYRY NLPTMCDIRQ
+     LLFVVEVVDK YFDCYDGGCI NANQVIVNNL DKSAGFPFNK WGKARLYYDS MSYEDQDALF
+     AYTKRNVIPT ITQMNLKYAI SAKNRARTVA GVSICSTMTN RQFHQKLLKS IAATRGATVV
+     IGTSKFYGGW HNMLKTVYSD VENPHLMGWD YPKCDRAMPN MLRIMASLVL ARKHTTCCSL
+     SHRFYRLANE CAQVLSEMVM CGGSLYVKPG GTSSGDATTA YANSVFNICQ AVTANVNALL
+     STDGNKIADK YVRNLQHRLY ECLYRNRDVD TDFVNEFYAY LRKHFSMMIL SDDAVVCFNS
+     TYASQGLVAS IKNFKSVLYY QNNVFMSEAK CWTETDLTKG PHEFCSQHTM LVKQGDDYVY
+     LPYPDPSRIL GAGCFVDDIV KTDGTLMIER FVSLAIDAYP LTKHPNQEYA DVFHLYLQYI
+     RKLHDELTGH MLDMYSVMLT NDNTSRYWEP EFYEAMYTPH TVLQAVGACV LCNSQTSLRC
+     GACIRRPFLC CKCCYDHVIS TSHKLVLSVN PYVCNAPGCD VTDVTQLYLG GMSYYCKSHK
+     PPISFPLCAN GQVFGLYKNT CVGSDNVTDF NAIATCDWTN AGDYILANTC TERLKLFAAE
+     TLKATEETFK LSYGIATVRE VLSDRELHLS WEVGKPRPPL NRNYVFTGYR VTKNSKVQIG
+     EYTFEKGDYG DAVVYRGTTT YKLNVGDYFV LTSHTVMPLS APTLVPQEHY VRITGLYPTL
+     NISDEFSSNV ANYQKVGMQK YSTLQGPPGT GKSHFAIGLA LYYPSARIVY TACSHAAVDA
+     LCEKALKYLP IDKCSRIIPA RARVECFDKF KVNSTLEQYV FCTVNALPET TADIVVFDEI
+     SMATNYDLSV VNARLRAKHY VYIGDPAQLP APRTLLTKGT LEPEYFNSVC RLMKTIGPDM
+     FLGTCRRCPA EIVDTVSALV YDNKLKAHKD KSAQCFKMFY KGVITHDVSS AINRPQIGVV
+     REFLTRNPAW RKAVFISPYN SQNAVASKIL GLPTQTVDSS QGSEYDYVIF TQTTETAHSC
+     NVNRFNVAIT RAKVGILCIM SDRDLYDKLQ FTSLEIPRRN VATLQAENVT GLFKDCSKVI
+     TGLHPTQAPT HLSVDTKFKT EGLCVDIPGI PKDMTYRRLI SMMGFKMNYQ VNGYPNMFIT
+     REEAIRHVRA WIGFDVEGCH ATREAVGTNL PLQLGFSTGV NLVAVPTGYV DTPNNTDFSR
+     VSAKPPPGDQ FKHLIPLMYK GLPWNVVRIK IVQMLSDTLK NLSDRVVFVL WAHGFELTSM
+     KYFVKIGPER TCCLCDRRAT CFSTASDTYA CWHHSIGFDY VYNPFMIDVQ QWGFTGNLQS
+     NHDLYCQVHG NAHVASCDAI MTRCLAVHEC FVKRVDWTIE YPIIGDELKI NAACRKVQHM
+     VVKAALLADK FPVLHDIGNP KAIKCVPQAD VEWKFYDAQP CSDKAYKIEE LFYSYATHSD
+     KFTDGVCLFW NCNVDRYPAN SIVCRFDTRV LSNLNLPGCD GGSLYVNKHA FHTPAFDKSA
+     FVNLKQLPFF YYSDSPCESH GKQVVSDIDY VPLKSATCIT RCNLGGAVCR HHANEYRLYL
+     DAYNMMISAG FSLWVYKQFD TYNLWNTFTR LQSLENVAFN VVNKGHFDGQ QGEVPVSIIN
+     NTVYTKVDGV DVELFENKTT LPVNVAFELW AKRNIKPVPE VKILNNLGVD IAANTVIWDY
+     KRDAPAHIST IGVCSMTDIA KKPTETICAP LTVFFDGRVD GQVDLFRNAR NGVLITEGSV
+     KGLQPSVGPK QASLNGVTLI GEAVKTQFNY YKKVDGVVQQ LPETYFTQSR NLQEFKPRSQ
+     MEIDFLELAM DEFIERYKLE GYAFEHIVYG DFSHSQLGGL HLLIGLAKRF KESPFELEDF
+     IPMDSTVKNY FITDAQTGSS KCVCSVIDLL LDDFVEIIKS QDLSVVSKVV KVTIDYTEIS
+     FMLWCKDGHV ETFYPKLQSS QAWQPGVAMP NLYKMQRMLL EKCDLQNYGD SATLPKGIMM
+     NVAKYTQLCQ YLNTLTLAVP YNMRVIHFGA GSDKGVAPGT AVLRQWLPTG TLLVDSDLND
+     FVSDADSTLI GDCATVHTAN KWDLIISDMY DPKTKNVTKE NDSKEGFFTY ICGFIQQKLA
+     LGGSVAIKIT EHSWNADLYK LMGHFAWWTA FVTNVNASSS EAFLIGCNYL GKPREQIDGY
+     VMHANYIFWR NTNPIQLSSY SLFDMSKFPL KLRGTAVMSL KEGQINDMIL SLLSKGRLII
+     RENNRVVISS DVLVNN
+//
+ID   R1A_WCPV                Reviewed;        4405 AA.
+AC   P0DTC1;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Replicase polyprotein 1a;
+DE            Short=pp1a;
+DE   AltName: Full=ORF1a polyprotein;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 1;
+DE              Short=nsp1;
+DE     AltName: Full=Leader protein;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 2;
+DE              Short=nsp2;
+DE     AltName: Full=p65 homolog;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 3;
+DE              Short=nsp3;
+DE              EC=3.4.19.12;
+DE              EC=3.4.22.69;
+DE     AltName: Full=PL2-PRO;
+DE     AltName: Full=Papain-like proteinase;
+DE              Short=PL-PRO;
+DE     AltName: Full=SARS coronavirus main proteinase;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 4;
+DE              Short=nsp4;
+DE   Contains:
+DE     RecName: Full=3C-like proteinase;
+DE              Short=3CL-PRO;
+DE              Short=3CLp;
+DE              EC=3.4.22.-;
+DE     AltName: Full=nsp5;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 6;
+DE              Short=nsp6;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 7;
+DE              Short=nsp7;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 8;
+DE              Short=nsp8;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 9;
+DE              Short=nsp9;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 10;
+DE              Short=nsp10;
+DE     AltName: Full=Growth factor-like peptide;
+DE              Short=GFL;
+DE   Contains:
+DE     RecName: Full=Non-structural protein 11;
+DE              Short=nsp11;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: The papain-like proteinase (PL-PRO) is responsible for the
+CC       cleavages located at the N-terminus of replicase polyprotein. In
+CC       addition, PL-PRO possesses a deubiquitinating/deISGylating activity and
+CC       processes both 'Lys-48'- and 'Lys-63'-linked polyubiquitin chains from
+CC       cellular substrates. Antagonizes innate immune induction of type I
+CC       interferon by blocking the phosphorylation, dimerization and subsequent
+CC       nuclear translocation of host IRF-3. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- FUNCTION: [3C-like proteinase]: Responsible for the majority of
+CC       cleavages as it cleaves the C-terminus of replicase polyprotein at 11
+CC       sites. Recognizes substrates containing the core sequence [ILMVF]-Q-|-
+CC       [SGACN]. Inhibited by the substrate-analog Cbz-Val-Asn-Ser-Thr-Leu-Gln-
+CC       CMK. Also contains an ADP-ribose-1''-phosphate (ADRP)-binding function.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- FUNCTION: Nsp7-nsp8 hexadecamer may possibly confer processivity to the
+CC       polymerase, maybe by binding to dsRNA or by producing primers utilized
+CC       by the latter. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- FUNCTION: Nsp9 is a ssRNA-binding protein.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- FUNCTION: [Non-structural protein 1]: binds to the 40S ribosomal
+CC       subunit and inhibits host translation. The nsp1-40S ribosome complex
+CC       further induces an endonucleolytic cleavage near the 5'UTR of host
+CC       mRNAs, targeting them for degradation. Viral mRNAs are not susceptible
+CC       to nsp1-mediated endonucleolytic RNA cleavage thanks to the presence of
+CC       a 5'-end leader sequence and are therefore protected from degradation.
+CC       By suppressing host gene expression, nsp1 facilitates efficient viral
+CC       gene expression in infected cells and evasion from host immune
+CC       response. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=Thiol-dependent hydrolysis of ester, thioester, amide, peptide
+CC         and isopeptide bonds formed by the C-terminal Gly of ubiquitin (a 76-
+CC         residue protein attached to proteins as an intracellular targeting
+CC         signal).; EC=3.4.19.12; Evidence={ECO:0000250|UniProtKB:P0C6U8};
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=TSAVLQ-|-SGFRK-NH(2) and SGVTFQ-|-GKFKK the two peptides
+CC         corresponding to the two self-cleavage sites of the SARS 3C-like
+CC         proteinase are the two most reactive peptide substrates. The enzyme
+CC         exhibits a strong preference for substrates containing Gln at P1
+CC         position and Leu at P2 position.; EC=3.4.22.69;
+CC         Evidence={ECO:0000250|UniProtKB:P0C6U8};
+CC   -!- SUBUNIT: [Non-structural protein 7]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBUNIT: [Non-structural protein 8]: Eight copies of nsp7 and eight
+CC       copies of nsp8 assemble to form a heterohexadecamer.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBUNIT: [Non-structural protein 9]: Is a dimer.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBUNIT: [Non-structural protein 10]: Forms a dodecamer.
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 3]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6U8}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 4]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6U8}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 6]: Host membrane
+CC       {ECO:0000250|UniProtKB:P0C6U8}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 7]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X7}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 8]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X7}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 9]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X7}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- SUBCELLULAR LOCATION: [Non-structural protein 10]: Host cytoplasm, host
+CC       perinuclear region {ECO:0000250|UniProtKB:P0C6X7}. Note=nsp7, nsp8,
+CC       nsp9 and nsp10 are localized in cytoplasmic foci, largely perinuclear.
+CC       Late in infection, they merge into confluent complexes.
+CC       {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Ribosomal frameshifting; Named isoforms=2;
+CC         Comment=Normal translation results in Replicase polyprotein 1a.
+CC         Ribosomal frameshifting at the end of this protein occurs at low
+CC         frequency and produces Replicase polyprotein 1ab.;
+CC       Name=Replicase polyprotein 1a;
+CC         IsoId=P0DTC1-1; Sequence=Displayed;
+CC       Name=Replicase polyprotein 1ab;
+CC         IsoId=P0DTD1-1; Sequence=External;
+CC   -!- DOMAIN: The hydrophobic domains (HD) could mediate the membrane
+CC       association of the replication complex and thereby alter the
+CC       architecture of the host cell membrane. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- PTM: Specific enzymatic cleavages in vivo by its own proteases yield
+CC       mature proteins. 3CL-PRO and PL-PRO proteinases are autocatalytically
+CC       processed. {ECO:0000250|UniProtKB:P0C6X7}.
+CC   -!- MISCELLANEOUS: [Replicase polyprotein 1a]: Produced by conventional
+CC       translation. {ECO:0000250|UniProtKB:P0C6U8}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the coronaviruses polyprotein 1ab family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43415.1; ALT_FRAME; Genomic_RNA.
+DR   PROSITE; PS00867; CPSASE_2; 1.
+DR   PROSITE; PS51442; M_PRO; 1.
+DR   PROSITE; PS51154; MACRO; 1.
+DR   PROSITE; PS51124; PEPTIDASE_C16; 1.
+PE   3: Inferred from homology;
+KW   Activation of host autophagy by virus; Decay of host mRNAs by virus;
+KW   Endonuclease; Eukaryotic host gene expression shutoff by virus;
+KW   Eukaryotic host translation shutoff by virus; Host cytoplasm;
+KW   Host gene expression shutoff by virus; Host membrane;
+KW   Host mRNA suppression by virus; Host-virus interaction; Hydrolase;
+KW   Inhibition of host innate immune response by virus;
+KW   Inhibition of host interferon signaling pathway by virus;
+KW   Inhibition of host IRF3 by virus; Inhibition of host ISG15 by virus;
+KW   Inhibition of host RLR pathway by virus; Membrane; Metal-binding;
+KW   Modulation of host ubiquitin pathway by viral deubiquitinase;
+KW   Modulation of host ubiquitin pathway by virus; Nuclease; Protease; Repeat;
+KW   Ribosomal frameshifting; RNA-binding; Thiol protease; Transmembrane;
+KW   Transmembrane helix; Ubl conjugation pathway; Viral immunoevasion; Zinc;
+KW   Zinc-finger.
+FT   CHAIN           1..4405
+FT                   /note="Replicase polyprotein 1a"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6U8"
+FT                   /id="PRO_0000449634"
+FT   CHAIN           1..180
+FT                   /note="Non-structural protein 1"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449635"
+FT   CHAIN           181..818
+FT                   /note="Non-structural protein 2"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449636"
+FT   CHAIN           819..2763
+FT                   /note="Non-structural protein 3"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449637"
+FT   CHAIN           2764..3263
+FT                   /note="Non-structural protein 4"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449638"
+FT   CHAIN           3264..3569
+FT                   /note="3C-like proteinase"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449639"
+FT   CHAIN           3570..3859
+FT                   /note="Non-structural protein 6"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449640"
+FT   CHAIN           3860..3942
+FT                   /note="Non-structural protein 7"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449641"
+FT   CHAIN           3943..4140
+FT                   /note="Non-structural protein 8"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449642"
+FT   CHAIN           4141..4253
+FT                   /note="Non-structural protein 9"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449643"
+FT   CHAIN           4254..4392
+FT                   /note="Non-structural protein 10"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449644"
+FT   CHAIN           4393..4405
+FT                   /note="Non-structural protein 11"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT                   /id="PRO_0000449645"
+FT   TRANSMEM        2226..2246
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2318..2338
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2339..2359
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2361..2381
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        2776..2796
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3045..3065
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3077..3097
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3100..3120
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3128..3148
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3165..3185
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3587..3607
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3609..3629
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3635..3655
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3674..3694
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3730..3750
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        3779..3799
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   DOMAIN          1025..1194
+FT                   /note="Macro"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00490"
+FT   DOMAIN          1634..1898
+FT                   /note="Peptidase C16"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   DOMAIN          3264..3569
+FT                   /note="Peptidase C30"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   ZN_FING         1752..1789
+FT                   /note="C4-type"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        1674
+FT                   /note="For PL1-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        1835
+FT                   /note="For PL2-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00444"
+FT   ACT_SITE        3304
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   ACT_SITE        3408
+FT                   /note="For 3CL-PRO activity"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00772"
+FT   SITE            180..181
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            818..819
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            2763..2764
+FT                   /note="Cleavage; by PL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3263..3264
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3569..3570
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3859..3860
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            3942..3943
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4140..4141
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4253..4254
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+FT   SITE            4392..4393
+FT                   /note="Cleavage; by 3CL-PRO"
+FT                   /evidence="ECO:0000250|UniProtKB:P0C6V3"
+SQ   SEQUENCE   4405 AA;  489989 MW;  7F8A21148A7A7E2A CRC64;
+     MESLVPGFNE KTHVQLSLPV LQVRDVLVRG FGDSVEEVLS EARQHLKDGT CGLVEVEKGV
+     LPQLEQPYVF IKRSDARTAP HGHVMVELVA ELEGIQYGRS GETLGVLVPH VGEIPVAYRK
+     VLLRKNGNKG AGGHSYGADL KSFDLGDELG TDPYEDFQEN WNTKHSSGVT RELMRELNGG
+     AYTRYVDNNF CGPDGYPLEC IKDLLARAGK ASCTLSEQLD FIDTKRGVYC CREHEHEIAW
+     YTERSEKSYE LQTPFEIKLA KKFDTFNGEC PNFVFPLNSI IKTIQPRVEK KKLDGFMGRI
+     RSVYPVASPN ECNQMCLSTL MKCDHCGETS WQTGDFVKAT CEFCGTENLT KEGATTCGYL
+     PQNAVVKIYC PACHNSEVGP EHSLAEYHNE SGLKTILRKG GRTIAFGGCV FSYVGCHNKC
+     AYWVPRASAN IGCNHTGVVG EGSEGLNDNL LEILQKEKVN INIVGDFKLN EEIAIILASF
+     SASTSAFVET VKGLDYKAFK QIVESCGNFK VTKGKAKKGA WNIGEQKSIL SPLYAFASEA
+     ARVVRSIFSR TLETAQNSVR VLQKAAITIL DGISQYSLRL IDAMMFTSDL ATNNLVVMAY
+     ITGGVVQLTS QWLTNIFGTV YEKLKPVLDW LEEKFKEGVE FLRDGWEIVK FISTCACEIV
+     GGQIVTCAKE IKESVQTFFK LVNKFLALCA DSIIIGGAKL KALNLGETFV THSKGLYRKC
+     VKSREETGLL MPLKAPKEII FLEGETLPTE VLTEEVVLKT GDLQPLEQPT SEAVEAPLVG
+     TPVCINGLML LEIKDTEKYC ALAPNMMVTN NTFTLKGGAP TKVTFGDDTV IEVQGYKSVN
+     ITFELDERID KVLNEKCSAY TVELGTEVNE FACVVADAVI KTLQPVSELL TPLGIDLDEW
+     SMATYYLFDE SGEFKLASHM YCSFYPPDED EEEGDCEEEE FEPSTQYEYG TEDDYQGKPL
+     EFGATSAALQ PEEEQEEDWL DDDSQQTVGQ QDGSEDNQTT TIQTIVEVQP QLEMELTPVV
+     QTIEVNSFSG YLKLTDNVYI KNADIVEEAK KVKPTVVVNA ANVYLKHGGG VAGALNKATN
+     NAMQVESDDY IATNGPLKVG GSCVLSGHNL AKHCLHVVGP NVNKGEDIQL LKSAYENFNQ
+     HEVLLAPLLS AGIFGADPIH SLRVCVDTVR TNVYLAVFDK NLYDKLVSSF LEMKSEKQVE
+     QKIAEIPKEE VKPFITESKP SVEQRKQDDK KIKACVEEVT TTLEETKFLT ENLLLYIDIN
+     GNLHPDSATL VSDIDITFLK KDAPYIVGDV VQEGVLTAVV IPTKKAGGTT EMLAKALRKV
+     PTDNYITTYP GQGLNGYTVE EAKTVLKKCK SAFYILPSII SNEKQEILGT VSWNLREMLA
+     HAEETRKLMP VCVETKAIVS TIQRKYKGIK IQEGVVDYGA RFYFYTSKTT VASLINTLND
+     LNETLVTMPL GYVTHGLNLE EAARYMRSLK VPATVSVSSP DAVTAYNGYL TSSSKTPEEH
+     FIETISLAGS YKDWSYSGQS TQLGIEFLKR GDKSVYYTSN PTTFHLDGEV ITFDNLKTLL
+     SLREVRTIKV FTTVDNINLH TQVVDMSMTY GQQFGPTYLD GADVTKIKPH NSHEGKTFYV
+     LPNDDTLRVE AFEYYHTTDP SFLGRYMSAL NHTKKWKYPQ VNGLTSIKWA DNNCYLATAL
+     LTLQQIELKF NPPALQDAYY RARAGEAANF CALILAYCNK TVGELGDVRE TMSYLFQHAN
+     LDSCKRVLNV VCKTCGQQQT TLKGVEAVMY MGTLSYEQFK KGVQIPCTCG KQATKYLVQQ
+     ESPFVMMSAP PAQYELKHGT FTCASEYTGN YQCGHYKHIT SKETLYCIDG ALLTKSSEYK
+     GPITDVFYKE NSYTTTIKPV TYKLDGVVCT EIDPKLDNYY KKDNSYFTEQ PIDLVPNQPY
+     PNASFDNFKF VCDNIKFADD LNQLTGYKKP ASRELKVTFF PDLNGDVVAI DYKHYTPSFK
+     KGAKLLHKPI VWHVNNATNK ATYKPNTWCI RCLWSTKPVE TSNSFDVLKS EDAQGMDNLA
+     CEDLKPVSEE VVENPTIQKD VLECNVKTTE VVGDIILKPA NNSLKITEEV GHTDLMAAYV
+     DNSSLTIKKP NELSRVLGLK TLATHGLAAV NSVPWDTIAN YAKPFLNKVV STTTNIVTRC
+     LNRVCTNYMP YFFTLLLQLC TFTRSTNSRI KASMPTTIAK NTVKSVGKFC LEASFNYLKS
+     PNFSKLINII IWFLLLSVCL GSLIYSTAAL GVLMSNLGMP SYCTGYREGY LNSTNVTIAT
+     YCTGSIPCSV CLSGLDSLDT YPSLETIQIT ISSFKWDLTA FGLVAEWFLA YILFTRFFYV
+     LGLAAIMQLF FSYFAVHFIS NSWLMWLIIN LVQMAPISAM VRMYIFFASF YYVWKSYVHV
+     VDGCNSSTCM MCYKRNRATR VECTTIVNGV RRSFYVYANG GKGFCKLHNW NCVNCDTFCA
+     GSTFISDEVA RDLSLQFKRP INPTDQSSYI VDSVTVKNGS IHLYFDKAGQ KTYERHSLSH
+     FVNLDNLRAN NTKGSLPINV IVFDGKSKCE ESSAKSASVY YSQLMCQPIL LLDQALVSDV
+     GDSAEVAVKM FDAYVNTFSS TFNVPMEKLK TLVATAEAEL AKNVSLDNVL STFISAARQG
+     FVDSDVETKD VVECLKLSHQ SDIEVTGDSC NNYMLTYNKV ENMTPRDLGA CIDCSARHIN
+     AQVAKSHNIA LIWNVKDFMS LSEQLRKQIR SAAKKNNLPF KLTCATTRQV VNVVTTKIAL
+     KGGKIVNNWL KQLIKVTLVF LFVAAIFYLI TPVHVMSKHT DFSSEIIGYK AIDGGVTRDI
+     ASTDTCFANK HADFDTWFSQ RGGSYTNDKA CPLIAAVITR EVGFVVPGLP GTILRTTNGD
+     FLHFLPRVFS AVGNICYTPS KLIEYTDFAT SACVLAAECT IFKDASGKPV PYCYDTNVLE
+     GSVAYESLRP DTRYVLMDGS IIQFPNTYLE GSVRVVTTFD SEYCRHGTCE RSEAGVCVST
+     SGRWVLNNDY YRSLPGVFCG VDAVNLLTNM FTPLIQPIGA LDISASIVAG GIVAIVVTCL
+     AYYFMRFRRA FGEYSHVVAF NTLLFLMSFT VLCLTPVYSF LPGVYSVIYL YLTFYLTNDV
+     SFLAHIQWMV MFTPLVPFWI TIAYIICIST KHFYWFFSNY LKRRVVFNGV SFSTFEEAAL
+     CTFLLNKEMY LKLRSDVLLP LTQYNRYLAL YNKYKYFSGA MDTTSYREAA CCHLAKALND
+     FSNSGSDVLY QPPQTSITSA VLQSGFRKMA FPSGKVEGCM VQVTCGTTTL NGLWLDDVVY
+     CPRHVICTSE DMLNPNYEDL LIRKSNHNFL VQAGNVQLRV IGHSMQNCVL KLKVDTANPK
+     TPKYKFVRIQ PGQTFSVLAC YNGSPSGVYQ CAMRPNFTIK GSFLNGSCGS VGFNIDYDCV
+     SFCYMHHMEL PTGVHAGTDL EGNFYGPFVD RQTAQAAGTD TTITVNVLAW LYAAVINGDR
+     WFLNRFTTTL NDFNLVAMKY NYEPLTQDHV DILGPLSAQT GIAVLDMCAS LKELLQNGMN
+     GRTILGSALL EDEFTPFDVV RQCSGVTFQS AVKRTIKGTH HWLLLTILTS LLVLVQSTQW
+     SLFFFLYENA FLPFAMGIIA MSAFAMMFVK HKHAFLCLFL LPSLATVAYF NMVYMPASWV
+     MRIMTWLDMV DTSLSGFKLK DCVMYASAVV LLILMTARTV YDDGARRVWT LMNVLTLVYK
+     VYYGNALDQA ISMWALIISV TSNYSGVVTT VMFLARGIVF MCVEYCPIFF ITGNTLQCIM
+     LVYCFLGYFC TCYFGLFCLL NRYFRLTLGV YDYLVSTQEF RYMNSQGLLP PKNSIDAFKL
+     NIKLLGVGGK PCIKVATVQS KMSDVKCTSV VLLSVLQQLR VESSSKLWAQ CVQLHNDILL
+     AKDTTEAFEK MVSLLSVLLS MQGAVDINKL CEEMLDNRAT LQAIASEFSS LPSYAAFATA
+     QEAYEQAVAN GDSEVVLKKL KKSLNVAKSE FDRDAAMQRK LEKMADQAMT QMYKQARSED
+     KRAKVTSAMQ TMLFTMLRKL DNDALNNIIN NARDGCVPLN IIPLTTAAKL MVVIPDYNTY
+     KNTCDGTTFT YASALWEIQQ VVDADSKIVQ LSEISMDNSP NLAWPLIVTA LRANSAVKLQ
+     NNELSPVALR QMSCAAGTTQ TACTDDNALA YYNTTKGGRF VLALLSDLQD LKWARFPKSD
+     GTGTIYTELE PPCRFVTDTP KGPKVKYLYF IKGLNNLNRG MVLGSLAATV RLQAGNATEV
+     PANSTVLSFC AFAVDAAKAY KDYLASGGQP ITNCVKMLCT HTGTGQAITV TPEANMDQES
+     FGGASCCLYC RCHIDHPNPK GFCDLKGKYV QIPTTCANDP VGFTLKNTVC TVCGMWKGYG
+     CSCDQLREPM LQSADAQSFL NGFAV
+//
+ID   SPIKE_WCPV              Reviewed;        1273 AA.
+AC   P0DTC2;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Spike glycoprotein;
+DE            Short=S glycoprotein;
+DE   AltName: Full=E2;
+DE   AltName: Full=Peplomer protein;
+DE   Contains:
+DE     RecName: Full=Spike protein S1;
+DE   Contains:
+DE     RecName: Full=Spike protein S2;
+DE   Contains:
+DE     RecName: Full=Spike protein S2';
+DE   Flags: Precursor;
+GN   Name=S; ORFNames=2;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: [Spike protein S1]: attaches the virion to the cell membrane
+CC       by interacting with host receptor, initiating the infection. Binding to
+CC       human ACE2 and CLEC4M/DC-SIGNR receptors and internalization of the
+CC       virus into the endosomes of the host cell induces conformational
+CC       changes in the S glycoprotein. Proteolysis by cathepsin CTSL may unmask
+CC       the fusion peptide of S2 and activate membranes fusion within
+CC       endosomes. {ECO:0000250|UniProtKB:P59594}.
+CC   -!- FUNCTION: [Spike protein S2]: mediates fusion of the virion and
+CC       cellular membranes by acting as a class I viral fusion protein. Under
+CC       the current model, the protein has at least three conformational
+CC       states: pre-fusion native state, pre-hairpin intermediate state, and
+CC       post-fusion hairpin state. During viral and target cell membrane
+CC       fusion, the coiled coil regions (heptad repeats) assume a trimer-of-
+CC       hairpins structure, positioning the fusion peptide in close proximity
+CC       to the C-terminal region of the ectodomain. The formation of this
+CC       structure appears to drive apposition and subsequent fusion of viral
+CC       and target cell membranes. {ECO:0000250|UniProtKB:P59594}.
+CC   -!- FUNCTION: [Spike protein S2']: Acts as a viral fusion peptide which is
+CC       unmasked following S2 cleavage occurring upon virus endocytosis.
+CC       {ECO:0000250|UniProtKB:P59594}.
+CC   -!- SUBUNIT: [Spike glycoprotein]: Homotrimer; each monomer consists of a
+CC       S1 and a S2 subunit. The resulting peplomers protrude from the virus
+CC       surface as spikes. Interacts with the accessory proteins 3a and 7a.
+CC       {ECO:0000250|UniProtKB:P59594}.
+CC   -!- SUBUNIT: [Spike protein S1]: Binds to human ACE2. {ECO:0000305}.
+CC   -!- SUBCELLULAR LOCATION: Virion membrane; Single-pass type I membrane
+CC       protein. Host endoplasmic reticulum-Golgi intermediate compartment
+CC       membrane; Single-pass type I membrane protein. Host cell membrane;
+CC       Single-pass type I membrane protein. Note=Accumulates in the
+CC       endoplasmic reticulum-Golgi intermediate compartment, where it
+CC       participates in virus particle assembly. Colocalizes with S in the host
+CC       endoplasmic reticulum-Golgi intermediate compartment. Some S oligomers
+CC       are transported to the host plasma membrane, where they may mediate
+CC       cell-cell fusion. {ECO:0000250|UniProtKB:P59594}.
+CC   -!- DOMAIN: The KxHxx motif seems to function as an ER retrieval and binds
+CC       COPI in vitro. {ECO:0000250|UniProtKB:P59594}.
+CC   -!- PTM: The cytoplasmic Cys-rich domain is palmitoylated.
+CC       {ECO:0000250|UniProtKB:P59594}.
+CC   -!- PTM: Specific enzymatic cleavages in vivo yield mature proteins. The
+CC       precursor is processed into S1 and S2 by host cell furin or another
+CC       cellular protease to yield the mature S1 and S2 proteins. Additionally,
+CC       a second cleavage leads to the release of a fusion peptide after viral
+CC       attachment to host cell receptor. {ECO:0000250|UniProtKB:P59594}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the betacoronaviruses spike protein family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43416.1; -; Genomic_RNA.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:InterPro.
+DR   GO; GO:0019031; C:viral envelope; IEA:InterPro.
+DR   GO; GO:0061025; P:membrane fusion; IEA:InterPro.
+DR   GO; GO:0046813; P:receptor-mediated virion attachment to host cell; IEA:InterPro.
+DR   Gene3D; 1.20.5.300; -; 1.
+DR   Gene3D; 1.20.5.790; -; 1.
+DR   Gene3D; 3.30.70.1840; -; 1.
+DR   InterPro; IPR002552; Corona_S2.
+DR   InterPro; IPR027400; S_HR2.
+DR   InterPro; IPR018548; Spike_rcpt-bd.
+DR   InterPro; IPR036326; Spike_rcpt-bd_sf.
+DR   Pfam; PF01601; Corona_S2; 1.
+DR   Pfam; PF09408; Spike_rec_bind; 1.
+DR   SUPFAM; SSF111474; SSF111474; 1.
+DR   SUPFAM; SSF143587; SSF143587; 1.
+PE   3: Inferred from homology;
+KW   Coiled coil; Disulfide bond;
+KW   Fusion of virus membrane with host endosomal membrane;
+KW   Fusion of virus membrane with host membrane; Glycoprotein;
+KW   Host cell membrane; Host membrane; Host-virus interaction; Lipoprotein;
+KW   Membrane; Palmitate; Signal; Transmembrane; Transmembrane helix;
+KW   Viral attachment to host cell; Viral envelope protein;
+KW   Viral penetration into host cytoplasm; Virion; Virulence;
+KW   Virus entry into host cell.
+FT   SIGNAL          1..13
+FT                   /evidence="ECO:0000255"
+FT   CHAIN           14..1273
+FT                   /note="Spike glycoprotein"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT                   /id="PRO_0000449646"
+FT   CHAIN           14..685
+FT                   /note="Spike protein S1"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT                   /id="PRO_0000449647"
+FT   CHAIN           686..1273
+FT                   /note="Spike protein S2"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT                   /id="PRO_0000449648"
+FT   CHAIN           816..1273
+FT                   /note="Spike protein S2'"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT                   /id="PRO_0000449649"
+FT   TRANSMEM        1214..1234
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   REGION          319..541
+FT                   /note="Receptor-binding domain"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   REGION          437..508
+FT                   /note="Receptor-binding motif; binding to human ACE2"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   REGION          788..806
+FT                   /note="Fusion peptide"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   REGION          920..970
+FT                   /note="Heptad repeat 1"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   REGION          1163..1202
+FT                   /note="Heptad repeat 2"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   COILED          1176..1203
+FT                   /evidence="ECO:0000255"
+FT   MOTIF           1269..1273
+FT                   /note="KxHxx"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   SITE            685..686
+FT                   /note="Cleavage"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   SITE            815..816
+FT                   /note="Cleavage"
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   DISULFID        336..361
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   DISULFID        379..432
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+FT   DISULFID        480..488
+FT                   /evidence="ECO:0000250|UniProtKB:P59594"
+SQ   SEQUENCE   1273 AA;  141178 MW;  B17BE6D9F1C4EA34 CRC64;
+     MFVFLVLLPL VSSQCVNLTT RTQLPPAYTN SFTRGVYYPD KVFRSSVLHS TQDLFLPFFS
+     NVTWFHAIHV SGTNGTKRFD NPVLPFNDGV YFASTEKSNI IRGWIFGTTL DSKTQSLLIV
+     NNATNVVIKV CEFQFCNDPF LGVYYHKNNK SWMESEFRVY SSANNCTFEY VSQPFLMDLE
+     GKQGNFKNLR EFVFKNIDGY FKIYSKHTPI NLVRDLPQGF SALEPLVDLP IGINITRFQT
+     LLALHRSYLT PGDSSSGWTA GAAAYYVGYL QPRTFLLKYN ENGTITDAVD CALDPLSETK
+     CTLKSFTVEK GIYQTSNFRV QPTESIVRFP NITNLCPFGE VFNATRFASV YAWNRKRISN
+     CVADYSVLYN SASFSTFKCY GVSPTKLNDL CFTNVYADSF VIRGDEVRQI APGQTGKIAD
+     YNYKLPDDFT GCVIAWNSNN LDSKVGGNYN YLYRLFRKSN LKPFERDIST EIYQAGSTPC
+     NGVEGFNCYF PLQSYGFQPT NGVGYQPYRV VVLSFELLHA PATVCGPKKS TNLVKNKCVN
+     FNFNGLTGTG VLTESNKKFL PFQQFGRDIA DTTDAVRDPQ TLEILDITPC SFGGVSVITP
+     GTNTSNQVAV LYQDVNCTEV PVAIHADQLT PTWRVYSTGS NVFQTRAGCL IGAEHVNNSY
+     ECDIPIGAGI CASYQTQTNS PRRARSVASQ SIIAYTMSLG AENSVAYSNN SIAIPTNFTI
+     SVTTEILPVS MTKTSVDCTM YICGDSTECS NLLLQYGSFC TQLNRALTGI AVEQDKNTQE
+     VFAQVKQIYK TPPIKDFGGF NFSQILPDPS KPSKRSFIED LLFNKVTLAD AGFIKQYGDC
+     LGDIAARDLI CAQKFNGLTV LPPLLTDEMI AQYTSALLAG TITSGWTFGA GAALQIPFAM
+     QMAYRFNGIG VTQNVLYENQ KLIANQFNSA IGKIQDSLSS TASALGKLQD VVNQNAQALN
+     TLVKQLSSNF GAISSVLNDI LSRLDKVEAE VQIDRLITGR LQSLQTYVTQ QLIRAAEIRA
+     SANLAATKMS ECVLGQSKRV DFCGKGYHLM SFPQSAPHGV VFLHVTYVPA QEKNFTTAPA
+     ICHDGKAHFP REGVFVSNGT HWFVTQRNFY EPQIITTDNT FVSGNCDVVI GIVNNTVYDP
+     LQPELDSFKE ELDKYFKNHT SPDVDLGDIS GINASVVNIQ KEIDRLNEVA KNLNESLIDL
+     QELGKYEQYI KWPWYIWLGF IAGLIAIVMV TIMLCCMTSC CSCLKGCCSC GSCCKFDEDD
+     SEPVLKGVKL HYT
+//
+ID   AP3A_WCPV               Reviewed;         275 AA.
+AC   P0DTC3;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Protein 3a;
+DE   AltName: Full=Accessory protein 3a;
+DE   AltName: Full=Protein U274;
+DE   AltName: Full=Protein X1;
+GN   ORFNames=3a;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Forms homotetrameric potassium sensitive ion channels
+CC       (viroporin) and may modulate virus release. Up-regulates expression of
+CC       fibrinogen subunits FGA, FGB and FGG in host lung epithelial cells.
+CC       Induces apoptosis in cell culture. Downregulates the type 1 interferon
+CC       receptor by inducing serine phosphorylation within the IFN alpha-
+CC       receptor subunit 1 (IFNAR1) degradation motif and increasing IFNAR1
+CC       ubiquitination. {ECO:0000250|UniProtKB:P59632}.
+CC   -!- SUBUNIT: Homotetramer composed of two homodimers linked non covalently.
+CC       Interacts with M, S and E proteins. Also interacts with the accessory
+CC       protein 7a. {ECO:0000250|UniProtKB:P59632}.
+CC   -!- SUBCELLULAR LOCATION: Virion {ECO:0000250|UniProtKB:P59632}. Host Golgi
+CC       apparatus membrane {ECO:0000250|UniProtKB:P59632}; Multi-pass membrane
+CC       protein {ECO:0000250|UniProtKB:P59632}. Host cell membrane
+CC       {ECO:0000250|UniProtKB:P59632}; Multi-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P59632}. Secreted
+CC       {ECO:0000250|UniProtKB:P59632}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P59632}. Note=The cell surface expressed protein
+CC       can undergo endocytosis. The protein is secreted in association with
+CC       membranous structures. {ECO:0000250|UniProtKB:P59632}.
+CC   -!- DOMAIN: The second or the third transmembrane region are responsible
+CC       for Golgi localization. {ECO:0000250|UniProtKB:P59632}.
+CC   -!- PTM: Exists in both O-glycosylated and non-glycosylated forms. The
+CC       glycosylated form is associated with the virion.
+CC       {ECO:0000250|UniProtKB:P59632}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43417.1; -; Genomic_RNA.
+DR   InterPro; IPR024407; SARS_coronavirus_Orf3/3a.
+DR   Pfam; PF11289; APA3_viroporin; 1.
+PE   3: Inferred from homology;
+KW   Glycoprotein; Host cell membrane; Host cytoplasm; Host Golgi apparatus;
+KW   Host membrane; Membrane; Secreted; Transmembrane; Transmembrane helix;
+KW   Virion.
+FT   CHAIN           1..275
+FT                   /note="Protein 3a"
+FT                   /id="PRO_0000449650"
+FT   TRANSMEM        35..55
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        71..91
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   TRANSMEM        94..114
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   SITE            133
+FT                   /note="Involved in polymerization"
+FT                   /evidence="ECO:0000250|UniProtKB:P59632"
+FT   CARBOHYD        32
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000250|UniProtKB:P59632"
+FT   CARBOHYD        34
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000255"
+SQ   SEQUENCE   275 AA;  31123 MW;  4688E6D477E031C4 CRC64;
+     MDLFMRIFTI GTVTLKQGEI KDATPSDFVR ATATIPIQAS LPFGWLIVGV ALLAVFQSAS
+     KIITLKKRWQ LALSKGVHFV CNLLLLFVTV YSHLLLVAAG LEAPFLYLYA LVYFLQSINF
+     VRIIMRLWLC WKCRSKNPLL YDANYFLCWH TNCYDYCIPY NSVTSSIVIT SGDGTTSPIS
+     EHDYQIGGYT EKWESGVKDC VVLHSYFTSD YYQLYSTQLS TDTGVEHVTF FIYNKIVDEP
+     EEHVQIHTID GSSGVVNPVM EPIYDEPTTT TSVPL
+//
+ID   VEMP_WCPV               Reviewed;          75 AA.
+AC   P0DTC4;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Envelope small membrane protein {ECO:0000255|HAMAP-Rule:MF_04204};
+DE            Short=E protein {ECO:0000255|HAMAP-Rule:MF_04204};
+DE            Short=sM protein {ECO:0000255|HAMAP-Rule:MF_04204};
+GN   Name=E {ECO:0000255|HAMAP-Rule:MF_04204}; ORFNames=4;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Plays a central role in virus morphogenesis and assembly.
+CC       Acts as a viroporin and self-assembles in host membranes forming
+CC       pentameric protein-lipid pores that allow ion transport. Also plays a
+CC       role in the induction of apoptosis. {ECO:0000255|HAMAP-Rule:MF_04204}.
+CC   -!- SUBUNIT: Homopentamer. Interacts with membrane protein M in the budding
+CC       compartment of the host cell, which is located between endoplasmic
+CC       reticulum and the Golgi complex. Interacts with Nucleoprotein (By
+CC       similarity). Interacts with the accessory proteins 3a and 7a. Interacts
+CC       (via C-terminus) with human MPP5 (via PDZ domain); this inhibits the
+CC       interaction between human MPP5 and human CRB3, and causes delayed tight
+CC       junction formation and defective cell polarity (By similarity).
+CC       {ECO:0000250|UniProtKB:P59637, ECO:0000255|HAMAP-Rule:MF_04204}.
+CC   -!- SUBCELLULAR LOCATION: Host Golgi apparatus membrane {ECO:0000255|HAMAP-
+CC       Rule:MF_04204}; Single-pass type III membrane protein
+CC       {ECO:0000255|HAMAP-Rule:MF_04204}. Note=The cytoplasmic tail functions
+CC       as a Golgi complex-targeting signal. {ECO:0000255|HAMAP-Rule:MF_04204}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the betacoronaviruses E protein family.
+CC       {ECO:0000255|HAMAP-Rule:MF_04204}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43418.1; -; Genomic_RNA.
+DR   GO; GO:0044177; C:host cell Golgi apparatus; IEA:UniProtKB-UniRule.
+DR   GO; GO:0044178; C:host cell Golgi membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0044662; P:disruption by virus of host cell membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0046760; P:viral budding from Golgi membrane; IEA:UniProtKB-UniRule.
+DR   HAMAP; MF_04204; BETA_CORONA_E; 1.
+DR   InterPro; IPR003873; NS3/E.
+DR   Pfam; PF02723; NS3_envE; 1.
+PE   3: Inferred from homology;
+KW   Apoptosis; Host Golgi apparatus; Host membrane; Membrane; Transmembrane;
+KW   Transmembrane helix.
+FT   CHAIN           1..75
+FT                   /note="Envelope small membrane protein"
+FT                   /id="PRO_0000449651"
+FT   TOPO_DOM        1..16
+FT                   /note="Virion surface"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04204"
+FT   TRANSMEM        17..37
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04204"
+FT   TOPO_DOM        38..75
+FT                   /note="Intravirion"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04204"
+FT   MOTIF           72..75
+FT                   /note="PDZ-binding; required for interaction with human
+FT                   MPP5"
+FT                   /evidence="ECO:0000250|UniProtKB:P59637"
+SQ   SEQUENCE   75 AA;  8365 MW;  5C431BD2AA1B6B99 CRC64;
+     MYSFVSEETG TLIVNSVLLF LAFVVFLLVT LAILTALRLC AYCCNIVNVS LVKPSFYVYS
+     RVKNLNSSRV PDLLV
+//
+ID   VME1_WCPV               Reviewed;         222 AA.
+AC   P0DTC5;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Membrane protein {ECO:0000255|HAMAP-Rule:MF_04202};
+DE            Short=M protein {ECO:0000255|HAMAP-Rule:MF_04202};
+DE   AltName: Full=E1 glycoprotein {ECO:0000255|HAMAP-Rule:MF_04202};
+DE   AltName: Full=Matrix glycoprotein {ECO:0000255|HAMAP-Rule:MF_04202};
+DE   AltName: Full=Membrane glycoprotein {ECO:0000255|HAMAP-Rule:MF_04202};
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Component of the viral envelope that plays a central role in
+CC       virus morphogenesis and assembly via its interactions with other viral
+CC       proteins. {ECO:0000255|HAMAP-Rule:MF_04202}.
+CC   -!- SUBUNIT: Homomultimer. Interacts with envelope E protein in the budding
+CC       compartment of the host cell, which is located between endoplasmic
+CC       reticulum and the Golgi complex. Forms a complex with HE and S
+CC       proteins. Interacts with nucleocapsid N protein. This interaction
+CC       probably participates in RNA packaging into the virus (By similarity).
+CC       Interacts with the accessory proteins 3a and 7a (By similarity).
+CC       {ECO:0000250|UniProtKB:P59596, ECO:0000255|HAMAP-Rule:MF_04202}.
+CC   -!- SUBCELLULAR LOCATION: Virion membrane {ECO:0000255|HAMAP-
+CC       Rule:MF_04202}; Multi-pass membrane protein {ECO:0000255|HAMAP-
+CC       Rule:MF_04202}. Host Golgi apparatus membrane {ECO:0000255|HAMAP-
+CC       Rule:MF_04202}; Multi-pass membrane protein {ECO:0000255|HAMAP-
+CC       Rule:MF_04202}. Note=Largely embedded in the lipid bilayer.
+CC       {ECO:0000255|HAMAP-Rule:MF_04202}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the betacoronaviruses M protein family.
+CC       {ECO:0000255|HAMAP-Rule:MF_04202}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43419.1; -; Genomic_RNA.
+DR   GO; GO:0030430; C:host cell cytoplasm; IEA:UniProtKB-UniRule.
+DR   GO; GO:0044178; C:host cell Golgi membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0019031; C:viral envelope; IEA:UniProtKB-UniRule.
+DR   GO; GO:0055036; C:virion membrane; IEA:UniProtKB-UniRule.
+DR   GO; GO:0039660; F:structural constituent of virion; IEA:UniProtKB-UniRule.
+DR   GO; GO:0019058; P:viral life cycle; IEA:InterPro.
+DR   HAMAP; MF_04202; BETA_CORONA_M; 1.
+DR   InterPro; IPR002574; Corona_M.
+DR   Pfam; PF01635; Corona_M; 1.
+PE   3: Inferred from homology;
+KW   Glycoprotein; Host Golgi apparatus; Host membrane; Host-virus interaction;
+KW   Membrane; Transmembrane; Transmembrane helix; Viral envelope protein;
+KW   Viral immunoevasion; Viral matrix protein; Virion.
+FT   CHAIN           1..222
+FT                   /note="Membrane protein"
+FT                   /id="PRO_0000449652"
+FT   TOPO_DOM        2..19
+FT                   /note="Virion surface"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TRANSMEM        20..40
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TOPO_DOM        41..50
+FT                   /note="Intravirion"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TRANSMEM        51..71
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TOPO_DOM        72..79
+FT                   /note="Virion surface"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TRANSMEM        80..100
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+FT   TOPO_DOM        101..222
+FT                   /note="Intravirion"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04202"
+SQ   SEQUENCE   222 AA;  25147 MW;  ED44D84C3BB9A6DB CRC64;
+     MADSNGTITV EELKKLLEQW NLVIGFLFLT WICLLQFAYA NRNRFLYIIK LIFLWLLWPV
+     TLACFVLAAV YRINWITGGI AIAMACLVGL MWLSYFIASF RLFARTRSMW SFNPETNILL
+     NVPLHGTILT RPLLESELVI GAVILRGHLR IAGHHLGRCD IKDLPKEITV ATSRTLSYYK
+     LGASQRVAGD SGFAAYSRYR IGNYKLNTDH SSSSDNIALL VQ
+//
+ID   NS6_WCPV                Reviewed;          61 AA.
+AC   P0DTC6;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Non-structural protein 6;
+DE            Short=ns6;
+DE   AltName: Full=Accessory protein 6;
+DE   AltName: Full=Protein X3;
+GN   ORFNames=6;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Could be a determinant of virus virulence, since, when
+CC       expressed in an otherwise attenuated JHM strain of murine coronavirus,
+CC       it can dramatically increase the lethality of the latter. Seems to
+CC       stimulate cellular DNA synthesis in vitro.
+CC       {ECO:0000250|UniProtKB:P59634}.
+CC   -!- SUBCELLULAR LOCATION: Host endoplasmic reticulum membrane
+CC       {ECO:0000250|UniProtKB:P59634}. Host Golgi apparatus membrane
+CC       {ECO:0000250|UniProtKB:P59634}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the coronaviruses accessory protein 6 family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43420.1; -; Genomic_RNA.
+DR   InterPro; IPR022736; SARS_NS6.
+DR   Pfam; PF12133; Sars6; 1.
+PE   3: Inferred from homology;
+KW   Host endoplasmic reticulum; Host Golgi apparatus; Host membrane; Membrane;
+KW   Virulence.
+FT   CHAIN           1..61
+FT                   /note="Non-structural protein 6"
+FT                   /id="PRO_0000449653"
+SQ   SEQUENCE   61 AA;  7273 MW;  B21BD303F59A1D0A CRC64;
+     MFHLVDFQVT IAEILLIIMR TFKVSIWNLD YIINLIIKNL SKSLTENKYS QLDEEQPMEI
+     D
+//
+ID   NS7A_WCPV               Reviewed;         121 AA.
+AC   P0DTC7;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Protein 7a;
+DE   AltName: Full=Accessory protein 7a;
+DE   AltName: Full=Protein U122;
+DE   AltName: Full=Protein X4;
+DE   Flags: Precursor;
+GN   ORFNames=7a;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Non-structural protein which is dispensable for virus
+CC       replication in cell culture. {ECO:0000250|UniProtKB:P59635}.
+CC   -!- SUBUNIT: Interacts with the spike glycoprotein, M protein, E protein
+CC       and the accessory protein 3a. Interacts with human SGT.
+CC       {ECO:0000250|UniProtKB:P59635}.
+CC   -!- SUBCELLULAR LOCATION: Virion {ECO:0000250|UniProtKB:P59635}. Host
+CC       endoplasmic reticulum membrane {ECO:0000250|UniProtKB:P59635}; Single-
+CC       pass membrane protein {ECO:0000250|UniProtKB:P59635}. Host endoplasmic
+CC       reticulum-Golgi intermediate compartment membrane
+CC       {ECO:0000250|UniProtKB:P59635}; Single-pass type I membrane protein
+CC       {ECO:0000250|UniProtKB:P59635}. Host Golgi apparatus membrane
+CC       {ECO:0000250|UniProtKB:P59635}; Single-pass membrane protein
+CC       {ECO:0000250|UniProtKB:P59635}.
+CC   -!- DOMAIN: The di-lysine motif confers endoplasmic reticulum localization
+CC       for type I membrane proteins. {ECO:0000250|UniProtKB:P59635}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43421.1; -; Genomic_RNA.
+DR   Gene3D; 2.60.40.1550; -; 1.
+DR   InterPro; IPR014888; SARS_X4.
+DR   InterPro; IPR036495; SARS_X4_sf.
+DR   Pfam; PF08779; SARS_X4; 1.
+DR   SUPFAM; SSF117066; SSF117066; 1.
+PE   3: Inferred from homology;
+KW   G0/G1 host cell cycle checkpoint dysregulation by virus;
+KW   Host endoplasmic reticulum; Host Golgi apparatus; Host membrane;
+KW   Host-virus interaction; Membrane; Modulation of host cell cycle by virus;
+KW   Signal; Transmembrane; Transmembrane helix; Virion.
+FT   SIGNAL          1..15
+FT                   /evidence="ECO:0000255"
+FT   CHAIN           16..121
+FT                   /note="Protein 7a"
+FT                   /evidence="ECO:0000255"
+FT                   /id="PRO_0000449654"
+FT   TRANSMEM        96..116
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+FT   MOTIF           117..121
+FT                   /note="Di-lysine motif"
+FT                   /evidence="ECO:0000250|UniProtKB:P59635"
+SQ   SEQUENCE   121 AA;  13744 MW;  891E7EAB9E8A5BA9 CRC64;
+     MKIILFLALI TLATCELYHY QECVRGTTVL LKEPCSSGTY EGNSPFHPLA DNKFALTCFS
+     TQFAFACPDG VKHVYQLRAR SVSPKLFIRQ EEVQELYSPI FLIVAAIVFI TLCFTLKRKT
+     E
+//
+ID   NS7B_WCPV               Reviewed;          43 AA.
+AC   P0DTD8;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Protein non-structural 7b;
+DE            Short=ns7b;
+DE   AltName: Full=Accessory protein 7b;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- SUBCELLULAR LOCATION: Host membrane {ECO:0000250|UniProtKB:Q7TFA1};
+CC       Single-pass membrane protein {ECO:0000250|UniProtKB:Q7TFA1}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; -; NOT_ANNOTATED_CDS; Genomic_RNA.
+PE   3: Inferred from homology;
+KW   Host membrane; Membrane; Transmembrane; Transmembrane helix.
+FT   CHAIN           1..43
+FT                   /note="Protein non-structural 7b"
+FT                   /id="PRO_0000449799"
+FT   TRANSMEM        9..29
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+SQ   SEQUENCE   43 AA;  5180 MW;  33DE6E3EBAEF1D9F CRC64;
+     MIELSLIDFY LCFLAFLLFL VLIMLIIFWF SLELQDHNET CHA
+//
+ID   NS8_WCPV                Reviewed;         121 AA.
+AC   P0DTC8;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Non-structural protein 8;
+DE            Short=ns8;
+DE   Flags: Precursor;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: May play a role in host-virus interaction. {ECO:0000305}.
+CC   -!- MISCELLANEOUS: Simnilar to some Bat coronavirus ns8 genes, but is
+CC       entirely different from SARS ns8a or Ns8b. {ECO:0000305}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43422.1; -; Genomic_RNA.
+DR   InterPro; IPR022722; Corona_NS8.
+DR   Pfam; PF12093; Corona_NS8; 1.
+PE   3: Inferred from homology;
+KW   Signal.
+FT   SIGNAL          1..15
+FT                   /evidence="ECO:0000255"
+FT   CHAIN           16..121
+FT                   /note="Non-structural protein 8"
+FT                   /id="PRO_0000449655"
+SQ   SEQUENCE   121 AA;  13831 MW;  912AD9E147A64907 CRC64;
+     MKFLVFLGII TTVAAFHQEC SLQSCTQHQP YVVDDPCPIH FYSKWYIRVG ARKSAPLIEL
+     CVDEAGSKSP IQYIDIGNYT VSCLPFTINC QEPKLGSLVV RCSFYEDFLE YHDVRVVLDF
+     I
+//
+ID   NCAP_WCPV               Reviewed;         419 AA.
+AC   P0DTC9;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Nucleoprotein {ECO:0000255|HAMAP-Rule:MF_04096};
+DE   AltName: Full=Nucleocapsid protein {ECO:0000255|HAMAP-Rule:MF_04096};
+DE            Short=NC {ECO:0000255|HAMAP-Rule:MF_04096};
+DE            Short=Protein N {ECO:0000255|HAMAP-Rule:MF_04096};
+GN   Name=N {ECO:0000255|HAMAP-Rule:MF_04096};
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Packages the positive strand viral genome RNA into a helical
+CC       ribonucleocapsid (RNP) and plays a fundamental role during virion
+CC       assembly through its interactions with the viral genome and membrane
+CC       protein M. Plays an important role in enhancing the efficiency of
+CC       subgenomic viral RNA transcription as well as viral replication.
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   -!- SUBUNIT: Homooligomer. Both monomeric and oligomeric forms interact
+CC       with RNA. Interacts with protein M. Interacts with NSP3; this
+CC       interaction serves to tether the genome to the newly translated
+CC       replicase-transcriptase complex at a very early stage of infection.
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   -!- SUBCELLULAR LOCATION: Virion {ECO:0000255|HAMAP-Rule:MF_04096}. Host
+CC       endoplasmic reticulum-Golgi intermediate compartment
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}. Host Golgi apparatus
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}. Note=Located inside the virion,
+CC       complexed with the viral RNA. Probably associates with ER-derived
+CC       membranes where it participates in viral RNA synthesis and virus
+CC       budding. {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   -!- PTM: ADP-ribosylated. The ADP-ribosylation is retained in the virion
+CC       during infection. {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   -!- PTM: Phosphorylated on serine and threonine residues.
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   -!- SIMILARITY: Belongs to the betacoronavirus nucleocapsid protein family.
+CC       {ECO:0000255|HAMAP-Rule:MF_04096}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHD43423.2; -; Genomic_RNA.
+DR   GO; GO:0044172; C:host cell endoplasmic reticulum-Golgi intermediate compartment; IEA:UniProtKB-SubCell.
+DR   GO; GO:0044177; C:host cell Golgi apparatus; IEA:UniProtKB-SubCell.
+DR   GO; GO:0019013; C:viral nucleocapsid; IEA:UniProtKB-UniRule.
+DR   GO; GO:0003723; F:RNA binding; IEA:UniProtKB-UniRule.
+DR   HAMAP; MF_04096; BETA_CORONA_NCAP; 1.
+DR   InterPro; IPR001218; Corona_nucleocap.
+DR   InterPro; IPR037179; Nucleocapsid_C.
+DR   InterPro; IPR037195; Nucleocapsid_N.
+DR   Pfam; PF00937; Corona_nucleoca; 1.
+DR   PIRSF; PIRSF003888; NCAP_CRV; 1.
+DR   SUPFAM; SSF103068; SSF103068; 1.
+DR   SUPFAM; SSF110304; SSF110304; 1.
+PE   3: Inferred from homology;
+KW   ADP-ribosylation; Host Golgi apparatus; Phosphoprotein; Ribonucleoprotein;
+KW   RNA-binding; Transcription; Transcription regulation; Viral nucleoprotein;
+KW   Virion.
+FT   CHAIN           1..419
+FT                   /note="Nucleoprotein"
+FT                   /id="PRO_0000449656"
+FT   REGION          41..186
+FT                   /note="RNA-binding"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04096"
+FT   REGION          258..361
+FT                   /note="Dimerization"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04096"
+FT   MOD_RES         176
+FT                   /note="Phosphoserine; by host"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_04096"
+SQ   SEQUENCE   419 AA;  45626 MW;  56688DB785414E81 CRC64;
+     MSDNGPQNQR NAPRITFGGP SDSTGSNQNG ERSGARSKQR RPQGLPNNTA SWFTALTQHG
+     KEDLKFPRGQ GVPINTNSSP DDQIGYYRRA TRRIRGGDGK MKDLSPRWYF YYLGTGPEAG
+     LPYGANKDGI IWVATEGALN TPKDHIGTRN PANNAAIVLQ LPQGTTLPKG FYAEGSRGGS
+     QASSRSSSRS RNSSRNSTPG SSRGTSPARM AGNGGDAALA LLLLDRLNQL ESKMSGKGQQ
+     QQGQTVTKKS AAEASKKPRQ KRTATKAYNV TQAFGRRGPE QTQGNFGDQE LIRQGTDYKH
+     WPQIAQFAPS ASAFFGMSRI GMEVTPSGTW LTYTGAIKLD DKDPNFKDQV ILLNKHIDAY
+     KTFPPTEPKK DKKKKADETQ ALPQRQKKQQ TVTLLPAADL DDFSKQLQQS MSSADSTQA
+//
+ID   A0A663DJA2_9BETC        Unreviewed;        38 AA.
+AC   A0A663DJA2;
+DT   22-APR-2020, integrated into UniProtKB/TrEMBL.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   SubName: Full=ORF10 protein {ECO:0000313|EMBL:QHI42199.1};
+GN   Name=ORF10 {ECO:0000313|EMBL:QHI42199.1};
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049 {ECO:0000313|EMBL:QHI42199.1};
+RN   [1] {ECO:0000313|EMBL:QHI42199.1}
+RP   NUCLEOTIDE SEQUENCE.
+RC   STRAIN=Wuhan-Hu-1 {ECO:0000313|EMBL:QHI42199.1};
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; QHI42199.1; -; Genomic_RNA.
+PE   2: Evidence at transcript level;
+SQ   SEQUENCE   38 AA;  4449 MW;  AE48AE9E0598073C CRC64;
+     MGYINVFAFP FTIYSLLLCR MNSRNYIAQV DVVNFNLT
+//
+ID   ORF9B_WCPV              Reviewed;          97 AA.
+AC   P0DTD2;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Protein 9b;
+DE   AltName: Full=Accessory protein 9b;
+DE   AltName: Full=ORF-9b;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: May play a role in host-virus interaction. {ECO:0000305}.
+CC   -!- SUBUNIT: Homodimer. {ECO:0000250|UniProtKB:P59636}.
+CC   -!- SUBCELLULAR LOCATION: Host cytoplasmic vesicle membrane
+CC       {ECO:0000250|UniProtKB:P59636}; Peripheral membrane protein
+CC       {ECO:0000250|UniProtKB:P59636}. Host cytoplasm
+CC       {ECO:0000250|UniProtKB:P59636}. Note=Binds non-covalently to
+CC       intracellular lipid bilayers. {ECO:0000250|UniProtKB:P59636}.
+CC   -!- MISCELLANEOUS: The gene encoding this protein is included within the N
+CC       gene (alternative ORF). {ECO:0000250|UniProtKB:P59636}.
+CC   -!- SIMILARITY: Belongs to the coronavirus group 2 protein 9b family.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; -; NOT_ANNOTATED_CDS; Genomic_RNA.
+PE   3: Inferred from homology;
+KW   Host cytoplasm; Host cytoplasmic vesicle; Host membrane; Membrane.
+FT   CHAIN           1..97
+FT                   /note="Protein 9b"
+FT                   /evidence="ECO:0000250|UniProtKB:P59636"
+FT                   /id="PRO_0000449657"
+SQ   SEQUENCE   97 AA;  10797 MW;  62CFB65C1804545E CRC64;
+     MDPKISEMHP ALRLVDPQIQ LAVTRMENAV GRDQNNVGPK VYPIILRLGS PLSLNMARKT
+     LNSLEDKAFQ LTPIAVQMTK LATTEELPDE FVVVTVK
+//
+ID   Y14_WCPV                Reviewed;          73 AA.
+AC   P0DTD3;
+DT   22-APR-2020, integrated into UniProtKB/Swiss-Prot.
+DT   22-APR-2020, sequence version 1.
+DT   22-APR-2020, entry version 1.
+DE   RecName: Full=Uncharacterized protein 14;
+GN   ORFNames=ORF14;
+OS   Wuhan seafood market pneumonia virus.
+OC   Viruses; Riboviria; Nidovirales; Cornidovirineae; Coronaviridae;
+OC   Orthocoronavirinae; Betacoronavirus; unclassified Betacoronavirus.
+OX   NCBI_TaxID=2697049;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC RNA].
+RA   Wu F., Zhao S., Yu B., Chen Y.-M., Wang W., Hu Y., Song Z.-G., Tao Z.-W.,
+RA   Tian J.-H., Pei Y.-Y., Yuan M.L., Zhang Y.-L., Dai F.-H., Liu Y.,
+RA   Wang Q.-M., Zheng J.-J., Xu L., Holmes E.C., Zhang Y.-Z.;
+RT   "A novel coronavirus associated with a respiratory disease in Wuhan of
+RT   Hubei province, China.";
+RL   Submitted (JAN-2020) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: May play a role in host-virus interaction. {ECO:0000305}.
+CC   -!- SUBCELLULAR LOCATION: Membrane {ECO:0000255}; Single-pass membrane
+CC       protein {ECO:0000255}.
+CC   -!- MISCELLANEOUS: nCoV is the prototype of the virus isolated during the
+CC       severe coronavirus outbreak in originated in Wuhan in 2020.
+CC       {ECO:0000305}.
+CC   ---------------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   ---------------------------------------------------------------------------
+DR   EMBL; MN908947; -; NOT_ANNOTATED_CDS; Genomic_RNA.
+PE   3: Inferred from homology;
+KW   Membrane; Transmembrane; Transmembrane helix.
+FT   CHAIN           1..73
+FT                   /note="Uncharacterized protein 14"
+FT                   /id="PRO_0000449658"
+FT   TRANSMEM        47..67
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000255"
+SQ   SEQUENCE   73 AA;  8050 MW;  8CCDEF1C0EA37D06 CRC64;
+     MLQSCYNFLK EQHCQKASTQ KGAEAAVKPL LVPHHVVATV QEIQLQAAVG ELLLLEWLAM
+     AVMLLLLCCC LTD
+//

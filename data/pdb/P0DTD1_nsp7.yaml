@@ -1,0 +1,8 @@
+uniprot_id: 'P0DTD1'
+name: 'nsp7'
+source: 'https://swissmodel.expasy.org/interactive/GDvqSz/models/02#'
+template: '1ysy.1.A'
+sections:
+  - chain: 'A'
+    positions: '1:79'
+
