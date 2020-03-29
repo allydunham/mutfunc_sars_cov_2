@@ -29,7 +29,7 @@ rule foldx_variants:
     correspond to the regions defined in meta/structures.yaml as part of the analyses protein
     """
     input:
-        pdb="data/foldx/{structure}/{structure}_Repair.pdb"
+        pdb="data/pdb/{structure}.pdb",
         yaml="data/pdb/{structure}.yaml"
 
     output:

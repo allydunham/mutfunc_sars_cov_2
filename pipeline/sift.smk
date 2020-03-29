@@ -24,7 +24,7 @@ rule sift4g:
     """
     input:
         fa = "data/fasta/{gene}.fa",
-        subst = "data/sift/{gene}.subst"
+        subst = "data/sift/{gene}.subst",
         db = config['sift']['uniref90_fa_path']
 
     output:

@@ -23,7 +23,7 @@ GENES = [
 ]
 
 # List of all structures present
-v
+STRUCTURES = {Path(i).stem for i in os.listdir('data/pdb')}
 
 include: 'pipeline/misc.smk'
 include: 'pipeline/sift.smk'
@@ -34,7 +34,7 @@ rule all:
     Full pipeline
     """
     input:
-        [f'data/sift/{g}.SIFTprediction' for g in GENES]
+        [f'data/sift/{g}.SIFTprediction' for g in GENES],
         [f'data/foldx/{s}/{s}.average_{s}.fxout' for s in STRUCTURES]
 
 rule setup_directories:
@@ -47,6 +47,7 @@ rule setup_directories:
         # data
         shell('mkdir data && echo "mkdir data" || true')
         dirs = ['foldx', 'pdb', 'sift', 'fasta']
+        dirs.extend(f'foldx/{s}' for s in STRUCTURES)
 
         for d in dirs:
             shell(f'mkdir data/{d} && echo "mkdir data/{d}" || true')
