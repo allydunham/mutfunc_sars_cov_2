@@ -19,7 +19,7 @@ def main(args):
     for i, wt in enumerate(seq.seq):
         variants.extend(f'{wt}{i + 1}{mut}' for mut in AMINO_ACIDS if not wt == mut)
 
-    print(*variants, seq='\n')
+    print(*variants, sep='\n')
 
 def parse_args():
     """Process input arguments"""
