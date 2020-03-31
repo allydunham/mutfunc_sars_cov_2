@@ -42,7 +42,7 @@ def main(args):
         if uniprot_id == 'P0DTD1':
             for name, region in PP1AB_SUBUNITS.items():
                 seq = SeqRecord(seq=record.seq[(region[0] - 1):region[1]],
-                                id=f'{uniprot_id}|{name}',
+                                id=f'{uniprot_id}_{name}',
                                 description='')
                 SeqIO.write(seq, f'{args.outdir}/{uniprot_id}_{name}.fa', 'fasta')
 
@@ -57,7 +57,7 @@ def main(args):
 
         else:
             name = UNIPROT_IDS[uniprot_id]
-            record.id = f'{uniprot_id}|{name}'
+            record.id = f'{uniprot_id}_{name}'
             SeqIO.write(record, f'{args.outdir}/{uniprot_id}_{name}.fa', 'fasta')
 
 def parse_args():
