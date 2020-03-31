@@ -37,4 +37,4 @@ rule sift4g:
         mem_mb = 8000
 
     shell:
-        "sift4g --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift 2> {log}"
+        "sift4g --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift &> {log}"

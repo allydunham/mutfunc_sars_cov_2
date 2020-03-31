@@ -51,7 +51,7 @@ def main(args):
             name = 'nsp11'
             region = PP1A_SUBUNITS[name]
             seq = SeqRecord(seq=record.seq[(region[0] - 1):region[1]],
-                            id=f'{uniprot_id}|{name}',
+                            id=f'{uniprot_id}_{name}',
                             description='')
             SeqIO.write(seq, f'{args.outdir}/{uniprot_id}_{name}.fa', 'fasta')
 
