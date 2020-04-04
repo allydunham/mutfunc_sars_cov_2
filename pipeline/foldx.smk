@@ -117,7 +117,7 @@ rule foldx_combine:
 
     shell:
         """
-        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Average_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* > data/foldx/{wildcards.structure}/average_{wildcards.structure}.fxout 2>> {log}
+        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Average_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=average > data/foldx/{wildcards.structure}/average_{wildcards.structure}.fxout 2>> {log}
 
         python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Dif_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=dif > data/foldx/{wildcards.structure}/dif_{wildcards.structure}.fxout 2>> {log}
 
