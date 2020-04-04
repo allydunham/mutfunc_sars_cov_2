@@ -1,8 +1,0 @@
-niprot_id: 'P0DTC7'
-name: 'orf7a'
-source: 'https://swissmodel.expasy.org/interactive/5Bbtxw/models/01#'
-template: '1xak.1.A'
-sections:
-  - chain: 'A'
-    positions: '15:82'
-

@@ -1,8 +1,0 @@
-niprot_id: 'P0DTD1'
-name: 'nsp9'
-source: 'https://swissmodel.expasy.org/interactive/GqQg8A/models/04#'
-template: '6w4b.1.A'
-sections:
-  - chain: 'A'
-    positions: '5:113'
-

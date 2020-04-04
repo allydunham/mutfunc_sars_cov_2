@@ -7,21 +7,20 @@ rule foldx_repair:
     Run FoldX RepairPDB command on PDB files
     """
     input:
-        pdb="data/pdb/{structure}.pdb"
+        pdb="data/swissmodel/{gene}/{model}/model.pdb"
 
     output:
-        "data/foldx/{structure}/{structure}_Repair.pdb",
-        "data/foldx/{structure}/{structure}_Repair.fxout"
+        "data/foldx/{gene}_{model}/{gene}_{model}_Repair.pdb",
+        "data/foldx/{gene}_{model}/{gene}_{model}_Repair.fxout"
 
     resources:
         mem_mb = 4000
 
     log:
-        "logs/foldx_repair/{structure}.log"
+        "logs/foldx_repair/{gene}_{model}.log"
 
     shell:
-        "foldx --command=RepairPDB --pdb={wildcards.structure}.pdb --pdb-dir=data/pdb --clean-mode=3 --output-dir=data/foldx/{wildcards.structure} &> {log}"
-
+        "foldx --command=RepairPDB --pdb=model.pdb --pdb-dir=data/swissmodel/{wildcards.gene}/{wildcards.model} --clean-mode=3 --output-dir=data/foldx/{wildcards.gene}_{wildcards.model} &> {log}"
 
 rule foldx_variants:
     """
@@ -29,17 +28,16 @@ rule foldx_variants:
     correspond to the regions defined in meta/structures.yaml as part of the analyses protein
     """
     input:
-        pdb="data/pdb/{structure}.pdb",
-        yaml="data/pdb/{structure}.yaml"
+        pdb="data/swissmodel/{gene}/{model}/model.pdb"
 
     output:
-        muts="data/foldx/{structure}/individual_list"
+        muts="data/foldx/{gene}_{model}/individual_list"
 
     log:
-        "logs/foldx_variants/{structure}.log"
+        "logs/foldx_variants/{gene}_{model}.log"
 
     shell:
-        "python bin/foldx_variants.py --yaml {input.yaml} {input.pdb} > {output.muts} 2> {log}"
+        "python bin/foldx_variants.py {input.pdb} > {output.muts} 2> {log}"
 
 checkpoint foldx_split:
     """

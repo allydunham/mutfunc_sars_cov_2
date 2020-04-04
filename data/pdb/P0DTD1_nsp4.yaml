@@ -1,8 +1,0 @@
-uniprot_id: 'P0DTD1'
-name: 'nsp4'
-source: 'https://swissmodel.expasy.org/interactive/0cKKrV/models'
-template: '3vcb.1.A'
-sections:
-  - chain: 'A'
-    positions: '411:499'
-

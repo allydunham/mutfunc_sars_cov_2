@@ -2,7 +2,6 @@
 Master pipeline for the COVID19 Mutfunc project
 """
 import os
-from pathlib import Path
 
 configfile: 'snakemake.yaml'
 localrules:
@@ -23,7 +22,9 @@ GENES = [
 ]
 
 # List of all structures present
-STRUCTURES = {Path(i).stem for i in os.listdir('data/pdb')}
+STRUCTURES = [f'{gene}_{model}' for gene in os.listdir('data/swissmodel')
+              for model in os.listdir(f'data/swissmodel/{gene}') if
+              os.path.isfile(f'data/swissmodel/{gene}/{model}/model.pdb')]
 
 # Sift genes
 SIFT_GENES = ['P0DTD1_nsp1', 'P0DTD1_nsp2', 'P0DTD1_nsp3',

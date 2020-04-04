@@ -1,8 +1,0 @@
-uniprot_id: 'P0DTD1'
-name: 'nsp13'
-source: 'https://swissmodel.expasy.org/interactive/N2NgU3/models/05#'
-template: '6jyt.2.A'
-sections:
-  - chain: 'A'
-    positions: '1:596'
-
