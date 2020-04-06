@@ -28,7 +28,8 @@ rule foldx_variants:
     correspond to the regions defined in meta/structures.yaml as part of the analyses protein
     """
     input:
-        pdb="data/swissmodel/{gene}/{model}/model.pdb"
+        pdb="data/swissmodel/{gene}/{model}/model.pdb",
+        json="data/swissmodel/{gene}/{model}/report.json",
 
     output:
         muts="data/foldx/{gene}_{model}/individual_list"
@@ -37,7 +38,7 @@ rule foldx_variants:
         "logs/foldx_variants/{gene}_{model}.log"
 
     shell:
-        "python bin/foldx_variants.py {input.pdb} > {output.muts} 2> {log}"
+        "python bin/foldx_variants.py --swissmodel {input.json} {input.pdb} > {output.muts} 2> {log}"
 
 checkpoint foldx_split:
     """

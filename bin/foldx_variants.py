@@ -4,6 +4,7 @@ Generate list of all possible variants from a PDB file
 """
 import argparse
 import warnings
+import json
 from ruamel.yaml import YAML
 from pathlib import Path
 from Bio.PDB import PDBParser
@@ -17,20 +18,26 @@ class ProteinRegion:
 
     chain: string chain id
     positions: string representation of protein positions. Comma separated list of
-    individual positions and X:Y (inclusive) ranges
+    individual positions and X:Y (inclusive) ranges. If none all positions on the chain
+    are accepted
     """
-    def __init__(self, chain, positions, accept_hetero=False):
+    def __init__(self, chain, positions=None, accept_hetero=False):
         self.chain = chain
         self.accept_hetero = accept_hetero
-        self.positions = []
         self.positions_str = positions
-        for i in positions.split(','):
-            if ':' in i:
-                i = i.split(':')
-                self.positions.extend(range(int(i[0]), int(i[1]) + 1))
 
-            else:
-                self.positions.append(int(i))
+        if positions is None:
+            self.positions = None
+
+        else:
+            self.positions = []
+            for i in positions.split(','):
+                if ':' in i:
+                    i = i.split(':')
+                    self.positions.extend(range(int(i[0]), int(i[1]) + 1))
+
+                else:
+                    self.positions.append(int(i))
 
     def __repr__(self):
         return (f'ProteinRegion({self.chain}, {self.positions_str}, '
@@ -50,9 +57,8 @@ class ProteinRegion:
             return False
 
         return (self.chain == chain and
-                position in self.positions and
+                (self.positions is None or position in self.positions) and
                 (not hetero or self.accept_hetero))
-
 
 def main(args):
     """
@@ -62,18 +68,31 @@ def main(args):
     pdb_parser = PDBParser()
     structure = pdb_parser.get_structure(pdb.stem, pdb)
 
-    sections = []
-    chains = []
+    if args.swissmodel and args.yaml:
+        warnings.warn('--swissmodel & --yaml passed, using --yaml')
+
+    # Construct list of valid protein sections
     if args.yaml:
         yaml_parser = YAML(typ='safe')
         yaml = yaml_parser.load(Path(args.yaml))
         sections = [ProteinRegion(i['chain'], i['positions']) for i in yaml['sections']]
         chains = [i['chain'] for i in yaml['sections']]
 
+    elif args.swissmodel:
+        with open(args.swissmodel, 'r') as report_json:
+            swissmodel = json.load(report_json)
+            sections = [ProteinRegion(swissmodel['modelling']['chain'])]
+
+    else:
+        sections = [ProteinRegion(chain) for chain in structure[0]]
+
+    # List of valid chains is used to completely skip chains with no valid residues
+    chains = {s.chain for s in sections}
+
     variants = []
     for chain in structure[0]:
         # Short-circuit chains we don't want, if specified
-        if chains and not chain.id in chains:
+        if not chain.id in chains:
             continue
 
         for residue in chain:
@@ -90,6 +109,7 @@ def parse_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('pdb', metavar='P', help="Input PDB file")
+    parser.add_argument('--swissmodel', '-s', help="SWISS-MODEL report JSON describing a model")
     parser.add_argument('--yaml', '-y', help="YAML file defining sections to make variants from")
 
     return parser.parse_args()
