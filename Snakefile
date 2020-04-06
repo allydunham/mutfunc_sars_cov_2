@@ -5,7 +5,7 @@ import os
 
 configfile: 'snakemake.yaml'
 localrules:
-    all, split_fasta, foldx_variants, sift_variants
+    all, split_fasta, foldx_variants, sift4g_variants
 
 # List of genes expected from the Uniprot FASTA (TODO: automate/make this better)
 GENES = [
