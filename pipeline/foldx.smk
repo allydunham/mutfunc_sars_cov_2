@@ -89,7 +89,7 @@ def get_foldx_split_files(wildcards):
     Retrieve the IDs of split FoldX jobs
     """
     checkpoint_outdir = checkpoints.foldx_split.get(structure=wildcards.structure).output[0]
-    fx_output = expand('data/foldx/{structure}/processing/{fi}_{n}_{structure}_Repair.fxout',
+    fx_output = expand('data/foldx/{structure}/processing/{fi}_{n}_model_Repair.fxout',
                        structure=wildcards.structure,
                        n=glob_wildcards(os.path.join(checkpoint_outdir, "individual_list_{n}")).n,
                        fi=('Average', 'Dif', 'Raw'))
