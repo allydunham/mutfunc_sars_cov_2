@@ -49,7 +49,7 @@ rule all:
     """
     input:
         [f'data/sift/{g}.SIFTprediction' for g in SIFT_GENES],
-        [f'data/foldx/{s}/average_{s}.fxout' for s in STRUCTURES]
+        [f'data/foldx/{s}/average.fxout' for s in STRUCTURES]
 
 rule setup_directories:
     """

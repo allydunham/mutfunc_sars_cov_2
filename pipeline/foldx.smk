@@ -10,8 +10,8 @@ rule foldx_repair:
         pdb="data/swissmodel/{gene}/{model}/model.pdb"
 
     output:
-        "data/foldx/{gene}_{model}/{gene}_{model}_Repair.pdb",
-        "data/foldx/{gene}_{model}/{gene}_{model}_Repair.fxout"
+        "data/foldx/{gene}_{model}/model_Repair.pdb",
+        "data/foldx/{gene}_{model}/model_Repair.fxout"
 
     resources:
         mem_mb = 4000
@@ -66,14 +66,14 @@ rule foldx_model:
     Run FoldX BuildModel on a PDB and a paired list of variants
     """
     input:
-        pdb="data/foldx/{structure}/{structure}_Repair.pdb",
+        pdb="data/foldx/{structure}/model_Repair.pdb",
         muts="data/foldx/{structure}/processing/individual_list_{n}"
 
     output:
-        "data/foldx/{structure}/processing/Average_{n}_{structure}_Repair.fxout",
-        "data/foldx/{structure}/processing/Dif_{n}_{structure}_Repair.fxout",
-        "data/foldx/{structure}/processing/Raw_{n}_{structure}_Repair.fxout",
-        "data/foldx/{structure}/processing/PdbList_{n}_{structure}_Repair.fxout"
+        "data/foldx/{structure}/processing/Average_{n}_model_Repair.fxout",
+        "data/foldx/{structure}/processing/Dif_{n}_model_Repair.fxout",
+        "data/foldx/{structure}/processing/Raw_{n}_model_Repair.fxout",
+        "data/foldx/{structure}/processing/PdbList_{n}_model_Repair.fxout"
 
     resources:
         mem_mb = 4000
@@ -82,7 +82,7 @@ rule foldx_model:
         "logs/foldx_model/{structure}_{n}.log"
 
     shell:
-        'foldx --command=BuildModel --pdb={wildcards.structure}_Repair.pdb --pdb-dir=data/foldx/{wildcards.structure} --mutant-file={input.muts} --output-file="{wildcards.n}" --output-dir=data/foldx/{wildcards.structure}/processing --numberOfRuns=3 --clean-mode=3 --out-pdb=false &> {log}'
+        'foldx --command=BuildModel --pdb=model_Repair.pdb --pdb-dir=data/foldx/{wildcards.structure} --mutant-file={input.muts} --output-file="{wildcards.n}" --output-dir=data/foldx/{wildcards.structure}/processing --numberOfRuns=3 --clean-mode=3 --out-pdb=false &> {log}'
 
 def get_foldx_split_files(wildcards):
     """
@@ -106,18 +106,18 @@ rule foldx_combine:
         get_foldx_split_files
 
     output:
-        "data/foldx/{structure}/average_{structure}.fxout",
-        "data/foldx/{structure}/dif_{structure}.fxout",
-        "data/foldx/{structure}/raw_{structure}.fxout"
+        "data/foldx/{structure}/average.fxout",
+        "data/foldx/{structure}/dif.fxout",
+        "data/foldx/{structure}/raw.fxout"
 
     log:
         "logs/foldx_combine/{structure}.log"
 
     shell:
         """
-        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Average_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=average > data/foldx/{wildcards.structure}/average_{wildcards.structure}.fxout 2>> {log}
+        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Average_*_model_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=average > data/foldx/{wildcards.structure}/average.fxout 2>> {log}
 
-        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Dif_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=dif > data/foldx/{wildcards.structure}/dif_{wildcards.structure}.fxout 2>> {log}
+        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Dif_*_model_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=dif > data/foldx/{wildcards.structure}/dif.fxout 2>> {log}
 
-        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Raw_*_{wildcards.structure}_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=raw > data/foldx/{wildcards.structure}/raw_{wildcards.structure}.fxout 2>> {log}
+        python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Raw_*_model_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=raw > data/foldx/{wildcards.structure}/raw.fxout 2>> {log}
         """
