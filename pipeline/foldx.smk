@@ -1,5 +1,5 @@
 """
-Rules for FoldX pipeline
+Rules for generating FoldX ddG predictions
 """
 
 rule foldx_repair:

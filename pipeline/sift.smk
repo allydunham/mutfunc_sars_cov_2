@@ -1,3 +1,9 @@
+"""
+Rules for generating SIFT4G predictions
+"""
+
+# Genes SIFT fails on
+SIFT_GENE_ERRORS = ['P0DTC1_nsp11', 'A0A663DJA2_orf10' ]
 
 rule sift4g_variants:
     """
