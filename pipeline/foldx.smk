@@ -29,7 +29,7 @@ rule foldx_variants:
     """
     input:
         pdb="data/swissmodel/{gene}/{model}/model.pdb",
-        json="data/swissmodel/{gene}/{model}/report.json",
+        json="data/swissmodel/{gene}/{model}/info.json",
 
     output:
         muts="data/foldx/{gene}_{model}/individual_list"
