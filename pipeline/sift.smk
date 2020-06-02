@@ -44,3 +44,19 @@ rule sift4g:
 
     shell:
         "sift4g --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift &> {log}"
+
+rule sift_tsv:
+    """
+    Combine data from SIFT4G into a single table
+    """
+    input:
+        [f"data/sift/{gene}.SIFTprediction" for gene in GENES if not gene in SIFT_GENE_ERRORS]
+
+    output:
+        "data/output/sift.tsv"
+
+    log:
+        "logs/sift_tsv.log"
+
+    shell:
+        "python bin/sift_tsv.py {input} > {output} 2> {log}"
