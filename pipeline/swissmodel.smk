@@ -60,3 +60,19 @@ rule swissmodel_unzip:
         mv test/swissmodel/{wildcards.id}/model/* test/swissmodel/{wildcards.id}/ &>> {log}
         rm -r test/swissmodel/{wildcards.id}/model &>> {log}
         """
+
+checkpoint swissmodel_select:
+    """
+    Identify the best homology models to use for a protein
+    """
+    input:
+        directory('test/swissmodel/{id}')
+
+    output:
+        'test/swissmodel/{id}.models'
+
+    log:
+        'logs/swissmodel_select/{id}.log'
+
+    shell:
+        'python bin/swissmodel_select.py {input} > {output} 2> {log}'

@@ -36,8 +36,8 @@ rule all:
     Full pipeline
     """
     input:
-        [f'data/sift/{g}.SIFTprediction' for g in GENES if not g in SIFT_GENE_ERRORS],
-        [f'data/foldx/{s}/average.fxout' for s in STRUCTURES]
+        "data/output/sift.tsv",
+        #"data/output/foldx.tsv"
 
 rule setup_directories:
     """

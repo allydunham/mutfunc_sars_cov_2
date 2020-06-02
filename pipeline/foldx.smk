@@ -122,3 +122,25 @@ rule foldx_combine:
 
         python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Raw_*_model_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=raw > data/foldx/{wildcards.structure}/raw.fxout 2>> {log}
         """
+
+def get_foldx_models(wildcards):
+    """
+    Identify output files from selected models for FoldX to process
+    """
+    pass
+
+rule foldx_tsv:
+    """
+    Combine FoldX results from the selected models across all genes
+    """
+    input:
+        get_foldx_models
+
+    output:
+        "data/output/foldx.tsv"
+
+    log:
+        "logs/foldx_tsv.log"
+
+    shell:
+        "echo 'NOT IMPLEMENTED YET'"
