@@ -59,7 +59,7 @@ rule setup_directories:
     run:
         # data
         shell('mkdir data && echo "mkdir data" || true')
-        dirs = ['foldx', 'sift', 'fasta', 'swissmodel']
+        dirs = ['foldx', 'sift', 'fasta', 'swissmodel', 'output']
 
         for d in dirs:
             shell(f'mkdir data/{d} && echo "mkdir data/{d}" || true')
