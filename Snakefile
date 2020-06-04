@@ -2,10 +2,14 @@
 Master pipeline for the COVID19 Mutfunc project
 """
 import os
+import sys
+import pandas as pd
 
 configfile: 'snakemake.yaml'
 localrules:
-    all, split_fasta, foldx_variants, sift4g_variants
+    all, split_fasta, foldx_variants, sift4g_variants, swissmodel_download,
+    swissmodel_unzip, swissmodel_select, sift_tsv, foldx_tsv, foldx_combine
+# Should all of these be local?
 
 # List of genes expected from the Uniprot FASTA (TODO: automate/make this better)
 GENES = [
@@ -21,10 +25,17 @@ GENES = [
     'P0DTD3_orf14'
 ]
 
-# List of all structures present
-STRUCTURES = [f'{gene}_{model}' for gene in os.listdir('data/swissmodel')
-              for model in os.listdir(f'data/swissmodel/{gene}') if
-              os.path.isfile(f'data/swissmodel/{gene}/{model}/model.pdb')]
+# Mapping between genes and SWISS-MODEL project IDs
+SWISSMODEL_IDS = {
+    'P0DTD1_nsp1': 'YxJyvF', 'P0DTD1_nsp2': 'UrUkRp', 'P0DTD1_nsp3': '5hYU6g',
+    'P0DTD1_nsp4': '0cKKrV', 'P0DTD1_nsp5': '4dt6Sh', 'P0DTD1_nsp6': '27R5bK',
+    'P0DTD1_nsp7': 'GDvqSz', 'P0DTD1_nsp8': 'M4qFvm', 'P0DTD1_nsp9': 'GqQg8A',
+    'P0DTD1_nsp10': '3xFkkB', 'P0DTD1_nsp12': 'JDUya4', 'P0DTD1_nsp13': 'N2NgU3',
+    'P0DTD1_nsp14': '7BgWuu', 'P0DTD1_nsp15': 'H9prKX', 'P0DTD1_nsp16': 'X6zRCV',
+    'P0DTC2_s': '7dVLxC', 'P0DTC3_orf3a': '1rtnjU', 'P0DTC4_e': '8Tdwfx',
+    'P0DTC5_m': '9LzAZz', 'P0DTC6_orf6': 'NWaxq5', 'P0DTC7_orf7a': '5Bbtxw',
+    'P0DTC8_orf8': 'FKMnGv', 'P0DTC9_nc': 'UfqxZJ', 'P0DTD2_orf9b': '1SagwD'
+}
 
 include: 'pipeline/misc.smk'
 include: 'pipeline/swissmodel.smk'
@@ -37,7 +48,7 @@ rule all:
     """
     input:
         "data/output/sift.tsv",
-        #"data/output/foldx.tsv"
+        "data/output/foldx.tsv"
 
 rule setup_directories:
     """
