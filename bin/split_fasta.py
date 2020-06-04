@@ -55,7 +55,7 @@ def main(args):
                             description='')
             SeqIO.write(seq, f'{args.outdir}/{uniprot_id}_{name}.fa', 'fasta')
 
-        else:
+        elif uniprot_id in UNIPROT_IDS:
             name = UNIPROT_IDS[uniprot_id]
             record.id = f'{uniprot_id}_{name}'
             SeqIO.write(record, f'{args.outdir}/{uniprot_id}_{name}.fa', 'fasta')
