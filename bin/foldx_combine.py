@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Template Script
+Combine results from split parallel FoldX runs into a single table for a gene
 """
 import sys
 import argparse

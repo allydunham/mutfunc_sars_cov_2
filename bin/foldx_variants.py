@@ -1,33 +1,32 @@
 #!/usr/bin/env python
 """
-Generate list of all possible variants from a PDB file
+Generate list of all possible variants from a PDB file, posible filtering to
+a region of interest
 """
 import argparse
-import warnings
-import json
 from pathlib import Path
 from Bio.PDB import PDBParser
 from Bio.SeqUtils import seq1
+import pandas as pd
 from region import ProteinRegion
 
 AMINO_ACIDS = 'ACDEFGHIKLMNPQRSTVWY'
 
 def main(args):
     """
-    Generate list of all possible variants from a PDB file
+    Generate list of variants from a PDB file
     """
-    pdb = Path(args.pdb)
+    pdb_path = Path(args.pdb)
+    model = pdb_path.parent.stem
     pdb_parser = PDBParser()
-    structure = pdb_parser.get_structure(pdb.stem, pdb)
+    structure = pdb_parser.get_structure(pdb_path.stem, pdb_path)
 
-    if args.swissmodel:
-        with open(args.swissmodel, 'r') as info_json:
-            swissmodel = json.load(info_json)
-            sections = []
-            for region in swissmodel['residue_range']
-                chain = region['chain']
-                pos =f"{region['residue_from']}:{region['residue_to']}"
-                sections.append(ProteinRegion(chain=chain, positions=pos))
+    if args.models:
+        modeldf = pd.read_csv(args.models, sep='\t', dtype={'model': str})
+        modeldf = modeldf[modeldf.model == model].reset_index()
+        positions = modeldf.positions[0]
+        chain = modeldf.chain[0]
+        sections = [ProteinRegion(chain=chain, positions=positions)]
 
     else:
         sections = [ProteinRegion(chain) for chain in structure[0]]
@@ -55,7 +54,9 @@ def parse_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('pdb', metavar='P', help="Input PDB file")
-    parser.add_argument('--swissmodel', '-s', help="SWISS-MODEL info JSON describing a model")
+    parser.add_argument('--models', '-m',
+                        help=("TSV file giving details of the models and regions selected "
+                              "(see swissmodel_select.py)"))
 
     return parser.parse_args()
 

@@ -29,7 +29,7 @@ rule foldx_variants:
     """
     input:
         pdb="data/swissmodel/{gene}/{model}/model.pdb",
-        json="data/swissmodel/{gene}/{model}/info.json",
+        models="data/swissmodel/{gene}.models",
 
     output:
         muts="data/foldx/{gene}_{model}/individual_list"
@@ -38,7 +38,7 @@ rule foldx_variants:
         "logs/foldx_variants/{gene}_{model}.log"
 
     shell:
-        "python bin/foldx_variants.py --swissmodel {input.json} {input.pdb} > {output.muts} 2> {log}"
+        "python bin/foldx_variants.py --models {input.models} {input.pdb} > {output.muts} 2> {log}"
 
 checkpoint foldx_split:
     """
@@ -127,7 +127,18 @@ def get_foldx_models(wildcards):
     """
     Identify output files from selected models for FoldX to process
     """
-    pass
+    models = []
+    for gene in SWISSMODEL_IDS.keys():
+        model_table = checkpoints.swissmodel_select.get(id=gene).output[0]
+        mods = pd.read_csv(model_table, sep='\t', dtype={'model': str})
+
+        if mods.model.empty:
+            print(f'No good SWISS-MODEL models for {gene}', file=sys.stderr)
+            continue
+
+        for mod in mods.model:
+            models.append(f'{gene}_{mod}')
+    return [f'data/foldx/{i}/average.fxout' for i in models]
 
 rule foldx_tsv:
     """
@@ -143,4 +154,4 @@ rule foldx_tsv:
         "logs/foldx_tsv.log"
 
     shell:
-        "echo 'NOT IMPLEMENTED YET'"
+        "python bin/foldx_tsv.py {input} > {output} 2> {log}"

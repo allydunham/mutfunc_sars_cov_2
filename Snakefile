@@ -59,8 +59,7 @@ rule setup_directories:
     run:
         # data
         shell('mkdir data && echo "mkdir data" || true')
-        dirs = ['foldx', 'pdb', 'sift', 'fasta']
-        dirs.extend(f'foldx/{s}' for s in STRUCTURES)
+        dirs = ['foldx', 'sift', 'fasta', 'swissmodel']
 
         for d in dirs:
             shell(f'mkdir data/{d} && echo "mkdir data/{d}" || true')
@@ -68,7 +67,9 @@ rule setup_directories:
         # logs
         shell('mkdir logs && echo "mkdir logs" || true')
         dirs = ['foldx_combine', 'foldx_model', 'foldx_repair',
-                'foldx_split', 'foldx_variants', 'sift4g', 'sift4g_variants']
+                'foldx_split', 'foldx_variants', 'sift4g', 'sift4g_variants',
+                'swissmodel_download', 'swissmodel_unzip', 'swissmodel_select',
+                ]
 
         for d in dirs:
             shell(f'mkdir logs/{d} && echo "mkdir logs/{d}" || true')
