@@ -1,0 +1,10 @@
+foldx:
+  variants_per_run: 300
+
+sift:
+  uniref90_fa_path: 'path/to/sift/database.fa'
+
+swissmodel:
+  min_seq_id: 30
+  min_coverage: 0.05
+  min_qmean_z: -4

@@ -3,4 +3,5 @@ data/**
 .snakemake/*
 logs/*
 test/*
+snakemake.yaml
 
