@@ -67,4 +67,4 @@ checkpoint swissmodel_select:
         'logs/swissmodel_select/{gene_id}.log'
 
     shell:
-        'python bin/swissmodel_select.py --seq_id {config[swissmodel][min_seq_id]} --coverage {config[swissmodel][min_coverage]} --qmean_z {config[swissmodel][min_qmean_z]} data/swissmodel/{wildcards.gene_id} > {output} 2> {log}'
+        'python bin/swissmodel_select.py --seq_id {config[swissmodel][min_seq_id]} --qmean_z {config[swissmodel][min_qmean_z]} data/swissmodel/{wildcards.gene_id} > {output} 2> {log}'
