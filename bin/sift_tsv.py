@@ -16,6 +16,10 @@ def main(args):
         uniprot, protein = Path(sift_path).stem.split('_')
         with open(sift_path, 'r') as sift_file:
             for line in sift_file:
+                # Skip warning header lines
+                if line[:8] == 'WARNING!':
+                    continue
+
                 fields = line.strip().split('\t')
                 ref = fields[0][0]
                 alt = fields[0][-1]
