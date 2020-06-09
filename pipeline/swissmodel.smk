@@ -1,8 +1,10 @@
 """
 Rules for managing structure downloads from SWISS-MODEL
 """
-from snakemake.remote.HTTP import RemoteProvider as HTTPRemoteProvider
-HTTP = HTTPRemoteProvider()
+from limiting_http import RemoteProvider as RateLimitedHTTPRemoteProvider
+from limiting_http import RemoteObject
+RemoteObject.min_wait = 4
+HTTP = RateLimitedHTTPRemoteProvider()
 
 def get_swissmodel_file(wildcards):
     """
