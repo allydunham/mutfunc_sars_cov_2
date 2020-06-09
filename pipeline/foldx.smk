@@ -129,7 +129,7 @@ def get_foldx_models(wildcards):
     """
     models = []
     for gene in SWISSMODEL_IDS.keys():
-        model_table = checkpoints.swissmodel_select.get(id=gene).output[0]
+        model_table = checkpoints.swissmodel_select.get(gene_id=gene).output[0]
         mods = pd.read_csv(model_table, sep='\t', dtype={'model': str})
 
         if mods.model.empty:
