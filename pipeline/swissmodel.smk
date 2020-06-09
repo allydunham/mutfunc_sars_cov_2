@@ -3,7 +3,7 @@ Rules for managing structure downloads from SWISS-MODEL
 """
 from limiting_http import RemoteProvider as RateLimitedHTTPRemoteProvider
 from limiting_http import RemoteObject
-RemoteObject.min_wait = 4
+RemoteObject.min_wait = 10
 HTTP = RateLimitedHTTPRemoteProvider()
 
 def get_swissmodel_file(wildcards):
