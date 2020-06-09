@@ -50,6 +50,13 @@ rule all:
         "data/output/sift.tsv",
         "data/output/foldx.tsv"
 
+rule swissmodel_downloads:
+    """
+    Download all models
+    """
+    input:
+        [f'data/swissmodel/{i}.zip' for i in SWISSMODEL_IDS.keys()]
+
 rule setup_directories:
     """
     Setup initial project directory structure for all generated files. Assumes bin, src & docs
