@@ -53,7 +53,7 @@ rule swissmodel_unzip:
         touch data/swissmodel/{wildcards.gene_id}/.unzipped &>> {log}
         """
 
-checkpoint swissmodel_select:
+rule swissmodel_select:
     """
     Identify the best homology models to use for a protein
     """

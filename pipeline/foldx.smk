@@ -123,21 +123,29 @@ rule foldx_combine:
         python bin/foldx_combine.py --foldx data/foldx/{wildcards.structure}/processing/Raw_*_model_Repair.fxout --variants data/foldx/{wildcards.structure}/processing/individual_list_* --type=raw > data/foldx/{wildcards.structure}/raw.fxout 2>> {log}
         """
 
+checkpoint foldx_model_list:
+    """
+    Collate models required to be modelled by FoldX
+    """
+    input:
+        [f'data/swissmodel/{i}.models' for i in SWISSMODEL_IDS.keys()]
+
+    output:
+        'data/foldx/model.list'
+
+    log:
+        'logs/foldx_model_identification.log'
+
+    shell:
+        'python bin/foldx_model_list.py {input} > {output} 2> {log}'
+
 def get_foldx_models(wildcards):
     """
     Identify output files from selected models for FoldX to process
     """
-    models = []
-    for gene in SWISSMODEL_IDS.keys():
-        model_table = checkpoints.swissmodel_select.get(gene_id=gene).output[0]
-        mods = pd.read_csv(model_table, sep='\t', dtype={'model': str})
-
-        if mods.model.empty:
-            print(f'No good SWISS-MODEL models for {gene}', file=sys.stderr)
-            continue
-
-        for mod in mods.model:
-            models.append(f'{gene}_{mod}')
+    model_table = checkpoints.foldx_model_list.get().output[0]
+    with open('data/foldx/model.list', 'r') as model_file:
+        models = [i for i in model_file]
     return [f'data/foldx/{i}/average.fxout' for i in models]
 
 rule foldx_tsv:
