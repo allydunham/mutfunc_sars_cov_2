@@ -8,7 +8,7 @@ def get_swissmodel_file(wildcards):
     """
     Workout URL for each gene and return the correct remote file
     """
-    url = f"swissmodel.expasy.org/interactive/{SWISSMODEL_IDS[wildcards.id]}/models/report.zip"
+    url = f"swissmodel.expasy.org/interactive/{SWISSMODEL_IDS[wildcards.gene_id]}/models/report.zip"
     return HTTP.remote(url, keep_local=True)
 
 rule swissmodel_download:
@@ -19,10 +19,10 @@ rule swissmodel_download:
         get_swissmodel_file
 
     output:
-        'data/swissmodel/{id}.zip'
+        'data/swissmodel/{gene_id}.zip'
 
     log:
-        'logs/swissmodel_download/{id}.log'
+        'logs/swissmodel_download/{gene_id}.log'
 
     shell:
         "mv {input} {output} &> {log}"
@@ -32,22 +32,25 @@ rule swissmodel_unzip:
     Extract and format downloaded SWISS-MODEL report
     """
     input:
-        'data/swissmodel/{id}.zip'
+        'data/swissmodel/{gene_id}.zip'
 
     output:
-        directory('data/swissmodel/{id}'),
-        'data/swissmodel/{id}/.unzipped'
+        directory('data/swissmodel/{gene_id}'),
+        'data/swissmodel/{gene_id}/.unzipped'
+
+    wildcard_constraints:
+        gene_id="[A-Z0-9]*_[A-Za-z0-9]*"
 
     log:
-        'logs/swissmodel_unzip/{id}.log'
+        'logs/swissmodel_unzip/{gene_id}.log'
 
     shell:
         """
-        bsdtar --cd data/swissmodel/{wildcards.id} --strip-components=1 -xvf {input} &>> {log}
-        rm -r data/swissmodel/{wildcards.id}/report.html data/swissmodel/{wildcards.id}/images data/swissmodel/{wildcards.id}/js &>> {log}
-        mv data/swissmodel/{wildcards.id}/model/* data/swissmodel/{wildcards.id}/ &>> {log}
-        rm -r data/swissmodel/{wildcards.id}/model &>> {log}
-        touch data/swissmodel/{wildcards.id}/.unzipped &>> {log}
+        bsdtar --cd data/swissmodel/{wildcards.gene_id} --strip-components=1 -xvf {input} &>> {log}
+        rm -r data/swissmodel/{wildcards.gene_id}/report.html data/swissmodel/{wildcards.gene_id}/images data/swissmodel/{wildcards.gene_id}/js &>> {log}
+        mv data/swissmodel/{wildcards.gene_id}/model/* data/swissmodel/{wildcards.gene_id}/ &>> {log}
+        rm -r data/swissmodel/{wildcards.gene_id}/model &>> {log}
+        touch data/swissmodel/{wildcards.gene_id}/.unzipped &>> {log}
         """
 
 checkpoint swissmodel_select:
@@ -55,13 +58,13 @@ checkpoint swissmodel_select:
     Identify the best homology models to use for a protein
     """
     input:
-        'data/swissmodel/{id}/.unzipped'
+        'data/swissmodel/{gene_id}/.unzipped'
 
     output:
-        'data/swissmodel/{id}.models'
+        'data/swissmodel/{gene_id}.models'
 
     log:
-        'logs/swissmodel_select/{id}.log'
+        'logs/swissmodel_select/{gene_id}.log'
 
     shell:
-        'python bin/swissmodel_select.py --seq_id {config[swissmodel][min_seq_id]} --coverage {config[swissmodel][min_coverage]} --qmean_z {config[swissmodel][min_qmean_z]} data/swissmodel/{wildcards.id} > {output} 2> {log}'
+        'python bin/swissmodel_select.py --seq_id {config[swissmodel][min_seq_id]} --coverage {config[swissmodel][min_coverage]} --qmean_z {config[swissmodel][min_qmean_z]} data/swissmodel/{wildcards.gene_id} > {output} 2> {log}'
