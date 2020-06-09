@@ -46,7 +46,7 @@ rule swissmodel_unzip:
 
     shell:
         """
-        bsdtar --cd data/swissmodel/{wildcards.gene_id} --strip-components=1 -xvf {input} &>> {log}
+        tar --cd data/swissmodel/{wildcards.gene_id} --strip-components=1 -xvf {input} &>> {log}
         rm -r data/swissmodel/{wildcards.gene_id}/report.html data/swissmodel/{wildcards.gene_id}/images data/swissmodel/{wildcards.gene_id}/js &>> {log}
         mv data/swissmodel/{wildcards.gene_id}/model/* data/swissmodel/{wildcards.gene_id}/ &>> {log}
         rm -r data/swissmodel/{wildcards.gene_id}/model &>> {log}
