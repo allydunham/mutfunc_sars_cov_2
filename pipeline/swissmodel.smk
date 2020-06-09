@@ -46,10 +46,10 @@ rule swissmodel_unzip:
 
     shell:
         """
-        tar -C data/swissmodel/{wildcards.gene_id} --strip-components=1 -xvf {input} &>> {log}
-        rm -r data/swissmodel/{wildcards.gene_id}/report.html data/swissmodel/{wildcards.gene_id}/images data/swissmodel/{wildcards.gene_id}/js &>> {log}
-        mv data/swissmodel/{wildcards.gene_id}/model/* data/swissmodel/{wildcards.gene_id}/ &>> {log}
-        rm -r data/swissmodel/{wildcards.gene_id}/model &>> {log}
+        unzip -d data/swissmodel/{wildcards.gene_id} {input} &>> {log}
+        outdir=$(ls data/swissmodel/{wildcards.gene_id}) &>> {log}
+        mv "data/swissmodel/{wildcards.gene_id}/${{outdir}}/model/*" "data/swissmodel/{wildcards.gene_id}/ &>> {log}"
+        rm -r "data/swissmodel/{wildcards.gene_id}/${{outdir}}" &>> {log}
         touch data/swissmodel/{wildcards.gene_id}/.unzipped &>> {log}
         """
 
