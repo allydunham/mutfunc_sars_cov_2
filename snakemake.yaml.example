@@ -10,3 +10,5 @@ swissmodel:
   min_qmean_z: -4
   check_updates: False
 
+ptms:
+  phosphorylation: 'data/ptms/SuppTable_annotated_viral_phosphosites_revised.tsv'

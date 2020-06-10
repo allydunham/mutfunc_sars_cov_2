@@ -36,3 +36,19 @@ rule split_fasta:
 
     shell:
         'python bin/split_fasta.py -o data/fasta {input} &> {log}'
+
+rule ptms_tsv:
+    """
+    Generate output table of PTM sites
+    """
+    input:
+        config['ptms']['phosphorylation']
+
+    output:
+        'data/output/ptms.tsv'
+
+    log:
+        'logs/ptms_tsv.log'
+
+    shell:
+        'python bin/ptms_tsv.py --config snakemake.yaml'
