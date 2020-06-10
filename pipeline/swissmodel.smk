@@ -34,7 +34,7 @@ rule swissmodel_unzip:
     Extract and format downloaded SWISS-MODEL report
     """
     input:
-        'data/swissmodel/{gene_id}.zip'
+        'data/swissmodel/{gene_id}.zip' if config['swissmodel']['check_updates'] else ancient('data/swissmodel/{gene_id}.zip')
 
     output:
         directory('data/swissmodel/{gene_id}'),
