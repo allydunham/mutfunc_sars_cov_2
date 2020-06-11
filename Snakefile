@@ -8,7 +8,8 @@ import pandas as pd
 configfile: 'snakemake.yaml'
 localrules:
     all, split_fasta, foldx_variants, sift4g_variants, swissmodel_download,
-    swissmodel_unzip, swissmodel_select, sift_tsv, foldx_tsv, foldx_combine
+    swissmodel_unzip, swissmodel_select, sift_tsv, foldx_tsv, foldx_combine,
+    foldx_split
 # Should all of these be local?
 
 # List of genes expected from the Uniprot FASTA (TODO: automate/make this better)

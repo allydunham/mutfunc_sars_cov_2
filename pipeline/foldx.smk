@@ -145,7 +145,7 @@ def get_foldx_models(wildcards):
     """
     model_table = checkpoints.foldx_model_list.get().output[0]
     with open('data/foldx/model.list', 'r') as model_file:
-        models = [i for i in model_file]
+        models = [i.strip() for i in model_file]
     return [f'data/foldx/{i}/average.fxout' for i in models]
 
 rule foldx_tsv:
