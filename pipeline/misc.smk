@@ -60,4 +60,4 @@ rule ptms_tsv:
         'logs/ptms_tsv.log'
 
     shell:
-        'python bin/ptms_tsv.py --config snakemake.yaml'
+        'python bin/ptms_tsv.py --config snakemake.yaml > {output} 2> {log}'
