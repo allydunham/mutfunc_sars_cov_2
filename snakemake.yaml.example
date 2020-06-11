@@ -1,3 +1,6 @@
+general:
+  check_online_updates: False
+
 foldx:
   variants_per_run: 300
 
@@ -8,7 +11,6 @@ swissmodel:
   min_seq_id: 30
   min_coverage: 0
   min_qmean_z: -4
-  check_updates: False
 
 ptms:
   phosphorylation: 'data/ptms/SuppTable_annotated_viral_phosphosites_revised.tsv'

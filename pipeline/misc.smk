@@ -4,13 +4,22 @@ Miscalaneous rules
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
+def get_covid_genome(wildcards):
+    """
+    Identify genome fasta source, based on config
+    """
+    url = "ftp.uniprot.org/pub/databases/uniprot/pre_release/covid-19.fasta"
+    path = "data/fasta/uniprot_sars_cov2_genome.fa"
+    if not config['general']['check_online_updates'] and os.path.isfile(path):
+        return path
+    return HTTP.remote(url, keep_local=True)
+
 rule download_fasta:
     """
     Download UniProt SARS-CoV2 genome fasta
     """
     input:
-        FTP.remote("ftp.uniprot.org/pub/databases/uniprot/pre_release/covid-19.fasta",
-                   keep_local=True)
+        get_covid_genome
 
     output:
         "data/fasta/uniprot_sars_cov2_genome.fa"

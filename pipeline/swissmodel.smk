@@ -11,10 +11,9 @@ def get_swissmodel_file(wildcards):
     Workout URL for each gene and return the correct remote file
     """
     url = f"swissmodel.expasy.org/interactive/{SWISSMODEL_IDS[wildcards.gene_id]}/models/report.zip"
-    if (not config['swissmodel']['check_updates'] and 
-        os.path.isfile(f'data/swissmodel/{wildcards.gene_id}.zip')):
-        return f'data/swissmodel/{wildcards.gene_id}.zip'
-
+    path = f'data/swissmodel/{wildcards.gene_id}.zip'
+    if not config['general']['check_online_updates'] and os.path.isfile(path):
+        return path
     return HTTP.remote(url, keep_local=True)
 
 rule swissmodel_download:
