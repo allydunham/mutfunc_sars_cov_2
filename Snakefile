@@ -51,7 +51,8 @@ rule all:
     """
     input:
         "data/output/sift.tsv",
-        "data/output/foldx.tsv"
+        "data/output/foldx.tsv",
+        "data/output/ptms.tsv"
 
 rule swissmodel_downloads:
     """

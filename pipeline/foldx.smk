@@ -146,14 +146,16 @@ def get_foldx_models(wildcards):
     model_table = checkpoints.foldx_model_list.get().output[0]
     with open('data/foldx/model.list', 'r') as model_file:
         models = [i.strip() for i in model_file]
-    return [f'data/foldx/{i}/average.fxout' for i in models]
+    foldx_files = [f'data/foldx/{i}/average.fxout' for i in models]
+    model_files = set(f"data/swissmodel/{'_'.join(i.split('_')[:2])}.models" for i in models)
+    return {'foldx': foldx_files, 'models': list(model_files)}
 
 rule foldx_tsv:
     """
     Combine FoldX results from the selected models across all genes
     """
     input:
-        get_foldx_models
+        unpack(get_foldx_models)
 
     output:
         "data/output/foldx.tsv"
@@ -162,4 +164,4 @@ rule foldx_tsv:
         "logs/foldx_tsv.log"
 
     shell:
-        "python bin/foldx_tsv.py {input} > {output} 2> {log}"
+        "python bin/foldx_tsv.py {input.foldx} > {output} 2> {log}"
