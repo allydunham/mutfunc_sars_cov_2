@@ -4,6 +4,9 @@ Master pipeline for the COVID19 Mutfunc project
 import os
 import sys
 import pandas as pd
+from pathlib import Path
+from ruamel.yaml import YAML
+
 
 configfile: 'snakemake.yaml'
 localrules:
@@ -44,6 +47,7 @@ include: 'pipeline/misc.smk'
 include: 'pipeline/swissmodel.smk'
 include: 'pipeline/sift.smk'
 include: 'pipeline/foldx.smk'
+include: 'pipeline/complex.smk'
 
 rule all:
     """
@@ -70,7 +74,7 @@ rule setup_directories:
     run:
         # data
         shell('mkdir data && echo "mkdir data" || true')
-        dirs = ['foldx', 'sift', 'fasta', 'swissmodel', 'output']
+        dirs = ['foldx', 'sift', 'fasta', 'swissmodel', 'output', 'complex']
 
         for d in dirs:
             shell(f'mkdir data/{d} && echo "mkdir data/{d}" || true')
