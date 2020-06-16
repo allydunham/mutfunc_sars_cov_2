@@ -45,8 +45,8 @@ rule complex_wt_analysis:
     run:
         yaml = YAML(typ='safe')
         config = yaml.load(Path(input.yaml))
-        shell('mkdir data/complex/{wildcards.complex}/wt &> {log}')
-        shell(f"foldx --command=AnalyseComplex --pdb=model_Repair.pdb --pdb-dir=data/complex/{wildcards.complex} --clean-mode=3 --output-dir=data/complex/{wildcards.complex} --analyseComplexChains={config['chains']} &> {log}")
+        shell(f'mkdir data/complex/{wildcards.complex}/wt && echo "mkdir data" || true &> {log}')
+        shell(f"foldx --command=AnalyseComplex --pdb=model_Repair.pdb --pdb-dir=data/complex/{wildcards.complex} --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/wt --analyseComplexChains={config['chains']} &> {log}")
 
 rule complex_variants:
     """
@@ -93,7 +93,7 @@ def get_mutant_pdbs(wildcards):
     pdbs = expand('data/complex/{complex}/mutant_pdbs/model_Repair_{n}.pdb',
                   complex=wildcards.complex,
                   n=glob_wildcards(os.path.join(checkpoint_outdir, "model_Repair_{n}.pdb")).n)
-    return {'pdb': pdbs, yaml: f'data/complex/{wildcards.complex}/model.yaml'}
+    return {'pdb': pdbs, 'yaml': f'data/complex/{wildcards.complex}/model.yaml'}
 
 checkpoint complex_mut_analysis:
     """
@@ -112,8 +112,10 @@ checkpoint complex_mut_analysis:
     run:
         yaml = YAML(typ='safe')
         config = yaml.load(Path(input.yaml))
-        shell("basename {input.pdb} > data/complex/{wildcards.complex}/mutant_list 2> {log}")
-        shell("mkdir data/complex/{wildcards.complex}/mutant &> {log}")
+        with open(f'data/complex/{wildcards.complex}/mutant_list', 'w') as mutant_list:
+            for pdb in input.pdb:
+                print(Path(pdb).name, file=mutant_list)
+        shell(f'mkdir data/complex/{wildcards.complex}/mutant && echo "mkdir data" || true &> {log}')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/mutant --analyseComplexChains={config['chains']} &> {log}")
 
 def get_mutant_interface_files(wildcards):
@@ -147,7 +149,7 @@ rule complex_combine:
         'data/complex/{complex}/summary.tsv'
 
     log:
-        'logs/complex_combine/{complex.log}'
+        'logs/complex_combine/{complex}.log'
 
     shell:
         'echo "NOT IMPLEMENTED YET"'
@@ -157,10 +159,10 @@ rule complex_tsv:
     Combine complex FoldX results into one tsv
     """
     input:
-        indiv=['data/complex/{c}/indivdual_energies.tsv' for c in COMPLEXES],
-        interaction=['data/complex/{c}/interactions.tsv' for c in COMPLEXES],
-        interface=['data/complex/{c}/interface_residues.tsv' for c in COMPLEXES],
-        summary=['data/complex/{c}/summary.tsv' for c in COMPLEXES]
+        indiv=[f'data/complex/{c}/indivdual_energies.tsv' for c in COMPLEXES],
+        interaction=[f'data/complex/{c}/interactions.tsv' for c in COMPLEXES],
+        interface=[f'data/complex/{c}/interface_residues.tsv' for c in COMPLEXES],
+        summary=[f'data/complex/{c}/summary.tsv' for c in COMPLEXES]
 
     output:
         'data/output/complex.tsv'
