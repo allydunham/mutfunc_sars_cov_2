@@ -113,7 +113,8 @@ checkpoint complex_mut_analysis:
         yaml = YAML(typ='safe')
         config = yaml.load(Path(input.yaml))
         with open(f'data/complex/{wildcards.complex}/mutant_list', 'w') as mutant_list:
-            for pdb in input.pdb:
+            pdbs = sorted(input.pdb, key=lambda x: int(x.split('._')[-2]))
+            for pdb in pdbs:
                 print(Path(pdb).name, file=mutant_list)
         shell(f'mkdir data/complex/{wildcards.complex}/mutant && echo "mkdir data" || true &> {log}')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/mutant --analyseComplexChains={config['chains']} &> {log}")
@@ -133,8 +134,6 @@ def get_mutant_interface_files(wildcards):
         'mutants': f'data/complex/{wildcards.complex}/individual_list'
     }
 
-# TODO - Need to puyt together python scripts for these rules
-# TODO - Combine complex_combine and foldx_combine scripts?
 rule complex_combine:
     """
     Combine output files from running complex_mut_analysis
@@ -143,16 +142,19 @@ rule complex_combine:
         unpack(get_mutant_interface_files)
 
     output:
-        'data/complex/{complex}/indivdual_energies.tsv',
-        'data/complex/{complex}/interactions.tsv',
-        'data/complex/{complex}/interface_residues.tsv',
-        'data/complex/{complex}/summary.tsv'
+        indiv='data/complex/{complex}/indivdual_energies.tsv',
+        interaction='data/complex/{complex}/interactions.tsv',
+        interface='data/complex/{complex}/interface_residues.tsv',
+        summary='data/complex/{complex}/summary.tsv'
 
     log:
         'logs/complex_combine/{complex}.log'
 
-    shell:
-        'echo "NOT IMPLEMENTED YET"'
+    run:
+        shell(f"python bin/complex_combine.py {input.mutants} {input.indiv} > {output.indiv} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.interaction} > {output.interaction} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.interface} > {output.interface} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.summary} > {output.summary} 2> {log}")
 
 rule complex_tsv:
     """
