@@ -113,7 +113,7 @@ checkpoint complex_mut_analysis:
         yaml = YAML(typ='safe')
         config = yaml.load(Path(input.yaml))
         with open(f'data/complex/{wildcards.complex}/mutant_list', 'w') as mutant_list:
-            pdbs = sorted(input.pdb, key=lambda x: int(x.split('._')[-2]))
+            pdbs = sorted(input.pdb, key=lambda x: int(x.replace('.', '_').split('_')[-2]))
             for pdb in pdbs:
                 print(Path(pdb).name, file=mutant_list)
         shell(f'mkdir data/complex/{wildcards.complex}/mutant && echo "mkdir data" || true &> {log}')
