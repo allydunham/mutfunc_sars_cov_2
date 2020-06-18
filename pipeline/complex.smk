@@ -130,7 +130,7 @@ def get_mutant_interface_files(wildcards):
         'indiv': [f'{root}/Indiv_energies_model_Repair_{i}_AC.fxout' for i in n],
         'interaction': [f'{root}/Interaction_model_Repair_{i}_AC.fxout' for i in n],
         'interface': [f'{root}/Interface_Residues_model_Repair_{i}_AC.fxout' for i in n],
-        'summary': [f'{root}/Summary_energies_model_Repair_{i}_AC.fxout' for i in n],
+        'summary': [f'{root}/Summary_model_Repair_{i}_AC.fxout' for i in n],
         'mutants': f'data/complex/{wildcards.complex}/individual_list'
     }
 
