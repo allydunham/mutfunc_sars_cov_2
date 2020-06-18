@@ -161,10 +161,9 @@ rule complex_tsv:
     Combine complex FoldX results into one tsv
     """
     input:
-        indiv=[f'data/complex/{c}/indivdual_energies.tsv' for c in COMPLEXES],
         interaction=[f'data/complex/{c}/interactions.tsv' for c in COMPLEXES],
         interface=[f'data/complex/{c}/interface_residues.tsv' for c in COMPLEXES],
-        summary=[f'data/complex/{c}/summary.tsv' for c in COMPLEXES]
+        yaml=[f'data/complex/{c}/model.yaml' for c in COMPLEXES]
 
     output:
         'data/output/complex.tsv'
@@ -173,4 +172,4 @@ rule complex_tsv:
         'logs/complex_tsv.log'
 
     shell:
-        'echo "NOT IMPLEMENTED YET"'
+        f'python bin/complex_tsv.py {" ".join(f"data/complex/{c}") for c in COMPLEXES} > {{output}} 2> {{log}}'
