@@ -35,6 +35,8 @@ def main(args):
     """Main"""
     complex_dfs = [import_complex_dir(d) for d in args.dirs]
     complexes = pd.concat(complex_dfs)
+    sort_cols = ['uniprot1', 'protein1', 'uniprot2', 'protein2', 'mut_chain', 'position', 'mut']
+    complexes = complexes.sort_values(axis='rows', by=sort_cols).reset_index(drop=True)
     complexes.to_csv(sys.stdout, sep='\t', index=False)
 
 def parse_args():

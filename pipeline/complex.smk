@@ -172,4 +172,4 @@ rule complex_tsv:
         'logs/complex_tsv.log'
 
     shell:
-        f'python bin/complex_tsv.py {" ".join(f"data/complex/{c}") for c in COMPLEXES} > {{output}} 2> {{log}}'
+        f'python bin/complex_tsv.py {" ".join(f"data/complex/{c}" for c in COMPLEXES)} > {{output}} 2> {{log}}'
