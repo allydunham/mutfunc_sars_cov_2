@@ -45,7 +45,7 @@ rule complex_wt_analysis:
     run:
         yaml = YAML(typ='safe')
         config = yaml.load(Path(input.yaml))
-        shell(f'mkdir data/complex/{wildcards.complex}/wt && echo "mkdir data" || true &> {log}')
+        shell(f'mkdir data/complex/{wildcards.complex}/wt &> {log} && echo "mkdir data" &> {log} || true')
         shell(f"foldx --command=AnalyseComplex --pdb=model_Repair.pdb --pdb-dir=data/complex/{wildcards.complex} --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/wt --analyseComplexChains={config['chains']} &> {log}")
 
 rule complex_variants:
@@ -116,7 +116,7 @@ checkpoint complex_mut_analysis:
             pdbs = sorted(input.pdb, key=lambda x: int(x.replace('.', '_').split('_')[-2]))
             for pdb in pdbs:
                 print(Path(pdb).name, file=mutant_list)
-        shell(f'mkdir data/complex/{wildcards.complex}/mutant && echo "mkdir data" || true &> {log}')
+        shell(f'mkdir data/complex/{wildcards.complex}/mutant &> {log} && echo "mkdir data/complex/{wildcards.complex}/mutant" &> {log} || true')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/mutant --analyseComplexChains={config['chains']} &> {log}")
 
 def get_mutant_interface_files(wildcards):
