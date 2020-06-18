@@ -47,7 +47,7 @@ def combine_individual_energies(mutations, foldx_paths):
     print('chain', 'position', 'wt', 'mut', 'group', 'total_energy',
           'backbone_hbond', 'sidechain_hbond', 'van_der_waals', 'electrostatics',
           'solvation_polar', 'solvation_hydrophobic', 'van_der_waals_clashes',
-          'entropy_sidechain', 'entropy_mainchain', 'sloop_entropy', 'sloop_entropy',
+          'entropy_sidechain', 'entropy_mainchain', 'sloop_entropy', 'mloop_entropy',
           'cis_bond', 'torsional_clash', 'backbone_clash', 'helix_dipole',
           'water_bridge', 'disulfide', 'electrostatic_kon', 'partial_covalent_bonds', 'energy_ionisation', 'entropy_complex', sep='\t')
     for path in foldx_paths:
