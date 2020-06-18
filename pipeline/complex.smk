@@ -142,7 +142,7 @@ rule complex_combine:
         unpack(get_mutant_interface_files)
 
     output:
-        indiv='data/complex/{complex}/indivdual_energies.tsv',
+        indiv='data/complex/{complex}/individual_energies.tsv',
         interaction='data/complex/{complex}/interactions.tsv',
         interface='data/complex/{complex}/interface_residues.tsv',
         summary='data/complex/{complex}/summary.tsv'
