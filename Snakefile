@@ -7,6 +7,10 @@ import pandas as pd
 from pathlib import Path
 from ruamel.yaml import YAML
 
+from limiting_http import RemoteProvider as RateLimitedHTTPRemoteProvider
+from limiting_http import RemoteObject
+RemoteObject.min_wait = 10
+HTTP = RateLimitedHTTPRemoteProvider()
 
 configfile: 'snakemake.yaml'
 localrules:
