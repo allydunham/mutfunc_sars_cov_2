@@ -11,12 +11,12 @@ def get_complex_file(wildcards):
     Workout URL for each gene and return the correct remote file
     """
     yaml = YAML(typ='safe')
-    config = yaml.load(Path(f'data/complex/{wildcards.complex}/model.yaml'))
+    pdb_conf = yaml.load(Path(f'data/complex/{wildcards.complex}/model.yaml'))
     path = f'data/complex/{wildcards.complex}/model.pdb'
-    if config['url'] is None:
+    if pdb_conf['url'] is None:
         return path
-    url = config['url'].replace('https://', '')
-    if not urlnot config['general']['check_online_updates'] and os.path.isfile(path):
+    url = pdb_conf['url'].replace('https://', '')
+    if not config['general']['check_online_updates'] and os.path.isfile(path):
         return path
     return HTTP.remote(url, keep_local=True)
 
@@ -141,7 +141,7 @@ checkpoint complex_mut_analysis:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
 
     run:
-        root = f'data/complex/{wildcards.complex}/{wildcards.interface}
+        root = f'data/complex/{wildcards.complex}/{wildcards.interface}'
         with open(f'{root}/mutant_list', 'w') as mutant_list:
             pdbs = sorted(input, key=lambda x: int(x.replace('.', '_').split('_')[-2]))
             for pdb in pdbs:
