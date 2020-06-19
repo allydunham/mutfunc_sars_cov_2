@@ -14,10 +14,12 @@ HTTP = RateLimitedHTTPRemoteProvider()
 
 configfile: 'snakemake.yaml'
 localrules:
-    all, split_fasta, foldx_variants, sift4g_variants, swissmodel_download,
-    swissmodel_unzip, swissmodel_select, sift_tsv, foldx_tsv, foldx_combine,
-    foldx_split
-# Should all of these be local?
+    all, download_fasta, swissmodel_download, complex_download, 
+    ptms_tsv, foldx_tsv, sift_tsv, complex_tsv,
+    split_fasta, sift4g_variants,
+    swissmodel_unzip, swissmodel_select, 
+    foldx_variants, foldx_split, foldx_combine,
+    complex_variants, complex_combine
 
 # List of genes expected from the Uniprot FASTA (TODO: automate/make this better)
 GENES = [
