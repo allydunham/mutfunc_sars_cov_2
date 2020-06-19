@@ -1,0 +1,10 @@
+url: null
+chains:
+  A:
+    uniprot: 'P0DTD1'
+    name: 'nsp9'
+  B:
+    uniprot: 'P0DTD1'
+    name: 'nsp9'
+interfaces:
+  - 'A_B'

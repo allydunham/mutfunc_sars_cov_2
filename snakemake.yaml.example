@@ -14,3 +14,7 @@ swissmodel:
 
 ptms:
   phosphorylation: 'data/ptms/SuppTable_annotated_viral_phosphosites_revised.tsv'
+
+complex:
+  variants_per_run: 500
+  
