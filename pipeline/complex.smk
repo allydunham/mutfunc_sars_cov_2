@@ -36,7 +36,6 @@ rule complex_download:
     shell:
         "mv {input} {output} &> {log}"
 
-
 rule complex_repair:
     """
     Repair complex PDB file to use with FoldX
