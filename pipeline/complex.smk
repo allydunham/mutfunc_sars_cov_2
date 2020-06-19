@@ -147,7 +147,7 @@ checkpoint complex_mut_analysis:
             for pdb in pdbs:
                 print(Path(pdb).name, file=mutant_list)
         shell(f'mkdir {root}/mutant &> {log} && echo "mkdir {root}/mutant" &> {log} || true')
-        shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interfaces}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interfaces}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interfaces}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
+        shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
 
 def get_mutant_interface_files(wildcards):
     """
