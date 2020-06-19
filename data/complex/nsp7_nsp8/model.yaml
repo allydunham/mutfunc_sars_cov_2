@@ -1,9 +1,12 @@
 url: 'https://swissmodel.expasy.org/interactive/JhWqVj/models/01.pdb'
 chains:
-  A:
+  K:
     uniprot: 'P0DTD1'
     name: 'nsp7'
-  B:
+  P:
+    uniprot: 'P0DTD1'
+    name: 'nsp7'
+  O:
     uniprot: 'P0DTD1'
     name: 'nsp8'
 interfaces:
