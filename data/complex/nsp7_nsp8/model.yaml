@@ -1,4 +1,5 @@
 url: 'https://swissmodel.expasy.org/interactive/JhWqVj/models/01.pdb'
+model: '2ahm.1'
 chains:
   K:
     uniprot: 'P0DTD1'

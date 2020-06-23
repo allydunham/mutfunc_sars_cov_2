@@ -1,4 +1,5 @@
 url: 'https://swissmodel.expasy.org/interactive/GqQg8A/models/01.pdb'
+model: '6w4b.1'
 chains:
   A:
     uniprot: 'P0DTD1'
