@@ -8,7 +8,7 @@ import pandas as pd
 from ruamel.yaml import YAML
 from pathlib import Path
 
-def import_complex_dir(path, chains):
+def import_complex_dir(path, chains, model):
     """
     Import tables from an AnalyseComplex output directory
     """
@@ -18,13 +18,18 @@ def import_complex_dir(path, chains):
                                        axis='columns')
     interface = pd.read_csv(f'{path}/interface_residues.tsv', sep='\t')
     comb = pd.merge(interactions, interface, how='outer', on=['chain', 'position', 'wt', 'mut'])
-    comb = comb.rename({'chain': 'mut_chain'}, axis='columns')
-    comb['uniprot1'] = [chains[chain]['uniprot'] for chain in comb.chain1]
-    comb['protein1'] = [chains[chain]['protein'] for chain in comb.chain1]
-    comb['uniprot2'] = [chains[chain]['uniprot'] for chain in comb.chain2]
-    comb['protein2'] = [chains[chain]['protein'] for chain in comb.chain2]
-    cols = ['uniprot1', 'protein1', 'chain1', 'uniprot2', 'protein2', 'chain2']
+
+    comb['uniprot'] = [chains[chain]['uniprot'] for chain in comb.chain]
+    comb['protein'] = [chains[chain]['name'] for chain in comb.chain]
+    comb['model'] = model
+    comb['int_chain'] = [chain1 if mut == chain2 else chain2 for mut, chain1, chain2 in
+                         zip(comb.chain, comb.chain1, comb.chain2)]
+    comb['int_uniprot'] = [chains[chain]['uniprot'] for chain in comb.int_chain]
+    comb['int_protein'] = [chains[chain]['name'] for chain in comb.int_chain]
+    cols = ['uniprot', 'protein', 'position', 'wt', 'mut',
+            'int_uniprot','int_protein', 'model', 'chain', 'int_chain']
     comb = comb[cols + [c for c in comb.columns if not c in cols]]
+    comb = comb.drop(['chain1', 'chain2'], axis='columns')
     return comb
 
 def main(args):
@@ -35,10 +40,11 @@ def main(args):
         path = Path(yaml)
         yaml = yaml_loader.load(path)
         for interface in yaml['interfaces']:
-            complex_dfs.append(import_complex_dir(f'{path.parent}/{interface}'), yaml['chains'])
+            complex_dfs.append(import_complex_dir(f'{path.parent}/{interface}', yaml['chains'],
+                                                  yaml['model']))
 
     complexes = pd.concat(complex_dfs)
-    sort_cols = ['uniprot1', 'protein1', 'uniprot2', 'protein2', 'mut_chain', 'position', 'mut']
+    sort_cols = ['uniprot', 'protein', 'position', 'mut', 'int_uniprot', 'int_protein']
     complexes = complexes.sort_values(axis='rows', by=sort_cols).reset_index(drop=True)
     complexes.to_csv(sys.stdout, sep='\t', index=False)
 

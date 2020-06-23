@@ -3,7 +3,8 @@ Rules to analyse interface interactions using FoldX's AnalyseComplex command
 """
 from snakemake.exceptions import MissingInputException
 
-COMPLEXES = ['nsp9_nsp9', 'nsp7_nsp8']
+COMPLEXES = ['nsp9_nsp9', 'nsp7_nsp8', 'nsp7_nsp8_pol', 'nsp10_nsp14',
+             'nsp10_nsp16', 'ace2_spike']
 
 # TODO add possibility of protocols other than https
 def get_complex_file(wildcards):
