@@ -1,0 +1,11 @@
+url: 'https://swissmodel.expasy.org/interactive/1zTGNp/models/01.pdb'
+model: '5c8s.1'
+chains:
+  A:
+    uniprot: 'P0DTD1'
+    name: 'nsp14'
+  B:
+    uniprot: 'P0DTD1'
+    name: 'nsp10'
+interfaces:
+  - 'A_B'

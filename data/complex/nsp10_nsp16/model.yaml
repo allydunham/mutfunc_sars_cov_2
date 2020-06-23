@@ -1,0 +1,11 @@
+url: 'https://swissmodel.expasy.org/interactive/TGmtw3/models/02.pdb'
+model: '6w75.1'
+chains:
+  A:
+    uniprot: 'P0DTD1'
+    name: 'nsp16'
+  B:
+    uniprot: 'P0DTD1'
+    name: 'nsp10'
+interfaces:
+  - 'A_B'

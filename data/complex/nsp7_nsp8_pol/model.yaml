@@ -1,0 +1,18 @@
+url: 'https://swissmodel.expasy.org/interactive/4Cxey4/models/01.pdb'
+model: '7btf.1'
+chains:
+  B:
+    uniprot: 'P0DTD1'
+    name: 'nsp7'
+  A:
+    uniprot: 'P0DTD1'
+    name: 'nsp12'
+  C:
+    uniprot: 'P0DTD1'
+    name: 'nsp8'
+  D:
+    uniprot: 'P0DTD1'
+    name: 'nsp8'
+interfaces:
+  - 'A_C'
+  - 'B_C'

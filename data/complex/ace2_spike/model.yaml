@@ -1,0 +1,11 @@
+url: 'https://swissmodel.expasy.org/interactive/HLkhkP/models/03.pdb'
+model: '6m0j.1'
+chains:
+  A:
+    uniprot: 'Q9BYF1'
+    name: 'ace2'
+  B:
+    uniprot: 'P0DTC2'
+    name: 's'
+interfaces:
+  - 'A_B'
