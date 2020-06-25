@@ -67,16 +67,17 @@ def combine_individual_energies(mutations, foldx_paths):
             print(mutation.chain, mutation.position, mutation.wt, mutation.mut,
                   *line.strip().split('\t')[1:], sep='\t')
 
-def combine_interface_residues(mutations, foldx_paths):
+def combine_interface_residues(mutations, foldx_paths, wt_residues):
     """Combine Interface Residue files"""
-    print('chain', 'position', 'wt', 'mut', 'interface_residues', sep='\t')
+    print('chain', 'position', 'wt', 'mut', 'residues_lost', 'interface_residues', sep='\t')
     for path in foldx_paths:
         num = int(path.split('_')[-2])
         mutation = mutations[num - 1]
         with open(path, 'r') as foldx_file:
             interface_residues = foldx_file.readlines()[-1].strip().split('\t')
+        residues_lost = wt_residues - set(x[1:] for x in interface_residues)
         print(mutation.chain, mutation.position, mutation.wt, mutation.mut,
-              ','.join(interface_residues), sep='\t')
+              ','.join(residues_lost), ','.join(interface_residues), sep='\t')
 
 def combine_summary(mutations, foldx_paths):
     """Combine Summary files"""
@@ -106,8 +107,13 @@ def main(args):
     files = [f for f in os.listdir(root) if f.endswith('.fxout')]
     files = sorted(files, key=lambda x: int(x.split('_')[-2]))
     if args.type == 'interface':
+        if not args.wt_residues:
+            raise ValueError('Must provide WT interfaces if processing interface residues')
+        with open(args.wt_residues, 'r') as wt_file:
+            wt_residues = set(x[1:] for x in wt_file.readlines()[-1].strip().split('\t'))
+
         files = [f'{root}/{f}' for f in files if INTERFACE_RE.match(f)]
-        combine_interface_residues(mutations, files)
+        combine_interface_residues(mutations, files, wt_residues)
 
     elif args.type == 'interaction':
         files = [f'{root}/{f}' for f in files if INTERACTION_RE.match(f)]
@@ -133,6 +139,8 @@ def parse_args():
     parser.add_argument('foldx', metavar='F', help="FoldX output directory")
     parser.add_argument('type', metavar='T', help="Type of file to process",
                         choices=('interface', 'interaction', 'indiv', 'summary'))
+
+    parser.add_argument('--wt_residues', '-w', help="WT Interface Residues File")
 
     return parser.parse_args()
 

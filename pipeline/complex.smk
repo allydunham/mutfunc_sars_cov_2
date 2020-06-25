@@ -167,7 +167,8 @@ def get_mutant_interface_files(wildcards):
         'interaction': [f'{root}/Interaction_model_Repair_{i}_AC.fxout' for i in n],
         'interface': [f'{root}/Interface_Residues_model_Repair_{i}_AC.fxout' for i in n],
         'summary': [f'{root}/Summary_model_Repair_{i}_AC.fxout' for i in n],
-        'mutants': f'data/complex/{wildcards.complex}/{wildcards.interface}/individual_list'
+        'mutants': f'data/complex/{wildcards.complex}/{wildcards.interface}/individual_list',
+        'wt_residues': f'data/complex/{wildcards.complex}/{wildcards.interface}/wt/Interface_Residues_model_Repair_AC.fxout',
     }
 
 rule complex_combine:
@@ -189,7 +190,7 @@ rule complex_combine:
     run:
         shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant indiv > {output.indiv} 2> {log}")
         shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant interaction > {output.interaction} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant interface > {output.interface} 2> {log}")
+        shell(f"python bin/complex_combine.py -w {input.wt_residues} {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant interface > {output.interface} 2> {log}")
         shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant summary > {output.summary} 2> {log}")
 
 def get_complex_tsv_files(complex):
