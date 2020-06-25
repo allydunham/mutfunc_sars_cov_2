@@ -61,3 +61,22 @@ rule ptms_tsv:
 
     shell:
         'python bin/ptms_tsv.py --config snakemake.yaml > {output} 2> {log}'
+
+rule summary_tsv:
+    """
+    Generate summary output table
+    """
+    input:
+        sift="data/output/sift.tsv",
+        foldx="data/output/foldx.tsv",
+        ptm="data/output/ptms.tsv",
+        complex="data/output/complex.tsv"
+
+    output:
+        "data/output/summary.tsv"
+
+    log:
+        "logs/summary_tsv.log"
+
+    shell:
+        "python bin/summary_tsv.py {input.sift} {input.foldx} {input.ptm} {input.complex} > {output} 2> {log}"

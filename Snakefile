@@ -14,10 +14,10 @@ HTTP = RateLimitedHTTPRemoteProvider()
 
 configfile: 'snakemake.yaml'
 localrules:
-    all, download_fasta, swissmodel_download, complex_download, 
+    all, download_fasta, swissmodel_download, complex_download,
     ptms_tsv, foldx_tsv, sift_tsv, complex_tsv,
     split_fasta, sift4g_variants,
-    swissmodel_unzip, swissmodel_select, 
+    swissmodel_unzip, swissmodel_select,
     foldx_variants, foldx_split, foldx_combine,
     complex_variants, complex_combine
 
@@ -63,7 +63,8 @@ rule all:
         "data/output/sift.tsv",
         "data/output/foldx.tsv",
         "data/output/ptms.tsv",
-        "data/output/complex.tsv"
+        "data/output/complex.tsv",
+        "data/output/summary.tsv"
 
 rule swissmodel_downloads:
     """
