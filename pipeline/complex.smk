@@ -181,10 +181,10 @@ rule complex_combine:
         'logs/complex_combine/{complex}_{interface}.log'
 
     run:
-        shell(f"python bin/complex_combine.py {input.mutants} {input.indiv} > {output.indiv} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} {input.interaction} > {output.interaction} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} {input.interface} > {output.interface} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} {input.summary} > {output.summary} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface} indiv > {output.indiv} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface} interaction > {output.interaction} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface} interface > {output.interface} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface} summary > {output.summary} 2> {log}")
 
 def get_complex_tsv_files(complex):
     """

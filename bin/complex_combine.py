@@ -2,11 +2,18 @@
 """
 Combine output files from batch FoldX AnalyseComplex command.
 Files must be named as FoldX names them - e.g. Interaction_NAME(_Repair)_N_AC.fxout where N is the
-PDB number in PDB list. The processing to use will determined from filenames.
+PDB number in PDB list. This allows the correct files to be detected for the desired type.
 """
+import os
+import re
 import argparse
 from dataclasses import dataclass
 from pathlib import Path
+
+INTERFACE_RE = re.compile('^Interface_Residues_.*(_Repair)?_[0-9]*_AC.fxout$')
+INTERACTION_RE = re.compile('^Interaction_.*(_Repair)?_[0-9]*_AC.fxout$')
+INDIV_RE = re.compile('^Indiv_energies_.*(_Repair)?_[0-9]*_AC.fxout$')
+SUMMARY_RE = re.compile('^Summary_.*(_Repair)?_[0-9]*_AC.fxout$')
 
 @dataclass
 class Mutation:
@@ -84,20 +91,6 @@ def combine_summary(mutations, foldx_paths):
         print(mutation.chain, mutation.position, mutation.wt, mutation.mut,
               *summary[2:], sep='\t')
 
-def detect_filetype(*files):
-    """
-    Detect FoldX filetype from the filenames
-    """
-    filetype = None
-    for file in files:
-        file = Path(file).stem
-        new_filetype = file.split('_')[0]
-        if filetype is None:
-            filetype = new_filetype
-        if not filetype == new_filetype:
-            raise ValueError(f'Files are not the same type: found {filetype} and {new_filetype}')
-    return filetype.lower()
-
 def read_mutations(path):
     """
     Read mutations from a FoldX individual list file
@@ -108,16 +101,26 @@ def read_mutations(path):
 
 def main(args):
     """Main"""
-    filetype = detect_filetype(*args.foldx)
     mutations = read_mutations(args.mutations)
-    if filetype == 'interface':
-        combine_interface_residues(mutations, args.foldx)
-    elif filetype == 'interaction':
-        combine_interaction(mutations, args.foldx)
-    elif filetype == 'indiv':
-        combine_individual_energies(mutations, args.foldx)
-    elif filetype == 'summary':
-        combine_summary(mutations, args.foldx)
+    root = args.foldx.rstrip("/")
+    files = [f for f in os.listdir(root) if f.endswith('.fxout')]
+    files = sorted(files, key=lambda x: int(x.split('_')[-2]))
+    if args.type == 'interface':
+        files = [f'{root}/{f}' for f in files if INTERFACE_RE.match(f)]
+        combine_interface_residues(mutations, files)
+
+    elif args.type == 'interaction':
+        files = [f'{root}/{f}' for f in files if INTERACTION_RE.match(f)]
+        combine_interaction(mutations, files)
+
+    elif args.type == 'indiv':
+        files = [f'{root}/{f}' for f in files if INDIV_RE.match(f)]
+        combine_individual_energies(mutations, files)
+
+    elif args.type == 'summary':
+        files = [f'{root}/{f}' for f in files if SUMMARY_RE.match(f)]
+        combine_summary(mutations, files)
+
     else:
         raise ValueError('Unknown type detected')
 
@@ -127,7 +130,9 @@ def parse_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('mutations', metavar='M', help="Individual list file")
-    parser.add_argument('foldx', metavar='F', nargs='+', help="FoldX output files")
+    parser.add_argument('foldx', metavar='F', help="FoldX output directory")
+    parser.add_argument('type', metavar='T', help="Type of file to process",
+                        choices=('interface', 'interaction', 'indiv', 'summary'))
 
     return parser.parse_args()
 
