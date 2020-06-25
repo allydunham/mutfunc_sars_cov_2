@@ -162,13 +162,17 @@ def get_mutant_interface_files(wildcards):
     checkpoint_outdir = checkpoints.complex_mut_analysis.get(**wildcards).output[0]
     n = glob_wildcards(os.path.join(checkpoint_outdir, "Summary_model_Repair_{n}_AC.fxout")).n
     root = f'data/complex/{wildcards.complex}/{wildcards.interface}/mutant'
+    wt_root = f'data/complex/{wildcards.complex}/{wildcards.interface}/wt'
     return {
         'indiv': [f'{root}/Indiv_energies_model_Repair_{i}_AC.fxout' for i in n],
         'interaction': [f'{root}/Interaction_model_Repair_{i}_AC.fxout' for i in n],
         'interface': [f'{root}/Interface_Residues_model_Repair_{i}_AC.fxout' for i in n],
         'summary': [f'{root}/Summary_model_Repair_{i}_AC.fxout' for i in n],
         'mutants': f'data/complex/{wildcards.complex}/{wildcards.interface}/individual_list',
-        'wt_residues': f'data/complex/{wildcards.complex}/{wildcards.interface}/wt/Interface_Residues_model_Repair_AC.fxout',
+        'wt_interface': f'{wt_root}/Interface_Residues_model_Repair_AC.fxout',
+        'wt_interaction': f'{wt_root}/Interaction_model_Repair_AC.fxout',
+        'wt_indiv': f'{wt_root}/Indiv_energies_model_Repair_AC.fxout',
+        'wt_summary': f'{wt_root}/Summary_model_Repair_AC.fxout'
     }
 
 rule complex_combine:
@@ -188,10 +192,10 @@ rule complex_combine:
         'logs/complex_combine/{complex}_{interface}.log'
 
     run:
-        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant indiv > {output.indiv} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant interaction > {output.interaction} 2> {log}")
-        shell(f"python bin/complex_combine.py -w {input.wt_residues} {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant interface > {output.interface} 2> {log}")
-        shell(f"python bin/complex_combine.py {input.mutants} data/complex/{wildcards.complex}/{wildcards.interface}/mutant summary > {output.summary} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.wt_indiv} data/complex/{wildcards.complex}/{wildcards.interface}/mutant > {output.indiv} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.wt_interaction} data/complex/{wildcards.complex}/{wildcards.interface}/mutant > {output.interaction} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.wt_interface} data/complex/{wildcards.complex}/{wildcards.interface}/mutant > {output.interface} 2> {log}")
+        shell(f"python bin/complex_combine.py {input.mutants} {input.wt_summary} data/complex/{wildcards.complex}/{wildcards.interface}/mutant > {output.summary} 2> {log}")
 
 def get_complex_tsv_files(complex):
     """
