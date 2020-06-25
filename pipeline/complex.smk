@@ -70,6 +70,9 @@ rule complex_wt_analysis:
         'data/complex/{complex}/{interface}/wt/Interface_Residues_model_Repair_AC.fxout',
         'data/complex/{complex}/{interface}/wt/Summary_model_Repair_AC.fxout'
 
+    resources:
+        mem_mb = 8000
+
     log:
         'logs/complex_wt_analysis/{complex}_{interface}.log'
 
@@ -136,6 +139,9 @@ checkpoint complex_mut_analysis:
     output:
         directory('data/complex/{complex}/{interface}/mutant'),
         'data/complex/{complex}/{interface}/mutant_list'
+
+    resources:
+        mem_mb = 16000
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
