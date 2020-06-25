@@ -36,12 +36,16 @@ def main(args):
     phospho.loc[phospho.protein == 'N', 'protein'] = 'NC'
     phospho.protein = phospho.protein.str.lower()
     phospho['uniprot'] = [UNIPROT_IDS[i.lower()] for i in phospho.protein]
+    phospho = phospho.rename(columns={'protein': 'name'})
+    phospho['wt'] = phospho.position.str.get(0)
+    phospho['position'] = phospho.position.str.slice(start=1).astype(int)
+    phospho['ptm'] = 'phosphosite'
 
-    cols = phospho.columns.tolist()
-    cols = cols[-1:] + cols[:-1]
+    cols = ['uniprot', 'name', 'position', 'wt', 'ptm', 'experiment', 'ala_score', 'asp_score',
+            'glu_score', 'n_seq', 'kinase1', 'kinase1_p', 'kinase2', 'kinase2_p',
+            'secondary_structure', 'relative_asa']
     phospho = phospho[cols]
     phospho.to_csv(sys.stdout, sep='\t', index=False)
-
 
 def parse_args():
     """Process input arguments"""
