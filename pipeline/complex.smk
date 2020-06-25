@@ -141,7 +141,7 @@ checkpoint complex_mut_analysis:
         'data/complex/{complex}/{interface}/mutant_list'
 
     resources:
-        mem_mb = 16000
+        mem_mb = 32000
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
