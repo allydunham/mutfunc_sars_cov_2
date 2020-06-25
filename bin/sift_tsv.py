@@ -9,7 +9,7 @@ def main(args):
     """
     Combine output from passed SIFT4G output files
     """
-    print('uniprot_id', 'protein_name', 'position', 'ref', 'alt',
+    print('uniprot', 'name', 'position', 'ref', 'alt',
           'sift_prediction', 'sift_score', 'sift_median', 'num_aa',
           'num_seq', sep='\t')
     for sift_path in args.sift:

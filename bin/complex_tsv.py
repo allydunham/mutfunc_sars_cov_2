@@ -20,14 +20,14 @@ def import_complex_dir(path, chains, model):
     comb = pd.merge(interactions, interface, how='outer', on=['chain', 'position', 'wt', 'mut'])
 
     comb['uniprot'] = [chains[chain]['uniprot'] for chain in comb.chain]
-    comb['protein'] = [chains[chain]['name'] for chain in comb.chain]
+    comb['name'] = [chains[chain]['name'] for chain in comb.chain]
     comb['model'] = model
     comb['int_chain'] = [chain1 if mut == chain2 else chain2 for mut, chain1, chain2 in
                          zip(comb.chain, comb.chain1, comb.chain2)]
     comb['int_uniprot'] = [chains[chain]['uniprot'] for chain in comb.int_chain]
-    comb['int_protein'] = [chains[chain]['name'] for chain in comb.int_chain]
-    cols = ['uniprot', 'protein', 'position', 'wt', 'mut',
-            'int_uniprot','int_protein', 'model', 'chain', 'int_chain']
+    comb['int_name'] = [chains[chain]['name'] for chain in comb.int_chain]
+    cols = ['uniprot', 'name', 'position', 'wt', 'mut',
+            'int_uniprot','int_name', 'model', 'chain', 'int_chain']
     comb = comb[cols + [c for c in comb.columns if not c in cols]]
     comb = comb.drop(['chain1', 'chain2'], axis='columns')
     return comb
@@ -44,7 +44,7 @@ def main(args):
                                                   yaml['model']))
 
     complexes = pd.concat(complex_dfs)
-    sort_cols = ['uniprot', 'protein', 'position', 'mut', 'int_uniprot', 'int_protein']
+    sort_cols = ['uniprot', 'name', 'position', 'mut', 'int_uniprot', 'int_name']
     complexes = complexes.sort_values(axis='rows', by=sort_cols).reset_index(drop=True)
     complexes.to_csv(sys.stdout, sep='\t', index=False)
 
