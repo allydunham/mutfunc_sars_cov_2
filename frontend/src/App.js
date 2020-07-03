@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import DataController from './components/DataController';
+import './App.css'
 
 function App() {
   return (
@@ -8,9 +8,7 @@ function App() {
       <header className="App-header">
         SARS-CoV2 Mutfunc
       </header>
-      <p>
-        <DataController/>
-      </p>
+      <DataController/>
     </div>
   );
 }
