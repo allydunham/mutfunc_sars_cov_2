@@ -33,10 +33,10 @@ const DataController = (props) => {
     // P0DTC2_s_1MA, P0DTD1_nsp12_603KD, P0DTD1_nsp3_1810NG, P0DTD1_nsp7_69NI
     const [search, setSearch] = useState([]);
     return(
-        <div className='DataController'>
+        <>
             <SearchBox setSearch={setSearch}/>
             <DataViewer data={search.map((k) => data[k])} dataReady={dataReady}/>
-        </div>
+        </>
     )
 }
 

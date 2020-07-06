@@ -1,31 +1,80 @@
 import React, { useState } from "react";
 import { makeMutKey } from "../lib/mutations"
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const styles = makeStyles({
+    root: {
+        flexGrow: 1,
+    },
+    item: {
+        width: "65%"
+    }
+});
+
+const ShowNeutralCheck = ({viewAll, setViewAll}) => {
+    return(
+        <FormControl>
+            <FormControlLabel
+                control={<Checkbox
+                           checked={viewAll}
+                           onChange={(event) => {setViewAll(event.target.checked)}}
+                         />}
+                label="Show variants without predicted effects"
+            />
+        </FormControl>
+    )
+}
 
 const DataViewer = ({ data, dataReady }) => {
+    const classes = styles()
+    const tableHeaders = ['Uniprot ID', 'Protein', 'Position', 'WT', 'Mutant', 'Predictions']
     const [viewAll, setViewAll] = useState(false)
-
-    const handleViewClick = () => {
-        setViewAll(!viewAll);
-    }
-    //console.log(data)
 
     if (!dataReady){
         return(
-            <p>Loading Data</p>
+            <CircularProgress />
         )
     }
 
     if (data.length === 0){
         return(
-            <div>
-                <button onClick={handleViewClick}>
-                {(viewAll ? 'Hide' : 'View')} variants without predicted effects
-                </button>
-                <ul>
-                </ul>
-            </div>
+            <Grid container direction="column" alignItems="center" className={classes.root}>
+                <Grid item className={classes.item}>
+                    <ShowNeutralCheck viewAll={viewAll} setViewAll={setViewAll} />
+                </Grid>
+                <Grid item className={classes.item}>
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead>
+                                <TableRow key='header'>
+                                    {tableHeaders.map((i) => <TableCell key={i}>{i}</TableCell>)}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                <TableRow key='noData'>
+                                    <TableCell align='center'>No Results</TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Grid>
+            </Grid>
         )
     }
+
+    console.log(data)
 
     const filteredData = data.filter((mut) => {
         return viewAll ||
@@ -40,15 +89,28 @@ const DataViewer = ({ data, dataReady }) => {
 
     return(
         <div className='DataViewer'>
-            <button onClick={handleViewClick}>
-            {(viewAll ? 'Hide' : 'View')} variants without predicted effects
-            </button>
-            <ul>
-                {[filteredData.map((i) => <li key={makeMutKey(i)}>
-                    {[i['uniprot'], i['name'], i['position'], i['wt'], '->',
-                      i['mut'], 'SIFT:', i['sift_score']].join(' ')}
-                </li>)]}
-            </ul>
+            <ShowNeutralCheck viewAll={viewAll} setViewAll={setViewAll} />
+            <TableContainer component={Paper}>
+                <Table>
+                    <TableHead>
+                        <TableRow key='header'>
+                            {tableHeaders.map((i) => <TableCell key={i}>{i}</TableCell>)}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {filteredData.map((i) =>
+                            <TableRow key={makeMutKey(i)}>
+                                <TableCell>{i['uniprot']}</TableCell>
+                                <TableCell>{i['name']}</TableCell>
+                                <TableCell>{i['position']}</TableCell>
+                                <TableCell>{i['wt']}</TableCell>
+                                <TableCell>{i['mut']}</TableCell>
+                                <TableCell>{i['sift_score']}</TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     )
 }

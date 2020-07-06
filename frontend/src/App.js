@@ -1,15 +1,15 @@
 import React from 'react';
 import DataController from './components/DataController';
-import './App.css'
+import TitleBar from './components/TitleBar'
+import { ThemeProvider } from "@material-ui/styles";
+import theme from './theme'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        SARS-CoV2 Mutfunc
-      </header>
-      <DataController/>
-    </div>
+    return (
+        <ThemeProvider theme={theme}>
+            <TitleBar/>
+            <DataController/>
+        </ThemeProvider>
   );
 }
 
