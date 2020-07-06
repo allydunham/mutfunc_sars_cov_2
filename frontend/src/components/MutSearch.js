@@ -13,9 +13,10 @@ const styles = makeStyles({
     }
 });
 
-const SearchBox = ({ setSearch }) => {
+const MutSearch = ({ setSearch, data}) => {
     const classes = styles()
     const [newSearch, setNewSearch] = useState('')
+
     const processSearch = (event) => {
         event.preventDefault();
         const search = newSearch.split(/[\n,]+/);
@@ -48,4 +49,4 @@ const SearchBox = ({ setSearch }) => {
     )
 }
 
-export default SearchBox
+export default MutSearch

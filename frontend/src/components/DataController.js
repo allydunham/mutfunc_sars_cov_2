@@ -1,12 +1,32 @@
 import React, { useState, useEffect} from "react";
 import {tsv} from "d3";
-import DataViewer from "./DataViewer"
-import SearchBox from "./SearchBox"
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import MutTable from "./MutTable"
+import MutSearch from "./MutSearch"
+import MutDetails from "./MutDetails"
 import { makeMutKey } from "../lib/mutations";
 
+const styles = makeStyles({
+    root: {
+        flexGrow: 1,
+        textAlign: 'center'
+    },
+    item: {
+        width: "100%"
+    }
+});
+
+
 const DataController = (props) => {
-    const [data, setData] = useState([])
-    const [dataReady, setDataReady] = useState(false)
+    const classes = styles();
+    const [data, setData] = useState([]);
+    const [dataReady, setDataReady] = useState(false);
+    const [search, setSearch] = useState([]);
+    const [selectedMut, setSelectedMut] = useState(null)
+
     useEffect(() => {
         console.log('Fetching Data...');
         function reducer(map, value){
@@ -30,13 +50,25 @@ const DataController = (props) => {
             })
     }, []);
 
-    // P0DTC2_s_1MA, P0DTD1_nsp12_603KD, P0DTD1_nsp3_1810NG, P0DTD1_nsp7_69NI
-    const [search, setSearch] = useState([]);
+    // P0DTC2_s_1MA,P0DTD1_nsp12_603KD,P0DTD1_nsp3_1810NG,P0DTD1_nsp7_69NI
     return(
-        <>
-            <SearchBox setSearch={setSearch}/>
-            <DataViewer data={search.map((k) => data[k])} dataReady={dataReady}/>
-        </>
+        <Grid container spacing={4} direction="column" className={classes.root}>
+            <Grid item className={classes.item}>
+                <MutSearch data={data} setSearch={setSearch}/>
+            </Grid>
+            <Grid item className={classes.item}>
+                <MutDetails mut={selectedMut}/>
+            </Grid>
+            <Grid item className={classes.item}>
+                {dataReady ? (
+                    <MutTable data={search.map((k) => data[k])} setSelectedMut={setSelectedMut}/>
+                ) : (
+                    <><CircularProgress />
+                    <br/>
+                    <Typography>Loading Data</Typography></>
+                )}
+            </Grid>
+        </Grid>
     )
 }
 
