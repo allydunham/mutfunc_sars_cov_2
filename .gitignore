@@ -4,4 +4,5 @@ data/**
 logs/*
 test/*
 snakemake.yaml
-
+*.csv
+*.tsv
