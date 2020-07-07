@@ -1,4 +1,3 @@
 export function makeMutKey(mut){
-    return [mut['uniprot'], '_', mut['name'], '_',
-            mut['position'], mut['wt'], mut['mut']].join('')
+    return [mut['name'], '_', mut['wt'], mut['position'], mut['mut']].join('')
 }

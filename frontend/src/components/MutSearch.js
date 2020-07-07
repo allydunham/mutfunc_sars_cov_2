@@ -9,13 +9,13 @@ const styles = makeStyles({
         flexGrow: 1,
     },
     item: {
-        width: "50%"
+        width: "66%"
     }
 });
 
 const MutSearch = ({ setSearch, data}) => {
     const classes = styles()
-    const [newSearch, setNewSearch] = useState('')
+    const [newSearch, setNewSearch] = useState('s_M1A,nsp12_K603D,nsp3_N1810G,nsp7_N69I')
 
     const processSearch = (event) => {
         event.preventDefault();

@@ -15,8 +15,8 @@ const styles = makeStyles({
         textAlign: 'center'
     },
     item: {
-        width: "100%"
-    }
+        width: "75%"
+    },
 });
 
 
@@ -50,9 +50,9 @@ const DataController = (props) => {
             })
     }, []);
 
-    // P0DTC2_s_1MA,P0DTD1_nsp12_603KD,P0DTD1_nsp3_1810NG,P0DTD1_nsp7_69NI
+    // s_M1A,nsp12_K603D,nsp3_N1810G,nsp7_N69I
     return(
-        <Grid container spacing={4} direction="column" className={classes.root}>
+        <Grid container spacing={4} direction="column" alignItems="center" className={classes.root}>
             <Grid item className={classes.item}>
                 <MutSearch data={data} setSearch={setSearch}/>
             </Grid>

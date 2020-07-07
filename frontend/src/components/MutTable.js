@@ -15,16 +15,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     item: {
-        width: "65%"
+        width: "100%"
     }
 });
 
 const ShowNeutralCheck = ({viewAll, setViewAll}) => {
     return(
-        <FormControl>
+        <FormControl fullWidth>
             <FormControlLabel
                 labelPlacement='start'
                 control={<Checkbox
@@ -76,8 +76,14 @@ const MutTable = ({ data, setSelectedMut}) => {
 
     return(
         <>
-        <Grid container direction="column" alignContent='flex-end' className={classes.root}>
-            <Grid item className={classes.item}>
+        <Grid
+          container
+          direction="column"
+          alignContent='center'
+          justify='flex-end'
+          className={classes.root}
+        >
+            <Grid item className={classes.item} xs={12}>
                 <ShowNeutralCheck viewAll={viewAll} setViewAll={setViewAll} />
             </Grid>
         </Grid>
