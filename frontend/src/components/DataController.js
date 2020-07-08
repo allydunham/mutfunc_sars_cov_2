@@ -87,6 +87,10 @@ const DataDisplay = (props) => {
     )
 }
 
+function nanOrNumber(x){
+    return x === ''? NaN : Number(x)
+}
+
 const DataController = (props) => {
     const classes = styles();
 
@@ -105,12 +109,12 @@ const DataController = (props) => {
         function reducer(map, value){
             map[makeMutKey(value)] = {
                 ...value,
-                'position': Number(value['position']),
-                'sift_score': Number(value['sift_score']),
-                'total_energy': Number(value['total_energy']),
-                'interaction_energy': Number(value['interaction_energy']),
-                'diff_interaction_energy': Number(value['diff_interaction_energy']),
-                'diff_interface_residues': Number(value['diff_interface_residues']),
+                'position': nanOrNumber(value['position']),
+                'sift_score': nanOrNumber(value['sift_score']),
+                'total_energy': nanOrNumber(value['total_energy']),
+                'interaction_energy': nanOrNumber(value['interaction_energy']),
+                'diff_interaction_energy': nanOrNumber(value['diff_interaction_energy']),
+                'diff_interface_residues': nanOrNumber(value['diff_interface_residues']),
             };
             return map
         }

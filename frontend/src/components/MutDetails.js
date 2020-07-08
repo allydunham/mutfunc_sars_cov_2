@@ -100,7 +100,9 @@ const MutDetails = ({mut}) => {
                                 <TableCell align='right'>SIFT Score:</TableCell>
                                 <TableCell align='left'>{mut['sift_score']}</TableCell>
                                 <TableCell align='right'>FoldX &Delta;&Delta;G:</TableCell>
-                                <TableCell align='left'>{mut['total_energy']}</TableCell>
+                                <TableCell align='left'>
+                                    {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
+                                </TableCell>
                                 <TableCell align='right'>PTM:</TableCell>
                                 <TableCell align='left'>
                                     {mut['ptm'] === "" ? 'None' : mut['ptm']}
@@ -121,7 +123,8 @@ const MutDetails = ({mut}) => {
                                     <TableCell align='left'>{mut['int_name']}</TableCell>
                                     <TableCell align='right'>Interface &Delta;&Delta;G:</TableCell>
                                     <TableCell align='left'>
-                                        {mut['diff_interaction_energy']}
+                                        {isNaN(mut['diff_interaction_energy']) ? 'NA':
+                                         mut['diff_interaction_energy']}
                                     </TableCell>
                                     <InterfaceNumCell change={mut['diff_interface_residues']} />
                                 </TableRow>
