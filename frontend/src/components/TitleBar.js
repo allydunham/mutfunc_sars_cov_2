@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 const TitleBar = () => {
     return(
-        <AppBar position='static'>
+        <AppBar position='sticky'>
             <Toolbar>
                 <Typography variant='h6'>
                     SARS-CoV2 Mutfunc
