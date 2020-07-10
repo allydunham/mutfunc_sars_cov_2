@@ -7,6 +7,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
+import ProteinViewer from './ProteinViewer'
 
 const styles = makeStyles((theme) => ({
     root: {
@@ -77,11 +78,7 @@ const MutDetails = ({mut}) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <Paper color='secondary'>
-                        <Typography align='center' style={{height: 100}}>
-                            Structure Viewer
-                        </Typography>
-                    </Paper>
+                    <ProteinViewer/>
                 </Grid>
                 <Grid item xs={7} >
                     <Table>
