@@ -26,20 +26,24 @@ const styles = makeStyles({
 
 const MutSearch = ({ setSearch, setSearching }) => {
     const classes = styles()
-    const [rawSearch, setRawSearch] = useState(defaultSearch)
+    const [newSearch, setNewSearch] = useState(defaultSearch)
+    const [oldSearch, setOldSearch] = useState("")
 
     const processSearch = (event) => {
         event.preventDefault();
-        setSearching(true);
-        setSearch(rawSearch);
+        if (newSearch !== oldSearch){
+            setSearch(newSearch);
+            setSearching(true);
+            setOldSearch(newSearch)
+        }
     }
 
     return(
         <Grid container direction="column" alignItems="center" className={classes.root}>
             <Grid item className={classes.item}>
                 <TextField
-                    value={rawSearch}
-                    onChange={(e) => setRawSearch(e.target.value)}
+                    value={newSearch}
+                    onChange={(e) => setNewSearch(e.target.value)}
                     variant="outlined"
                     multiline
                     margin="normal"

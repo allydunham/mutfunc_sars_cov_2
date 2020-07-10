@@ -31,9 +31,6 @@ const DataDisplay = (props) => {
            search} = props;
     const [longSearch, setLongSearch] = useState(false)
 
-    // Reset longSearch when a search starts of finishes
-    useEffect(() => setLongSearch(false),[searching])
-
     if (!dataReady){
         return(
             <Grid item className={classes.item}>
@@ -46,7 +43,7 @@ const DataDisplay = (props) => {
 
     if (searching){
         if (!longSearch){
-            setTimeout(() => {if(searching){setLongSearch(true)}}, 500)
+            setTimeout(() => setLongSearch(true), 500)
             return <></>
         } else {
             return(
@@ -57,6 +54,8 @@ const DataDisplay = (props) => {
                 </Grid>
             )
         }
+    } else if (longSearch) {
+        setLongSearch(false)
     }
 
     if (!dataNotification && searchResults.length === 0){
@@ -133,7 +132,9 @@ const DataController = (props) => {
             searchMutations(search).then((result) => {
                 console.log(result)
                 setSearchResults(result);
-                setTimeout(() => setSearching(false), 5000);
+                setSearching(false)
+                // Simulate long search for testing
+                //setTimeout(() => setSearching(false), 5000);
             })
         }
     }, [search])
