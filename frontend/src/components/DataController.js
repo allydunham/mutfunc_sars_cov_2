@@ -100,6 +100,7 @@ const DataController = (props) => {
     const [search, setSearch] = useState(false);
     const [searching, setSearching] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
+    const [searchErrors, setSearchErrors] = useState([]);
 
     const [selectedMut, setSelectedMut] = useState(null)
 
@@ -129,26 +130,27 @@ const DataController = (props) => {
 
     useEffect(() => {
         if (!(search === false)){
-            searchMutations(search).then((result) => {
+            searchMutations(search, data).then((result) => {
                 console.log(result)
-                setSearchResults(result);
+                setSearchResults(result['results']);
+                setSearchErrors(result['errors']);
                 setSearching(false)
                 // Simulate long search for testing
                 //setTimeout(() => setSearching(false), 5000);
             })
         }
-    }, [search])
+    }, [search, data])
 
     return(
         <Grid container spacing={4} direction="column" alignItems="center" className={classes.root}>
             <Grid item className={classes.item}>
-                <MutSearch setSearch={setSearch} setSearching={setSearching}/>
+                <MutSearch
+                  search={search}
+                  setSearch={setSearch}
+                  errors={searchErrors}
+                  searching={searching}
+                  setSearching={setSearching}/>
             </Grid>
-            {search === false ? (
-                <Grid item className={classes.item}>
-                    <Typography>Search for SARS-CoV2 Variants</Typography>
-                </Grid>
-            ) : null}
             <DataDisplay
               dataReady={dataReady}
               dataNotification={dataNotification}

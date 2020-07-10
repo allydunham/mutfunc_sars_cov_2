@@ -11,7 +11,9 @@ export function makeMutKey(mut){
 // Gene - Gene
 // Uniprot - Uniprot ID
 // Uniprot can also substitute for gene apart from multi-protein gene
-function parseSearch(search){
+const otherSearches = ['gene', 'uniprot', 'position']
+const errorSearches = ['idError', 'geneError', 'uniprotError', 'unknownError']
+function parseSearch(search, muts){
     search = search.trim();
 
     // Search for an entire gene
@@ -27,15 +29,16 @@ function parseSearch(search){
     search = search.split(/\s+/);
     // Transform UNIPROT IDs to gene names
     if (search[0] in sarsUniprot){
-        if (search[0] in ['P0DTD1', 'P0DTC1']){
-            return {type: 'uniprotError', content: search[0]}
+        if (['P0DTD1', 'P0DTC1'].includes(search[0])){
+            let str = 'Bad Uniprot ID: ' + search[0] + ' matches multiple proteins'
+            return {type: 'uniprotError', content: str}
         }
         search[0] = sarsUniprot[search[0]]
     }
 
     search[0] = search[0].toLowerCase()
     if (!sarsGenes.includes(search[0])){
-        return {type: 'geneError', content: search[0]};
+        return {type: 'geneError', content: 'Unknown gene: ' + search[0]};
     }
 
     if (/^[0-9]+$/.test(search[1])){
@@ -44,24 +47,60 @@ function parseSearch(search){
     }
 
     if (/^[ACDEFGHIKLMNPQRSTVWY][0-9]+[ACDEFGHIKLMNPQRSTVWY]$/.test(search[1])){
-        return {type: 'id', content: search.join('_')};
+        let id = search.join('_')
+        if (id in muts){
+            return {type: 'id', content: id};
+        } else {
+            let str = 'Unmatched MutID: ' + search.join(' ')
+            return {type: 'idError', content: str};
+        }
     }
 
-    return {type: 'unknownError', content: search.join(' ')};
+    return {type: 'unknownError', content: 'Unknown format: ' + search.join(' ')};
 }
 
-function getMutIDs(search, muts){
-    if (search['type'] === 'id'){
-        return search['content']
+function checkMutAgainstSearch(mut, searches){
+    for (const search of searches){
+        if (search['type'] === 'position' &&
+            mut[1]['name'] === search['content'][0] &&
+            mut[1]['position'] === search['content'][1]){
+                return mut[0]
+        }
+        if (search['type'] === 'gene' &&
+            mut[1]['name'] === search['content']){
+                return mut[0]
+        }
+        if (search['type'] === 'uniprot' &&
+             mut[1]['uniprot'] === search['content']){
+                return mut[0]
+        }
     }
     return null
 }
 
 export function searchMutations(search, muts){
     return new Promise((resolve, reject) => {
-        search = search.split(/[\n,;]+/).filter((i) => i !== "").map(parseSearch);
+        search = search.split(/[\n,;]+/).filter((i) => i !== "").map((i) => parseSearch(i, muts));
+        console.log('Searching for:')
         console.log(search)
-        search = search.map((i) => getMutIDs(i, muts)).filter((i) => !(i === null))
-        resolve(search);
+
+        // Split searches
+        let errors = search.filter((s) => errorSearches.includes(s['type']))
+        errors = [...new Set(errors.map((s) => s['content']))]
+        let others = search.filter((s) => otherSearches.includes(s['type']))
+
+        // Return directly matched IDs
+        let mutIDs = search.filter((s) => s['type'] === 'id').map((s) => s['content'])
+        // Search for other terms
+        if (others.length > 0){
+            console.log(Object.entries(muts)[0])
+            mutIDs = Object.entries(muts)
+                      .map((m) => checkMutAgainstSearch(m, others))
+                      .filter((i) => i !== null)
+                      .concat(mutIDs)
+                      .sort()
+        }
+
+        resolve({results: [...new Set(mutIDs)], errors: errors});
     })
 }
