@@ -64,7 +64,7 @@ const MutDetails = ({mut}) => {
     const mut_text = [mut['name'], ' ', mut['wt'], mut['position'], mut['mut']].join('')
 
     return(
-        <Paper variant="outlined" elevation={2}>
+        <Paper variant="outlined" elevation={2} className={classes.root}>
             <Grid
               container
               spacing={1}
