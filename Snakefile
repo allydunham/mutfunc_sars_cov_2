@@ -96,3 +96,25 @@ rule setup_directories:
 
         for d in dirs:
             shell(f'mkdir logs/{d} && echo "mkdir logs/{d}" || true')
+
+rule copy_to_frontend:
+    """
+    Copy output data to web frontend public folder.
+    WARNING: This rule doesn't check file requirements, use the normal pipeline to
+    generate all files first.
+    """
+    log:
+        'logs/copy_to_frontend.log'
+
+    shell:
+        """
+        cp data/output/sift.tsv frontend/public/data/sift.tsv &> {log}
+        cp data/output/foldx.tsv frontend/public/data/foldx.tsv &> {log}
+        cp data/output/ptms.tsv frontend/public/data/ptms.tsv &> {log}
+        cp data/output/complex.tsv frontend/public/data/complex.tsv &> {log}
+        cp data/output/summary.tsv frontend/public/data/summary.tsv &> {log}
+        rm -rf frontend/public/data/pdb_foldx/* &> {log}
+        rm -rf frontend/public/data/pdb_interface/* &> {log}
+        python bin/copy_models.py swissmodel data/swissmodel frontend/public/data/pdb_foldx &> {log}
+        python bin/copy_models.py complex data/complex frontend/public/data/pdb_interface &> {log}
+        """
