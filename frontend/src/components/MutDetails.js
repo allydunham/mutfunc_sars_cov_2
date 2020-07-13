@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -50,6 +52,50 @@ const InterfaceNumCell = ({change}) => {
     }
 }
 
+const MutStructure = ({mut}) => {
+    const [tab, setTab] = useState(0);
+    const [fx_template, fx_chain] = mut['template'].split('.')
+    const [int_template, int_chain, int_interactor_chain] = mut['int_template'].split('.')
+
+    const foldx_path = [process.env.PUBLIC_URL, 'data/pdb_foldx/', mut['uniprot'],
+                        '_', mut['name'], '/', fx_template, '.pdb'].join('')
+    const int_path = [process.env.PUBLIC_URL, 'data/pdb_interface/',
+                      int_template, '.pdb'].join('')
+    return(
+        <>
+        <Tabs value={tab} onChange={(event, i) => setTab(i)}>
+            <Tab label="FoldX" disabled={fx_template === ''}/>
+            <Tab label="Interface" disabled={int_template === ''}/>
+        </Tabs>
+        {fx_template === '' ? (
+            <div
+              hidden={tab !== 0}
+              style={{borderColor: 'black', borderStyle: 'solid',
+                      height: 300, width: 500}}></div>
+        ) : (
+            <ProteinViewer
+              hidden={tab !== 0}
+              pdb_path={foldx_path}
+              position={mut['position']}
+              chain={fx_chain}/>
+        )}
+        {int_template === '' ? (
+            <div
+              hidden={tab !== 1}
+              style={{borderColor: 'black', borderStyle: 'solid',
+                      height: 300, width: 500}}></div>
+        ) : (
+            <ProteinViewer
+              hidden={tab !== 1}
+              pdb_path={int_path}
+              position={mut['position']}
+              chain={int_chain}
+              int_chain={int_interactor_chain}/>
+        )}
+        </>
+    )
+}
+
 const MutDetails = ({mut}) => {
    const classes = styles()
 
@@ -78,7 +124,7 @@ const MutDetails = ({mut}) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <ProteinViewer/>
+                    <MutStructure mut={mut}/>
                 </Grid>
                 <Grid item xs={7} >
                     <Table>

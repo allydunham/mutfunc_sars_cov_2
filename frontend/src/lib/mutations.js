@@ -81,8 +81,7 @@ function checkMutAgainstSearch(mut, searches){
 export function searchMutations(search, muts){
     return new Promise((resolve, reject) => {
         search = search.split(/[\n,;]+/).filter((i) => i !== "").map((i) => parseSearch(i, muts));
-        console.log('Searching for:')
-        console.log(search)
+        console.log('Searching for:', search)
 
         // Split searches
         let errors = search.filter((s) => errorSearches.includes(s['type']))
@@ -93,7 +92,6 @@ export function searchMutations(search, muts){
         let mutIDs = search.filter((s) => s['type'] === 'id').map((s) => s['content'])
         // Search for other terms
         if (others.length > 0){
-            console.log(Object.entries(muts)[0])
             mutIDs = Object.entries(muts)
                       .map((m) => checkMutAgainstSearch(m, others))
                       .filter((i) => i !== null)
@@ -101,6 +99,7 @@ export function searchMutations(search, muts){
                       .sort()
         }
 
+        console.log('Serach Complete')
         resolve({results: [...new Set(mutIDs)], errors: errors});
     })
 }
