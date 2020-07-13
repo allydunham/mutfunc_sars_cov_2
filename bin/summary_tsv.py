@@ -29,7 +29,9 @@ def main(args):
     complexes = pd.read_csv(args.complex, sep='\t', index_col=False)
     complexes['int_template'] = complexes['model'].str.extract('^([0-9a-zA-Z]{4})\.[0-9]*$',
                                                               expand=False)
-    complexes['int_template'] = complexes['int_template'].str.cat(complexes['chain'], sep='.')
+    complexes['int_template'] = complexes['int_template'].str.cat([complexes['chain'],
+                                                                   complexes['int_chain']],
+                                                                  sep='.')
     complexes = complexes[['uniprot', 'name', 'position', 'wt', 'mut', 'int_uniprot',
                            'int_name', 'int_template', 'interaction_energy',
                            'diff_interaction_energy', 'diff_interface_residues']]
