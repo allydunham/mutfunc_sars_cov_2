@@ -20,15 +20,19 @@ def main(args):
     sift = sift[['uniprot', 'name', 'position', 'wt', 'mut', 'sift_score']]
 
     foldx = pd.read_csv(args.foldx, sep='\t', index_col=False, dtype={'model': str})
-    foldx = foldx[['uniprot', 'name', 'position', 'wt', 'mut', 'total_energy']]
+    foldx['template'] = foldx['template'].str.cat(foldx['chain'], sep='.')
+    foldx = foldx[['uniprot', 'name', 'position', 'wt', 'mut', 'template', 'total_energy']]
 
     ptms = pd.read_csv(args.ptms, sep='\t', index_col=False)
     ptms = ptms[['uniprot', 'name', 'position', 'wt', 'ptm']]
 
     complexes = pd.read_csv(args.complex, sep='\t', index_col=False)
+    complexes['int_template'] = complexes['model'].str.extract('^([0-9a-zA-Z]{4})\.[0-9]*$',
+                                                              expand=False)
+    complexes['int_template'] = complexes['int_template'].str.cat(complexes['chain'], sep='.')
     complexes = complexes[['uniprot', 'name', 'position', 'wt', 'mut', 'int_uniprot',
-                           'int_name', 'interaction_energy', 'diff_interaction_energy',
-                           'diff_interface_residues']]
+                           'int_name', 'int_template', 'interaction_energy',
+                           'diff_interaction_energy', 'diff_interface_residues']]
 
     # Merge
     base_cols = ['uniprot', 'name', 'position', 'wt']
