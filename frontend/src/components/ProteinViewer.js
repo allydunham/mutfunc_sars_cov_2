@@ -50,36 +50,45 @@ class ProteinViewer extends Component {
     }
 
     componentDidMount(){
-        const options = {
-            width: 500,
-            height: 300,
-            antialias: true,
-            quality : 'medium'
+        if (this.props.pdb_path !== ''){
+            const options = {
+                width: this.props.width,
+                height: this.props.height,
+                antialias: true,
+                quality : 'medium'
+            }
+            this.viewer = pv.Viewer(this.element.current, options);
+            this.renderProtein();
         }
-        this.viewer = pv.Viewer(this.element.current, options);
-        this.renderProtein();
     }
 
     render(){
         return(
             <div
-             id="pvViewer"
-             hidden={this.props.hidden}
-             className="pvViewer"
-             ref={this.element}
-             style={{borderColor: 'black',
-                     borderStyle: 'solid',
-                     height: 300,
-                     width: 500}}>
+            id="pvViewer"
+            hidden={this.props.hidden}
+            className="pvViewer"
+            ref={this.element}
+            style={{borderColor: 'black',
+                    borderStyle: 'solid',
+                    borderWidth: 2,
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    width: this.props.width,
+                    height: this.props.height}}>
             </div>
         )
     }
 }
 
 ProteinViewer.defaultProps = {
-    positin: 10000,
+    pdb_path: '',
+    hidden: false,
+    position: 10000,
     chain: '__NONE',
-    int_chain: '__NONE'
+    int_chain: '__NONE',
+    width: 500,
+    height: 300
 }
 
 export default ProteinViewer

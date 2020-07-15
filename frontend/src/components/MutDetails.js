@@ -21,6 +21,7 @@ const styles = makeStyles((theme) => ({
         paddingRight: theme.spacing(0),
         paddingBottom: theme.spacing(0)
     }
+
 }));
 
 const InterfaceNumCell = ({change}) => {
@@ -61,38 +62,51 @@ const MutStructure = ({mut}) => {
                         '_', mut['name'], '/', fx_template, '.pdb'].join('')
     const int_path = [process.env.PUBLIC_URL, 'data/pdb_interface/',
                       int_template, '.pdb'].join('')
+
+    const rootStyle = {width: 500, display: 'flex', marginLeft: 'auto',
+                       marginRight: 'auto', flexDirection: 'column',
+                       justifyContent: 'center'}
+
     return(
-        <>
-        <Tabs value={tab} onChange={(event, i) => setTab(i)}>
-            <Tab label="FoldX" disabled={fx_template === ''}/>
-            <Tab label="Interface" disabled={int_template === ''}/>
-        </Tabs>
-        {fx_template === '' ? (
-            <div
-              hidden={tab !== 0}
-              style={{borderColor: 'black', borderStyle: 'solid',
-                      height: 300, width: 500}}></div>
-        ) : (
-            <ProteinViewer
-              hidden={tab !== 0}
-              pdb_path={foldx_path}
-              position={mut['position']}
-              chain={fx_chain}/>
-        )}
-        {int_template === '' ? (
-            <div
-              hidden={tab !== 1}
-              style={{borderColor: 'black', borderStyle: 'solid',
-                      height: 300, width: 500}}></div>
-        ) : (
-            <ProteinViewer
-              hidden={tab !== 1}
-              pdb_path={int_path}
-              position={mut['position']}
-              chain={int_chain}
-              int_chain={int_interactor_chain}/>
-        )}
-        </>
+        <div style={{width: '100%', margin: 5}}>
+            <div style={rootStyle}>
+                <Tabs value={tab} onChange={(event, i) => setTab(i)}>
+                    <Tab label="FoldX" disabled={fx_template === ''}/>
+                    <Tab label="Interface" disabled={int_template === ''}/>
+                </Tabs>
+                <ProteinViewer
+                    hidden={tab !== 0}
+                    pdb_path={fx_template !== '' ? foldx_path : ''}
+                    position={mut['position']}
+                    chain={fx_chain}/>
+                <ProteinViewer
+                    hidden={tab !== 1}
+                    pdb_path={int_template !== '' ? int_path : ''}
+                    position={mut['position']}
+                    chain={int_chain}
+                    int_chain={int_interactor_chain}/>
+                <Grid container justify='space-around' alignItems='center'>
+                    <Grid item>
+                        <Typography display='inline' variant='h5' style={{color: '#e6180d'}}>
+                            &#9632;&nbsp;
+                        </Typography>
+                        <Typography display='inline'>Mutant</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography display='inline' variant='h5' style={{color: '##8cb2f2'}}>
+                            &#9632;&nbsp;
+                        </Typography>
+                        <Typography display='inline'>Mutated Protein</Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography display='inline' variant='h5' style={{color: '#fa8ce6'}}>
+                            &#9632;&nbsp;
+                        </Typography>
+                        <Typography display='inline'>Interface Protein</Typography>
+                    </Grid>
+                </Grid>
+            </div>
+        </div>
     )
 }
 
