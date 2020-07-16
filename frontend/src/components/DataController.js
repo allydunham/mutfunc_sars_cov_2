@@ -77,10 +77,10 @@ const DataDisplay = (props) => {
     return(
         <>
         <Grid item className={classes.item}>
-            <MutDetails mut={selectedMut}/>
+            <MutDetails mut={data[selectedMut]}/>
         </Grid>
         <Grid item className={classes.item}>
-            <MutTable data={searchResults.map((k) => data[k])} setSelectedMut={setSelectedMut}/>
+            <MutTable mutIds={searchResults} mutData={data} setSelectedMut={setSelectedMut}/>
         </Grid>
         </>
     )
