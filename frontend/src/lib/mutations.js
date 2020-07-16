@@ -5,6 +5,41 @@ export function makeMutKey(mut){
     return [mut['name'], '_', mut['wt'], mut['position'], mut['mut']].join('')
 }
 
+export function compareMutIds(mut1, mut2){
+    let [gene1, pos1] = mut1.split('_')
+    mut1 = pos1.slice(-1)
+    pos1 = Number(pos1.slice(1, -1))
+    let [gene2, pos2] = mut2.split('_')
+    mut2 = pos2.slice(-1)
+    pos2 = Number(pos2.slice(1, -1))
+
+    // Sort  by gene first
+    if (gene1 !== gene2){
+        if (sarsGenes.indexOf(gene1) > sarsGenes.indexOf(gene2)){
+            return 1
+        }
+        if (sarsGenes.indexOf(gene1) < sarsGenes.indexOf(gene2)) {
+            return -1
+        }
+    }
+
+    // Then by position
+    if (pos1 > pos2){
+        return 1
+    } else if (pos1 < pos2){
+        return -1
+    }
+
+    // Finally by variant
+    if (mut1 > mut2){
+        return 1
+    } else if (mut1 < mut2){
+        return -1
+    }
+
+    return 0
+}
+
 // Supported search modes:
 // Full ID - Gene X1Y
 // Gene & Pos - Gene Pos
@@ -90,13 +125,14 @@ export function searchMutations(search, muts){
 
         // Return directly matched IDs
         let mutIDs = search.filter((s) => s['type'] === 'id').map((s) => s['content'])
+
         // Search for other terms
         if (others.length > 0){
             mutIDs = Object.entries(muts)
                       .map((m) => checkMutAgainstSearch(m, others))
                       .filter((i) => i !== null)
                       .concat(mutIDs)
-                      .sort()
+                      .sort(compareMutIds)
         }
 
         console.log('Serach Complete')

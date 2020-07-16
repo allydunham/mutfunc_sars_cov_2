@@ -10,9 +10,8 @@ export const sarsUniprot = {
 
 export const sarsGenes = ['nsp1', 'nsp2', 'nsp3','nsp4', 'nsp5',
                           'nsp6','nsp7', 'nsp8', 'nsp9', 'nsp10',
-                          'nsp12', 'nsp13', 'nsp14', 'nsp15',
-                          'nsp16', 'nsp11', 's', 'orf3a', 'e',
+                          'nsp11', 'nsp12', 'nsp13', 'nsp14',
+                          'nsp15', 'nsp16', 's', 'orf3a', 'e',
                           'm', 'orf6','orf7a', 'orf7b', 'orf8',
                           'nc', 'orf10', 'orf9b','orf14']
-
 // TODO - Map for common versions of gene names
