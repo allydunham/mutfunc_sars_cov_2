@@ -21,6 +21,9 @@ const styles = makeStyles({
     },
     check: {
         color: green[500]
+    },
+    hidden: {
+        display: 'none'
     }
 });
 
@@ -90,7 +93,7 @@ function nanOrNumber(x){
     return x === ''? NaN : Number(x)
 }
 
-const DataController = (props) => {
+const DataController = ({hidden}) => {
     const classes = styles();
 
     const [data, setData] = useState([]);
@@ -143,7 +146,8 @@ const DataController = (props) => {
     }, [search, data])
 
     return(
-        <Grid container spacing={4} direction="column" alignItems="center" className={classes.root}>
+        <Grid container spacing={4} direction="column" alignItems="center"
+              className={hidden ? classes.hidden : classes.root}>
             <Grid item className={classes.item}>
                 <MutSearch
                   search={search}

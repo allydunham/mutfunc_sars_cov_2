@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import About from './components/About';
 import DataController from './components/DataController';
 import TitleBar from './components/TitleBar';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './theme';
 
 function App() {
+    const [page, setPage] = useState('search')
+
     return (
         <ThemeProvider theme={theme}>
-            <TitleBar/>
-            <DataController/>
+            <TitleBar setPage={setPage}/>
+            {page === 'about'? <About/> : null}
+            <DataController hidden={page !== 'search'}/>
         </ThemeProvider>
   );
 }
