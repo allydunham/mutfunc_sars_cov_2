@@ -81,6 +81,12 @@ function parseSearch(search, muts){
         return {type: 'position', content: search};
     }
 
+    if (/^[ACDEFGHIKLMNPQRSTVWY][0-9]+$/.test(search[1])){
+        search[2] = Number(search[1].slice(1));
+        search[1] = search[1].slice(0, 1)
+        return {type: 'wtPosition', content: search};
+    }
+
     if (/^[ACDEFGHIKLMNPQRSTVWY][0-9]+[ACDEFGHIKLMNPQRSTVWY]$/.test(search[1])){
         let id = search.join('_')
         if (id in muts){
@@ -99,6 +105,12 @@ function checkMutAgainstSearch(mut, searches){
         if (search['type'] === 'position' &&
             mut[1]['name'] === search['content'][0] &&
             mut[1]['position'] === search['content'][1]){
+                return mut[0]
+        }
+        if (search['type'] === 'wtPosition' &&
+            mut[1]['name'] === search['content'][0] &&
+            mut[1]['wt'] === search['content'][1] &&
+            mut[1]['position'] === search['content'][2]){
                 return mut[0]
         }
         if (search['type'] === 'gene' &&
