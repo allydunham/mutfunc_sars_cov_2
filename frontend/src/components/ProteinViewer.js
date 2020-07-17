@@ -33,32 +33,41 @@ class ProteinViewer extends Component {
     constructor(props) {
         super(props)
         this.element = createRef()
-        this.renderProtein = this.renderProtein.bind(this)
+        this.processPdb = this.processPdb.bind(this)
     }
 
-    renderProtein(){
-        console.log('Rendering protein...')
-        const processPdb = (structure) => {
-            let colourer = colourMol(this.props.position,
-                                     this.props.chain,
-                                     this.props.int_chain)
-            this.viewer.cartoon('protein', structure, { color: colourer });
-            this.viewer.autoZoom();
-        }
-        processPdb.bind(this)
-        pv.io.fetchPdb(this.props.pdb_path, processPdb)
+    processPdb(structure){
+        let colourer = colourMol(this.props.position,
+                                 this.props.chain,
+                                 this.props.int_chain)
+        this.viewer.cartoon('protein', structure, { color: colourer });
+        this.viewer.autoZoom();
     }
 
     componentDidMount(){
+        const options = {
+            width: this.props.width,
+            height: this.props.height,
+            antialias: true,
+            quality : 'medium'
+        }
+        this.viewer = pv.Viewer(this.element.current, options);
         if (this.props.pdb_path !== ''){
-            const options = {
-                width: this.props.width,
-                height: this.props.height,
-                antialias: true,
-                quality : 'medium'
+            console.log('Rendering protein: ', this.props.pdb_path)
+            pv.io.fetchPdb(this.props.pdb_path, this.processPdb)
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.pdb_path !== prevProps.pdb_path ||
+            this.props.position !== prevProps.position ||
+            this.props.chain !== prevProps.chain ||
+            this.props.int_chain !== prevProps.int_chain){
+            this.viewer.rm('protein')
+            if (this.props.pdb_path !== ''){
+                console.log('Rendering protein: ', this.props.pdb_path)
+                pv.io.fetchPdb(this.props.pdb_path, this.processPdb)
             }
-            this.viewer = pv.Viewer(this.element.current, options);
-            this.renderProtein();
         }
     }
 
