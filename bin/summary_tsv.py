@@ -21,10 +21,10 @@ def main(args):
 
     foldx = pd.read_csv(args.foldx, sep='\t', index_col=False, dtype={'model': str})
     foldx['template'] = foldx['template'].str.cat(foldx['chain'], sep='.')
-    foldx = foldx[['uniprot', 'name', 'position', 'wt', 'mut', 'template', 'total_energy']]
+    foldx = foldx[['uniprot', 'name', 'position', 'mut', 'template', 'total_energy']]
 
     ptms = pd.read_csv(args.ptms, sep='\t', index_col=False)
-    ptms = ptms[['uniprot', 'name', 'position', 'wt', 'ptm']]
+    ptms = ptms[['uniprot', 'name', 'position', 'ptm']]
 
     complexes = pd.read_csv(args.complex, sep='\t', index_col=False)
     complexes['int_template'] = complexes['model'].str.extract('^([0-9a-zA-Z]{4})\.[0-9]*$',
@@ -32,12 +32,12 @@ def main(args):
     complexes['int_template'] = complexes['int_template'].str.cat([complexes['chain'],
                                                                    complexes['int_chain']],
                                                                   sep='.')
-    complexes = complexes[['uniprot', 'name', 'position', 'wt', 'mut', 'int_uniprot',
+    complexes = complexes[['uniprot', 'name', 'position', 'mut', 'int_uniprot',
                            'int_name', 'int_template', 'interaction_energy',
                            'diff_interaction_energy', 'diff_interface_residues']]
 
     # Merge
-    base_cols = ['uniprot', 'name', 'position', 'wt']
+    base_cols = ['uniprot', 'name', 'position']
     summary = sift.merge(foldx, how='outer', on=base_cols + ['mut'])
     summary = summary.merge(ptms, how='outer', on=base_cols)
     summary = summary.merge(complexes, how='outer', on=base_cols + ['mut'])
