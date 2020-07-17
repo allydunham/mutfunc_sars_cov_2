@@ -6,7 +6,7 @@ chains:
     name: 'nsp7'
   P:
     uniprot: 'P0DTD1'
-    name: 'nsp7'
+    name: 'nsp8'
   O:
     uniprot: 'P0DTD1'
     name: 'nsp8'
