@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -10,14 +10,16 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import ProteinViewer from './ProteinViewer'
+import MutBadges from './MutBadges'
 
 const styles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
     },
     title: {
+        display: 'flex',
         paddingLeft: theme.spacing(1),
-        paddingTop: theme.spacing(0),
+        paddingTop: theme.spacing(1),
         paddingRight: theme.spacing(0),
         paddingBottom: theme.spacing(0)
     }
@@ -58,6 +60,16 @@ const MutStructure = ({mut}) => {
     const [fx_template, fx_chain] = mut['template'].split('.')
     const [int_template, int_chain, int_interactor_chain] = mut['int_template'].split('.')
 
+    useEffect(() => {
+        let startTab = 0
+        if (int_template !== '' &&
+            (fx_template === '' ||
+             Math.abs(mut['total_energy']) < 1)) {
+            startTab = 1
+        }
+        setTab(startTab)
+    }, [mut, fx_template, int_template])
+
     const foldx_path = [process.env.PUBLIC_URL, 'data/pdb_foldx/', mut['uniprot'],
                         '_', mut['name'], '/', fx_template, '.pdb'].join('')
     const int_path = [process.env.PUBLIC_URL, 'data/pdb_interface/',
@@ -93,7 +105,7 @@ const MutStructure = ({mut}) => {
                         <Typography display='inline'>Mutant</Typography>
                     </Grid>
                     <Grid item>
-                        <Typography display='inline' variant='h5' style={{color: '##8cb2f2'}}>
+                        <Typography display='inline' variant='h5' style={{color: '#8cb2f2'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Mutated Protein</Typography>
@@ -135,6 +147,8 @@ const MutDetails = ({mut}) => {
                 <Grid item xs={12}>
                     <Typography align='left' variant='h6' className={classes.title}>
                         {mut_text}
+                        &nbsp;
+                        <MutBadges mut={mut}/>
                     </Typography>
                 </Grid>
                 <Grid item xs={5}>
@@ -155,7 +169,9 @@ const MutDetails = ({mut}) => {
                             </TableRow>
                             <TableRow>
                                 <TableCell align='right'>SIFT Score:</TableCell>
-                                <TableCell align='left'>{mut['sift_score']}</TableCell>
+                                <TableCell align='left'>
+                                    {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
+                                </TableCell>
                                 <TableCell align='right'>FoldX &Delta;&Delta;G:</TableCell>
                                 <TableCell align='left'>
                                     {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}

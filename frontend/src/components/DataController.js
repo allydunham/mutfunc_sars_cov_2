@@ -130,6 +130,7 @@ const DataController = (props) => {
 
     useEffect(() => {
         if (!(search === false)){
+            setSelectedMut(null)
             searchMutations(search, data).then((result) => {
                 console.log(result)
                 setSearchResults(result['results']);
