@@ -14,7 +14,7 @@ HTTP = RateLimitedHTTPRemoteProvider()
 
 configfile: 'snakemake.yaml'
 localrules:
-    all, download_fasta, swissmodel_download, complex_download,
+    all, download_protein_fasta, swissmodel_download, complex_download,
     ptms_tsv, foldx_tsv, sift_tsv, complex_tsv,
     split_fasta, sift4g_variants,
     swissmodel_unzip, swissmodel_select,
@@ -54,6 +54,7 @@ include: 'pipeline/swissmodel.smk'
 include: 'pipeline/sift.smk'
 include: 'pipeline/foldx.smk'
 include: 'pipeline/complex.smk'
+include: 'pipeline/frequency.smk'
 
 rule all:
     """

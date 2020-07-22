@@ -4,7 +4,7 @@ Miscalaneous rules
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 FTP = FTPRemoteProvider()
 
-def get_covid_genome(wildcards):
+def get_covid_proteins(wildcards):
     """
     Identify genome fasta source, based on config
     """
@@ -12,20 +12,20 @@ def get_covid_genome(wildcards):
     path = "data/fasta/uniprot_sars_cov2_genome.fa"
     if not config['general']['check_online_updates'] and os.path.isfile(path):
         return path
-    return HTTP.remote(url, keep_local=True)
+    return FTP.remote(url, keep_local=True)
 
-rule download_fasta:
+rule download_protein_fasta:
     """
     Download UniProt SARS-CoV2 genome fasta
     """
     input:
-        get_covid_genome
+        get_covid_proteins
 
     output:
         "data/fasta/uniprot_sars_cov2_genome.fa"
 
     log:
-        "logs/download_fasta.log"
+        "logs/download_protein_fasta.log"
 
     shell:
         "mv {input} {output} &> {log}"
