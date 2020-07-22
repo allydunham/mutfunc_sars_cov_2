@@ -51,7 +51,7 @@ rule download_annotation:
         get_covid_annotation
 
     output:
-        "data/frequency/gene_annotation.gff3"
+        "data/frequency/gene_annotation.gff3.gz"
 
     log:
         "logs/download_annotation.log"
@@ -60,7 +60,24 @@ rule download_annotation:
         """
         mv {input} data/frequency/gene_annotation.gff3.gz &> {log}
         gunzip data/frequency/gene_annotation.gff3.gz &> {log}
+        bgzip data/frequency/gene_annotation.gff3 &> {log}
         """
+
+rule: index_annotation:
+    """
+    Tabix index gff3 file
+    """
+    input:
+        "data/frequency/gene_annotation.gff3.gz"
+    
+    output:
+        "data/frequency/gene_annotation.gff3.gz.tbi
+
+    log:
+        "logs/index_annotation.log"
+
+    shell:
+        "tabix -p gff {input}"
 
 rule annotate_variants:
     """
@@ -68,8 +85,8 @@ rule annotate_variants:
     """
     input:
         vcf='data/frequency/rob-12-6-20.unfiltered.pruned.vcf',
-        gff='data/frequency/gene_annotation.gff3',
-        fa='data/frequency/genome.fa'
+        gff='data/frequency/gene_annotation.gff3.gz',
+        fasta='data/frequency/genome.fa'
 
     output:
         "data/frequency/variant_annotation.tsv"
