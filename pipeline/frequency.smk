@@ -63,13 +63,13 @@ rule download_annotation:
         bgzip data/frequency/gene_annotation.gff3 &> {log}
         """
 
-rule: index_annotation:
+rule index_annotation:
     """
     Tabix index gff3 file
     """
     input:
         "data/frequency/gene_annotation.gff3.gz"
-    
+
     output:
         "data/frequency/gene_annotation.gff3.gz.tbi
 
@@ -86,6 +86,7 @@ rule annotate_variants:
     input:
         vcf='data/frequency/rob-12-6-20.unfiltered.pruned.vcf',
         gff='data/frequency/gene_annotation.gff3.gz',
+        gfftbi='data/frequency/gene_annotation.gff3.gz.tbi',
         fasta='data/frequency/genome.fa'
 
     output:
@@ -94,5 +95,8 @@ rule annotate_variants:
     log:
         "logs/annotate_variants.log"
 
+    container:
+        config['vep']['simg']
+
     shell:
-        "vep --fasta {input.fasta} --gff {input.gff} -i {input.vcf} -o {output} &> {log}"
+        "vep --format vcf --fasta {input.fa} --gff {input.gff} -i {input.vcf} -o {output} &> {log}"
