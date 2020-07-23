@@ -80,6 +80,22 @@ rule index_annotation:
     shell:
         "tabix -p gff {input}"
 
+rule variant_frequencies:
+    """
+    Calculate allele frequencies from VCF file
+    """
+    input:
+        "data/frequency/rob-12-6-20.unfiltered.pruned.vcf"
+
+    output:
+        "data/frequency/allele_freqs.tsv"
+    
+    log:
+        "logs/variant_frequencies.log"
+
+    shell:
+        "vcftools --vcf {input} --freq --stdout > {output} 2> {log}"
+
 rule annotate_variants:
     """
     Annotate variants to proteins using Ensembl VEP
