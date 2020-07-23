@@ -60,6 +60,7 @@ rule download_annotation:
         """
         mv {input} data/frequency/gene_annotation.gff3.gz &> {log}
         gunzip data/frequency/gene_annotation.gff3.gz &> {log}
+        sed -i '/^###/d' data/frequency/gene_annotation.gff3 2> {log}
         bgzip data/frequency/gene_annotation.gff3 &> {log}
         """
 
@@ -71,7 +72,7 @@ rule index_annotation:
         "data/frequency/gene_annotation.gff3.gz"
 
     output:
-        "data/frequency/gene_annotation.gff3.gz.tbi
+        "data/frequency/gene_annotation.gff3.gz.tbi"
 
     log:
         "logs/index_annotation.log"
@@ -87,16 +88,18 @@ rule annotate_variants:
         vcf='data/frequency/rob-12-6-20.unfiltered.pruned.vcf',
         gff='data/frequency/gene_annotation.gff3.gz',
         gfftbi='data/frequency/gene_annotation.gff3.gz.tbi',
-        fasta='data/frequency/genome.fa'
+        fasta='data/frequency/genome.fa',
+        synonyms='data/frequency/synonyms.tsv'
 
     output:
-        "data/frequency/variant_annotation.tsv"
+        tsv="data/frequency/variant_annotation.tsv",
+        stats="data/frequency/variant_annotation.tsv_summary.txt"
 
     log:
         "logs/annotate_variants.log"
 
-    container:
-        config['vep']['simg']
+    singularity:
+        "docker://ensemblorg/ensembl-vep"
 
     shell:
-        "vep --format vcf --fasta {input.fa} --gff {input.gff} -i {input.vcf} -o {output} &> {log}"
+        "vep --coding_only --species covid19  --tab --stats_text --synonyms {input.synonyms} --format vcf --fasta {input.fasta} --gff {input.gff} -i {input.vcf} -o {output.tsv} &> {log}"
