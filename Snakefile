@@ -66,6 +66,7 @@ rule all:
         "data/output/foldx.tsv",
         "data/output/ptms.tsv",
         "data/output/complex.tsv",
+        "data/output/frequency.tsv",
         "data/output/summary.tsv"
 
 rule swissmodel_downloads:
@@ -114,6 +115,7 @@ rule copy_to_frontend:
         cp data/output/foldx.tsv frontend/public/data/foldx.tsv &> {log}
         cp data/output/ptms.tsv frontend/public/data/ptms.tsv &> {log}
         cp data/output/complex.tsv frontend/public/data/complex.tsv &> {log}
+        cp data/output/frequency.tsv frontend/public/data/frequency.tsv &> {log}
         cp data/output/summary.tsv frontend/public/data/summary.tsv &> {log}
         rm -rf frontend/public/data/pdb_foldx/* &> {log}
         rm -rf frontend/public/data/pdb_interface/* &> {log}

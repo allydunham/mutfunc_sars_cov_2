@@ -89,7 +89,7 @@ rule variant_frequencies:
 
     output:
         "data/frequency/allele_freqs.tsv"
-    
+
     log:
         "logs/variant_frequencies.log"
 
@@ -119,3 +119,21 @@ rule annotate_variants:
 
     shell:
         "vep --coding_only --species covid19  --tab --stats_text --synonyms {input.synonyms} --format vcf --fasta {input.fasta} --gff {input.gff} -i {input.vcf} -o {output.tsv} &> {log}"
+
+rule frequency_tsv:
+    """
+    Generate tsv file of observed variant frequencies
+    """
+    input:
+        vep="data/frequency/variant_annotation.tsv",
+        freqs="data/frequency/allele_freqs.tsv",
+        gff="data/frequency/gene_annotation.gff3.gz"
+
+    output:
+        "data/output/frequency.tsv"
+
+    log:
+        "logs/frequency_tsv.log"
+
+    shell:
+        "python bin/frequency_tsv.py {input.vep} {input.freqs} {input.gff} > {output} 2> {log}"
