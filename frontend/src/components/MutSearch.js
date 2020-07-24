@@ -22,10 +22,7 @@ s 10
 P0DTD1 133
 P0DTC3 133
 P0DTC3 C133K
-TOLORD
-TOLORD
-TOLOT 1
-nsp10 S10000F`
+orf10 I4L`
 
 const styles = makeStyles({
     root: {

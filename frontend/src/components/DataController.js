@@ -118,6 +118,7 @@ const DataController = ({hidden}) => {
                 'interaction_energy': nanOrNumber(value['interaction_energy']),
                 'diff_interaction_energy': nanOrNumber(value['diff_interaction_energy']),
                 'diff_interface_residues': nanOrNumber(value['diff_interface_residues']),
+                'freq': nanOrNumber(value['freq'])
             };
             return map
         }

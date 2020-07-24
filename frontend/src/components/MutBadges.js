@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from '@material-ui/core/Avatar';
-import { deepPurple, amber, lightBlue, green } from '@material-ui/core/colors';
+import { deepPurple, amber, lightBlue, green, red } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles((theme) => ({
@@ -34,6 +34,12 @@ const styles = makeStyles((theme) => ({
         width: theme.spacing(4),
         height: theme.spacing(4)
     },
+    frequencyBadge: {
+        color: theme.palette.getContrastText(red['A700']),
+        backgroundColor: red['A700'],
+        width: theme.spacing(4),
+        height: theme.spacing(4)
+    },
 }));
 
 const MutBadges = ({mut}) => {
@@ -51,6 +57,9 @@ const MutBadges = ({mut}) => {
         ) : null}
         {mut['int_name'] !== '' ? (
             <Avatar className={classes.interfaceBadge}>I</Avatar>
+        ) : null}
+        {mut['freq'] > 0.01 ? (
+            <Avatar className={classes.frequencyBadge}>F</Avatar>
         ) : null}
         </div>
     )

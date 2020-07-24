@@ -135,7 +135,8 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
                 mutData[i]['sift_score'] < 0.05 ||
                 Math.abs(mutData[i]['total_energy']) > 1 ||
                 mutData[i]['ptm'] !== '' ||
-                mutData[i]['int_name'] !== ''
+                mutData[i]['int_name'] !== '' ||
+                mutData[i]['freq'] > 0.01
             )
         }))
     }, [mutIds, viewAll, mutData])

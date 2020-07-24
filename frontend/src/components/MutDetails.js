@@ -181,6 +181,16 @@ const MutDetails = ({mut}) => {
                                     {mut['ptm'] === "" ? 'None' : mut['ptm']}
                                 </TableCell>
                             </TableRow>
+                            <TableRow>
+                                <TableCell align='right'>Frequency:</TableCell>
+                                <TableCell align='left'>
+                                    {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
+                                </TableCell>
+                                <TableCell align='right'></TableCell>
+                                <TableCell align='left'></TableCell>
+                                <TableCell align='right'></TableCell>
+                                <TableCell align='left'></TableCell>
+                            </TableRow>
                             {mut['int_name'] === "" ? (
                                 <TableRow>
                                     <TableCell align='right'>Interface:</TableCell>
