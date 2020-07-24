@@ -70,7 +70,8 @@ rule summary_tsv:
         sift="data/output/sift.tsv",
         foldx="data/output/foldx.tsv",
         ptm="data/output/ptms.tsv",
-        complex="data/output/complex.tsv"
+        complex="data/output/complex.tsv",
+        frequency="data/output/frequency.tsv"
 
     output:
         "data/output/summary.tsv"
@@ -79,4 +80,4 @@ rule summary_tsv:
         "logs/summary_tsv.log"
 
     shell:
-        "python bin/summary_tsv.py {input.sift} {input.foldx} {input.ptm} {input.complex} > {output} 2> {log}"
+        "python bin/summary_tsv.py {input.sift} {input.foldx} {input.ptm} {input.complex} {input.frequency} > {output} 2> {log}"

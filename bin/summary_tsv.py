@@ -28,7 +28,7 @@ def main(args):
 
     complexes = pd.read_csv(args.complex, sep='\t', index_col=False)
     complexes['int_template'] = complexes['model'].str.extract('^([0-9a-zA-Z]{4})\.[0-9]*$',
-                                                              expand=False)
+                                                               expand=False)
     complexes['int_template'] = complexes['int_template'].str.cat([complexes['chain'],
                                                                    complexes['int_chain']],
                                                                   sep='.')
@@ -36,11 +36,15 @@ def main(args):
                            'int_name', 'int_template', 'interaction_energy',
                            'diff_interaction_energy', 'diff_interface_residues']]
 
+    frequency = pd.read_csv(args.frequency, sep='\t', index_col=False)
+
+
     # Merge
     base_cols = ['uniprot', 'name', 'position']
     summary = sift.merge(foldx, how='outer', on=base_cols + ['mut'])
     summary = summary.merge(ptms, how='outer', on=base_cols)
     summary = summary.merge(complexes, how='outer', on=base_cols + ['mut'])
+    summary = summary.merge(frequency, how='outer', on=base_cols + ['wt', 'mut'])
     summary = summary.loc[summary.uniprot.isin(COVID_UNIPROT)]
     summary = summary.sort_values(by=['uniprot', 'name', 'position', 'mut'],
                                   axis='index', ignore_index=True)
@@ -56,8 +60,9 @@ def parse_args():
     parser.add_argument('foldx', metavar='F', help="FoldX output table")
     parser.add_argument('ptms', metavar='P', help="PTM output table")
     parser.add_argument('complex', metavar='C', help="Complexes output table")
+    parser.add_argument('frequency', metavar='R', help="Frequency output table")
 
-    # args = parser.parse_args(["data/output/sift.tsv", "data/output/foldx.tsv", "data/output/ptms.tsv", "data/output/complex.tsv"])
+    # args = parser.parse_args(["data/output/sift.tsv", "data/output/foldx.tsv", "data/output/ptms.tsv", "data/output/complex.tsv", "data/output/frequency.tsv"])
     return parser.parse_args()
 
 if __name__ == '__main__':
