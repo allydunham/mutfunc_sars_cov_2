@@ -43,7 +43,7 @@ rule sift4g:
         mem_mb = 8000
 
     shell:
-        "sift4g --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift &> {log}"
+        "sift4g --sub-results --subst data/sift/ -q {input.fa} -d {input.db} --out data/sift &> {log}"
 
 rule sift_tsv:
     """
