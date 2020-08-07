@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import About from './components/About';
+import Download from './components/Download';
 import DataController from './components/DataController';
 import TitleBar from './components/TitleBar';
 import { ThemeProvider } from "@material-ui/styles";
@@ -12,6 +13,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <TitleBar setPage={setPage}/>
             {page === 'about'? <About/> : null}
+            {page === 'download'? <Download/> : null}
             <DataController hidden={page !== 'search'}/>
         </ThemeProvider>
   );
