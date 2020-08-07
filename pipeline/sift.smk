@@ -35,6 +35,7 @@ rule sift4g:
 
     output:
         "data/sift/{gene}.SIFTprediction"
+        "data/sift/{gene}.aligned.fasta"
 
     log:
         'logs/sift4g/{gene}.log'
