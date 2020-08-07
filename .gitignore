@@ -6,3 +6,5 @@ test/*
 snakemake.yaml
 *.csv
 *.tsv
+.Rproj.user
+figures/*
