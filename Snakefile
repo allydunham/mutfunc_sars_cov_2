@@ -100,6 +100,13 @@ rule setup_directories:
         for d in dirs:
             shell(f'mkdir logs/{d} && echo "mkdir logs/{d}" || true')
 
+        # Frontend
+        dirs = ['public/data/pdb_foldx',
+                'public/data/pdb_interface',
+                'public/data/sift_alignments']
+        for d in dirs:
+            shell(f'mkdir frontend/{d} && echo "mkdir frontend/{d}" || true')
+
 rule copy_to_frontend:
     """
     Copy output data to web frontend public folder.
@@ -117,6 +124,8 @@ rule copy_to_frontend:
         cp data/output/complex.tsv frontend/public/data/complex.tsv &> {log}
         cp data/output/frequency.tsv frontend/public/data/frequency.tsv &> {log}
         cp data/output/summary.tsv frontend/public/data/summary.tsv &> {log}
+        rm -f frontend/public/data/sift_alignments/* &> {log}
+        cp data/sift/*.aligned.fasta frontend/public/data/sift_alignments/ &> {log}
         rm -rf frontend/public/data/pdb_foldx/* &> {log}
         rm -rf frontend/public/data/pdb_interface/* &> {log}
         python bin/copy_models.py swissmodel data/swissmodel frontend/public/data/pdb_foldx &> {log}
