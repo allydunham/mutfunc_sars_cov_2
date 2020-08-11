@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import ProteinViewer from './ProteinViewer'
 import SiftAlignment from './SiftAlignment'
+import GenomeViewer from './GenomeViewer'
 import MutBadges from './MutBadges'
 
 const styles = makeStyles((theme) => ({
@@ -155,6 +156,9 @@ const MutDetails = ({mut}) => {
                         &nbsp;
                         <MutBadges mut={mut}/>
                     </Typography>
+                </Grid>
+                <Grid item xs={12} className={classes.root}>
+                    <GenomeViewer gene_name={mut['name']}/>
                 </Grid>
                 <Grid item xs={5}>
                     <MutStructure mut={mut}/>
