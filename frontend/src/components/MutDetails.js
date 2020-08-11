@@ -10,6 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import ProteinViewer from './ProteinViewer'
+import SiftAlignment from './SiftAlignment'
 import MutBadges from './MutBadges'
 
 const styles = makeStyles((theme) => ({
@@ -62,10 +63,12 @@ const MutStructure = ({mut}) => {
 
     useEffect(() => {
         let startTab = 0
-        if (int_template !== '' &&
-            (fx_template === '' ||
-             Math.abs(mut['total_energy']) < 1)) {
+        if (!isNaN(mut['sift_score']) && mut['sift_score'] < 0.05){
+            startTab = 0
+        } else if (fx_template !== '' || Math.abs(mut['total_energy']) > 1) {
             startTab = 1
+        } else if (int_template !== '') {
+            startTab = 2
         }
         setTab(startTab)
     }, [mut, fx_template, int_template])
@@ -83,34 +86,36 @@ const MutStructure = ({mut}) => {
         <div style={{width: '100%', margin: 5}}>
             <div style={rootStyle}>
                 <Tabs value={tab} onChange={(event, i) => setTab(i)}>
+                    <Tab label="SIFT4G" disabled={isNaN(mut['sift_score'])}/>
                     <Tab label="FoldX" disabled={fx_template === ''}/>
                     <Tab label="Interface" disabled={int_template === ''}/>
                 </Tabs>
+                <SiftAlignment gene={mut['uniprot'] + '_' + mut['name']} hidden={tab !== 0}/>
                 <ProteinViewer
-                    hidden={tab !== 0}
+                    hidden={tab !== 1}
                     pdb_path={fx_template !== '' ? foldx_path : ''}
                     position={mut['position']}
                     chain={fx_chain}/>
                 <ProteinViewer
-                    hidden={tab !== 1}
+                    hidden={tab !== 2}
                     pdb_path={int_template !== '' ? int_path : ''}
                     position={mut['position']}
                     chain={int_chain}
                     int_chain={int_interactor_chain}/>
                 <Grid container justify='space-around' alignItems='center'>
-                    <Grid item>
+                    <Grid hidden={tab === 0} item>
                         <Typography display='inline' variant='h5' style={{color: '#e6180d'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Mutant</Typography>
                     </Grid>
-                    <Grid item>
+                    <Grid hidden={tab === 0} item>
                         <Typography display='inline' variant='h5' style={{color: '#8cb2f2'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Mutated Protein</Typography>
                     </Grid>
-                    <Grid item>
+                    <Grid hidden={tab === 0} item>
                         <Typography display='inline' variant='h5' style={{color: '#fa8ce6'}}>
                             &#9632;&nbsp;
                         </Typography>
