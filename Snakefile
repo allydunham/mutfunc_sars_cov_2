@@ -116,18 +116,25 @@ rule copy_to_frontend:
     log:
         'logs/copy_to_frontend.log'
 
-    shell:
-        """
-        cp data/output/sift.tsv frontend/public/data/sift.tsv &> {log}
-        cp data/output/foldx.tsv frontend/public/data/foldx.tsv &> {log}
-        cp data/output/ptms.tsv frontend/public/data/ptms.tsv &> {log}
-        cp data/output/complex.tsv frontend/public/data/complex.tsv &> {log}
-        cp data/output/frequency.tsv frontend/public/data/frequency.tsv &> {log}
-        cp data/output/summary.tsv frontend/public/data/summary.tsv &> {log}
-        rm -f frontend/public/data/sift_alignments/* &> {log}
-        cp data/sift/*.aligned.fasta frontend/public/data/sift_alignments/ &> {log}
-        rm -rf frontend/public/data/pdb_foldx/* &> {log}
-        rm -rf frontend/public/data/pdb_interface/* &> {log}
-        python bin/copy_models.py swissmodel data/swissmodel frontend/public/data/pdb_foldx &> {log}
-        python bin/copy_models.py complex data/complex frontend/public/data/pdb_interface &> {log}
-        """
+    run:
+        shell(f"cp data/output/sift.tsv frontend/public/data/sift.tsv &> {log}")
+        shell(f"cp data/output/foldx.tsv frontend/public/data/foldx.tsv &> {log}")
+
+        shell(f"cp data/output/ptms.tsv frontend/public/data/ptms.tsv &> {log}")
+
+        shell(f"cp data/output/complex.tsv frontend/public/data/complex.tsv &> {log}")
+
+        shell(f"cp data/output/frequency.tsv frontend/public/data/frequency.tsv &> {log}")
+
+        shell(f"cp data/output/summary.tsv frontend/public/data/summary.tsv &> {log}")
+
+        shell(f"rm -f frontend/public/data/sift_alignments/* &> {log}")
+        for gene in GENES:
+            if not gene in SIFT_GENE_ERRORS:
+                shell(f'python bin/format_sift_alignment.py --query "{gene.split("_")[1]}" data/sift/{gene}.aligned.fasta > frontend/public/data/sift_alignments/{gene}.json 2> {log}')
+
+        shell(f"rm -rf frontend/public/data/pdb_foldx/* &> {log}")
+        shell(f"rm -rf frontend/public/data/pdb_interface/* &> {log}")
+        shell(f"python bin/copy_models.py swissmodel data/swissmodel frontend/public/data/pdb_foldx &> {log}")
+        shell(f"python bin/copy_models.py complex data/complex frontend/public/data/pdb_interface &> {log}")
+
