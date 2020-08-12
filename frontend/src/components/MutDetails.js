@@ -134,7 +134,7 @@ const MutDetails = ({mut}) => {
     if (mut == null){
         return(
             <Paper className={classes.root} variant="outlined" elevation={3}>
-                <Typography align='center'>No variant selected</Typography>
+                <Typography align='center'>Click a result to view details</Typography>
             </Paper>
         )
     }
@@ -158,7 +158,7 @@ const MutDetails = ({mut}) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} className={classes.root}>
-                    <GenomeViewer gene_name={mut['name']}/>
+                    <GenomeViewer geneName={mut['name']} mutPosition={mut['position']}/>
                 </Grid>
                 <Grid item xs={5}>
                     <MutStructure mut={mut}/>
