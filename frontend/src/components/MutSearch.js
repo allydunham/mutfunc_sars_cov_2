@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { red } from '@material-ui/core/colors';
+import red from '@material-ui/core/colors/red';
 import { makeStyles } from '@material-ui/core/styles';
 
 // add e to test very large search
@@ -30,33 +30,44 @@ const styles = makeStyles({
     item: {
         width: "66%"
     },
-    errorAccordion: {
-        backgroundColor: red[100],
-        margin: '10px'
+    errorButton: {
+        color: red[900]
     }
 });
 
-const ErrorAccordion = ({errors}) => {
-    const classes = styles();
-    return(
-        <Accordion className={classes.errorAccordion}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant='body1' color="error">Search Errors</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                <List dense={true}>
-                    {errors.map((e) => (
-                        <ListItem key={e}>
-                            <ListItemText
-                                primary={e}
-                                primaryTypographyProps={{variant:"body1", color:"error"}}
-                            />
-                        </ListItem>
-                    ))}
-                </List>
+const ErrorDialog = ({errors}) => {
+    const classes = styles()
+    const [open, setOpen] = React.useState(false);
 
-            </AccordionDetails>
-        </Accordion>
+    return(
+        <>
+        <Button
+          variant='outlined'
+          className={classes.errorButton}
+          onClick={() => setOpen(true)}>
+            See details of unrecognised searches ({errors.length})
+        </Button>
+        <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+        >
+            <DialogTitle>Unrecognised Searches</DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    <List dense={true}>
+                        {errors.map((e) => (
+                            <ListItem key={e}>
+                                <ListItemText
+                                    primary={e}
+                                    primaryTypographyProps={{variant:"body1"}}
+                                />
+                            </ListItem>
+                        ))}
+                    </List>
+                </DialogContentText>
+            </DialogContent>
+        </Dialog>
+        </>
     )
 }
 
@@ -64,7 +75,6 @@ const MutSearch = ({ search, setSearch, errors, searching, setSearching }) => {
     const classes = styles();
     const [newSearch, setNewSearch] = useState(defaultSearch)
 
-    //
     const processSearch = (event) => {
         event.preventDefault();
         if (!searching && newSearch !== search){
@@ -74,7 +84,8 @@ const MutSearch = ({ search, setSearch, errors, searching, setSearching }) => {
     }
 
     return(
-        <Grid container direction="column" alignItems="center" className={classes.root}>
+        <Grid container spacing={2} direction="column"
+              alignItems="center" className={classes.root}>
             <Grid item className={classes.item}>
                 <TextField
                     value={newSearch}
@@ -97,7 +108,7 @@ const MutSearch = ({ search, setSearch, errors, searching, setSearching }) => {
             </Grid>
             {errors.length > 0 ? (
                 <Grid item className={classes.item}>
-                    <ErrorAccordion errors={errors}/>
+                    <ErrorDialog errors={errors}/>
                 </Grid>
             ) : null}
             {search === false ? (
