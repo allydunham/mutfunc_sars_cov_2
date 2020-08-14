@@ -15,7 +15,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { makeStyles } from '@material-ui/core/styles';
-import MutBadges from './MutBadges';
+import MutBadges, { BadgeKey } from './MutBadges';
 
 const styles = makeStyles((theme) => ({
     tableControls: {
@@ -35,8 +35,7 @@ const styles = makeStyles((theme) => ({
     }
 }));
 
-// Split this up into lower level components?
-
+// Split these up into lower level components?
 const ShowNeutralCheck = ({viewAll, setViewAll}) => {
     return(
         <FormControl fullWidth>
@@ -56,45 +55,45 @@ const TablePaginationActions = ({count, page, rowsPerPage, onChangePage}) => {
     const classes = styles();
 
     const handleFirstPageButtonClick = (event) => {
-      onChangePage(event, 0);
+        onChangePage(event, 0);
     };
 
     const handleBackButtonClick = (event) => {
-      onChangePage(event, page - 1);
+        onChangePage(event, page - 1);
     };
 
     const handleNextButtonClick = (event) => {
-      onChangePage(event, page + 1);
+        onChangePage(event, page + 1);
     };
 
     const handleLastPageButtonClick = (event) => {
-      onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+        onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
     };
 
     return (
-      <div className={classes.pageButton}>
-        <IconButton
-          onClick={handleFirstPageButtonClick}
-          disabled={page === 0}
-        >
-          <FirstPageIcon/>
-        </IconButton>
-        <IconButton onClick={handleBackButtonClick} disabled={page === 0}>
-          <KeyboardArrowLeft />
-        </IconButton>
-        <IconButton
-          onClick={handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        >
-          <KeyboardArrowRight />
-        </IconButton>
-        <IconButton
-          onClick={handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        >
-          <LastPageIcon/>
-        </IconButton>
-      </div>
+        <div className={classes.pageButton}>
+            <IconButton
+                onClick={handleFirstPageButtonClick}
+                disabled={page === 0}
+            >
+                <FirstPageIcon/>
+            </IconButton>
+            <IconButton onClick={handleBackButtonClick} disabled={page === 0}>
+                <KeyboardArrowLeft />
+            </IconButton>
+            <IconButton
+                onClick={handleNextButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+            >
+                <KeyboardArrowRight />
+            </IconButton>
+            <IconButton
+                onClick={handleLastPageButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+            >
+                <LastPageIcon/>
+            </IconButton>
+        </div>
     );
   }
 
@@ -152,17 +151,23 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
 
     return(
         <>
-        <div className={classes.tableControls}>
-            <ShowNeutralCheck viewAll={viewAll} setViewAll={setViewAll} />
+        <div className={classes.badgeKey}>
+            <ShowNeutralCheck
+                viewAll={viewAll}
+                setViewAll={setViewAll}
+            />
         </div>
         <div className={classes.tablePaper}>
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell colSpan={3}>
+                                <BadgeKey/>
+                            </TableCell>
                             <TablePagination
                             rowsPerPageOptions={[10, 25, 50, 100]}
-                            colSpan={6}
+                            colSpan={3}
                             count={filteredIds.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
