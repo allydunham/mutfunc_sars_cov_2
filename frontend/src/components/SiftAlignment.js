@@ -8,7 +8,7 @@ import {
     SequenceViewer,
   } from 'react-msa-viewer';
 
-const SiftAlignmnet = ({gene, hidden}) => {
+const SiftAlignmnet = ({gene, hidden, width=600, height=0}) => {
     const [seqs, setSeqs] = useState([])
 
     useEffect(() => {
@@ -19,13 +19,15 @@ const SiftAlignmnet = ({gene, hidden}) => {
           .catch((err) => setSeqs([]))
     }, [gene]);
 
+    height = height === 0 ? Math.max(50 + 20 * seqs.length, 100) : height
+
     return(
-        <div hidden={hidden} width={400} height={300}>
+        <div hidden={hidden} width={width} height={height}>
             {seqs.length > 0 ? (
                 <MSAViewer
                   sequences={seqs}
-                  width={400}
-                  height={300}
+                  width={width}
+                  height={height}
                   markerSteps={4}
                   sequenceScrollBarPositionX='top'
                 >
