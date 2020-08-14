@@ -6,6 +6,7 @@ function colourMol(position, chain1, chain2){
     let pos_col = [0.9, 0.1, 0.05, 1.0]
     let chain1_col = [0.55, 0.7, 0.95, 0.9]
     let chain2_col = [0.98, 0.55, 0.9, 0.9]
+    let other_col = [0.95, 0.95, 0.95, 0.6]
     return new pv.color.ColorOp(function(atom, out, index) {
         let residue = atom.residue()
         if (residue.chain().name() === chain1) {
@@ -25,6 +26,11 @@ function colourMol(position, chain1, chain2){
             out[index+1] = chain2_col[1];
             out[index+2] = chain2_col[2];
             out[index+3] = chain2_col[3];
+        } else {
+            out[index+0] = other_col[0];
+            out[index+1] = other_col[1];
+            out[index+2] = other_col[2];
+            out[index+3] = other_col[3];
         }
     });
 }
@@ -74,7 +80,6 @@ class ProteinViewer extends Component {
     render(){
         return(
             <div
-            id="pvViewer"
             hidden={this.props.hidden}
             className="pvViewer"
             ref={this.element}
