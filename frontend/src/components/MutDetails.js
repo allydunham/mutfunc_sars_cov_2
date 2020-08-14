@@ -4,11 +4,12 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+
 import ProteinViewer from './ProteinViewer'
 import SiftAlignment from './SiftAlignment'
 import GenomeViewer from './GenomeViewer'
@@ -28,32 +29,16 @@ const styles = makeStyles((theme) => ({
 
 }));
 
-const InterfaceNumCell = ({change}) => {
+const getInterfaceNumString = (change) => {
     switch (Math.sign(change)){
         case 0:
-            return(
-                <TableCell colSpan={2} align='center'>
-                    No change in interface residues
-                </TableCell>
-            )
+            return('No change in interface residues')
         case 1:
-            return(
-                <TableCell colSpan={2} align='center'>
-                    {change} interface residues gained
-                </TableCell>
-            )
+            return(change + ' interface residues gained')
         case -1:
-            return(
-                <TableCell colSpan={2} align='center'>
-                    {Math.abs(change)} interface residues lost
-                </TableCell>
-            )
+            return(Math.abs(change) + ' interface residues lost')
         default:
-            return(
-                <TableCell colSpan={2} align='center'>
-                    Unknown interface residue count change
-                </TableCell>
-            )
+            return('Unknown interface residue count change')
     }
 }
 
@@ -79,7 +64,7 @@ const MutStructure = ({mut}) => {
     const int_path = [process.env.PUBLIC_URL, 'data/pdb_interface/',
                       int_template, '.pdb'].join('')
 
-    const rootStyle = {width: 500, display: 'flex', marginLeft: 'auto',
+    const rootStyle = {width: 1200, display: 'flex', marginLeft: 'auto',
                        marginRight: 'auto', flexDirection: 'column',
                        justifyContent: 'center'}
 
@@ -91,18 +76,28 @@ const MutStructure = ({mut}) => {
                     <Tab label="FoldX" disabled={fx_template === ''}/>
                     <Tab label="Interface" disabled={int_template === ''}/>
                 </Tabs>
-                <SiftAlignment gene={mut['uniprot'] + '_' + mut['name']} hidden={tab !== 0}/>
+                <SiftAlignment
+                  gene={mut['uniprot'] + '_' + mut['name']}
+                  hidden={tab !== 0}
+                  width={1000}
+                />
                 <ProteinViewer
                     hidden={tab !== 1}
                     pdb_path={fx_template !== '' ? foldx_path : ''}
                     position={mut['position']}
-                    chain={fx_chain}/>
+                    chain={fx_chain}
+                    width={1200}
+                    height={900}
+                />
                 <ProteinViewer
                     hidden={tab !== 2}
                     pdb_path={int_template !== '' ? int_path : ''}
                     position={mut['position']}
                     chain={int_chain}
-                    int_chain={int_interactor_chain}/>
+                    int_chain={int_interactor_chain}
+                    width={1200}
+                    height={900}
+                    />
                 <Grid container justify='space-around' alignItems='center'>
                     <Grid hidden={tab === 0} item>
                         <Typography display='inline' variant='h5' style={{color: '#e6180d'}}>
@@ -139,7 +134,8 @@ const MutDetails = ({mut}) => {
         )
     }
 
-    const mut_text = [mut['name'], ' ', mut['wt'], mut['position'], mut['mut']].join('')
+    const mut_text = [mut['uniprot'], ' ', mut['name'], ' ', mut['wt'],
+                      mut['position'], mut['mut']].join('')
 
     return(
         <Paper variant="outlined" elevation={2} className={classes.root}>
@@ -160,69 +156,76 @@ const MutDetails = ({mut}) => {
                 <Grid item xs={12} className={classes.root}>
                     <GenomeViewer geneName={mut['name']} mutPosition={mut['position']}/>
                 </Grid>
-                <Grid item xs={5}>
-                    <MutStructure mut={mut}/>
+                <Grid item xs={3}>
+                    <List>
+                        <ListItemText
+                          primary='Conservation'
+                          primaryTypographyProps={{variant: 'h6'}}
+                        />
+                        <ListItemText>
+                            Frequency: {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
+                        </ListItemText>
+                        <ListItemText>
+                            SIFT Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
+                        </ListItemText>
+                        <ListItem>
+                            <Button variant='contained'>View SIFT4G alignment</Button>
+                        </ListItem>
+                    </List>
                 </Grid>
-                <Grid item xs={7} >
-                    <Table>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell align='right'>Gene:</TableCell>
-                                <TableCell align='left'>{mut['uniprot']}</TableCell>
-                                <TableCell align='right'>Protein:</TableCell>
-                                <TableCell align='left'>{mut['name']}</TableCell>
-                                <TableCell align='right'>Mutation:</TableCell>
-                                <TableCell align='left'>
-                                    {mut['wt'] + mut['position'] + mut['mut']}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell align='right'>SIFT Score:</TableCell>
-                                <TableCell align='left'>
-                                    {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
-                                </TableCell>
-                                <TableCell align='right'>FoldX &Delta;&Delta;G:</TableCell>
-                                <TableCell align='left'>
-                                    {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
-                                </TableCell>
-                                <TableCell align='right'>PTM:</TableCell>
-                                <TableCell align='left'>
-                                    {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell align='right'>Frequency:</TableCell>
-                                <TableCell align='left'>
-                                    {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
-                                </TableCell>
-                                <TableCell align='right'></TableCell>
-                                <TableCell align='left'></TableCell>
-                                <TableCell align='right'></TableCell>
-                                <TableCell align='left'></TableCell>
-                            </TableRow>
-                            {mut['int_name'] === "" ? (
-                                <TableRow>
-                                    <TableCell align='right'>Interface:</TableCell>
-                                    <TableCell align='left'>None</TableCell>
-                                    <TableCell align='right'></TableCell>
-                                    <TableCell align='left'></TableCell>
-                                    <TableCell align='right'></TableCell>
-                                    <TableCell align='left'></TableCell>
-                                </TableRow>
-                            ) : (
-                                <TableRow>
-                                    <TableCell align='right'>Interface:</TableCell>
-                                    <TableCell align='left'>{mut['int_name']}</TableCell>
-                                    <TableCell align='right'>Interface &Delta;&Delta;G:</TableCell>
-                                    <TableCell align='left'>
-                                        {isNaN(mut['diff_interaction_energy']) ? 'NA':
-                                         mut['diff_interaction_energy']}
-                                    </TableCell>
-                                    <InterfaceNumCell change={mut['diff_interface_residues']} />
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                <Grid item xs={3}>
+                    <List>
+                        <ListItemText
+                          primary='Structure'
+                          primaryTypographyProps={{variant: 'h6'}}
+                        />
+                        <ListItemText>
+                            FoldX &Delta;&Delta;G: {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
+                        </ListItemText>
+                        <ListItemText>
+                            Template: {mut['template'] === '' ? 'None': mut['template']}
+                        </ListItemText>
+                        <ListItem>
+                            <Button variant='contained'>View Structure</Button>
+                        </ListItem>
+                    </List>
+                </Grid>
+                <Grid item xs={3}>
+                    <List>
+                        <ListItemText
+                          primary='PTMs'
+                          primaryTypographyProps={{variant: 'h6'}}
+                        />
+                        <ListItemText>
+                            {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                        </ListItemText>
+                    </List>
+                </Grid>
+                <Grid item xs={3}>
+                    <List>
+                        <ListItemText
+                          primary='Interfaces'
+                          primaryTypographyProps={{variant: 'h6'}}
+                        />
+                        <ListItemText>
+                            Interface: {mut['int_name'] === '' ? 'None' : mut['uniprot'] + ' ' + mut['name'] + ' - ' + mut['int_uniprot'] + ' ' +mut['int_name']}
+                        </ListItemText>
+                        <ListItemText>
+                            Interface &Delta;&Delta;G: {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
+                        </ListItemText>
+                        <ListItemText>
+                            {getInterfaceNumString(mut['diff_interface_residues'])}
+                        </ListItemText>
+                        <ListItemText>
+                            Template: {mut['int_template'] === '' ? 'None': mut['int_template']}
+                        </ListItemText>
+                        <ListItem>
+                            <Button variant='contained'>View Structure</Button>
+                        </ListItem>
+                    </List>
+                </Grid>
+                <Grid item xs={12}>
+                    <MutStructure mut={mut}/>
                 </Grid>
             </Grid>
         </Paper>
