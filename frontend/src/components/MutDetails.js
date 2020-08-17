@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import MuiTableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import ProteinViewer from './ProteinViewer'
 import SiftAlignment from './SiftAlignment'
 import GenomeViewer from './GenomeViewer'
 import MutBadges from './MutBadges'
+
+const TableCell = withStyles({
+    root: {
+      borderBottom: "none",
+      padding: '2px'
+    }
+  })(MuiTableCell);
 
 const styles = makeStyles((theme) => ({
     root: {
@@ -26,7 +35,6 @@ const styles = makeStyles((theme) => ({
         paddingRight: theme.spacing(0),
         paddingBottom: theme.spacing(0)
     }
-
 }));
 
 const getInterfaceNumString = (change) => {
@@ -42,89 +50,240 @@ const getInterfaceNumString = (change) => {
     }
 }
 
-const MutStructure = ({mut}) => {
-    const [tab, setTab] = useState(0);
-    const [fx_template, fx_chain] = mut['template'].split('.')
-    const [int_template, int_chain, int_interactor_chain] = mut['int_template'].split('.')
+const AlignmentPopup = ({mut, open, setOpen}) => {
+    return(
+        <Dialog open={open} onClose={() => setOpen(false)} scroll='body' fullWidth maxWidth='lg'>
+            <DialogTitle>
+                SIFT4G Alignment
+            </DialogTitle>
+            <DialogContent>
+                <Grid container justify='center' alignItems='center'>
+                    <Grid item xs={12}>
+                        <SiftAlignment
+                          gene={mut['uniprot'] + '_' + mut['name']}
+                          width={1100}
+                        />
+                    </Grid>
+                </Grid>
+            </DialogContent>
+        </Dialog>
+    )
+}
 
-    useEffect(() => {
-        let startTab = 0
-        if (!isNaN(mut['sift_score']) && mut['sift_score'] < 0.05){
-            startTab = 0
-        } else if (fx_template !== '' || Math.abs(mut['total_energy']) > 1) {
-            startTab = 1
-        } else if (int_template !== '') {
-            startTab = 2
-        }
-        setTab(startTab)
-    }, [mut, fx_template, int_template])
-
-    const foldx_path = [process.env.PUBLIC_URL, 'data/pdb_foldx/', mut['uniprot'],
-                        '_', mut['name'], '/', fx_template, '.pdb'].join('')
-    const int_path = [process.env.PUBLIC_URL, 'data/pdb_interface/',
-                      int_template, '.pdb'].join('')
-
-    const rootStyle = {width: 1200, display: 'flex', marginLeft: 'auto',
-                       marginRight: 'auto', flexDirection: 'column',
-                       justifyContent: 'center'}
+const StructurePopup = ({mut, interfaceModel, open, setOpen}) => {
+    let template = ''
+    let chain = ''
+    let path = ''
+    let int_chain = ''
+    if (interfaceModel){
+        [template, chain, int_chain] = mut['int_template'].split('.')
+        path = [process.env.PUBLIC_URL, 'data/pdb_interface/', template, '.pdb'].join('')
+    } else {
+        [template, chain] = mut['template'].split('.')
+        path = [process.env.PUBLIC_URL, 'data/pdb_foldx/', mut['uniprot'], '_',
+                mut['name'], '/', template, '.pdb'].join('')
+    }
 
     return(
-        <div style={{width: '100%', margin: 5}}>
-            <div style={rootStyle}>
-                <Tabs value={tab} onChange={(event, i) => setTab(i)}>
-                    <Tab label="SIFT4G" disabled={isNaN(mut['sift_score'])}/>
-                    <Tab label="FoldX" disabled={fx_template === ''}/>
-                    <Tab label="Interface" disabled={int_template === ''}/>
-                </Tabs>
-                <SiftAlignment
-                  gene={mut['uniprot'] + '_' + mut['name']}
-                  hidden={tab !== 0}
-                  width={1000}
-                />
-                <ProteinViewer
-                    hidden={tab !== 1}
-                    pdb_path={fx_template !== '' ? foldx_path : ''}
-                    position={mut['position']}
-                    chain={fx_chain}
-                    width={1200}
-                    height={900}
-                />
-                <ProteinViewer
-                    hidden={tab !== 2}
-                    pdb_path={int_template !== '' ? int_path : ''}
-                    position={mut['position']}
-                    chain={int_chain}
-                    int_chain={int_interactor_chain}
-                    width={1200}
-                    height={900}
-                    />
-                <Grid container justify='space-around' alignItems='center'>
-                    <Grid hidden={tab === 0} item>
+        <Dialog open={open} onClose={() => setOpen(false)} scroll='body' fullWidth maxWidth='lg'>
+            <DialogTitle>
+                {interfaceModel ? 'Interface Structure Model' : 'Structure Model'}
+            </DialogTitle>
+            <DialogContent>
+                <Grid container justify='space-evenly' alignItems='center'>
+                    <Grid item xs={12}>
+                        <ProteinViewer
+                          pdb_path={path}
+                          position={mut['position']}
+                          chain={chain}
+                          int_chain={int_chain}
+                          width={900}
+                          height={700}
+                        />
+                    </Grid>
+                    <Grid item>
                         <Typography display='inline' variant='h5' style={{color: '#e6180d'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Mutant</Typography>
                     </Grid>
-                    <Grid hidden={tab === 0} item>
+                    <Grid item>
                         <Typography display='inline' variant='h5' style={{color: '#8cb2f2'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Mutated Protein</Typography>
                     </Grid>
-                    <Grid hidden={tab === 0} item>
+                    {interfaceModel ? (
+                    <Grid item>
                         <Typography display='inline' variant='h5' style={{color: '#fa8ce6'}}>
                             &#9632;&nbsp;
                         </Typography>
                         <Typography display='inline'>Interface Protein</Typography>
                     </Grid>
+                    ) : null}
                 </Grid>
-            </div>
-        </div>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+const MutDetailStats = ({mut}) => {
+    const [fxOpen, setFxOpen] = useState(false);
+    const [intOpen, setIntOpen] = useState(false);
+    const [alignOpen, setAlignOpen] = useState(false);
+
+    return(
+        <Grid
+          container
+          spacing={3}
+          direction='row'
+          justify="space-evenly"
+          alignItems="flex-start"
+        >
+            <Grid item xs={4}>
+                <Typography variant='h6' align='center'>Conservation</Typography>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align='right'>
+                                Frequency:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                PTM:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                SIFT4G Score:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2} align='center'>
+                                <Button
+                                  color='secondary'
+                                  onClick={() => setAlignOpen(true)}
+                                  disabled={isNaN(mut['sift_score'])}>
+                                    View SIFT4G alignment
+                                </Button>
+                                <AlignmentPopup mut={mut} open={alignOpen} setOpen={setAlignOpen}/>
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Grid>
+
+            <Grid item xs={4}>
+                <Typography variant='h6' align='center'>Structure</Typography>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align='right'>
+                                Template:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['template'] === '' ? 'None': mut['template']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                FoldX &Delta;&Delta;G:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2} align='center'>
+                                <Button
+                                  color='secondary'
+                                  onClick={() => setFxOpen(true)}
+                                  disabled={mut['template'] === ''}>
+                                    View Structure
+                                </Button>
+                                <StructurePopup mut={mut} open={fxOpen} setOpen={setFxOpen}/>
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Grid>
+
+            <Grid item xs={4}>
+                <Typography variant='h6' align='center'>Interfaces</Typography>
+                <Table>
+                    <TableBody>
+                        <TableRow>
+                            <TableCell align='right'>
+                                Interface partner:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['int_name'] === '' ? 'None' : mut['int_uniprot'] + ' ' + mut['int_name']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                Template:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['int_template'] === '' ? 'None': mut['int_template']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                Interface &Delta;&Delta;G:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell align='right'>
+                                SIFT4G Score:
+                            </TableCell>
+                            <TableCell align='left'>
+                                {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2} align='center'>
+                                {getInterfaceNumString(mut['diff_interface_residues'])}
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2} align='center'>
+                                <Button
+                                  color='secondary'
+                                  onClick={() => setIntOpen(true)}
+                                  disabled={mut['int_template'] === ''}>
+                                    View Interface
+                                </Button>
+                                <StructurePopup
+                                  mut={mut}
+                                  interfaceModel
+                                  open={intOpen}
+                                  setOpen={setIntOpen}
+                                />
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </Grid>
+        </Grid>
     )
 }
 
 const MutDetails = ({mut}) => {
-   const classes = styles()
+   const classes = styles();
 
     if (mut == null){
         return(
@@ -156,76 +315,8 @@ const MutDetails = ({mut}) => {
                 <Grid item xs={12} className={classes.root}>
                     <GenomeViewer geneName={mut['name']} mutPosition={mut['position']}/>
                 </Grid>
-                <Grid item xs={3}>
-                    <List>
-                        <ListItemText
-                          primary='Conservation'
-                          primaryTypographyProps={{variant: 'h6'}}
-                        />
-                        <ListItemText>
-                            Frequency: {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
-                        </ListItemText>
-                        <ListItemText>
-                            SIFT Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
-                        </ListItemText>
-                        <ListItem>
-                            <Button variant='contained'>View SIFT4G alignment</Button>
-                        </ListItem>
-                    </List>
-                </Grid>
-                <Grid item xs={3}>
-                    <List>
-                        <ListItemText
-                          primary='Structure'
-                          primaryTypographyProps={{variant: 'h6'}}
-                        />
-                        <ListItemText>
-                            FoldX &Delta;&Delta;G: {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
-                        </ListItemText>
-                        <ListItemText>
-                            Template: {mut['template'] === '' ? 'None': mut['template']}
-                        </ListItemText>
-                        <ListItem>
-                            <Button variant='contained'>View Structure</Button>
-                        </ListItem>
-                    </List>
-                </Grid>
-                <Grid item xs={3}>
-                    <List>
-                        <ListItemText
-                          primary='PTMs'
-                          primaryTypographyProps={{variant: 'h6'}}
-                        />
-                        <ListItemText>
-                            {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                        </ListItemText>
-                    </List>
-                </Grid>
-                <Grid item xs={3}>
-                    <List>
-                        <ListItemText
-                          primary='Interfaces'
-                          primaryTypographyProps={{variant: 'h6'}}
-                        />
-                        <ListItemText>
-                            Interface: {mut['int_name'] === '' ? 'None' : mut['uniprot'] + ' ' + mut['name'] + ' - ' + mut['int_uniprot'] + ' ' +mut['int_name']}
-                        </ListItemText>
-                        <ListItemText>
-                            Interface &Delta;&Delta;G: {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
-                        </ListItemText>
-                        <ListItemText>
-                            {getInterfaceNumString(mut['diff_interface_residues'])}
-                        </ListItemText>
-                        <ListItemText>
-                            Template: {mut['int_template'] === '' ? 'None': mut['int_template']}
-                        </ListItemText>
-                        <ListItem>
-                            <Button variant='contained'>View Structure</Button>
-                        </ListItem>
-                    </List>
-                </Grid>
-                <Grid item xs={12}>
-                    <MutStructure mut={mut}/>
+                <Grid item xs={10}>
+                    <MutDetailStats mut={mut}/>
                 </Grid>
             </Grid>
         </Paper>
