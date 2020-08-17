@@ -7,6 +7,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
+import BarChartIcon from '@material-ui/icons/BarChart';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
@@ -41,6 +42,12 @@ const TitleBar = ({setPage}) => {
                 </Button>
                 <Button
                   className={classes.button}
+                  onClick={() => setPage('overview')}
+                  startIcon={<BarChartIcon/>}>
+                    Data Overview
+                </Button>
+                <Button
+                  className={classes.button}
                   onClick={() => setPage('download')}
                   startIcon={<GetAppIcon/>}>
                     Download
@@ -48,6 +55,8 @@ const TitleBar = ({setPage}) => {
                 <Button
                   className={classes.button}
                   href='https://github.com/allydunham/covid19_mutfunc'
+                  target="_blank"
+                  rel="noopener noreferrer"
                   startIcon={<GitHubIcon/>}>
                     Source
                 </Button>
