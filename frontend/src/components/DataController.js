@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MutTable from "./MutTable"
 import MutSearch from "./MutSearch"
 import MutDetails from "./MutDetails"
+import SearchSummary from "./SearchSummary"
 import { makeMutKey, searchMutations } from "../lib/mutations";
 
 const styles = makeStyles({
@@ -79,6 +80,9 @@ const DataDisplay = (props) => {
     // Return results table if no special case is found
     return(
         <>
+        <Grid item className={classes.item}>
+            <SearchSummary searchResults={searchResults} data={data}/>
+        </Grid>
         <Grid item className={classes.item}>
             <MutDetails mut={data[selectedMut]}/>
         </Grid>
