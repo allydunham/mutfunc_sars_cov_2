@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
+import Link from "@material-ui/core/Link";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 import ProteinViewer from './ProteinViewer'
@@ -192,7 +193,16 @@ const MutDetailStats = ({mut}) => {
                                 Template:
                             </TableCell>
                             <TableCell align='left'>
-                                {mut['template'] === '' ? 'None': mut['template']}
+                                {mut['template'] === '' ? (
+                                    "None"
+                                ) : (
+                                    <Link
+                                      href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['template'].split('.')[0]}
+                                      target="_blank"
+                                      rel="noopener noreferrer">
+                                        {mut['template']}
+                                    </Link>
+                                )}
                             </TableCell>
                         </TableRow>
                         <TableRow>
@@ -227,7 +237,15 @@ const MutDetailStats = ({mut}) => {
                                 Interface partner:
                             </TableCell>
                             <TableCell align='left'>
-                                {mut['int_name'] === '' ? 'None' : mut['int_uniprot'] + ' ' + mut['int_name']}
+                                {mut['int_name'] !== '' ? (
+                                    <Link
+                                      href={"https://www.uniprot.org/uniprot/" + mut['int_uniprot']}
+                                      target="_blank"
+                                      rel="noopener noreferrer">
+                                        {mut['int_uniprot']}
+                                    </Link>
+                                ) : null}
+                                {mut['int_name'] !== '' ? " " + mut['int_name'] : "None"}
                             </TableCell>
                         </TableRow>
                         <TableRow>
@@ -235,20 +253,21 @@ const MutDetailStats = ({mut}) => {
                                 Template:
                             </TableCell>
                             <TableCell align='left'>
-                                {mut['int_template'] === '' ? 'None': mut['int_template']}
+                                {mut['int_template'] === '' ? (
+                                    "None"
+                                ) : (
+                                    <Link
+                                    href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['int_template'].split('.')[0]}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                        {mut['int_template']}
+                                    </Link>
+                                )}
                             </TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell align='right'>
                                 Interface &Delta;&Delta;G:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                SIFT4G Score:
                             </TableCell>
                             <TableCell align='left'>
                                 {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
@@ -293,7 +312,7 @@ const MutDetails = ({mut}) => {
         )
     }
 
-    const mut_text = [mut['uniprot'], ' ', mut['name'], ' ', mut['wt'],
+    const mut_text = [mut['name'], ' ', mut['wt'],
                       mut['position'], mut['mut']].join('')
 
     return(
@@ -307,6 +326,13 @@ const MutDetails = ({mut}) => {
             >
                 <Grid item xs={12}>
                     <Typography align='left' variant='h6' className={classes.title}>
+                        <Link
+                          href={"https://www.uniprot.org/uniprot/" + mut['uniprot']}
+                          target="_blank"
+                          rel="noopener noreferrer">
+                            {mut['uniprot']}
+                        </Link>
+                        &nbsp;
                         {mut_text}
                         &nbsp;
                         <MutBadges mut={mut}/>
