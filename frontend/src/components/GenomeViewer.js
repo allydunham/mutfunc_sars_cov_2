@@ -29,9 +29,10 @@ const Gene = ({name, colour, label=''}) => {
         <>
         <rect x={x} y="500" width={width} height="600" rx="15" fill={colour}/>
         {position !== 'none' ? (<text
-            x={x + width / 2} y={textY} font-size="300"
-            dominant-baseline={baseline}
-            text-anchor="middle"
+            x={x + width / 2} y={textY}
+            fontSize="300"
+            dominantBaseline={baseline}
+            textAnchor="middle"
             fill={colour === darkCol && position === 'center' ? 'white' : 'black'}>
                 {name}
         </text>) : null}
@@ -51,18 +52,25 @@ const GenomeViewer = ({geneName, mutPosition}) => {
     return(
         <svg width="90%" viewBox="-300 -200 30600 1900">
             <line x1="1" y1="800" x2="29903" y2="800" stroke="black" strokeWidth="0.25%"/>
-            <text x="-200" y="800" font-size="300"
-              dominant-baseline="middle"
-              text-anchor="middle">
+            <text
+              x="-200"
+              y="800"
+              fontSize="300"
+              dominantBaseline="middle"
+              textAnchor="middle">
                 5'
             </text>
-            <text x="30150" y="800" font-size="300"
-              dominant-baseline="middle"
-              text-anchor="middle">
+            <text
+              x="30150"
+              y="800"
+              fontSize="300"
+              dominantBaseline="middle"
+              textAnchor="middle">
                 3'
             </text>
             {Object.keys(genes).map((gene, i) => (
                 <Gene
+                  key={gene}
                   name={gene}
                   colour={gene === geneName ? darkCol : lightCols[i % 2]}
                 />
