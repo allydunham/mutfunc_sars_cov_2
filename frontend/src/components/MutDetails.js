@@ -211,7 +211,7 @@ const MutDetailStats = ({mut}) => {
                                 FoldX &Delta;&Delta;G:
                             </TableCell>
                             <TableCell align='left'>
-                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                                {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
                             </TableCell>
                         </TableRow>
                         <TableRow>
