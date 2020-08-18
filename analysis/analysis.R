@@ -21,12 +21,13 @@ columns <- cols(
   freq = col_double()
 )
 variants <- read_tsv('data/output/summary.tsv', col_types = columns) %>%
-  mutate(log10_sift = log10(sift_score + 1e-5))
+  mutate(log10_sift = log10(sift_score + 1e-5),
+         log10_freq = log10(freq + 1e-5))
 
 plots <- list()
 
 ### Histograms ###
-plots$freq_hist <- ggplot(variants, aes(x = log10(freq))) +
+plots$freq_hist <- ggplot(variants, aes(x = log10_freq)) +
   geom_histogram(fill = 'cornflowerblue', bins = 40) +
   labs(x = 'Log<sub>10</sub>Frequency',
        y = 'Count') +
@@ -56,7 +57,88 @@ plots$int_residues_hist <- ggplot(variants, aes(x = diff_interface_residues)) +
   theme(axis.title.x = element_markdown())
 
 ### Factors against each other ###
+classify_freq <- function(x){
+  out <- rep('> 0.01', length(x))
+  out[x < 0.01] <- '< 0.01'
+  out[x < 0.001] <- '< 0.001'
+  out[x < 0.0001] <- '< 0.0001'
+  out[is.na(x)] <- 'Not Observed'
+  out <- factor(out, levels = c('Not Observed', '< 0.0001', '< 0.001', '< 0.01', '> 0.01'))
+  return(out)
+}
+plots$freq_sift <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+  ggplot(aes(x = freq_cat, y = log10_sift)) +
+  geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
+  labs(x = 'Frequency', y = 'SIFT4G Score')
+
+plots$freq_foldx <- mutate(variants, freq_cat = classify_freq(freq), ddg_clamped = clamp(total_energy, upper = 10)) %>%
+  ggplot(aes(x = freq_cat, y = ddg_clamped)) +
+  geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
+  labs(x = 'Frequency', y = expression('FoldX'~Delta*Delta*'G (Clamped to < 10)'))
+
+plots$freq_int <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+  ggplot(aes(x = freq_cat, y = clamp(diff_interaction_energy, upper = 10))) +
+  geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
+  labs(x = 'Frequency', y = expression('FoldX Interface'~Delta*Delta*'G (Clamped to < 10)'))
+
+plots$freq_int_residues <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+  drop_na(diff_interface_residues) %>%
+  count(freq_cat, diff_interface_residues) %>%
+  complete(freq_cat, diff_interface_residues, fill = list(n=0)) %>%
+  group_by(freq_cat) %>%
+  mutate(total = sum(n), prop = n / total) %>%
+  ungroup() %>%
+  mutate(freq_cat = str_c(freq_cat, ' (n = ', total, ')')) %>%
+  ggplot(aes(x = as.factor(diff_interface_residues), y = prop, fill = freq_cat)) +
+  geom_col(position = 'dodge') +
+  scale_fill_brewer(name = 'Variant Frequency', palette = 'Set1', type = 'qual') +
+  labs(x = "Change in Interface Residues", y = 'Proportion of Frequency Group')
+
+plots$freq_ptm <- mutate(variants, ptm = ifelse(is.na(ptm), 'None', str_to_title(ptm))) %>%
+  ggplot(aes(x = log10(freq), colour = ptm)) +
+  geom_line(stat = 'density') +
+  scale_colour_brewer(name = 'PTM', palette = 'Set1', type = 'qual') +
+  labs(x = expression(log[10](Frequency)), y = 'Density')
+
+## Plot position of observed phosphomutants
+# Includes start and end points of each protein to set x limits
+observed_pho_positions <- group_by(variants, name) %>%
+  filter(!all(is.na(ptm) | is.na(freq))) %>%
+  filter((position == 1 & mut == 'A') | (position == max(position, na.rm = TRUE) & mut == 'A') | (!is.na(ptm) & !is.na(freq))) %>%
+  ungroup() %>%
+  select(name, position, wt, mut, ptm, log10_freq) %>%
+  mutate(mimic = mut %in% c('E', 'D'),
+         lab = ifelse(mimic, str_c(wt, ' %->% ', mut), NA))
+
+mn_pho <- floor(min(observed_pho_positions$log10_freq, na.rm = TRUE))
+plots$observed_phos <- (ggplot(filter(observed_pho_positions, !is.na(ptm))) +
+  facet_wrap(~name, ncol = 1, scales = 'free_x') +
+  geom_point(data = observed_pho_positions, mapping = aes(x = position), y = 0, alpha = 0) +
+  geom_text_repel(aes(x = position, y = log10_freq, label = lab), parse=TRUE, nudge_x = 77, na.rm = TRUE) +
+  geom_point(aes(x = position, y = log10_freq, colour = wt)) +
+  geom_segment(aes(x = position, xend = position, yend = log10_freq, colour = wt), y = mn_pho) +
+  scale_colour_brewer(name = 'WT', type = 'qual', palette = 'Dark2') +
+  lims(y = c(mn_pho, 0)) +
+  labs(x = 'Position', y = expression(log[10]~Frequency))) %>%
+  labeled_plot(units = 'cm', width = 25, height = 5 * n_distinct(observed_pho_positions$name))
+
+## Same with interfaces
+observed_int_positions <- group_by(variants, name) %>%
+  filter(!all(is.na(int_name) | is.na(freq))) %>%
+  filter((position == 1 & mut == 'A') | (position == max(position, na.rm = TRUE) & mut == 'A') | (!is.na(int_name) & !is.na(freq))) %>%
+  ungroup() %>%
+  select(name, position, wt, mut, int_uniprot:diff_interface_residues, log10_freq)
+
+mn_int <- floor(min(observed_int_positions$log10_freq, na.rm = TRUE))
+plots$observed_interfaces <- (ggplot(filter(observed_int_positions, !is.na(int_name))) +
+  facet_wrap(~name, ncol = 1, scales = 'free_x') +
+  geom_point(data = observed_int_positions, mapping = aes(x = position), y = 0, alpha = 0) +
+  geom_point(aes(x = position, y = log10_freq, colour = int_name)) +
+  geom_segment(aes(x = position, xend = position, yend = log10_freq, colour = int_name), y = mn_int) +
+  scale_colour_brewer(name = 'Interface\nProtein', type = 'qual', palette = 'Set2') +
+  lims(y = c(mn_int, 0)) +
+  labs(x = 'Position', y = expression(log[10]~Frequency))) %>%
+  labeled_plot(units = 'cm', width = 25, height = 5 * n_distinct(observed_int_positions$name))
 
 ### Save plots ###
 save_plotlist(plots, 'figures/', verbose = 2, overwrite = 'all')
-
