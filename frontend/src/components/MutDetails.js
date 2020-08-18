@@ -12,6 +12,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import Link from "@material-ui/core/Link";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { sarsDisplayNames } from '../lib/sars'
 
 import ProteinViewer from './ProteinViewer'
 import SiftAlignment from './SiftAlignment'
@@ -312,7 +313,7 @@ const MutDetails = ({mut}) => {
         )
     }
 
-    const mut_text = [mut['name'], ' ', mut['wt'],
+    const mut_text = [sarsDisplayNames[mut['name']], ' ', mut['wt'],
                       mut['position'], mut['mut']].join('')
 
     return(

@@ -25,8 +25,8 @@ const searchHelpText = `Search for SARS-CoV-2 variants
 Enter terms in the following formats, separated by newlines, commas (,) or semicolons (;):
 - Protein names (e.g. nsp1)
 - Uniprot IDs (e.g. P0DTC7)
-- Protein positions (e.g. nsp2 1)
-- Specific variants (e.g. nsp12 K603D)
+- Protein positions (e.g. nsp2 1 or nsp2 A1)
+- Specific variants (e.g. nsp12 K603D or nsp12 603D)
 `
 
 const styles = makeStyles({
@@ -73,8 +73,8 @@ const ErrorDialog = ({errors}) => {
                     <ul>
                         <li>Protein name (e.g. nsp1)</li>
                         <li>Uniprot ID can replace protein name when it unambiguously identifies the protein (e.g. P0DTC7 but not P0DTD1 as it is the orf1ab polyprotein)</li>
-                        <li>Protein position (e.g. nsp2 1)</li>
-                        <li>Specific variant ID (e.g. nsp12 K603D)</li>
+                        <li>Protein position (e.g. nsp2 1 or nsp2 A1, specifying the WT)</li>
+                        <li>Specific variant (e.g. nsp12 K603D or nsp12 603D, without specifying the WT). Not specifying the WT is slightly slower to search.</li>
                     </ul>
 
                     Note: some syntatically valid searches yield no results too, for example if the position is not within the protein.

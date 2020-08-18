@@ -1,5 +1,5 @@
 import React from "react";
-import {sarsGenePositions} from "../lib/sars";
+import {sarsGenePositions, sarsDisplayNames} from "../lib/sars";
 
 const darkCol = "#1f78b4"
 const lightCols = ["#a6cee3", "#cde3ef"]
@@ -34,7 +34,7 @@ const Gene = ({name, colour, label=''}) => {
             dominantBaseline={baseline}
             textAnchor="middle"
             fill={colour === darkCol && position === 'center' ? 'white' : 'black'}>
-                {name}
+                {sarsDisplayNames[name]}
         </text>) : null}
         </>
     )

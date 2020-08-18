@@ -16,6 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import MutBadges, { BadgeKey } from './MutBadges';
+import { sarsDisplayNames } from '../lib/sars'
 
 const styles = makeStyles((theme) => ({
     tableControls: {
@@ -110,7 +111,7 @@ const MutRow = ({mutId, mutData, setSelectedMut}) => {
     return(
         <TableRow hover onClick={(event) => setSelectedMut(mutId)}>
             <TableCell>{mut['uniprot']}</TableCell>
-            <TableCell>{mut['name']}</TableCell>
+            <TableCell>{sarsDisplayNames[mut['name']]}</TableCell>
             <TableCell>{mut['position']}</TableCell>
             <TableCell>{mut['wt']}</TableCell>
             <TableCell>{mut['mut']}</TableCell>

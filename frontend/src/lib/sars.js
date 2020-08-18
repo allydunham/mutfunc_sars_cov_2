@@ -1,5 +1,6 @@
 // Constants for SARS-CoV2
 
+
 export const sarsUniprot = {
     'P0DTD1': 'rep1ab', 'P0DTC1': 'rep1a', 'P0DTC2': 's',
     'P0DTC3': 'orf3a', 'P0DTC4': 'e', 'P0DTC5': 'm',
@@ -14,7 +15,32 @@ export const sarsGenes = ['nsp1', 'nsp2', 'nsp3','nsp4', 'nsp5',
                           'nsp15', 'nsp16', 's', 'orf3a', 'e',
                           'm', 'orf6','orf7a', 'orf7b', 'orf8',
                           'nc', 'orf10', 'orf9b','orf14']
-// TODO - Map for common versions of gene names
+
+// Map of synonyms to internal names
+// TODO - Add more gene synonyms
+export const sarsGeneSynonyms = {
+    'n': 'nc'
+}
+export const parseSarsSynonym = (x) => {
+    x = x.toLowerCase()
+    if (x in sarsGeneSynonyms){
+        x = sarsGeneSynonyms[x]
+    }
+    return(x)
+}
+
+// Map internal gene names to
+export const sarsDisplayNames = {
+    'nsp1': 'nsp1', 'nsp2': 'nsp2', 'nsp3': 'nsp3',
+    'nsp4': 'nsp4', 'nsp5': 'nsp5', 'nsp6': 'nsp6',
+    'nsp7': 'nsp7', 'nsp8': 'nsp8', 'nsp9': 'nsp9',
+    'nsp10': 'nsp10', 'nsp11': 'nsp11', 'nsp12': 'nsp12',
+    'nsp13': 'nsp13', 'nsp14': 'nsp14', 'nsp15': 'nsp15',
+    'nsp16': 'nsp16', 's': 'S', 'orf3a': 'orf3a', 'e': 'E',
+    'm': 'M', 'orf6': 'orf6', 'orf7a': 'orf7a', 'orf7b': 'orf7b',
+    'orf8': 'orf8', 'nc': 'N', 'orf10': 'orf10',
+    'orf9b': 'orf9b', 'orf14': 'orf14'
+}
 
 // Genomic coordinates for each gene
 export const sarsGenePositions = {

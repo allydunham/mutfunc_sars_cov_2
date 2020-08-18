@@ -1,5 +1,5 @@
 // Utility functions for processing and working with mutation objects
-import { sarsUniprot, sarsGenes} from './sars'
+import { sarsUniprot, sarsGenes, parseSarsSynonym} from './sars'
 
 export function makeMutKey(mut){
     return [mut['name'], '_', mut['wt'], mut['position'], mut['mut']].join('')
@@ -46,24 +46,19 @@ export function compareMutIds(mut1, mut2){
 // Gene - Gene
 // Uniprot - Uniprot ID
 // Uniprot can also substitute for gene apart from multi-protein gene
-const otherSearches = ['gene', 'uniprot', 'position']
+const otherSearches = ['gene', 'uniprot', 'position', 'wtPosition', 'mutPosition']
 const errorSearches = ['idError', 'geneError', 'uniprotError', 'unknownError']
 function parseSearch(search, muts){
-    search = search.trim();
+    search = search.trim().split(/\s+/);
 
-    // Search for an entire gene
-    if (sarsGenes.includes(search.toLowerCase())){
-        return {type: 'gene', content: search.toLowerCase()}
-    }
+    // Process Uniprot IDs
+    if (search[0].toUpperCase() in sarsUniprot){
+        // Search for a Uniprot ID if only that is provides
+        if (search.length === 1){
+            return {type: 'uniprot', content: search[0].toUpperCase()}
+        }
 
-    // Search for a Uniprot ID
-    if (search in sarsUniprot) {
-        return {type: 'uniprot', content: search}
-    }
-
-    search = search.split(/\s+/);
-    // Transform UNIPROT IDs to gene names
-    if (search[0] in sarsUniprot){
+        // Otherwise convert to a gene name
         if (['P0DTD1', 'P0DTC1'].includes(search[0])){
             let str = 'Bad Uniprot ID: ' + search[0] + ' matches multiple proteins'
             return {type: 'uniprotError', content: str}
@@ -71,7 +66,14 @@ function parseSearch(search, muts){
         search[0] = sarsUniprot[search[0]]
     }
 
-    search[0] = search[0].toLowerCase()
+    // Parse synonymn gene names (and convert to lower case internally)
+    search[0] = parseSarsSynonym(search[0]);
+
+    // Search for an entire gene
+    if (sarsGenes.includes(search[0]) && search.length === 1){
+        return {type: 'gene', content: search[0]}
+    }
+
     if (!sarsGenes.includes(search[0])){
         return {type: 'geneError', content: 'Unknown gene: ' + search[0]};
     }
@@ -85,6 +87,12 @@ function parseSearch(search, muts){
         search[2] = Number(search[1].slice(1));
         search[1] = search[1].slice(0, 1)
         return {type: 'wtPosition', content: search};
+    }
+
+    if (/^[0-9]+[ACDEFGHIKLMNPQRSTVWY]$/.test(search[1])){
+        search[2] = search[1].slice(-1)
+        search[1] = Number(search[1].slice(0, -1));
+        return {type: 'mutPosition', content: search};
     }
 
     if (/^[ACDEFGHIKLMNPQRSTVWY][0-9]+[ACDEFGHIKLMNPQRSTVWY]$/.test(search[1])){
@@ -111,6 +119,12 @@ function checkMutAgainstSearch(mut, searches){
             mut[1]['name'] === search['content'][0] &&
             mut[1]['wt'] === search['content'][1] &&
             mut[1]['position'] === search['content'][2]){
+                return mut[0]
+        }
+        if (search['type'] === 'mutPosition' &&
+            mut[1]['name'] === search['content'][0] &&
+            mut[1]['position'] === search['content'][1] &&
+            mut[1]['mut'] === search['content'][2]){
                 return mut[0]
         }
         if (search['type'] === 'gene' &&
