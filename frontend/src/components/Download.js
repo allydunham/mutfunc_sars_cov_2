@@ -16,6 +16,11 @@ const Download = () => {
     const classes = styles()
     return(
         <div className={classes.root}>
+            <Typography variant='h3'>
+                Data Downloads
+            </Typography>
+            The output data from the combined tools and sources is avaiable to download as a number of tsv tables. Note that the protein names used in these tables are the internal identifiers and in some cases are slightly different from those displayed on the website, for example all are lower case and nc is used for N.
+
             <Typography variant='h4'>
                 Summary table (summary.tsv)
             </Typography>
