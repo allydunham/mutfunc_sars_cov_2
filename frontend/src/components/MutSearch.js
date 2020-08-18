@@ -6,9 +6,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import red from '@material-ui/core/colors/red';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,12 +20,12 @@ P0DTC3 133
 P0DTC3 C133K
 orf10 I4L`
 
-const searchHelpText = `Search for SARS-CoV-2 variants:
+const searchHelpText = `Search for SARS-CoV-2 variants
 
-Enter:
+Enter terms in the following formats, separated by newlines, commas (,) or semicolons (;):
 - Protein names (e.g. nsp1)
 - Uniprot IDs (e.g. P0DTC7)
-- Gene positions (e.g. nsp2 1)
+- Protein positions (e.g. nsp2 1)
 - Specific variants (e.g. nsp12 K603D)
 `
 
@@ -63,16 +60,24 @@ const ErrorDialog = ({errors}) => {
             <DialogTitle>Unrecognised Searches</DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    <List dense={true}>
+                    Unrecognised search terms:
+                    <ul>
                         {errors.map((e) => (
-                            <ListItem key={e}>
-                                <ListItemText
-                                    primary={e}
-                                    primaryTypographyProps={{variant:"body1"}}
-                                />
-                            </ListItem>
+                            <li key={e}>
+                                {e}
+                            </li>
                         ))}
-                    </List>
+                    </ul>
+
+                    Searches of the following formats are supported:
+                    <ul>
+                        <li>Protein name (e.g. nsp1)</li>
+                        <li>Uniprot ID can replace protein name when it unambiguously identifies the protein (e.g. P0DTC7 but not P0DTD1 as it is the orf1ab polyprotein)</li>
+                        <li>Protein position (e.g. nsp2 1)</li>
+                        <li>Specific variant ID (e.g. nsp12 K603D)</li>
+                    </ul>
+
+                    Note: some syntatically valid searches yield no results too, for example if the position is not within the protein.
                 </DialogContentText>
             </DialogContent>
         </Dialog>
