@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { deepPurple, amber, lightBlue, green, red } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from  'clsx';
+import * as deleterious from '../lib/deleterious';
 
 const styles = makeStyles((theme) => ({
     badgeRoot: {
@@ -74,27 +75,27 @@ export const BadgeKey = () => {
         <Grid container spacing={2}>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='conservation' small/>&nbsp; SIFT Score &lt; 0.05
+                    <MutBadge type='conservation' small/>&nbsp; {deleterious.conservationText}
                 </Typography>
             </Grid>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='structure' small/>&nbsp; |FoldX &Delta;&Delta;G| &gt; 1
+                    <MutBadge type='structure' small/>&nbsp; {deleterious.structureText}
                 </Typography>
             </Grid>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='ptm' small/>&nbsp; PTM Site
+                    <MutBadge type='ptm' small/>&nbsp; {deleterious.ptmText}
                 </Typography>
             </Grid>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='interface' small/>&nbsp; Protein Interface Site
+                    <MutBadge type='interface' small/>&nbsp; {deleterious.interfacesText}
                 </Typography>
             </Grid>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='frequency' small/>&nbsp; Observed Frequency &gt; 0.01
+                    <MutBadge type='frequency' small/>&nbsp; {deleterious.frequencyText}
                 </Typography>
             </Grid>
         </Grid>
@@ -105,19 +106,19 @@ const MutBadges = ({mut}) => {
     const classes = styles()
     return(
         <div className={classes.badgeRoot}>
-        {mut['sift_score'] < 0.05 ? (
+        {deleterious.conservation(mut) ? (
             <MutBadge type='conservation'/>
         ) : null}
-        {Math.abs(mut['total_energy']) > 1 ? (
+        {deleterious.structure(mut) ? (
             <MutBadge type='structure'/>
         ) : null}
-        {mut['ptm'] !== '' ? (
+        {deleterious.ptm(mut) ? (
             <MutBadge type='ptm'/>
         ) : null}
-        {mut['int_name'] !== '' ? (
+        {deleterious.interfaces(mut) ? (
             <MutBadge type='interface'/>
         ) : null}
-        {mut['freq'] > 0.01 ? (
+        {deleterious.frequency(mut) ? (
             <MutBadge type='frequency'/>
         ) : null}
         </div>

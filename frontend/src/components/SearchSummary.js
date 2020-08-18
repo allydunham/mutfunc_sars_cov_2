@@ -7,6 +7,7 @@ import TableBody from '@material-ui/core/TableBody';
 import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
+import * as deleterious from '../lib/deleterious';
 
 const TableCell = withStyles({
     root: {
@@ -29,24 +30,24 @@ const SearchSummary = ({searchResults, data}) => {
             let sig = false;
             if (!isNaN(mut['freq'])){
                 c['observed'] += 1
-                if (mut['freq'] > 0.01){
+                if (deleterious.frequency(mut)){
                     sig = true
                     c['frequent'] += 1
                 }
             }
-            if (mut['sift_score'] < 0.05){
+            if (deleterious.conservation(mut)){
                 sig = true
                 c['sift'] += 1
             }
-            if (Math.abs(mut['total_energy']) > 1){
+            if (deleterious.structure(mut)){
                 sig = true
                 c['foldx'] += 1
             }
-            if (mut['ptm'] !== ''){
+            if (deleterious.ptm(mut)){
                 sig = true
                 c['ptm'] += 1
             }
-            if (mut['int_name'] !== ''){
+            if (deleterious.interfaces(mut)){
                 sig = true
                 c['interface'] += 1
             }
@@ -97,7 +98,7 @@ const SearchSummary = ({searchResults, data}) => {
                         </TableRow>
                         <TableRow>
                             <TableCell align="right">
-                                Frequency &gt; 0.01:
+                                {deleterious.frequencyText}:
                             </TableCell>
                             <TableCell align="left">
                                 {counts['frequent']}
@@ -113,7 +114,7 @@ const SearchSummary = ({searchResults, data}) => {
                         </TableRow>
                         <TableRow>
                             <TableCell align="right">
-                                SIFT4G Score &lt; 0.05:
+                                {deleterious.conservationText}:
                             </TableCell>
                             <TableCell align="left">
                                 {counts['sift']}
@@ -121,7 +122,7 @@ const SearchSummary = ({searchResults, data}) => {
                         </TableRow>
                         <TableRow>
                             <TableCell align="right">
-                                |FoldX Score| &gt; 1 kj&nbsp;mol<sup>-1</sup>:
+                                {deleterious.structureText}:
                             </TableCell>
                             <TableCell align="left">
                                 {counts['foldx']}
@@ -129,7 +130,7 @@ const SearchSummary = ({searchResults, data}) => {
                         </TableRow>
                         <TableRow>
                             <TableCell align="right">
-                                PTM site variants:
+                                {deleterious.ptmText}:
                             </TableCell>
                             <TableCell align="left">
                                 {counts['ptm']}
@@ -137,7 +138,7 @@ const SearchSummary = ({searchResults, data}) => {
                         </TableRow>
                         <TableRow>
                             <TableCell align="right">
-                                Interface variants:
+                                {deleterious.interfacesText}:
                             </TableCell>
                             <TableCell align="left">
                                 {counts['interface']}

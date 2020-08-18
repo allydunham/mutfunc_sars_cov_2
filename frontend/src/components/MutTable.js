@@ -17,6 +17,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import MutBadges, { BadgeKey } from './MutBadges';
 import { sarsDisplayNames } from '../lib/sars'
+import * as deleterious from '../lib/deleterious';
 
 const styles = makeStyles((theme) => ({
     tableControls: {
@@ -129,16 +130,7 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
     const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
     useEffect(() => {
-        setFilteredIds(mutIds.filter((i) => {
-            return viewAll ||
-            (
-                mutData[i]['sift_score'] < 0.05 ||
-                Math.abs(mutData[i]['total_energy']) > 1 ||
-                mutData[i]['ptm'] !== '' ||
-                mutData[i]['int_name'] !== '' ||
-                mutData[i]['freq'] > 0.01
-            )
-        }))
+        setFilteredIds(mutIds.filter((i) => viewAll || deleterious.any(mutData[i])))
     }, [mutIds, viewAll, mutData])
 
     const handleChangePage = (event, newPage) => {
