@@ -3,9 +3,9 @@ model: '5c8s.1'
 chains:
   A:
     uniprot: 'P0DTD1'
-    name: 'nsp14'
+    name: 'nsp10'
   B:
     uniprot: 'P0DTD1'
-    name: 'nsp10'
+    name: 'nsp14'
 interfaces:
   - 'A_B'
