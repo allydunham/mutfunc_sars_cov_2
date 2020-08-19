@@ -6,18 +6,12 @@ import argparse
 import json
 from Bio import SeqIO
 
-def format_name(seq):
-    """
-    Generate a name from a Uniref fasta sequence SeqRecord
-    """
-    return seq.id.split('_')[1]
-
 def main(args):
     """
     Import Fasta file and parse into a JSON suitable for JS MSA viewers
     """
     seqs = list(SeqIO.parse(args.fasta, "fasta"))
-    seqs = [{'name': args.query if s.id == 'QUERY' else format_name(s),
+    seqs = [{'name': args.query if s.id == 'QUERY' else s.id,
              'sequence': str(s.seq).replace('X', '-')} for s in seqs]
     json.dump(seqs, sys.stdout)
 
