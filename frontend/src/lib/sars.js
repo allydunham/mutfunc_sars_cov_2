@@ -17,9 +17,25 @@ export const sarsGenes = ['nsp1', 'nsp2', 'nsp3','nsp4', 'nsp5',
                           'nc', 'orf10', 'orf9b','orf14']
 
 // Map of synonyms to internal names
-// TODO - Add more gene synonyms
 export const sarsGeneSynonyms = {
-    'n': 'nc'
+    'pl-pro': 'nsp3',
+    '3cl-pro': 'nsp5',
+    '3clp': 'nsp5',
+    'mpro': 'nsp5',
+    'gfl': 'nsp10',
+    'pol': 'nsp12',
+    'rdrp': 'nsp12',
+    'hel': 'nsp13',
+    'exon': 'nsp14',
+    'spike': 's',
+    'e2': 's',
+    'orf2': 's',
+    'orf4': 'e',
+    'orf5': 'm',
+    'membrane': 'm',
+    'ns6': 'orf6',
+    'ns8': 'orf8',
+    'n': 'nc',
 }
 export const parseSarsSynonym = (x) => {
     x = x.toLowerCase()
@@ -32,10 +48,10 @@ export const parseSarsSynonym = (x) => {
 // Map internal gene names to
 export const sarsDisplayNames = {
     'nsp1': 'nsp1', 'nsp2': 'nsp2', 'nsp3': 'nsp3',
-    'nsp4': 'nsp4', 'nsp5': 'nsp5', 'nsp6': 'nsp6',
+    'nsp4': 'nsp4', 'nsp5': '3CL-PRO', 'nsp6': 'nsp6',
     'nsp7': 'nsp7', 'nsp8': 'nsp8', 'nsp9': 'nsp9',
-    'nsp10': 'nsp10', 'nsp11': 'nsp11', 'nsp12': 'nsp12',
-    'nsp13': 'nsp13', 'nsp14': 'nsp14', 'nsp15': 'nsp15',
+    'nsp10': 'nsp10', 'nsp11': 'nsp11', 'nsp12': 'RdRp',
+    'nsp13': 'Hel', 'nsp14': 'ExoN', 'nsp15': 'nsp15',
     'nsp16': 'nsp16', 's': 'S', 'orf3a': 'orf3a', 'e': 'E',
     'm': 'M', 'orf6': 'orf6', 'orf7a': 'orf7a', 'orf7b': 'orf7b',
     'orf8': 'orf8', 'nc': 'N', 'orf10': 'orf10',
