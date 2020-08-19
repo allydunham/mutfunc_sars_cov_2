@@ -31,10 +31,10 @@ rule sift4g:
     input:
         fa = "data/fasta/{gene}.fa",
         subst = "data/sift/{gene}.subst",
-        db = config['sift']['uniref90_fa_path']
+        db = config['sift']['db_path']
 
     output:
-        "data/sift/{gene}.SIFTprediction"
+        "data/sift/{gene}.SIFTprediction",
         "data/sift/{gene}.aligned.fasta"
 
     log:
