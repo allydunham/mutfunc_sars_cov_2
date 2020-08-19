@@ -1,19 +1,24 @@
 import React from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
-    title: {
-        flexGrow: 1,
-        textAlign: 'left'
+    logo: {
+        marginRight: '10px',
+    },
+    text: {
+        color: '#333334'
+    },
+    separater: {
+        flexGrow: 1
     },
     button: {
         color: 'white'
@@ -25,9 +30,13 @@ const TitleBar = ({setPage}) => {
     return(
         <AppBar position='sticky'>
             <Toolbar>
-                <Typography variant='h6' className={classes.title}>
-                    SARS-CoV2 Mutfunc
-                </Typography>
+                <img
+                  src={process.env.PUBLIC_URL + 'mutfunc_logo.svg'}
+                  alt='mutfunc-logo'
+                  width='20%'
+                  className={classes.logo}
+                />
+                <div className={classes.separater}/>
                 <Button
                   className={classes.button}
                   onClick={() => setPage('search')}
@@ -36,21 +45,27 @@ const TitleBar = ({setPage}) => {
                 </Button>
                 <Button
                   className={classes.button}
-                  onClick={() => setPage('about')}
-                  startIcon={<InfoIcon/>}>
-                    About
+                  onClick={() => setPage('analysis')}
+                  startIcon={<BarChartIcon/>}>
+                    Analysis
                 </Button>
                 <Button
                   className={classes.button}
-                  onClick={() => setPage('overview')}
-                  startIcon={<BarChartIcon/>}>
-                    Data Overview
+                  onClick={() => setPage('about')}
+                  startIcon={<HelpOutlineIcon/>}>
+                    Help
                 </Button>
                 <Button
                   className={classes.button}
                   onClick={() => setPage('download')}
                   startIcon={<GetAppIcon/>}>
                     Download
+                </Button>
+                <Button
+                  className={classes.button}
+                  onClick={() => setPage('about')}
+                  startIcon={<InfoIcon/>}>
+                    About
                 </Button>
                 <Button
                   className={classes.button}
