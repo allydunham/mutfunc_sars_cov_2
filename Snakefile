@@ -44,11 +44,9 @@ SWISSMODEL_IDS = {
     'P0DTD1_nsp10': '3xFkkB', 'P0DTD1_nsp12': 'JDUya4', 'P0DTD1_nsp13': 'N2NgU3',
     'P0DTD1_nsp14': '7BgWuu', 'P0DTD1_nsp15': 'H9prKX', 'P0DTD1_nsp16': 'X6zRCV',
     'P0DTC2_s': '7dVLxC', 'P0DTC3_orf3a': '1rtnjU', 'P0DTC4_e': '8Tdwfx',
-    'P0DTC5_m': '9LzAZz', 'P0DTC7_orf7a': '5Bbtxw',
+    'P0DTC6_orf6': 'NWaxq5', 'P0DTC5_m': '9LzAZz', 'P0DTC7_orf7a': '5Bbtxw',
     'P0DTC8_orf8': 'FKMnGv', 'P0DTC9_nc': 'UfqxZJ', 'P0DTD2_orf9b': '1SagwD'
 }
-# 'P0DTC6_orf6': 'NWaxq5' - this entry returned a corrupt ZIP at present, should
-# periodically recheck
 
 include: 'pipeline/misc.smk'
 include: 'pipeline/swissmodel.smk'
