@@ -148,14 +148,16 @@ def get_foldx_models(wildcards):
         models = [i.strip() for i in model_file]
     foldx_files = [f'data/foldx/{i}/average.fxout' for i in models]
     model_files = set(f"data/swissmodel/{'_'.join(i.split('_')[:2])}.models" for i in models)
-    return {'foldx': foldx_files, 'models': list(model_files)}
+    if not len(foldx_files) == len(model_files):
+        raise ValueError("foldx_tsv: length of foldx_files does not equal model_files")
+    return foldx_files + model_files
 
 rule foldx_tsv:
     """
     Combine FoldX results from the selected models across all genes
     """
     input:
-        unpack(get_foldx_models)
+        get_foldx_models
 
     output:
         "data/output/foldx.tsv"
@@ -163,5 +165,5 @@ rule foldx_tsv:
     log:
         "logs/foldx_tsv.log"
 
-    shell:
-        "python bin/foldx_tsv.py {input.foldx} > {output} 2> {log}"
+    run:
+        shell(f"python bin/foldx_tsv.py {input[:len(input)//2]} > {output} 2> {log}")
