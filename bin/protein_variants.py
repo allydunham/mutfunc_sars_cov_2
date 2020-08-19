@@ -6,6 +6,12 @@ import argparse
 
 AMINO_ACIDS = 'ACDEFGHIKLMNPQRSTVWY'
 
+# FoldX includes additional codes for AA states (e.g. charged), which we want to
+# change back to the generic
+FOLDX_CODES = {'y': 'T', 'p': 'Y', 's': 'S', 'h': 'P', 'z': 'Y',
+               'k': 'K', 'm': 'K', 'l': 'K', 'o': 'H', 'e': 'H',
+               'f': 'H'}
+
 def main(args):
     """Main"""
     wt_aas = set(args.positions) if args.unique else args.positions
@@ -14,8 +20,13 @@ def main(args):
         wt_aas = sorted(list(wt_aas), key=lambda x: int(x[args.sort:]))
 
     for position in wt_aas:
+        if args.wt is not None:
+            wt = position[args.wt]
+            if args.foldx and wt in FOLDX_CODES:
+                wt = FOLDX_CODES[wt]
+
         for mut in AMINO_ACIDS:
-            if args.exclude is not None and position[args.exclude] == mut:
+            if args.exclude and wt == mut:
                 continue
             print(position, mut, end=args.suffix, sep='')
 
@@ -26,8 +37,15 @@ def parse_args():
 
     parser.add_argument('positions', metavar='P', nargs='+', help="Protein positions to mutate")
 
-    parser.add_argument('--exclude', '-e', default=None, type=int,
-                        help="Do not mutate to the amino acid at this position in the string")
+    parser.add_argument('--wt', '-w', default=None, type=int,
+                        help="Position of the WT amino acid in the string")
+
+    parser.add_argument('--exclude', '-e', action='store_true',
+                        help="Do not mutate to the WT amino acid")
+
+    parser.add_argument('--foldx', '-f', action='store_true',
+                        help=("Treat FoldX's special AA codes (e.g. o for charged H) as ",
+                              "the regular AA for excluding the WT"))
 
     parser.add_argument('--suffix', '-s', default='\n', type=str,
                         help="Append each mutation with this string")
@@ -38,7 +56,14 @@ def parse_args():
     parser.add_argument('--sort', '-o', default=None, type=int,
                         help="Index of start of position in string, to sort on")
 
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.wt is None and args.exclude:
+        raise ValueError('--wt/-w is required to use --exclude/-e')
+
+    if args.wt is None and args.foldx:
+        raise ValueError('--wt/-w is required to use --foldx/-f')
+
+    return args
 
 if __name__ == '__main__':
     main(parse_args())

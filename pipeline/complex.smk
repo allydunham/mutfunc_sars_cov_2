@@ -96,7 +96,7 @@ rule complex_variants:
         'logs/complex_variants/{complex}_{interface}.log'
 
     shell:
-        "tail -n +10 {input} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude 0 --sort 2 > {output} 2> {log}"
+        "tail -n +10 {input} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 > {output} 2> {log}"
 
 checkpoint complex_mutant_models:
     """
