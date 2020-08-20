@@ -9,6 +9,12 @@ const styles = makeStyles({
         margin: 'auto',
         padding: '10px',
         width: '70%'
+    },
+    heading: {
+        paddingTop: '50px'
+    },
+    content: {
+        paddingTop: '25px',
     }
 });
 
@@ -16,18 +22,15 @@ const Download = () => {
     const classes = styles()
     return(
         <div className={classes.root}>
-            <Typography variant='h3'>
-                Data Downloads
-            </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 The output data from the combined tools and sources is avaiable to download as a number of tsv tables.
                 Note that the protein names used in these tables are the internal identifiers and in some cases are slightly different from those displayed on the website, for example all are lower case and nc is used for N.
             </Typography>
 
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 Summary table (summary.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains summary data of each feature, containing the key result metric but not additional columns breaking down the result.<br/>Columns:
                 <ul>
                     <li>uniprot: Uniprot ID</li>
@@ -48,10 +51,10 @@ const Download = () => {
                     <li>freq: Observed frequency of the mutation in the wild (based on GISAID compiled data)</li>
                 </ul>
             </Typography>
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 Observed Frequencies (frequency.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains data on observed mutation frequencies in the wild, based on the data collected by GSAID.
                 <br/>Columns:
                 <ul>
@@ -63,10 +66,10 @@ const Download = () => {
                     <li>frequency: Observed frequency</li>
                 </ul>
             </Typography>
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 SIFT4G Results (sift.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains the results from&nbsp;
                 <Link
                     href="https://sift.bii.a-star.edu.sg/sift4g/"
@@ -87,10 +90,10 @@ const Download = () => {
                     <li>num_seq: Number of sequences in the alignment for that position</li>
                 </ul>
             </Typography>
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 FoldX results (foldx.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains results from&nbsp;
                 <Link
                     href="http://foldxsuite.crg.eu/"
@@ -120,10 +123,10 @@ const Download = () => {
                     <li>backbone_hbond - entropy_complex: &Delta;&Delta;G from each component</li>
                 </ul>
             </Typography>
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 Interface analysis (complex.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains results from&nbsp;
                 <Link
                     href="http://foldxsuite.crg.eu/"
@@ -173,10 +176,10 @@ const Download = () => {
                     <li>interface_residues: List of amino acids in the mutated interface</li>
                 </ul>
             </Typography>
-            <Typography variant='h4'>
+            <Typography variant='h5' className={classes.heading}>
                 PTM Positions (ptms.tsv)
             </Typography>
-            <Typography>
+            <Typography className={classes.content}>
                 This table contains data on known PTM sites (
                 <Link
                     href="https://europepmc.org/article/med/32645325"
