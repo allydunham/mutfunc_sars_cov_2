@@ -24,7 +24,7 @@ const Footer = () => {
     return(
         <footer className={classes.footer}>
             <img
-              src={process.env.PUBLIC_URL + 'ebi_logo.svg'}
+              src={process.env.PUBLIC_URL + 'images/ebi_logo.svg'}
               alt='ebi-logo'
               width='10%'
             />
