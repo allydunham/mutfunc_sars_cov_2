@@ -135,170 +135,120 @@ const MutDetailStats = ({mut}) => {
     const [alignOpen, setAlignOpen] = useState(false);
 
     return(
-        <Grid
-          container
-          spacing={3}
-          direction='row'
-          justify="space-evenly"
-          alignItems="flex-start"
-        >
-            <Grid item xs={4}>
-                <Typography variant='h6' align='center'>Conservation</Typography>
-                <Table>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell align='right'>
-                                Frequency:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                PTM:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                SIFT4G Score:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2} align='center'>
-                                <Button
-                                  color='secondary'
-                                  onClick={() => setAlignOpen(true)}
-                                  disabled={isNaN(mut['sift_score'])}>
-                                    View SIFT4G alignment
-                                </Button>
-                                <AlignmentPopup mut={mut} open={alignOpen} setOpen={setAlignOpen}/>
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </Grid>
+        <Table>
+            <TableBody>
+                <TableRow>
+                    <TableCell variant='head'>
+                        <Typography variant='h6'>
+                            Conservation
+                        </Typography>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        Frequency: {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
+                    </TableCell>
+                    <TableCell>
+                        PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                    </TableCell>
+                    <TableCell>
+                        SIFT4G Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
+                    </TableCell>
+                    <TableCell>
+                        <Button
+                            color='secondary'
+                            onClick={() => setAlignOpen(true)}
+                            disabled={isNaN(mut['sift_score'])}>
+                            View SIFT4G alignment
+                        </Button>
+                        <AlignmentPopup mut={mut} open={alignOpen} setOpen={setAlignOpen}/>
+                    </TableCell>
+                </TableRow>
 
-            <Grid item xs={4}>
-                <Typography variant='h6' align='center'>Structure</Typography>
-                <Table>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell align='right'>
-                                Template:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {mut['template'] === '' ? (
-                                    "None"
-                                ) : (
-                                    <Link
-                                      href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['template'].split('.')[0]}
-                                      target="_blank"
-                                      rel="noopener noreferrer">
-                                        {mut['template']}
-                                    </Link>
-                                )}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                FoldX &Delta;&Delta;G:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2} align='center'>
-                                <Button
-                                  color='secondary'
-                                  onClick={() => setFxOpen(true)}
-                                  disabled={mut['template'] === ''}>
-                                    View Structure
-                                </Button>
-                                <StructurePopup mut={mut} open={fxOpen} setOpen={setFxOpen}/>
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </Grid>
+                <TableRow>
+                    <TableCell variant='head'>
+                        <Typography variant='h6'>
+                            Structure
+                        </Typography>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        Template: {mut['template'] === '' ? "None" : (
+                            <Link
+                                href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['template'].split('.')[0]}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                {mut['template']}
+                            </Link>
+                        )}
+                    </TableCell>
+                    <TableCell>
+                        FoldX &Delta;&Delta;G: {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
+                    </TableCell>
+                    <TableCell>
+                        <Button
+                            color='secondary'
+                            onClick={() => setFxOpen(true)}
+                            disabled={mut['template'] === ''}>
+                            View Structure
+                        </Button>
+                        <StructurePopup mut={mut} open={fxOpen} setOpen={setFxOpen}/>
+                    </TableCell>
+                </TableRow>
 
-            <Grid item xs={4}>
-                <Typography variant='h6' align='center'>Interfaces</Typography>
-                <Table>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell align='right'>
-                                Interface partner:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {mut['int_name'] !== '' ? (
-                                    <Link
-                                      href={"https://www.uniprot.org/uniprot/" + mut['int_uniprot']}
-                                      target="_blank"
-                                      rel="noopener noreferrer">
-                                        {mut['int_uniprot']}
-                                    </Link>
-                                ) : null}
-                                {mut['int_name'] !== '' ? " " + mut['int_name'] : "None"}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                Template:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {mut['int_template'] === '' ? (
-                                    "None"
-                                ) : (
-                                    <Link
-                                    href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['int_template'].split('.')[0]}
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                        {mut['int_template']}
-                                    </Link>
-                                )}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell align='right'>
-                                Interface &Delta;&Delta;G:
-                            </TableCell>
-                            <TableCell align='left'>
-                                {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2} align='center'>
-                                {getInterfaceNumString(mut['diff_interface_residues'])}
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2} align='center'>
-                                <Button
-                                  color='secondary'
-                                  onClick={() => setIntOpen(true)}
-                                  disabled={mut['int_template'] === ''}>
-                                    View Interface
-                                </Button>
-                                <StructurePopup
-                                  mut={mut}
-                                  interfaceModel
-                                  open={intOpen}
-                                  setOpen={setIntOpen}
-                                />
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </Grid>
-        </Grid>
+                <TableRow>
+                    <TableCell variant='head'>
+                        <Typography variant='h6'>
+                            Interfaces
+                        </Typography>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        Interface partner: {mut['int_name'] === '' ? null : (
+                            <Link
+                                href={"https://www.uniprot.org/uniprot/" + mut['int_uniprot']}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                {mut['int_uniprot']}
+                            </Link>
+                        )}
+                        {mut['int_name'] === '' ? "None" : " " + mut['int_name']}
+                    </TableCell>
+                    <TableCell>
+                        Template: {mut['int_template'] === '' ? "None" : (
+                            <Link
+                            href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['int_template'].split('.')[0]}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                                {mut['int_template']}
+                            </Link>
+                        )}
+                    </TableCell>
+                    <TableCell>
+                        Interface &Delta;&Delta;G: {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
+                    </TableCell>
+                    <TableCell>
+                        {getInterfaceNumString(mut['diff_interface_residues'])}
+                    </TableCell>
+                    <TableCell>
+                        <Button
+                            color='secondary'
+                            onClick={() => setIntOpen(true)}
+                            disabled={mut['int_template'] === ''}>
+                            View Interface
+                        </Button>
+                        <StructurePopup
+                            mut={mut}
+                            interfaceModel
+                            open={intOpen}
+                            setOpen={setIntOpen}
+                        />
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
     )
 }
 
