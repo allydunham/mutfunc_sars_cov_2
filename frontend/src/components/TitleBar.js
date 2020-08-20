@@ -8,65 +8,52 @@ import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
     logo: {
         marginRight: '10px',
-    },
-    text: {
-        color: '#333334'
     },
     separater: {
         flexGrow: 1
     },
     button: {
-        color: 'white'
-    }
-});
+        color: theme.palette.primary.contrastText
+    },
+    selectedButton: {
+        color: theme.palette.secondary.main
+  }
+}));
 
-const TitleBar = ({setPage}) => {
-    const classes = styles()
+const PageButton = ({type, page, setPage, icon}) => {
+    const classes = styles(useTheme())
+    return(
+        <Button
+          className={page === type ? classes.selectedButton : classes.button}
+          onClick={() => setPage(type)}
+          startIcon={icon}>
+            {type.toUpperCase()}
+        </Button>
+    )
+}
+
+const TitleBar = ({page, setPage}) => {
+    const classes = styles(useTheme())
     return(
         <AppBar position='sticky'>
             <Toolbar>
                 <img
-                  src={process.env.PUBLIC_URL + 'mutfunc_logo.svg'}
+                  src={process.env.PUBLIC_URL + 'images/mutfunc_logo.svg'}
                   alt='mutfunc-logo'
                   width='20%'
                   className={classes.logo}
                 />
                 <div className={classes.separater}/>
-                <Button
-                  className={classes.button}
-                  onClick={() => setPage('search')}
-                  startIcon={<SearchIcon/>}>
-                    Search
-                </Button>
-                <Button
-                  className={classes.button}
-                  onClick={() => setPage('analysis')}
-                  startIcon={<BarChartIcon/>}>
-                    Analysis
-                </Button>
-                <Button
-                  className={classes.button}
-                  onClick={() => setPage('help')}
-                  startIcon={<HelpOutlineIcon/>}>
-                    Help
-                </Button>
-                <Button
-                  className={classes.button}
-                  onClick={() => setPage('download')}
-                  startIcon={<GetAppIcon/>}>
-                    Download
-                </Button>
-                <Button
-                  className={classes.button}
-                  onClick={() => setPage('about')}
-                  startIcon={<InfoIcon/>}>
-                    About
-                </Button>
+                <PageButton type='search' page={page} setPage={setPage} icon={<SearchIcon/>}/>
+                <PageButton type='analysis' page={page} setPage={setPage} icon={<BarChartIcon/>}/>
+                <PageButton type='help' page={page} setPage={setPage} icon={<HelpOutlineIcon/>}/>
+                <PageButton type='download' page={page} setPage={setPage} icon={<GetAppIcon/>}/>
+                <PageButton type='about' page={page} setPage={setPage} icon={<InfoIcon/>}/>
                 <Button
                   className={classes.button}
                   href='https://github.com/allydunham/covid19_mutfunc'

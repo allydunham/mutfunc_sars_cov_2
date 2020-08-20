@@ -27,7 +27,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.main}>
-                <TitleBar setPage={setPage}/>
+                <TitleBar page={page} setPage={setPage}/>
                 {page === 'analysis'? <Analysis/> : null}
                 {page === 'help'? <Help/> : null}
                 {page === 'about'? <About/> : null}
