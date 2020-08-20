@@ -148,9 +148,7 @@ def get_foldx_models(wildcards):
         models = [i.strip() for i in model_file]
     foldx_files = [f'data/foldx/{i}/average.fxout' for i in models]
     model_files = set(f"data/swissmodel/{'_'.join(i.split('_')[:2])}.models" for i in models)
-    if not len(foldx_files) == len(model_files):
-        raise ValueError("foldx_tsv: length of foldx_files does not equal model_files")
-    return foldx_files + model_files
+    return foldx_files + list(model_files)
 
 rule foldx_tsv:
     """
@@ -166,4 +164,4 @@ rule foldx_tsv:
         "logs/foldx_tsv.log"
 
     run:
-        shell(f"python bin/foldx_tsv.py {input[:len(input)//2]} > {output} 2> {log}")
+        shell(f"python bin/foldx_tsv.py {[i for i in input if i.endswith('average.fxout')]} > {output} 2> {log}")
