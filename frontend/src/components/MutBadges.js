@@ -26,7 +26,7 @@ const styles = makeStyles((theme) => ({
         color: theme.palette.getContrastText(lightBlue['A700']),
         backgroundColor: lightBlue['A700']
     },
-    interfaceBadge: {
+    interfacesBadge: {
         color: theme.palette.getContrastText(amber['A700']),
         backgroundColor: amber['A700']
     },
@@ -54,7 +54,7 @@ const badgeLetters = {
     'conservation': 'C',
     'structure': 'S',
     'ptm': 'P',
-    'interface': 'I',
+    'interfaces': 'I',
     'frequency': 'F',
 }
 
@@ -90,7 +90,7 @@ export const BadgeKey = () => {
             </Grid>
             <Grid item>
                 <Typography {...listTypoProps}>
-                    <MutBadge type='interface' small/>&nbsp; {deleterious.interfacesText}
+                    <MutBadge type='interfaces' small/>&nbsp; {deleterious.interfacesText}
                 </Typography>
             </Grid>
             <Grid item>
@@ -116,7 +116,7 @@ const MutBadges = ({mut}) => {
             <MutBadge type='ptm'/>
         ) : null}
         {deleterious.interfaces(mut) ? (
-            <MutBadge type='interface'/>
+            <MutBadge type='interfaces'/>
         ) : null}
         {deleterious.frequency(mut) ? (
             <MutBadge type='frequency'/>
