@@ -6,7 +6,7 @@ const lightCols = ["#a6cee3", "#cde3ef"]
 
 const genes = {
     'nsp1': 'center', 'nsp2': 'center', 'nsp3': 'center',
-    'nsp4': 'center', 'nsp5': 'center', 'nsp6': 'center',
+    'nsp4': 'center', 'nsp5': 'above', 'nsp6': 'center',
     'nsp7': 'above', 'nsp8': 'center', 'nsp9': 'above',
     'nsp10': 'below', 'nsp11': 'none', 'nsp12': 'center', 'nsp13': 'center',
     'nsp14': 'center', 'nsp15': 'center', 'nsp16': 'center',
