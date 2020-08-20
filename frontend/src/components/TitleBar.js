@@ -51,7 +51,7 @@ const TitleBar = ({setPage}) => {
                 </Button>
                 <Button
                   className={classes.button}
-                  onClick={() => setPage('about')}
+                  onClick={() => setPage('help')}
                   startIcon={<HelpOutlineIcon/>}>
                     Help
                 </Button>
