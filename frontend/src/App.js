@@ -5,6 +5,7 @@ import Download from './components/Download';
 import Help from './components/Help';
 import DataController from './components/DataController';
 import TitleBar from './components/TitleBar';
+import Footer from './components/Footer';
 import { ThemeProvider } from "@material-ui/styles";
 import theme from './theme';
 
@@ -19,6 +20,7 @@ function App() {
             {page === 'about'? <About/> : null}
             {page === 'download'? <Download/> : null}
             <DataController hidden={page !== 'search'}/>
+            <Footer/>
         </ThemeProvider>
   );
 }
