@@ -17,15 +17,13 @@ def main(args):
     Generate list of variants from a PDB file
     """
     pdb_path = Path(args.pdb)
-    model = pdb_path.parent.stem
     pdb_parser = PDBParser()
     structure = pdb_parser.get_structure(pdb_path.stem, pdb_path)
 
     if args.models:
         modeldf = pd.read_csv(args.models, sep='\t', dtype={'model': str})
-        modeldf = modeldf[modeldf.model == model].reset_index()
+        modeldf = modeldf[modeldf.model == args.model].reset_index()
         positions = modeldf.positions[0]
-        chain = modeldf.chain[0]
         sections = [ProteinRegion(chain=chain, positions=positions)]
 
     else:
@@ -39,7 +37,7 @@ def main(args):
         # Short-circuit chains we don't want, if specified
         if not chain.id in chains:
             continue
-
+        
         for residue in chain:
             if not sections or any(residue in s for s in sections):
                 pos = int(residue.id[1])
@@ -64,3 +62,4 @@ def parse_args():
 if __name__ == "__main__":
     ARGS = parse_args()
     main(ARGS)
+
