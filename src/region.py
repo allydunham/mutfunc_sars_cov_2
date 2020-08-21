@@ -12,7 +12,7 @@ class ProteinRegion:
     are accepted
     """
     def __init__(self, chain, positions=None, accept_hetero=False):
-        self.chain = chain
+        self.chain = str(chain)
         self.accept_hetero = accept_hetero
         self.positions_str = positions
 
