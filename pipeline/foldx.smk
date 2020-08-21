@@ -10,6 +10,7 @@ rule foldx_repair:
         pdb="data/swissmodel/{gene}/{model}/model.pdb"
 
     output:
+        "data/foldx/{gene}_{model}/model.pdb", 
         "data/foldx/{gene}_{model}/model_Repair.pdb",
         "data/foldx/{gene}_{model}/model_Repair.fxout"
 
@@ -21,17 +22,17 @@ rule foldx_repair:
 
     shell:
         """
-        python bin/repair_pdb_chains.py {data/foldx/{gene}_{model}/model_Repair.pdb} > data/foldx/{gene}_{model}/model.pdb 2> {log}
-        foldx --command=RepairPDB --pdb=model.pdb --pdb-dir=data/foldx/{gene}_{model} --clean-mode=3 --output-dir=data/foldx/{wildcards.gene}_{wildcards.model} &> {log}
+        python bin/repair_pdb.py {input.pdb} > data/foldx/{wildcards.gene}_{wildcards.model}/model.pdb 2> {log}
+        foldx --command=RepairPDB --pdb=model.pdb --pdb-dir=data/foldx/{wildcards.gene}_{wildcards.model} --clean-mode=3 --output-dir=data/foldx/{wildcards.gene}_{wildcards.model} &> {log}
         """
 
 rule foldx_variants:
     """
-    Produce a list of all possible variants from a PDB structure, from positions that
-    correspond to the regions defined in meta/structures.yaml as part of the analyses protein
+    Produce a list of all possible variants from a PDB structure, for positions assigned
+    to that structure by swissmodel_select.
     """
     input:
-        pdb="data/foldx/{gene}_{model}/model_Repair.pdb",
+        pdb="data/swissmodel/{gene}/{model}/model.pdb",
         models="data/swissmodel/{gene}.models",
 
     output:

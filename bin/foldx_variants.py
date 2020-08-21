@@ -9,6 +9,7 @@ from Bio.PDB import PDBParser
 from Bio.SeqUtils import seq1
 import pandas as pd
 from region import ProteinRegion
+from pdb_repair import chains_to_letters
 
 AMINO_ACIDS = 'ACDEFGHIKLMNPQRSTVWY'
 
@@ -24,6 +25,7 @@ def main(args):
         modeldf = pd.read_csv(args.models, sep='\t', dtype={'model': str})
         modeldf = modeldf[modeldf.model == args.model].reset_index()
         positions = modeldf.positions[0]
+        chain = modeldf.chain[0]
         sections = [ProteinRegion(chain=chain, positions=positions)]
 
     else:
@@ -32,17 +34,23 @@ def main(args):
     # List of valid chains is used to completely skip chains with no valid residues
     chains = {s.chain for s in sections}
 
+    # Transform chain IDs in the same way as when repairing PDB files (e.g. numbers to
+    # letters). This means this script must be run on the untransformed PDB file in the
+    # rare cases where there are 
+    chain_map = chains_to_letters([c.id for c in structure[0]])
+
     variants = []
     for chain in structure[0]:
         # Short-circuit chains we don't want, if specified
         if not chain.id in chains:
             continue
         
+        mapped_chain = chain_map[chain.id]
         for residue in chain:
             if not sections or any(residue in s for s in sections):
                 pos = int(residue.id[1])
                 aa = seq1(residue.get_resname())
-                variants.extend([f"{aa}{chain.id}{pos}{x}" for x in AMINO_ACIDS if not x == aa])
+                variants.extend([f"{aa}{mapped_chain}{pos}{x}" for x in AMINO_ACIDS if not x == aa])
 
     print(*variants, sep=';\n', end=';\n')
 
