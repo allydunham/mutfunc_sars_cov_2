@@ -20,7 +20,10 @@ rule foldx_repair:
         "logs/foldx_repair/{gene}_{model}.log"
 
     shell:
-        "foldx --command=RepairPDB --pdb=model.pdb --pdb-dir=data/swissmodel/{wildcards.gene}/{wildcards.model} --clean-mode=3 --output-dir=data/foldx/{wildcards.gene}_{wildcards.model} &> {log}"
+        """
+        python bin/repair_pdb_chains.py {data/foldx/{gene}_{model}/model_Repair.pdb} > data/foldx/{gene}_{model}/model.pdb 2> {log}
+        foldx --command=RepairPDB --pdb=model.pdb --pdb-dir=data/foldx/{gene}_{model} --clean-mode=3 --output-dir=data/foldx/{wildcards.gene}_{wildcards.model} &> {log}
+        """
 
 rule foldx_variants:
     """
@@ -28,7 +31,7 @@ rule foldx_variants:
     correspond to the regions defined in meta/structures.yaml as part of the analyses protein
     """
     input:
-        pdb="data/swissmodel/{gene}/{model}/model.pdb",
+        pdb="data/foldx/{gene}_{model}/model_Repair.pdb",
         models="data/swissmodel/{gene}.models",
 
     output:
@@ -38,7 +41,7 @@ rule foldx_variants:
         "logs/foldx_variants/{gene}_{model}.log"
 
     shell:
-        "python bin/foldx_variants.py --models {input.models} {input.pdb} > {output.muts} 2> {log}"
+        "python bin/foldx_variants.py --model {wildcards.model} --models {input.models} {input.pdb} > {output.muts} 2> {log}"
 
 checkpoint foldx_split:
     """

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 Generate list of all possible variants from a PDB file, posible filtering to
 a region of interest
@@ -57,6 +57,7 @@ def parse_args():
     parser.add_argument('--models', '-m',
                         help=("TSV file giving details of the models and regions selected "
                               "(see swissmodel_select.py)"))
+    parser.add_argument('--model', '-n', type=str, help='Model number to process')
 
     return parser.parse_args()
 
