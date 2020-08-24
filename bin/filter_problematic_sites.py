@@ -5,6 +5,8 @@ Determine sites to filter from the full problematic sites VCF
 import sys
 import argparse
 
+CHROM_MAP = {"MN908947.3": "NC_045512v2"}
+
 def main(args):
     """Main"""
     selected_terms = set(args.filter)
@@ -23,7 +25,7 @@ def main(args):
                 if not info & selected_terms:
                     continue
 
-            print(*line[:2], sep='\t')
+            print(CHROM_MAP[line[0]], line[1], sep='\t')
 
 def parse_args():
     """Process input arguments"""

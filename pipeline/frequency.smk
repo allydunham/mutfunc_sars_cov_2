@@ -163,6 +163,9 @@ rule annotate_variants:
 
     log:
         "logs/annotate_variants.log"
+    
+    resources:
+        mem_mb = 25000
 
     singularity:
         "docker://ensemblorg/ensembl-vep"
