@@ -43,7 +43,7 @@ def main(args):
             next(foldx_file)
             for line in foldx_file:
                 print(uniprot, protein, model, template if template is not None else 'NA',
-                      line, sep='\t')
+                      line.strip(), sep='\t')
 
 def parse_args():
     """
