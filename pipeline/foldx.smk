@@ -168,4 +168,4 @@ rule foldx_tsv:
         "logs/foldx_tsv.log"
 
     run:
-        shell(f"python bin/foldx_tsv.py {[i for i in input if i.endswith('average.fxout')]} > {output} 2> {log}")
+        shell(f"python bin/foldx_tsv.py {' '.join(i for i in input if i.endswith('average.fxout'))} > {output} 2> {log}")
