@@ -64,6 +64,34 @@ rule download_annotation:
         bgzip data/frequency/gene_annotation.gff3 &> {log}
         """
 
+def get_covid_mask(wildcards):
+    """
+    Identify genome mask, based on config
+    """
+    url = "https://raw.githubusercontent.com/W-L/ProblematicSites_SARS-CoV2/master/problematic_sites_sarsCov2.vcf"
+    path = "data/frequency/problematic_sites_sarsCov2.vcf"
+    if not config['general']['check_online_updates'] and os.path.isfile(path):
+        return path
+    return HTTP.remote(url, keep_local=True)
+
+rule download_mask:
+    """
+    Download SARS-CoV-2 sequence position mask (positions where sequencing is uncertain)
+    """
+    input:
+        get_covid_mask
+
+    output:
+        "data/frequency/problematic_sites_sarsCov2.vcf"
+
+    log:
+        "logs/download_mask.log"
+
+    shell:
+        """
+        mv {input} {output} &> {log}
+        """
+
 rule index_annotation:
     """
     Tabix index gff3 file
@@ -80,12 +108,31 @@ rule index_annotation:
     shell:
         "tabix -p gff {input}"
 
+rule problematic_sites:
+    """
+    Identify problematic genome positions
+    """
+    input:
+        "data/frequency/problematic_sites_sarsCov2.vcf"
+
+    output:
+        "data/frequency/filtered_sites.tsv"
+
+    log:
+        "logs/problematic_sites.log"
+
+    shell:
+        """
+        python bin/filter_problematic_sites.py --filter seq_end ambiguous highly_ambiguous interspecific_contamination nanopore_adapter narrow_src single_src -- {input} > {output} 2> {log}
+        """
+
 rule variant_frequencies:
     """
     Calculate allele frequencies from VCF file
     """
     input:
-        "data/frequency/rob-12-6-20.unfiltered.pruned.vcf"
+        vcf="data/frequency/rob-12-6-20.unfiltered.pruned.vcf",
+        sites="data/frequency/filtered_sites.tsv"
 
     output:
         "data/frequency/allele_freqs.tsv"
@@ -94,7 +141,7 @@ rule variant_frequencies:
         "logs/variant_frequencies.log"
 
     shell:
-        "vcftools --vcf {input} --freq --stdout > {output} 2> {log}"
+        "vcftools --vcf {input.vcf} --exclude-positions {input.sites} --freq --stdout > {output} 2> {log}"
 
 rule annotate_variants:
     """
