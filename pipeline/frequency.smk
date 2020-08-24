@@ -108,22 +108,25 @@ rule index_annotation:
     shell:
         "tabix -p gff {input}"
 
-rule problematic_sites:
+rule filter_problematic_sites:
     """
-    Identify problematic genome positions
+    Identify and filter problematic genome positions
     """
     input:
-        "data/frequency/problematic_sites_sarsCov2.vcf"
+        sites="data/frequency/problematic_sites_sarsCov2.vcf",
+        vcf="data/frequency/rob-12-6-20.unfiltered.pruned.vcf"
 
     output:
-        "data/frequency/filtered_sites.tsv"
+        tbl="data/frequency/filtered_sites.tsv",
+        vcf="data/frequency/rob-12-6-20.filtered.vcf"
 
     log:
-        "logs/problematic_sites.log"
+        "logs/filter_problematic_sites.log"
 
     shell:
         """
-        python bin/filter_problematic_sites.py --filter seq_end ambiguous highly_ambiguous interspecific_contamination nanopore_adapter narrow_src single_src -- {input} > {output} 2> {log}
+        python bin/filter_problematic_sites.py --filter seq_end ambiguous highly_ambiguous interspecific_contamination nanopore_adapter narrow_src single_src -- {input.sites} > {output.tbl} 2> {log}
+        vcftools --vcf {input.vcf} --exclude-positions {output.tbl} --recode --recode-INFO-all --stdout > {output.vcf} 2> {log}
         """
 
 rule variant_frequencies:
@@ -131,7 +134,7 @@ rule variant_frequencies:
     Calculate allele frequencies from VCF file
     """
     input:
-        vcf="data/frequency/rob-12-6-20.unfiltered.pruned.vcf",
+        vcf="data/frequency/rob-12-6-20.filtered.vcf",
         sites="data/frequency/filtered_sites.tsv"
 
     output:
@@ -141,18 +144,18 @@ rule variant_frequencies:
         "logs/variant_frequencies.log"
 
     shell:
-        "vcftools --vcf {input.vcf} --exclude-positions {input.sites} --freq --stdout > {output} 2> {log}"
+        "vcftools --vcf {input.vcf} --freq --stdout > {output} 2> {log}"
 
 rule annotate_variants:
     """
     Annotate variants to proteins using Ensembl VEP
     """
     input:
-        vcf='data/frequency/rob-12-6-20.unfiltered.pruned.vcf',
-        gff='data/frequency/gene_annotation.gff3.gz',
-        gfftbi='data/frequency/gene_annotation.gff3.gz.tbi',
-        fasta='data/frequency/genome.fa',
-        synonyms='data/frequency/synonyms.tsv'
+        vcf="data/frequency/rob-12-6-20.filtered.vcf",
+        gff="data/frequency/gene_annotation.gff3.gz",
+        gfftbi="data/frequency/gene_annotation.gff3.gz.tbi",
+        fasta="data/frequency/genome.fa",
+        synonyms="data/frequency/synonyms.tsv"
 
     output:
         tsv="data/frequency/variant_annotation.tsv",
