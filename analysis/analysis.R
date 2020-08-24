@@ -24,6 +24,12 @@ variants <- read_tsv('data/output/summary.tsv', col_types = columns) %>%
   mutate(log10_sift = log10(sift_score + 1e-5),
          log10_freq = log10(freq + 1e-5))
 
+sift <- read_tsv('data/output/sift.tsv')
+foldx <- read_tsv('data/output/foldx.tsv')
+
+### Top Positions ###
+# filter(variants, freq > 0.01) %>% arrange(desc(freq)) %>% View()
+
 plots <- list()
 
 ### Histograms ###
@@ -66,22 +72,22 @@ classify_freq <- function(x){
   out <- factor(out, levels = c('Not Observed', '< 0.0001', '< 0.001', '< 0.01', '> 0.01'))
   return(out)
 }
-plots$freq_sift <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+plots$sift_freq <- mutate(variants, freq_cat = classify_freq(freq)) %>%
   ggplot(aes(x = freq_cat, y = log10_sift)) +
   geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
   labs(x = 'Frequency', y = 'SIFT4G Score')
 
-plots$freq_foldx <- mutate(variants, freq_cat = classify_freq(freq), ddg_clamped = clamp(total_energy, upper = 10)) %>%
+plots$foldx_freq <- mutate(variants, freq_cat = classify_freq(freq), ddg_clamped = clamp(total_energy, upper = 10)) %>%
   ggplot(aes(x = freq_cat, y = ddg_clamped)) +
   geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
   labs(x = 'Frequency', y = expression('FoldX'~Delta*Delta*'G (Clamped to < 10)'))
 
-plots$freq_int <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+plots$int_freq <- mutate(variants, freq_cat = classify_freq(freq)) %>%
   ggplot(aes(x = freq_cat, y = clamp(diff_interaction_energy, upper = 10))) +
   geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
   labs(x = 'Frequency', y = expression('FoldX Interface'~Delta*Delta*'G (Clamped to < 10)'))
 
-plots$freq_int_residues <- mutate(variants, freq_cat = classify_freq(freq)) %>%
+plots$int_residues_freq <- mutate(variants, freq_cat = classify_freq(freq)) %>%
   drop_na(diff_interface_residues) %>%
   count(freq_cat, diff_interface_residues) %>%
   complete(freq_cat, diff_interface_residues, fill = list(n=0)) %>%
@@ -94,7 +100,7 @@ plots$freq_int_residues <- mutate(variants, freq_cat = classify_freq(freq)) %>%
   scale_fill_brewer(name = 'Variant Frequency', palette = 'Set1', type = 'qual') +
   labs(x = "Change in Interface Residues", y = 'Proportion of Frequency Group')
 
-plots$freq_ptm <- mutate(variants, ptm = ifelse(is.na(ptm), 'None', str_to_title(ptm))) %>%
+plots$ptm_freq <- mutate(variants, ptm = ifelse(is.na(ptm), 'None', str_to_title(ptm))) %>%
   ggplot(aes(x = log10(freq), colour = ptm)) +
   geom_line(stat = 'density') +
   scale_colour_brewer(name = 'PTM', palette = 'Set1', type = 'qual') +
@@ -139,6 +145,17 @@ plots$observed_interfaces <- (ggplot(filter(observed_int_positions, !is.na(int_n
   lims(y = c(mn_int, 0)) +
   labs(x = 'Position', y = expression(log[10]~Frequency))) %>%
   labeled_plot(units = 'cm', width = 25, height = 5 * n_distinct(observed_int_positions$name))
+
+### SIFT4G Quality ###
+plots$sift_quality_hist <- (pivot_longer(sift, sift_median:num_seq, names_to = 'metric', values_to = 'value') %>%
+                              mutate(metric = c(sift_median='Median IC', num_aa='# AA', num_seq='# Seq')[metric]) %>%
+                              ggplot(aes(x=value, fill = metric)) +
+                              geom_histogram(bins = 30, show.legend = FALSE) +
+                              facet_wrap(~metric, nrow = 1, scales = 'free', strip.position = 'bottom') +
+                              labs(x = '', y = 'Count') +
+                              scale_fill_brewer(type = 'qual', palette = 'Set2') +
+                              theme(strip.placement = 'outside')) %>%
+  labeled_plot(units = 'cm', width = 40, height = 10)
 
 ### Save plots ###
 save_plotlist(plots, 'figures/', verbose = 2, overwrite = 'all')
