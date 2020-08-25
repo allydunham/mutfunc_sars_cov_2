@@ -68,35 +68,32 @@ export const MutBadge = ({type, small}) => {
     )
 }
 
-export const BadgeKey = () => {
+export const LabeledMutBadge = ({type, small, variant='body1'}) => {
     const classes = styles()
-    const listTypoProps = {variant:'caption', display:'inline', className: classes.badgeKey}
+    return(
+        <Typography variant={variant} display='inline' className={classes.badgeKey}>
+            <MutBadge type={type} small={small}/>&nbsp; {deleterious[type + 'Text']}
+        </Typography>
+    )
+}
+
+export const BadgeKey = () => {
     return(
         <Grid container spacing={2}>
             <Grid item>
-                <Typography {...listTypoProps}>
-                    <MutBadge type='conservation' small/>&nbsp; {deleterious.conservationText}
-                </Typography>
+                <LabeledMutBadge type='conservation' small variant='caption'/>
             </Grid>
             <Grid item>
-                <Typography {...listTypoProps}>
-                    <MutBadge type='structure' small/>&nbsp; {deleterious.structureText}
-                </Typography>
+                <LabeledMutBadge type='structure' small variant='caption'/>
             </Grid>
             <Grid item>
-                <Typography {...listTypoProps}>
-                    <MutBadge type='ptm' small/>&nbsp; {deleterious.ptmText}
-                </Typography>
+                <LabeledMutBadge type='ptm' small variant='caption'/>
             </Grid>
             <Grid item>
-                <Typography {...listTypoProps}>
-                    <MutBadge type='interfaces' small/>&nbsp; {deleterious.interfacesText}
-                </Typography>
+                <LabeledMutBadge type='interfaces' small variant='caption'/>
             </Grid>
             <Grid item>
-                <Typography {...listTypoProps}>
-                    <MutBadge type='frequency' small/>&nbsp; {deleterious.frequencyText}
-                </Typography>
+                <LabeledMutBadge type='frequency' small variant='caption'/>
             </Grid>
         </Grid>
     )
