@@ -6,28 +6,43 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
+import Button from "@material-ui/core/Button";
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormLabel from '@material-ui/core/FormLabel';
 import { makeStyles } from '@material-ui/core/styles';
-import MutBadges, { BadgeKey } from './MutBadges';
+import MutBadges, { BadgeKey, LabeledMutBadge } from './MutBadges';
 import { sarsDisplayNames } from '../lib/sars'
 import * as deleterious from '../lib/deleterious';
 
 const styles = makeStyles((theme) => ({
     tableControls: {
         display: 'flex',
+        flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
         width: '100%'
     },
+    tableControlButton:{
+        textTransform: 'none'
+    },
+    tableControlGroup:{
+        paddingBottom: '10px'
+    },
     tablePaper: {
         display: 'flex',
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%'
@@ -37,19 +52,105 @@ const styles = makeStyles((theme) => ({
     }
 }));
 
-// Split these up into lower level components?
-const ShowNeutralCheck = ({viewAll, setViewAll}) => {
+const TableOptions = ({options, setOptions}) => {
+    const classes = styles()
+    const [open, setOpen] = useState(false)
+
+    const updateOptions = (opt, event) => {
+        let newOpt = {...options}
+        newOpt[opt] = event.target.checked
+        setOptions(newOpt)
+    }
+
     return(
-        <FormControl fullWidth>
-            <FormControlLabel
-                labelPlacement='start'
-                control={<Checkbox
-                           checked={viewAll}
-                           onChange={(event) => {setViewAll(event.target.checked)}}
-                         />}
-                label="Show variants without predicted effects"
-            />
-        </FormControl>
+        <>
+        <Button
+          endIcon={<SettingsIcon/>}
+          onClick={() => setOpen(true)}
+          size='small'
+          className={classes.tableControlButton}>
+            Table Options
+        </Button>
+        <Dialog open={open} onClose={() => setOpen(false)} scroll='body' fullWidth maxWidth='sm'>
+            <DialogTitle>
+                Table Options
+            </DialogTitle>
+            <DialogContent>
+                <FormControl fullWidth>
+                    <FormLabel component="legend">General Filters</FormLabel>
+                    <FormGroup className={classes.tableControlGroup}>
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['observed']}
+                                       onChange={(event) => updateOptions('observed', event)}
+                                    />}
+                            label="Only show observed variants"
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['viewAll']}
+                                       onChange={(event) => updateOptions('viewAll', event)}
+                                    />}
+                            label="Show variants without predicted effects"
+                        />
+                    </FormGroup>
+
+                    <FormLabel component="legend">Only show variants with at least one of:</FormLabel>
+                    <FormGroup className={classes.tableControlGroup}>
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                      checked={options['frequency']}
+                                      disabled={options['viewAll']}
+                                      onChange={(event) => updateOptions('frequency', event)}
+                                    />}
+                            label={<LabeledMutBadge type='frequency' variant='body2'/>}
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['conservation']}
+                                       disabled={options['viewAll']}
+                                       onChange={(event) => updateOptions('conservation', event)}
+                                    />}
+                            label={<LabeledMutBadge type='conservation' variant='body2'/>}
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['structure']}
+                                       disabled={options['viewAll']}
+                                       onChange={(event) => updateOptions('structure', event)}
+                                    />}
+                            label={<LabeledMutBadge type='structure' variant='body2'/>}
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['ptm']}
+                                       disabled={options['viewAll']}
+                                       onChange={(event) => updateOptions('ptm', event)}
+                                    />}
+                            label={<LabeledMutBadge type='ptm' variant='body2'/>}
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['interfaces']}
+                                       disabled={options['viewAll']}
+                                       onChange={(event) => updateOptions('interfaces', event)}
+                                    />}
+                            label={<LabeledMutBadge type='interfaces' variant='body2'/>}
+                        />
+                    </FormGroup>
+
+
+                </FormControl>
+            </DialogContent>
+        </Dialog>
+        </>
     )
 }
 
@@ -124,14 +225,57 @@ const MutRow = ({mutId, mutData, setSelectedMut}) => {
 const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
     const classes = styles()
     const tableHeaders = ['Uniprot ID', 'Protein', 'Position', 'WT', 'Mutant', 'Predictions']
-    const [viewAll, setViewAll] = useState(false)
+
+    const [options, setOptions] = useState({
+        observed: false,
+        viewAll: false,
+        frequency: true,
+        conservation: true,
+        structure: true,
+        ptm: true,
+        interfaces: true
+    })
     const [filteredIds, setFilteredIds] = useState([])
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(50);
 
+    console.log(options)
+
     useEffect(() => {
-        setFilteredIds(mutIds.filter((i) => viewAll || deleterious.any(mutData[i])))
-    }, [mutIds, viewAll, mutData])
+        console.log('Filtering...')
+        setFilteredIds(mutIds.filter((i) => {
+            const mut = mutData[i]
+            if (options['observed'] && isNaN(mut['freq'])){
+                return false
+            }
+
+            if (options['viewAll']){
+                return true
+            }
+
+            if (options['frequency'] && deleterious.frequency(mut)){
+                return true
+            }
+
+            if (options['conservation'] && deleterious.conservation(mut)){
+                return true
+            }
+
+            if (options['structure'] && deleterious.structure(mut)){
+                return true
+            }
+
+            if (options['ptm'] && deleterious.ptm(mut)){
+                return true
+            }
+
+            if (options['interfaces'] && deleterious.interfaces(mut)){
+                return true
+            }
+
+            return false
+        }))
+    }, [mutIds, options, mutData])
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -144,10 +288,10 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
 
     return(
         <>
-        <div className={classes.badgeKey}>
-            <ShowNeutralCheck
-                viewAll={viewAll}
-                setViewAll={setViewAll}
+        <div className={classes.tableControls}>
+            <TableOptions
+                options={options}
+                setOptions={setOptions}
             />
         </div>
         <div className={classes.tablePaper}>
