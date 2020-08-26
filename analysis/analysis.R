@@ -75,7 +75,7 @@ classify_freq <- function(x){
 plots$sift_freq <- mutate(variants, freq_cat = classify_freq(freq)) %>%
   ggplot(aes(x = freq_cat, y = log10_sift)) +
   geom_violin(fill = 'cornflowerblue', colour = 'cornflowerblue') +
-  labs(x = 'Frequency', y = 'SIFT4G Score')
+  labs(x = 'Frequency', y = expression('log'[10]*'SIFT4G Score'))
 
 plots$foldx_freq <- mutate(variants, freq_cat = classify_freq(freq), ddg_clamped = clamp(total_energy, upper = 10)) %>%
   ggplot(aes(x = freq_cat, y = ddg_clamped)) +
@@ -157,5 +157,30 @@ plots$sift_quality_hist <- (pivot_longer(sift, sift_median:num_seq, names_to = '
                               theme(strip.placement = 'outside')) %>%
   labeled_plot(units = 'cm', width = 40, height = 10)
 
+plots$sift_median_ic <- left_join(sift, select(variants, uniprot, name, position, wt, mut, freq), by = c('uniprot', 'name', 'position', 'wt', 'mut')) %>%
+  drop_na() %>%
+  mutate(log10_freq = log10(freq), log10_sift = log10(sift_score + 0.00001)) %>% 
+  ggplot(aes(x = log10_freq, y = log10_sift, colour = sift_median)) +
+  geom_point() +
+  scale_colour_distiller(name = 'Median IC', type = 'seq', palette = 'YlOrRd', direction = -1) +
+  labs(x = expression('log'[10]*'Frequency'), y = expression('log'[10]*'SIFT4G Score'))
+
+plots$sift_n_aa <- left_join(sift, select(variants, uniprot, name, position, wt, mut, freq), by = c('uniprot', 'name', 'position', 'wt', 'mut')) %>%
+  drop_na() %>%
+  mutate(log10_freq = log10(freq), log10_sift = log10(sift_score + 0.00001)) %>% 
+  ggplot(aes(x = log10_freq, y = log10_sift, colour = clamp(num_aa, upper = 50))) +
+  geom_point() +
+  scale_colour_distiller(name = '# AA', type = 'seq', palette = 'YlOrRd', direction = -1) +
+  labs(x = expression('log'[10]*'Frequency'), y = expression('log'[10]*'SIFT4G Score'))
+
+plots$sift_n_seq <- left_join(sift, select(variants, uniprot, name, position, wt, mut, freq), by = c('uniprot', 'name', 'position', 'wt', 'mut')) %>%
+  drop_na() %>%
+  mutate(log10_freq = log10(freq), log10_sift = log10(sift_score + 0.00001)) %>% 
+  ggplot(aes(x = log10_freq, y = log10_sift, colour = clamp(num_seq, upper = 50))) +
+  geom_point() +
+  scale_colour_distiller(name = '# Seq', type = 'seq', palette = 'YlOrRd', direction = -1) +
+  labs(x = expression('log'[10]*'Frequency'), y = expression('log'[10]*'SIFT4G Score'))
+         
 ### Save plots ###
 save_plotlist(plots, 'figures/', verbose = 2, overwrite = 'all')
+ 
