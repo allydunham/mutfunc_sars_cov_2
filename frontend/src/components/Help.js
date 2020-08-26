@@ -48,7 +48,7 @@ const Help = () => {
             <Typography variant='h5' className={classes.heading}>
                 Searching Variants
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 The search interface allows you to search SARS-CoV-2 variants with a number of terms:
 
                 <ul>
@@ -69,7 +69,7 @@ const Help = () => {
             <Typography variant='h5' className={classes.heading}>
                 Results Table
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 The mutations returned by your search are displayed in a table, by default filtered to only display variants with a significant predicted effect.
                 All identified variants can be displayed using the checkbox in the table controls.
                 Variants are predicted to be significant if they fulfil any of the following conditions:
@@ -109,7 +109,7 @@ const Help = () => {
             <Typography variant='h6' className={classes.subheading}>
                 Conservation
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 The conservation data consists of:
                 <ul>
                     <li>The observed frequency of the variant, calculated from the <Link href='https://www.gisaid.org/' target="_blank" rel="noopener noreferrer">GISAID</Link> datatset</li>

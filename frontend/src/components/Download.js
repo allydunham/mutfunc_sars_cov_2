@@ -30,7 +30,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 Summary table (summary.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains summary data of each feature, containing the key result metric but not additional columns breaking down the result.<br/>Columns:
                 <ul>
                     <li>uniprot: Uniprot ID</li>
@@ -54,7 +54,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 Observed Frequencies (frequency.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains data on observed mutation frequencies in the wild, based on the data collected by GSAID.
                 <br/>Columns:
                 <ul>
@@ -69,7 +69,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 SIFT4G Results (sift.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains the results from&nbsp;
                 <Link
                     href="https://sift.bii.a-star.edu.sg/sift4g/"
@@ -93,7 +93,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 FoldX results (foldx.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains results from&nbsp;
                 <Link
                     href="http://foldxsuite.crg.eu/"
@@ -126,7 +126,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 Interface analysis (complex.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains results from&nbsp;
                 <Link
                     href="http://foldxsuite.crg.eu/"
@@ -179,7 +179,7 @@ const Download = () => {
             <Typography variant='h5' className={classes.heading}>
                 PTM Positions (ptms.tsv)
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 This table contains data on known PTM sites (
                 <Link
                     href="https://europepmc.org/article/med/32645325"
