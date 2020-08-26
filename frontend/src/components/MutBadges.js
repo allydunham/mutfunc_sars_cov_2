@@ -77,9 +77,9 @@ export const LabeledMutBadge = ({type, small, variant='body1'}) => {
     )
 }
 
-export const BadgeKey = () => {
+export const BadgeKey = ({column}) => {
     return(
-        <Grid container spacing={2}>
+        <Grid container spacing={2} direction={column ? 'column' : 'row'}>
             <Grid item>
                 <LabeledMutBadge type='conservation' small variant='caption'/>
             </Grid>

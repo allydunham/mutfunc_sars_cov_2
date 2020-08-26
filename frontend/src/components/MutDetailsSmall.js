@@ -6,12 +6,11 @@ import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Link from "@material-ui/core/Link";
+import Button from '@material-ui/core/Button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { sarsDisplayNames } from '../lib/sars'
 
-import GenomeViewer from './GenomeViewer'
 import MutBadges from './MutBadges'
 import AlignmentPopup from './AlignmentPopup'
 import StructurePopup from './StructurePopup'
@@ -64,24 +63,38 @@ const MutDetailStats = ({mut}) => {
                         </Typography>
                     </TableCell>
                 </TableRow>
+
                 <TableRow>
                     <TableCell>
                         Frequency: {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         SIFT4G Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
                     </TableCell>
+                </TableRow>
+                <TableRow>
                     <TableCell>
                         <Button
-                            color='secondary'
-                            onClick={() => setAlignOpen(true)}
-                            disabled={isNaN(mut['sift_score'])}>
+                          color='secondary'
+                          onClick={() => setAlignOpen(true)}
+                          disabled={isNaN(mut['sift_score'])}>
                             View SIFT4G alignment
                         </Button>
-                        <AlignmentPopup mut={mut} open={alignOpen} setOpen={setAlignOpen}/>
+                        <AlignmentPopup
+                          mut={mut}
+                          open={alignOpen}
+                          setOpen={setAlignOpen}
+                          width={200}
+                        />
                     </TableCell>
                 </TableRow>
 
@@ -92,6 +105,7 @@ const MutDetailStats = ({mut}) => {
                         </Typography>
                     </TableCell>
                 </TableRow>
+
                 <TableRow>
                     <TableCell>
                         Template: {mut['template'] === '' ? "None" : (
@@ -103,17 +117,29 @@ const MutDetailStats = ({mut}) => {
                             </Link>
                         )}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         FoldX &Delta;&Delta;G: {isNaN(mut['total_energy']) ? 'NA': mut['total_energy']}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         <Button
-                            color='secondary'
-                            onClick={() => setFxOpen(true)}
-                            disabled={mut['template'] === ''}>
+                          color='secondary'
+                          onClick={() => setFxOpen(true)}
+                          disabled={mut['template'] === ''}>
                             View Structure
                         </Button>
-                        <StructurePopup mut={mut} open={fxOpen} setOpen={setFxOpen}/>
+                        <StructurePopup
+                          mut={mut}
+                          open={fxOpen}
+                          setOpen={setFxOpen}
+                          width={200}
+                          height={200}
+                        />
                     </TableCell>
                 </TableRow>
 
@@ -124,6 +150,7 @@ const MutDetailStats = ({mut}) => {
                         </Typography>
                     </TableCell>
                 </TableRow>
+
                 <TableRow>
                     <TableCell>
                         Interface partner: {mut['int_name'] === '' ? null : (
@@ -136,6 +163,9 @@ const MutDetailStats = ({mut}) => {
                         )}
                         {mut['int_name'] === '' ? "None" : " " + mut['int_name']}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         Template: {mut['int_template'] === '' ? "None" : (
                             <Link
@@ -146,24 +176,35 @@ const MutDetailStats = ({mut}) => {
                             </Link>
                         )}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         Interface &Delta;&Delta;G: {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         {getInterfaceNumString(mut['diff_interface_residues'])}
                     </TableCell>
+                </TableRow>
+
+                <TableRow>
                     <TableCell>
                         <Button
-                            color='secondary'
-                            onClick={() => setIntOpen(true)}
-                            disabled={mut['int_template'] === ''}>
+                          color='secondary'
+                          onClick={() => setIntOpen(true)}
+                          disabled={mut['int_template'] === ''}>
                             View Interface
                         </Button>
                         <StructurePopup
-                            mut={mut}
-                            interfaceModel
-                            open={intOpen}
-                            setOpen={setIntOpen}
+                          mut={mut}
+                          interfaceModel
+                          open={intOpen}
+                          setOpen={setIntOpen}
+                          width={200}
+                          height={200}
                         />
                     </TableCell>
                 </TableRow>
@@ -191,11 +232,11 @@ const MutDetails = ({mut}) => {
             <Grid
               container
               spacing={1}
-              direction='row'
-              justify="space-around"
-              alignItems="stretch"
+              direction='column'
+              justify="space-evenly"
+              alignItems="center"
             >
-                <Grid item xs={12}>
+                <Grid item>
                     <Typography align='left' variant='h6' className={classes.title}>
                         <Link
                           href={"https://www.uniprot.org/uniprot/" + mut['uniprot']}
@@ -205,14 +246,12 @@ const MutDetails = ({mut}) => {
                         </Link>
                         &nbsp;
                         {mut_text}
-                        &nbsp;
-                        <MutBadges mut={mut}/>
                     </Typography>
                 </Grid>
-                <Grid item xs={12} className={classes.root}>
-                    <GenomeViewer geneName={mut['name']} mutPosition={mut['position']}/>
+                <Grid item>
+                    <MutBadges mut={mut}/>
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item>
                     <MutDetailStats mut={mut}/>
                 </Grid>
             </Grid>

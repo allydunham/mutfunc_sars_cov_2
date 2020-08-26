@@ -69,10 +69,10 @@ const SearchSummary = ({searchResults, data}) => {
         >
             <Grid item xs={12}>
                 <Typography align='left' variant='subtitle1' display='inline'>
-                    Found {results.length} variants, of which {counts['significant']} have significant predicted effects (
+                    Found {results.length} variants, of which {counts['significant']} have significant predicted effects<br/>
                     <Link component='button' onClick={() => setShowDetails(!showDetails)}>
                         {showDetails ? 'Hide details' : 'Show details'}
-                    </Link>)
+                    </Link>
                 </Typography>
 
             </Grid>

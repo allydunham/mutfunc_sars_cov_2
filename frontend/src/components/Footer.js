@@ -4,18 +4,24 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
     separater: {
-        flexGrow: 1,
-        alignSelf: 'flex-end'
+        flexGrow: 1
     },
     footer: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: 'flex-end',
         top: 'auto',
         bottom: 0,
         paddingLeft: 10,
         paddingRight: 10,
         background: 'transparent',
         boxShadow: 'none'
+    },
+    logo: {
+        marginRight: '10px',
+        width: 'auto',
+        maxWidth: '40%',
+        height: '5vh'
     }
 });
 
@@ -26,13 +32,12 @@ const Footer = () => {
             <img
               src={process.env.PUBLIC_URL + 'images/ebi_logo.svg'}
               alt='ebi-logo'
-              width='10%'
+              className={classes.logo}
             />
-            <div className={classes.separater}>
-                <Typography align='right'>
-                    v1.0 - Data Updated: 19/08/2020
-                </Typography>
-            </div>
+            <div className={classes.separater}/>
+            <Typography variant='caption' align='right'>
+                v1.0 - Data Updated: 19/08/2020
+            </Typography>
         </footer>
     )
 }

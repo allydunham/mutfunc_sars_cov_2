@@ -5,10 +5,13 @@ import CheckIcon from '@material-ui/icons/Check';
 import { green } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import MutTable from "./MutTable"
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MutSearch from "./MutSearch"
 import MutDetails from "./MutDetails"
+import MutDetailsSmall from "./MutDetailsSmall"
+import MutTable from "./MutTable"
+import MutTableSmall from "./MutTableSmall"
 import SearchSummary from "./SearchSummary"
 import { makeMutKey, searchMutations } from "../lib/mutations";
 
@@ -29,7 +32,9 @@ const styles = makeStyles({
 });
 
 const DataDisplay = (props) => {
+    const theme = useTheme();
     const classes = styles();
+    const small = useMediaQuery(theme.breakpoints.down('sm'));
     const {dataReady, dataNotification, searchResults,
            searching, data, selectedMut, setSelectedMut,
            search} = props;
@@ -84,10 +89,18 @@ const DataDisplay = (props) => {
             <SearchSummary searchResults={searchResults} data={data}/>
         </Grid>
         <Grid item className={classes.item}>
-            <MutDetails mut={data[selectedMut]}/>
+            {small ? (
+                <MutDetailsSmall mut={data[selectedMut]}/>
+            ) : (
+                <MutDetails mut={data[selectedMut]}/>
+            )}
         </Grid>
         <Grid item className={classes.item}>
+            {small ? (
+            <MutTableSmall mutIds={searchResults} mutData={data} setSelectedMut={setSelectedMut}/>
+            ) : (
             <MutTable mutIds={searchResults} mutData={data} setSelectedMut={setSelectedMut}/>
+            )}
         </Grid>
         </>
     )

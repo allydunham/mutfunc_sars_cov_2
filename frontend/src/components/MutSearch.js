@@ -29,17 +29,22 @@ Enter terms in the following formats, separated by newlines, commas (,) or semic
 - Specific variants (e.g. nsp12 K603D or nsp12 603D)
 `
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     item: {
-        width: "66%"
+        [theme.breakpoints.down('sm')]: {
+            width: "90%"
+        },
+        [theme.breakpoints.up('md')]: {
+            width: "66%"
+        }
     },
     errorButton: {
         color: red[900]
     }
-});
+}));
 
 const ErrorDialog = ({errors}) => {
     const classes = styles()

@@ -11,11 +11,17 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import MutBadges, { BadgeKey } from './MutBadges';
 import MutTableOptions from './MutTableOptions';
-import { sarsDisplayNames } from '../lib/sars';
+import { sarsDisplayNames } from '../lib/sars'
 import * as deleterious from '../lib/deleterious';
+
+const NoLineTableCell = withStyles({
+    root: {
+      borderBottom: "none"
+    }
+})(TableCell);
 
 const styles = makeStyles((theme) => ({
     tableControls: {
@@ -40,6 +46,10 @@ const styles = makeStyles((theme) => ({
     },
     pageButton: {
         flexShrink: 0
+    },
+    pagination: {
+        flex: 1,
+        flexWrap: 1
     }
 }));
 
@@ -92,7 +102,7 @@ const TablePaginationActions = ({count, page, rowsPerPage, onChangePage}) => {
 const EmptyRow = () => {
     return(
         <TableRow key='noData'>
-            <TableCell colSpan={6} align='center'>No Results</TableCell>
+            <TableCell colSpan={2} align='center'>No Results</TableCell>
         </TableRow>
     )
 }
@@ -101,19 +111,18 @@ const MutRow = ({mutId, mutData, setSelectedMut}) => {
     const mut = mutData[mutId]
     return(
         <TableRow hover onClick={(event) => setSelectedMut(mutId)}>
-            <TableCell>{mut['uniprot']}</TableCell>
-            <TableCell>{sarsDisplayNames[mut['name']]}</TableCell>
-            <TableCell>{mut['position']}</TableCell>
-            <TableCell>{mut['wt']}</TableCell>
-            <TableCell>{mut['mut']}</TableCell>
+            <TableCell>
+                {[sarsDisplayNames[mut['name']], ' ', mut['wt'],
+                    mut['position'], mut['mut']].join('')}
+            </TableCell>
             <TableCell><MutBadges mut={mut}/></TableCell>
         </TableRow>
     )
 }
 
 const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
-    const classes = styles()
-    const tableHeaders = ['Uniprot ID', 'Protein', 'Position', 'WT', 'Mutant', 'Predictions']
+    const classes = styles();
+    const tableHeaders = ['Variant', 'Predictions'];
 
     const [options, setOptions] = useState({
         observed: false,
@@ -126,7 +135,7 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
     })
     const [filteredIds, setFilteredIds] = useState([])
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(50);
+    const rowsPerPage = 25;
 
     useEffect(() => {
         console.log('Filtering...')
@@ -168,36 +177,35 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
         setPage(newPage);
     };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
-
     return(
         <>
-        <div className={classes.tableControls}>
-            <MutTableOptions
-                options={options}
-                setOptions={setOptions}
-            />
-        </div>
         <div className={classes.tablePaper}>
             <TableContainer>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell colSpan={3}>
-                                <BadgeKey/>
-                            </TableCell>
+                            <NoLineTableCell colSpan={2}>
+                                <BadgeKey column/>
+                            </NoLineTableCell>
+                        </TableRow>
+                        <TableRow>
+                            <NoLineTableCell colSpan={2}>
+                                <MutTableOptions
+                                  options={options}
+                                  setOptions={setOptions}
+                                />
+                            </NoLineTableCell>
+                        </TableRow>
+                        <TableRow>
                             <TablePagination
-                              rowsPerPageOptions={[10, 25, 50, 100]}
-                              colSpan={3}
+                              rowsPerPageOptions={[]}
+                              colSpan={2}
                               count={filteredIds.length}
                               rowsPerPage={rowsPerPage}
                               page={page}
                               onChangePage={handleChangePage}
-                              onChangeRowsPerPage={handleChangeRowsPerPage}
                               ActionsComponent={TablePaginationActions}
+                              classes={{toolbar: classes.pagination}}
                             />
                         </TableRow>
                         <TableRow key='header'>
@@ -205,7 +213,7 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredIds.length === 0 ? <EmptyRow /> : (
+                        {filteredIds.length === 0 ? <EmptyRow/> : (
                             filteredIds
                               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                               .map((i) => (
