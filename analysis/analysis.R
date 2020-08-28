@@ -27,6 +27,16 @@ variants <- read_tsv('data/output/summary.tsv', col_types = columns) %>%
 sift <- read_tsv('data/output/sift.tsv')
 foldx <- read_tsv('data/output/foldx.tsv')
 
+ev_name_map = c(envelope='e', membrane='m', nsp1='nsp1', nsp10='nsp10', nsp11='nsp11', Nsp12='nsp12', nsp13='nsp13', nsp14='nsp14',
+                nsp15='nsp15', Nsp15='nsp15', nsp16='nsp16', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='nsp5', nsp6='nsp6', Nsp7='nsp7',
+                nsp8='nsp8', nsp9='nsp9', nucleocapsid='nc', spike='s')
+evcouplings <- dir('data/evcouplings/') %>%
+  set_names() %>%
+  map(~suppressMessages(read_csv(str_c('data/evcouplings/', .)))) %>%
+  bind_rows(.id = 'protein') %>%
+  mutate(protein = ev_name_map[str_split(protein, '[_-]', simplify = TRUE)[,1]]) %>%
+  select(-segment, -mutant, position=pos, mut=subs)
+
 ### Top Positions ###
 # filter(variants, freq > 0.01) %>% arrange(desc(freq)) %>% View()
 
@@ -180,7 +190,10 @@ plots$sift_n_seq <- left_join(sift, select(variants, uniprot, name, position, wt
   geom_point() +
   scale_colour_distiller(name = '# Seq', type = 'seq', palette = 'YlOrRd', direction = -1) +
   labs(x = expression('log'[10]*'Frequency'), y = expression('log'[10]*'SIFT4G Score'))
-         
+   
+### Vs EVCouplings ###
+
+
 ### Save plots ###
 save_plotlist(plots, 'figures/', verbose = 2, overwrite = 'all')
  
