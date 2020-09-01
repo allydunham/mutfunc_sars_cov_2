@@ -38,7 +38,7 @@ const styles = makeStyles((theme) => ({
         textTransform: 'capitalize'
     },
     listButton: {
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.secondary.contrastText,
         textTransform: 'capitalize'
     },
     selectedListButton: {
