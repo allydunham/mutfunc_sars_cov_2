@@ -8,3 +8,4 @@ snakemake.yaml
 *.tsv
 .Rproj.user
 figures/*
+docs/methods.md

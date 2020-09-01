@@ -14,7 +14,7 @@
 project_name="COVID-19 Mutfunc"
 local_dir=$HOME/phd/covid19_mutfunc
 remote_dirs=( "ebi:/hps/research1/beltrao/ally/covid19_mutfunc" "ebi:/nfs/research1/beltrao/ally/covid19_mutfunc" )
-folders=( "data" "logs" )
+folders=( "data" "docs" "logs" )
 
 ## Colours for printf ##
 green=$(tput setaf 2)
