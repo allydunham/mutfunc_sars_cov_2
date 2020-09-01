@@ -1,6 +1,8 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import IconButton from '@material-ui/core/IconButton';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
@@ -24,11 +26,14 @@ const Download = () => {
         <div className={classes.root}>
             <Typography className={classes.content}>
                 The output data from the combined tools and sources is avaiable to download as a number of tsv tables.
-                Note that the protein names used in these tables are the internal identifiers and in some cases are slightly different from those displayed on the website, for example all are lower case and nc is used for N.
+                Note that the protein names used in these tables are the internal identifiers and in some cases are slightly different from those displayed on the website, for example all are lower case and "nc" is used for N.
             </Typography>
 
             <Typography variant='h5' className={classes.heading}>
-                Summary table (summary.tsv)
+                Summary table
+                <IconButton href={process.env.PUBLIC_URL + 'data/summary.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains summary data of each feature, containing the key result metric but not additional columns breaking down the result.<br/>Columns:
@@ -52,7 +57,10 @@ const Download = () => {
                 </ul>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
-                Observed Frequencies (frequency.tsv)
+                Observed Frequencies
+                <IconButton href={process.env.PUBLIC_URL + 'data/frequency.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains data on observed mutation frequencies in the wild, based on the data collected by GSAID.
@@ -67,7 +75,10 @@ const Download = () => {
                 </ul>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
-                SIFT4G Results (sift.tsv)
+                SIFT4G Results
+                <IconButton href={process.env.PUBLIC_URL + 'data/sift.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains the results from&nbsp;
@@ -91,7 +102,10 @@ const Download = () => {
                 </ul>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
-                FoldX results (foldx.tsv)
+                FoldX results
+                <IconButton href={process.env.PUBLIC_URL + 'data/foldx.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains results from&nbsp;
@@ -124,7 +138,10 @@ const Download = () => {
                 </ul>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
-                Interface analysis (complex.tsv)
+                Interface analysis
+                <IconButton href={process.env.PUBLIC_URL + 'data/complex.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains results from&nbsp;
@@ -177,7 +194,10 @@ const Download = () => {
                 </ul>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
-                PTM Positions (ptms.tsv)
+                PTM Positions
+                <IconButton href={process.env.PUBLIC_URL + 'data/ptms.tsv'}>
+                    <GetAppIcon/>
+                </IconButton>
             </Typography>
             <Typography component={'span'} className={classes.content}>
                 This table contains data on known PTM sites (
@@ -195,16 +215,16 @@ const Download = () => {
                     <li>wt: WT Amino Acid</li>
                     <li>ptm: Post Translational Modification</li>
                     <li>experiment: Source experiment</li>
-                    <li>ala_score</li>
-                    <li>asp_score</li>
-                    <li>glu_score</li>
-                    <li>n_seq</li>
-                    <li>kinase1</li>
-                    <li>kinase1_p</li>
-                    <li>kinase2</li>
-                    <li>kinase2_p</li>
-                    <li>secondary_structure</li>
-                    <li>relative_asa</li>
+                    <li>ala_score: SIFT Score for mutation to alanine</li>
+                    <li>asp_score: SIFT Score for mutation to aspartate</li>
+                    <li>glu_score: SIFT Score for mutation to glutamate</li>
+                    <li>n_seq: Number of sequences in SIFT alignment</li>
+                    <li>kinase1: Top kinase hit</li>
+                    <li>kinase1_p: Top kinase hit p value</li>
+                    <li>kinase2: Second best kinase hit</li>
+                    <li>kinase2_p: Second best kinase p value</li>
+                    <li>secondary_structure: Secondary structure at the position</li>
+                    <li>relative_asa: Relative accessible surface accessiblity</li>
                 </ul>
             </Typography>
         </div>
