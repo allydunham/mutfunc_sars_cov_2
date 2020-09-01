@@ -13,7 +13,7 @@ import theme from './theme';
 const styles = makeStyles({
     main: {
         display: 'flex',
-        minHeight: '90vh',
+        minHeight: '87vh',
         flexDirection: 'column',
         flex: 1,
         overflow: 'hidden'
@@ -26,8 +26,8 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
+            <TitleBar page={page} setPage={setPage}/>
             <div className={classes.main}>
-                <TitleBar page={page} setPage={setPage}/>
                 {page === 'analysis'? <Analysis/> : null}
                 {page === 'help'? <Help/> : null}
                 {page === 'about'? <About/> : null}
