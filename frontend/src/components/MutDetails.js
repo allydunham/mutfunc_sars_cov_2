@@ -76,7 +76,7 @@ const MutDetailStats = ({mut}) => {
                     </TableCell>
                     <TableCell>
                         <Button
-                            color='secondary'
+                            color='primary'
                             onClick={() => setAlignOpen(true)}
                             disabled={isNaN(mut['sift_score'])}>
                             View SIFT4G alignment
@@ -108,7 +108,7 @@ const MutDetailStats = ({mut}) => {
                     </TableCell>
                     <TableCell>
                         <Button
-                            color='secondary'
+                            color='primary'
                             onClick={() => setFxOpen(true)}
                             disabled={mut['template'] === ''}>
                             View Structure
@@ -154,7 +154,7 @@ const MutDetailStats = ({mut}) => {
                     </TableCell>
                     <TableCell>
                         <Button
-                            color='secondary'
+                            color='primary'
                             onClick={() => setIntOpen(true)}
                             disabled={mut['int_template'] === ''}>
                             View Interface

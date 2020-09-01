@@ -30,19 +30,19 @@ const styles = makeStyles((theme) => ({
         flexGrow: 1
     },
     button: {
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.secondary.contrastText,
         textTransform: 'capitalize'
     },
     selectedButton: {
-        color: theme.palette.secondary.main,
-        textTransform: 'capitalize'
-    },
-    listButton: {
         color: theme.palette.primary.main,
         textTransform: 'capitalize'
     },
+    listButton: {
+        color: theme.palette.primary.contrastText,
+        textTransform: 'capitalize'
+    },
     selectedListButton: {
-        color: theme.palette.secondary.main,
+        color: theme.palette.primary.main,
         textTransform: 'capitalize'
     }
 }));
@@ -87,7 +87,7 @@ const TitleBar = ({page, setPage}) => {
     const [drawerOpen, setDrawerOpen] = useState(false)
 
     return(
-        <AppBar position='sticky'>
+        <AppBar position='sticky' elevation={0} color='secondary'>
             <Toolbar>
                 <img
                     src={process.env.PUBLIC_URL + 'images/mutfunc_logo.svg'}

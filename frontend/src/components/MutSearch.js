@@ -121,7 +121,7 @@ const MutSearch = ({ search, setSearch, errors, searching, setSearching }) => {
                 <Button
                     onClick={processSearch}
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     fullWidth>
                     Search
                 </Button>
