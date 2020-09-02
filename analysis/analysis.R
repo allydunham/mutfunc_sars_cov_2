@@ -37,6 +37,12 @@ evcouplings <- dir('data/evcouplings/') %>%
   mutate(name = ev_name_map[str_split(name, '[_-]', simplify = TRUE)[,1]]) %>%
   select(-segment, -mutant, position=pos, mut=subs)
 
+protein_limits <- group_by(variants, name) %>%
+  filter(position == min(position) | position == max(position)) %>%
+  ungroup() %>%
+  select(name, position, wt) %>%
+  distinct()
+
 ### Top Positions ###
 # filter(variants, freq > 0.01) %>% arrange(desc(freq)) %>% View()
 
@@ -155,6 +161,36 @@ plots$observed_interfaces <- (ggplot(filter(observed_int_positions, !is.na(int_n
   lims(y = c(mn_int, 0)) +
   labs(x = 'Position', y = expression(log[10]~Frequency))) %>%
   labeled_plot(units = 'cm', width = 25, height = 5 * n_distinct(observed_int_positions$name))
+
+## Conserved Interfaces
+interfaces <- filter(variants, !is.na(int_name)) %>%
+  group_by(int_name, name, position, wt) %>%
+  summarise(mean_sift = mean(log10_sift),
+            mean_energy = mean(diff_interaction_energy),
+            least_tolerated = mut[which.min(sift_score)],
+            most_tolerated = mut[which.max(sift_score)],
+            .groups = 'drop') %>%
+  bind_rows(filter(protein_limits, name %in% .$name))
+
+plots$int_sift <- (ggplot(interfaces) +
+                     facet_wrap(~name, ncol = 1, scales = 'free_x') +
+                     geom_point(aes(x = position), y = 0, shape = NA) +
+                     geom_segment(aes(x = position, xend = position, yend = -mean_sift, colour = int_name), y = 0) +
+                     geom_point(aes(x = position, y = -mean_sift, colour = int_name)) +
+                     coord_cartesian(clip = 'off') +
+                     scale_colour_brewer(name = 'Interface', type = "qual", palette = 'Dark2') +
+                     labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"))) %>%
+  labeled_plot(units = 'cm', height = 2.5 * n_distinct(interfaces$name), width = 20)
+
+plots$int_ddg <- (ggplot(interfaces) +
+                     facet_wrap(~name, ncol = 1, scales = 'free_x') +
+                     geom_point(aes(x = position), y = 0, shape = NA) +
+                     geom_segment(aes(x = position, xend = position, yend = mean_energy, colour = int_name), y = 0) +
+                     geom_point(aes(x = position, y = mean_energy, colour = int_name)) +
+                     coord_cartesian(clip = 'off') +
+                     scale_colour_brewer(name = 'Interface', type = "qual", palette = 'Dark2') +
+                     labs(x = 'Position', y = expression("Mean"~Delta*Delta*"G"))) %>%
+  labeled_plot(units = 'cm', height = 2.5 * n_distinct(interfaces$name), width = 20)
 
 ### SIFT4G Quality ###
 plots$sift_quality_hist <- (pivot_longer(sift, sift_median:num_seq, names_to = 'metric', values_to = 'value') %>%
