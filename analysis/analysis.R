@@ -143,7 +143,7 @@ plot_sift_pos <- function(tbl, key){
      scale_fill_manual(values = c(phosphosite='red')) +
      labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"), title = key) +
      lims(y = c(0, 5))) %>%
-    labeled_plot(units = 'cm', width = min(0.05 * max(tbl$position), 15), height = 10)
+    labeled_plot(units = 'cm', width = max(0.05 * max(tbl$position), 15), height = 10)
 }
 
 plots$sift_positions <- drop_na(summary, mean_sift) %>%
@@ -160,7 +160,7 @@ plot_fx_pos <- function(tbl, key){
      scale_colour_manual(name = 'Interface', values = int_scale) +
      scale_fill_manual(values = c(phosphosite='red')) +
      labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"), title = key)) %>%
-    labeled_plot(units = 'cm', width = min(0.05 * max(tbl$position), 15), height = 10)
+    labeled_plot(units = 'cm', width = max(0.05 * max(tbl$position), 15), height = 10)
 }
 
 plots$foldx_positions <- group_by(summary, name) %>%
