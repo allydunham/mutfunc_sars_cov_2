@@ -122,6 +122,53 @@ plots$ptm_freq <- mutate(variants, ptm = ifelse(is.na(ptm), 'None', str_to_title
   scale_colour_brewer(name = 'PTM', palette = 'Set1', type = 'qual') +
   labs(x = expression(log[10](Frequency)), y = 'Density')
 
+## Features along proteins
+summary <- group_by(variants, name, position, wt) %>%
+  summarise(mean_sift = -mean(log10_sift),
+            mean_ddg = mean(total_energy),
+            ptm = ptm[1],
+            interface = int_name[1],
+            .groups = 'drop') %>%
+  mutate(interface = replace_na(interface, 'None'))
+
+int_scale <- c(None='black', ace2='#1b9e77', nsp10='#d95f02', nsp12='#7570b3', nsp14='#e7298a',
+               nsp16='#66a61e', nsp7='#e6ab02', nsp8='#a6761d', nsp9='#666666')
+
+plot_sift_pos <- function(tbl, key){
+  (ggplot() +
+     geom_segment(data = tbl, mapping = aes(x = position, xend = position, yend = mean_sift, colour = interface), y = 0,
+                  show.legend = n_distinct(tbl$interface) > 1) +
+     geom_point(data = filter(tbl, !is.na(ptm)), mapping = aes(x = position, y = mean_sift, fill = ptm), shape = 21) +
+     scale_colour_manual(name = 'Interface', values = int_scale) +
+     scale_fill_manual(values = c(phosphosite='red')) +
+     labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"), title = key) +
+     lims(y = c(0, 5))) %>%
+    labeled_plot(units = 'cm', width = min(0.05 * max(tbl$position), 15), height = 10)
+}
+
+plots$sift_positions <- drop_na(summary, mean_sift) %>%
+  group_by(name)
+plots$sift_positions <- group_map(plots$sift_positions, plot_sift_pos) %>%
+  set_names(group_keys(plots$sift_positions)$name)
+
+plot_fx_pos <- function(tbl, key){
+  (ggplot() +
+     geom_point(data = tbl, mapping = aes(x = position), y = 0, shape = NA) +
+     geom_segment(data = tbl, mapping = aes(x = position, xend = position, yend = mean_ddg, colour = interface), y = 0,
+                  show.legend = n_distinct(tbl$interface) > 1) +
+     geom_point(data = filter(tbl, !is.na(ptm)), mapping = aes(x = position, y = mean_ddg, fill = ptm), shape = 21) +
+     scale_colour_manual(name = 'Interface', values = int_scale) +
+     scale_fill_manual(values = c(phosphosite='red')) +
+     labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"), title = key)) %>%
+    labeled_plot(units = 'cm', width = min(0.05 * max(tbl$position), 15), height = 10)
+}
+
+plots$foldx_positions <- group_by(summary, name) %>%
+  filter(!all(is.na(mean_ddg))) %>%
+  group_by(name)
+plots$foldx_positions <- group_map(plots$foldx_positions, plot_fx_pos) %>%
+  set_names(group_keys(plots$foldx_positions)$name)
+
 ## Plot position of observed phosphomutants
 # Includes start and end points of each protein to set x limits
 observed_pho_positions <- group_by(variants, name) %>%
