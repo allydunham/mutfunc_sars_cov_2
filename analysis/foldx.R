@@ -64,5 +64,33 @@ plots$matrices <- group_by(variants, name) %>%
   group_map(plot_mat) %>%
   set_names(group_keys(group_by(variants, name))$name)
 
+## Factors
+max_factors <- select(foldx, name, position, wt, backbone_hbond:entropy_complex) %>%
+  group_by(name, position, wt) %>%
+  summarise_at(vars(backbone_hbond:entropy_complex), mean) %>%
+  pivot_longer(backbone_hbond:entropy_complex, names_to = 'factor', values_to = 'ddg') %>%
+  group_by(name, position, wt) %>%
+  filter(ddg == max(ddg, na.rm = TRUE))
+
+factor_cols <- c(entropy_sidechain='#8dd3c7', sidechain_hbond='#ffffb3', solvation_polar='#bebada', van_der_waals_clashes='#fb8072',
+                 solvation_hydrophobic='#80b1d3', backbone_hbond='#fdb462', entropy_mainchain='#b3de69', partial_covalent_bonds='#e41a1c',
+                 electrostatics='#377eb8', backbone_clash='#4daf4a', helix_dipole='#984ea3', van_der_waals='#ff7f00', disulfide='#ffff33',
+                 torsional_clash='#a65628')
+
+plot_factors <- function(tbl, key){
+  prot <- filter(protein_limits, name == key)
+  (ggplot(tbl, aes(x = position, y = ddg, colour = factor)) +
+      geom_point(data = prot, mapping = aes(x = position), y = 0, shape = NA, colour = NA) +
+      geom_segment(aes(xend = position, yend = ddg), y = 0) +
+      geom_point() +
+      scale_colour_manual(name = 'Strongest\nComponent', values = factor_cols) +
+      labs(x = 'Position', y = expression(Delta*Delta*G), title = key)) %>%
+    labeled_plot(units = 'cm', width = max(20, 0.05 * max(prot$position)), height = 15)
+}
+
+plots$max_factors <- group_by(max_factors, name) %>%
+  group_map(plot_factors) %>%
+  set_names(group_keys(group_by(max_factors, name))$name)
+
 ### Save plots ###
 save_plotlist(plots, 'figures/foldx', verbose = 2, overwrite = 'all')
