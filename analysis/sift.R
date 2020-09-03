@@ -45,6 +45,36 @@ plots$per_position <- drop_na(summary, mean_sift) %>%
 plots$per_position <- group_map(plots$per_position, plot_sift_pos) %>%
   set_names(group_keys(plots$per_position)$name)
 
+## Matrices
+plot_mat <- function(tbl, key){
+  tiles <- ggplot(tbl, aes(x = position, y = mut, fill = log10_score)) +
+     geom_tile(data = select(tbl, position, wt) %>% distinct(), mapping = aes(x = position, y = wt), fill = 'black') +
+     geom_raster() +
+     labs(x = 'Position', y = '') +
+     scale_fill_distiller(name = 'log<sub>10</sub> SIFT4G Score', type = 'seq', palette = 'OrRd') +
+     theme(axis.line = element_blank(),
+           axis.ticks = element_blank(),
+           panel.grid.major.y = element_blank(),
+           legend.title = element_markdown())
+  
+  bars <- ggplot(tbl, aes(x = position, y = sift_median)) +
+    geom_line() +
+    lims(y = c(2, 4.325)) +
+    labs(y = 'Median IC') +
+    theme(axis.title.x = element_blank(),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank())
+  
+  ggarrange(bars, tiles, ncol = 1, align = 'v', common.legend = TRUE, legend = 'right', heights = c(1, 5)) %>%
+    labeled_plot(units = 'cm', height = 15, width = max(20, 0.05 * max(tbl$position))) %>%
+    return()
+}
+
+plots$matrices <- mutate(sift, log10_score = log10(sift_score + 0.00001)) %>%
+  group_by(name) %>%
+  group_map(plot_mat) %>%
+  set_names(group_keys(group_by(sift, name))$name)
+
 ## Quality ##
 plots$quality_hist <- (pivot_longer(sift, sift_median:num_seq, names_to = 'metric', values_to = 'value') %>%
                               mutate(metric = c(sift_median='Median IC', num_aa='# AA', num_seq='# Seq')[metric]) %>%

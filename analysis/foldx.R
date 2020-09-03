@@ -4,50 +4,12 @@ source('src/config.R')
 source('src/analysis.R')
 
 ### Import Data ###
-columns <- cols(
-  uniprot = col_character(),
-  name = col_character(),
-  position = col_double(),
-  wt = col_character(),
-  mut = col_character(),
-  sift_score = col_double(),
-  template = col_character(),
-  total_energy = col_double(),
-  ptm = col_character(),
-  int_uniprot = col_character(),
-  int_name = col_character(),
-  int_template = col_character(),
-  interaction_energy = col_double(),
-  diff_interaction_energy = col_double(),
-  diff_interface_residues = col_integer(),
-  freq = col_double()
-)
-variants <- read_tsv('data/output/summary.tsv', col_types = columns) %>%
-  mutate(log10_sift = log10(sift_score + 1e-5),
-         log10_freq = log10(freq + 1e-5))
-
-sift <- read_tsv('data/output/sift.tsv')
+variants <- load_variants()
 foldx <- read_tsv('data/output/foldx.tsv')
-
-ev_name_map = c(envelope='e', membrane='m', nsp1='nsp1', nsp10='nsp10', nsp11='nsp11', Nsp12='nsp12', nsp13='nsp13', nsp14='nsp14',
-                nsp15='nsp15', Nsp15='nsp15', nsp16='nsp16', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='nsp5', nsp6='nsp6', Nsp7='nsp7',
-                nsp8='nsp8', nsp9='nsp9', nucleocapsid='nc', spike='s')
-evcouplings <- dir('data/evcouplings/') %>%
-  set_names() %>%
-  map(~suppressMessages(read_csv(str_c('data/evcouplings/', .)))) %>%
-  bind_rows(.id = 'name') %>%
-  mutate(name = ev_name_map[str_split(name, '[_-]', simplify = TRUE)[,1]]) %>%
-  select(-segment, -mutant, position=pos, mut=subs)
-
-protein_limits <- group_by(variants, name) %>%
-  filter(position == min(position) | position == max(position)) %>%
-  ungroup() %>%
-  select(name, position, wt) %>%
-  distinct()
-
-### Analyse ###
+protein_limits <- get_protein_limits(variants)
 plots <- list()
 
+### Analyse ###
 plots$hist <- ggplot(variants, aes(x = total_energy)) +
   geom_histogram(fill = 'cornflowerblue', bins = 40) +
   labs(x = expression('FoldX'~Delta*Delta*'G'),
@@ -84,6 +46,23 @@ plots$foldx_positions <- group_by(summary, name) %>%
 plots$foldx_positions <- group_map(plots$foldx_positions, plot_fx_pos) %>%
   set_names(group_keys(plots$foldx_positions)$name)
 
+## Matrices
+plot_mat <- function(tbl, key){
+  (ggplot(tbl, aes(x = position, y = mut, fill = clamp(total_energy, lower = -5, upper = 5))) +
+     geom_tile(data = select(tbl, position, wt) %>% distinct(), mapping = aes(x = position, y = wt), fill = 'black') +
+     geom_raster() +
+     labs(x = 'Position', y = '', title = key) +
+     scale_fill_distiller(name = 'Clamped &Delta;&Delta;G', type = 'div', palette = 'RdYlBu', limits = c(-5, 5), na.value = 'lightgrey') +
+     theme(axis.line = element_blank(),
+           axis.ticks = element_blank(),
+           panel.grid.major.y = element_blank(),
+           legend.title = element_markdown())) %>%
+    labeled_plot(units = 'cm', height = 15, width = max(20, 0.05 * max(tbl$position)))
+}
+
+plots$matrices <- group_by(variants, name) %>%
+  group_map(plot_mat) %>%
+  set_names(group_keys(group_by(variants, name))$name)
 
 ### Save plots ###
 save_plotlist(plots, 'figures/foldx', verbose = 2, overwrite = 'all')
