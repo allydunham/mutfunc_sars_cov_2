@@ -99,10 +99,12 @@ const TablePaginationActions = ({count, page, rowsPerPage, onChangePage}) => {
     );
   }
 
-const EmptyRow = () => {
+const EmptyRow = ({filtered}) => {
     return(
         <TableRow key='noData'>
-            <TableCell colSpan={2} align='center'>No Results</TableCell>
+            <TableCell colSpan={2} align='center'>
+                {filtered ? "No unfiltered results (see options for criteria)" : "No Results"}
+            </TableCell>
         </TableRow>
     )
 }
@@ -213,7 +215,9 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredIds.length === 0 ? <EmptyRow/> : (
+                        {filteredIds.length === 0 ? (
+                            <EmptyRow filtered={mutIds.length > 0}/>
+                        ) : (
                             filteredIds
                               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                               .map((i) => (
