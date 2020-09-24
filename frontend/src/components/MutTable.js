@@ -89,10 +89,12 @@ const TablePaginationActions = ({count, page, rowsPerPage, onChangePage}) => {
     );
   }
 
-const EmptyRow = () => {
+const EmptyRow = ({filtered}) => {
     return(
         <TableRow key='noData'>
-            <TableCell colSpan={6} align='center'>No Results</TableCell>
+            <TableCell colSpan={6} align='center'>
+                {filtered ? "No unfiltered results (see options for criteria)" : "No Results"}
+            </TableCell>
         </TableRow>
     )
 }
@@ -120,6 +122,7 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
         viewAll: false,
         frequency: true,
         conservation: true,
+        conservationWeak: false,
         structure: true,
         ptm: true,
         interfaces: true
@@ -145,6 +148,10 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
             }
 
             if (options['conservation'] && deleterious.conservation(mut)){
+                return true
+            }
+
+            if (options['conservationWeak'] && deleterious.conservationWeak(mut)){
                 return true
             }
 
@@ -176,10 +183,7 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
     return(
         <>
         <div className={classes.tableControls}>
-            <MutTableOptions
-                options={options}
-                setOptions={setOptions}
-            />
+            <BadgeKey/>
         </div>
         <div className={classes.tablePaper}>
             <TableContainer>
@@ -187,7 +191,10 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
                     <TableHead>
                         <TableRow>
                             <TableCell colSpan={3}>
-                                <BadgeKey/>
+                                <MutTableOptions
+                                    options={options}
+                                    setOptions={setOptions}
+                                />
                             </TableCell>
                             <TablePagination
                               rowsPerPageOptions={[10, 25, 50, 100]}
@@ -205,7 +212,9 @@ const MutTable = ({ mutIds, mutData, setSelectedMut}) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredIds.length === 0 ? <EmptyRow /> : (
+                        {filteredIds.length === 0 ? (
+                            <EmptyRow filtered={mutIds.length > 0}/>
+                        ) : (
                             filteredIds
                               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                               .map((i) => (
