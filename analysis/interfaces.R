@@ -49,7 +49,7 @@ int_positions <- select(variants, name, position, int_name) %>%
 min_freq <- floor(min(observed$log10_freq, na.rm = TRUE))
 plots$observed_interfaces <- (ggplot() +
                                 facet_wrap(~name, ncol = 1, scales = 'free_x') +
-                                geom_point(data = protein_limits, mapping = aes(x = position), y = 0, alpha = 0) +
+                                geom_point(data = filter(protein_limits, name %in% unique(int_positions$name)), mapping = aes(x = position), y = 0, alpha = 0) +
                                 geom_point(data = int_positions, mapping = aes(x = position, colour = int_name), y = min_freq, shape = 15) +
                                 geom_point(data = observed, mapping = aes(x = position, y = log10_freq, colour = int_name)) +
                                 geom_segment(data = observed, mapping = aes(x = position, xend = position, yend = log10_freq, colour = int_name), y = min_freq) +
@@ -76,7 +76,7 @@ plots$sift <- (ggplot(conserved) +
                      coord_cartesian(clip = 'off') +
                      scale_colour_manual(name = 'Interface\nProtein', values = int_colour_scale) +
                      labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"))) %>%
-  labeled_plot(units = 'cm', height = 2.5 * n_distinct(interfaces$name), width = 20)
+  labeled_plot(units = 'cm', height = 2.5 * n_distinct(conserved$name), width = 20)
 
 plots$ddg <- (ggplot(conserved) +
                     facet_wrap(~name, ncol = 1, scales = 'free_x') +
@@ -86,7 +86,7 @@ plots$ddg <- (ggplot(conserved) +
                     coord_cartesian(clip = 'off') +
                     scale_colour_manual(name = 'Interface\nProtein', values = int_colour_scale) +
                     labs(x = 'Position', y = expression("Mean"~Delta*Delta*"G"))) %>%
-  labeled_plot(units = 'cm', height = 2.5 * n_distinct(interfaces$name), width = 20)
+  labeled_plot(units = 'cm', height = 2.5 * n_distinct(conserved$name), width = 20)
 
 ### Save plots ###
 save_plotlist(plots, 'figures/interfaces', verbose = 2, overwrite = 'all')
