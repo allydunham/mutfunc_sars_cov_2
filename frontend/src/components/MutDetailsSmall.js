@@ -81,6 +81,13 @@ const MutDetailStats = ({mut}) => {
                         SIFT4G Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
                     </TableCell>
                 </TableRow>
+
+                <TableRow>
+                    <TableCell>
+                        SIFT4G Median IC: {isNaN(mut['sift_median']) ? 'NA': mut['sift_median']}
+                    </TableCell>
+                </TableRow>
+
                 <TableRow>
                     <TableCell>
                         <Button
