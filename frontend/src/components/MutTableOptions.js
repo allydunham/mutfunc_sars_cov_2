@@ -70,6 +70,7 @@ const MutTableOptions = ({options, setOptions}) => {
                             control={<Checkbox
                                        checked={options['observed']}
                                        onChange={(event) => updateOptions('observed', event)}
+                                       color='primary'
                                     />}
                             label="Only show observed variants"
                         />
@@ -78,6 +79,7 @@ const MutTableOptions = ({options, setOptions}) => {
                             control={<Checkbox
                                        checked={options['viewAll']}
                                        onChange={(event) => updateOptions('viewAll', event)}
+                                       color='primary'
                                     />}
                             label="Show variants without predicted effects"
                         />
@@ -91,6 +93,7 @@ const MutTableOptions = ({options, setOptions}) => {
                                       checked={options['frequency']}
                                       disabled={options['viewAll']}
                                       onChange={(event) => updateOptions('frequency', event)}
+                                      color='primary'
                                     />}
                             label={<LabeledMutBadge small type='frequency' variant='body2'/>}
                         />
@@ -100,6 +103,7 @@ const MutTableOptions = ({options, setOptions}) => {
                                        checked={options['conservation']}
                                        disabled={options['viewAll']}
                                        onChange={(event) => updateOptions('conservation', event)}
+                                       color='primary'
                                     />}
                             label={<LabeledMutBadge small type='conservation' variant='body2'/>}
                         />
@@ -109,6 +113,7 @@ const MutTableOptions = ({options, setOptions}) => {
                                        checked={options['structure']}
                                        disabled={options['viewAll']}
                                        onChange={(event) => updateOptions('structure', event)}
+                                       color='primary'
                                     />}
                             label={<LabeledMutBadge small type='structure' variant='body2'/>}
                         />
@@ -118,6 +123,7 @@ const MutTableOptions = ({options, setOptions}) => {
                                        checked={options['ptm']}
                                        disabled={options['viewAll']}
                                        onChange={(event) => updateOptions('ptm', event)}
+                                       color='primary'
                                     />}
                             label={<LabeledMutBadge small type='ptm' variant='body2'/>}
                         />
@@ -127,6 +133,7 @@ const MutTableOptions = ({options, setOptions}) => {
                                        checked={options['interfaces']}
                                        disabled={options['viewAll']}
                                        onChange={(event) => updateOptions('interfaces', event)}
+                                       color='primary'
                                     />}
                             label={<LabeledMutBadge small type='interfaces' variant='body2'/>}
                         />
