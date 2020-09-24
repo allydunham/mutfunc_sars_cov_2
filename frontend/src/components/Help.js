@@ -83,7 +83,11 @@ const Help = () => {
                     </li>
                     <li className={classes.badgeKey}>
                         <MutBadge type='conservation'/>
-                        &nbsp;&nbsp;Conservation: {deleterious.conservationText}
+                        &nbsp;&nbsp;Conservation (High Confidence): SIFT4G Score &lt; 0.05 and 2.75 &lt; Median IC &lt; 3.5
+                    </li>
+                    <li className={classes.badgeKey}>
+                        <MutBadge type='conservationWeak'/>
+                        &nbsp;&nbsp;Conservation (Low Confidence): SIFT4G Score &lt; 0.05 but Median IC outside the optimal range
                     </li>
                     <li className={classes.badgeKey}>
                         <MutBadge type='structure'/>

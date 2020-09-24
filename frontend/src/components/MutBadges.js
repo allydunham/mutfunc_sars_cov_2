@@ -18,6 +18,10 @@ const styles = makeStyles((theme) => ({
         color: theme.palette.getContrastText(green['A700']),
         backgroundColor: green['A700']
     },
+    conservationWeakBadge: {
+        color: theme.palette.getContrastText(green['A100']),
+        backgroundColor: green['A100']
+    },
     structureBadge: {
         color: theme.palette.getContrastText(deepPurple['A700']),
         backgroundColor: deepPurple['A700']
@@ -52,6 +56,7 @@ const styles = makeStyles((theme) => ({
 
 const badgeLetters = {
     'conservation': 'C',
+    'conservationWeak': 'C',
     'structure': 'S',
     'ptm': 'P',
     'interfaces': 'I',
@@ -79,9 +84,12 @@ export const LabeledMutBadge = ({type, small, variant='body1'}) => {
 
 export const BadgeKey = ({column}) => {
     return(
-        <Grid container spacing={2} direction={column ? 'column' : 'row'}>
+        <Grid container spacing={2} justify='center' direction={column ? 'column' : 'row'}>
             <Grid item>
                 <LabeledMutBadge type='conservation' small variant='caption'/>
+            </Grid>
+            <Grid item>
+                <LabeledMutBadge type='conservationWeak' small variant='caption'/>
             </Grid>
             <Grid item>
                 <LabeledMutBadge type='structure' small variant='caption'/>
@@ -105,7 +113,9 @@ const MutBadges = ({mut}) => {
         <div className={classes.badgeRoot}>
         {deleterious.conservation(mut) ? (
             <MutBadge type='conservation'/>
-        ) : null}
+        ) : (deleterious.conservationWeak(mut) ? (
+            <MutBadge type='conservationWeak'/>
+        ) : null)}
         {deleterious.structure(mut) ? (
             <MutBadge type='structure'/>
         ) : null}

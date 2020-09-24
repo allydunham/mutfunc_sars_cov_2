@@ -51,7 +51,7 @@ const MutTableOptions = ({options, setOptions}) => {
     return(
         <>
         <Button
-          endIcon={<SettingsIcon/>}
+          startIcon={<SettingsIcon/>}
           onClick={() => setOpen(true)}
           size='small'
           className={classes.tableControlButton}>
@@ -85,7 +85,20 @@ const MutTableOptions = ({options, setOptions}) => {
                         />
                     </FormGroup>
 
-                    <FormLabel component="legend">Only show variants with at least one of:</FormLabel>
+                    <FormLabel component="legend">Options</FormLabel>
+                    <FormGroup className={classes.tableControlGroup}>
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['strictSift']}
+                                       onChange={(event) => updateOptions('strictSift', event)}
+                                       color='primary'
+                                    />}
+                            label="Only show SIFT4G "
+                        />
+                    </FormGroup>
+
+                    <FormLabel component="legend">Show variants with at least one of:</FormLabel>
                     <FormGroup className={classes.tableControlGroup}>
                         <FormControlLabel
                             labelPlacement='end'
@@ -106,6 +119,16 @@ const MutTableOptions = ({options, setOptions}) => {
                                        color='primary'
                                     />}
                             label={<LabeledMutBadge small type='conservation' variant='body2'/>}
+                        />
+                        <FormControlLabel
+                            labelPlacement='end'
+                            control={<Checkbox
+                                       checked={options['conservationWeak']}
+                                       disabled={options['viewAll']}
+                                       onChange={(event) => updateOptions('conservationWeak', event)}
+                                       color='primary'
+                                    />}
+                            label={<LabeledMutBadge small type='conservationWeak' variant='body2'/>}
                         />
                         <FormControlLabel
                             labelPlacement='end'
