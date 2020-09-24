@@ -131,6 +131,7 @@ const DataController = ({hidden}) => {
                 ...value,
                 'position': nanOrNumber(value['position']),
                 'sift_score': nanOrNumber(value['sift_score']),
+                'sift_median': nanOrNumber(value['sift_median']),
                 'total_energy': nanOrNumber(value['total_energy']),
                 'interaction_energy': nanOrNumber(value['interaction_energy']),
                 'diff_interaction_energy': nanOrNumber(value['diff_interaction_energy']),

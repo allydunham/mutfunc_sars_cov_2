@@ -44,6 +44,7 @@ const Download = () => {
                     <li>wt: WT Amino Acid</li>
                     <li>mut: Mutant Amino Acid</li>
                     <li>sift_score: SIFT4G Score</li>
+                    <li>sift_median: SIFT4G Median IC</li>
                     <li>template: FoldX PDB Model Template (from SWISS-MODEL, sometimes this will be a direct model of the target protein and sometimes a homology model). Takes the format PDBID.Chain</li>
                     <li>total_energy: FoldX &Delta;&Delta;G Prediction</li>
                     <li>ptm: Post Translational Modification at the site</li>

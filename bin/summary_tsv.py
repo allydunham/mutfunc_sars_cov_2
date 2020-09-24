@@ -17,7 +17,7 @@ def main(args):
     """
     # Import tables
     sift = pd.read_csv(args.sift, sep='\t', index_col=False)
-    sift = sift[['uniprot', 'name', 'position', 'wt', 'mut', 'sift_score']]
+    sift = sift[['uniprot', 'name', 'position', 'wt', 'mut', 'sift_score', 'sift_median']]
 
     foldx = pd.read_csv(args.foldx, sep='\t', index_col=False, dtype={'model': str})
     foldx['template'] = foldx['template'].str.cat(foldx['chain'], sep='.')
