@@ -59,12 +59,12 @@ const PageButton = ({type, page, setPage, icon}) => {
     )
 }
 
-const PageList = ({type, page, setPage, icon}) => {
+const PageList = ({type, page, setPage, setDrawerOpen, icon}) => {
     const classes = styles(useTheme())
     return(
         <ListItem
           button={true}
-          onClick={() => setPage(type)}
+          onClick={() => {setPage(type); setDrawerOpen(false)}}
           className={page === type ? classes.selectedListButton : classes.listButton}>
             <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={type}/>
@@ -106,6 +106,7 @@ const TitleBar = ({page, setPage}) => {
                                   type={i['type']}
                                   page={page}
                                   setPage={setPage}
+                                  setDrawerOpen={setDrawerOpen}
                                   icon={i['icon']}
                                 />
                                 ))}
