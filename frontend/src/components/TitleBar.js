@@ -15,7 +15,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import BarChartIcon from '@material-ui/icons/BarChart';
+// import BarChartIcon from '@material-ui/icons/BarChart';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -74,7 +74,9 @@ const PageList = ({type, page, setPage, setDrawerOpen, icon}) => {
 
 const buttons = [
     {type: 'search', icon: <SearchIcon/>},
-    {type: 'analysis', icon: <BarChartIcon/>},
+    // Don't necessarily need this section, but could include some overview plots of the data.
+    // Likely they can just go in the paper
+    //{type: 'analysis', icon: <BarChartIcon/>},
     {type: 'help', icon: <HelpOutlineIcon/>},
     {type: 'download', icon: <GetAppIcon/>},
     {type: 'about', icon: <InfoIcon/>}
