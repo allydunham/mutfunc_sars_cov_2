@@ -36,7 +36,7 @@ plot_fx_pos <- function(tbl, key){
      geom_point(data = filter(tbl, !is.na(ptm)), mapping = aes(x = position, y = mean_ddg, fill = ptm), shape = 21) +
      scale_colour_manual(name = 'Interface', values = int_colour_scale) +
      scale_fill_manual(values = c(phosphosite='red')) +
-     labs(x = 'Position', y = expression("Mean -log"[10]*"(SIFT4G Score)"), title = key)) %>%
+     labs(x = 'Position', y = expression("Mean FoldX"~Delta*Delta*"G (kj" %.% "mol"^-2*")"), title = key)) %>%
     labeled_plot(units = 'cm', width = max(0.05 * max(tbl$position), 15), height = 10)
 }
 
@@ -50,7 +50,7 @@ plots$foldx_positions <- group_map(plots$foldx_positions, plot_fx_pos) %>%
 plot_mat <- function(tbl, key){
   (ggplot(tbl, aes(x = position, y = mut, fill = clamp(total_energy, lower = -5, upper = 5))) +
      geom_tile(data = select(tbl, position, wt) %>% distinct(), mapping = aes(x = position, y = wt), fill = 'black') +
-     geom_raster() +
+     geom_tile() +
      labs(x = 'Position', y = '', title = key) +
      scale_fill_distiller(name = 'Clamped &Delta;&Delta;G', type = 'div', palette = 'RdYlBu', limits = c(-5, 5), na.value = 'lightgrey') +
      theme(axis.line = element_blank(),
