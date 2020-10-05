@@ -72,12 +72,6 @@ const MutDetailStats = ({mut}) => {
 
                 <TableRow>
                     <TableCell>
-                        PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                    </TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>
                         SIFT4G Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
                     </TableCell>
                 </TableRow>
@@ -110,6 +104,12 @@ const MutDetailStats = ({mut}) => {
                         <Typography variant='h6'>
                             Structure
                         </Typography>
+                    </TableCell>
+                </TableRow>
+
+                <TableRow>
+                    <TableCell>
+                        PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
                     </TableCell>
                 </TableRow>
 

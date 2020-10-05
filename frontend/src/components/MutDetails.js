@@ -69,9 +69,6 @@ const MutDetailStats = ({mut}) => {
                         Frequency: {isNaN(mut['freq']) ? 'Not Observed': mut['freq']}
                     </TableCell>
                     <TableCell>
-                        PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
-                    </TableCell>
-                    <TableCell>
                         SIFT4G Score: {isNaN(mut['sift_score']) ? 'NA': mut['sift_score']}
                     </TableCell>
                     <TableCell>
@@ -96,6 +93,9 @@ const MutDetailStats = ({mut}) => {
                     </TableCell>
                 </TableRow>
                 <TableRow>
+                    <TableCell>
+                        PTM: {mut['ptm'] === "" ? 'None' : mut['ptm']}
+                    </TableCell>
                     <TableCell>
                         Template: {mut['template'] === '' ? "None" : (
                             <Link
