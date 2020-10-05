@@ -69,7 +69,7 @@ const SearchSummary = ({searchResults, data}) => {
         >
             <Grid item xs={12}>
                 <Typography align='left' variant='subtitle1' display='inline'>
-                    Found {results.length} variants, of which {counts['significant']} have significant predicted effects<br/>
+                    Found {results.length} variants, of which {counts['significant']} have significant predicted effects.<br/>SIFT4G and FoldX scores are computational predictions and must be interpretted with care (see "help")<br/>
                     <Link component='button' onClick={() => setShowDetails(!showDetails)}>
                         {showDetails ? 'Hide details' : 'Show details'}
                     </Link>
