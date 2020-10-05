@@ -19,25 +19,25 @@ It is made with [Reactjs](https://reactjs.org/) and [Material UI](https://materi
 ## Analysis
 
 The analysis scripts found in `analysis/` generate figures summarising the data.
-`spike_experiment.R` requires data from Starr et al. 2020 (media-3.csv from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7310626/) to be downloaded to `data/starr_ace2_spike.csv`.
+`spike_experiment.R` requires data from Starr et al. 2020 (media-3.csv from <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7310626/>) to be downloaded to `data/starr_ace2_spike.csv`.
 `evcouplings.R` requires EVCouplings predictions from <https://marks.hms.harvard.edu/sars-cov-2/> to be downloaded to `data/evcouplings`.
 
 ## Dependancies
 
-### Tools:
+### Tools
 
 * SIFT4G (I used a slightly modified version that outputs scores to 4 decimal places instead of 2)
 * FoldX5
 * Singularity (to run the VEP container)
 
-### Python Packages:
+### Python Packages
 
 * Numpy
 * Pandas
 * Biopython
 * ruamel.yaml
 
-### R packages:
+### R packages
 
 * tidyverse
 * broom
