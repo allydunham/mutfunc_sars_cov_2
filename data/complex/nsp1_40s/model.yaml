@@ -1,0 +1,8 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb6zoj.ent'
+model: '6zoj.1'
+chains:
+  j:
+    uniprot: 'P0DTD1'
+    name: 'nsp1'
+interfaces:
+  - 'j'
