@@ -49,7 +49,7 @@ rule complex_repair:
         'data/complex/{complex}/model_Repair.fxout'
 
     resources:
-        mem_mb = 4000
+        mem_mb = 8000
 
     log:
         "logs/complex_repair/{complex}.log"
