@@ -19,7 +19,7 @@ def main(args):
 
     if args.regex is not None:
         pattern = re.compile(args.regex)
-        wt_aas = [x for x in wt_aas if pattern.match]
+        wt_aas = [x for x in wt_aas if pattern.match(x)]
 
     if args.sort is not None:
         wt_aas = sorted(list(wt_aas), key=lambda x: int(x[args.sort:]))
