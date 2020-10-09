@@ -4,7 +4,7 @@ Rules to analyse interface interactions using FoldX's AnalyseComplex command
 from snakemake.exceptions import MissingInputException
 
 COMPLEXES = ['nsp9_nsp9', 'nsp7_nsp8', 'nsp7_nsp8_pol', 'nsp10_nsp14',
-             'nsp10_nsp16', 'ace2_spike']
+             'nsp10_nsp16', 'ace2_spike', 'nsp1_40s']
 
 # TODO add possibility of protocols other than https
 def get_complex_file(wildcards):
@@ -95,8 +95,8 @@ rule complex_variants:
     log:
         'logs/complex_variants/{complex}_{interface}.log'
 
-    shell:
-        "tail -n +10 {input} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 > {output} 2> {log}"
+    run:
+        shell(f"tail -n +10 {input} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 --regex '^[A-Z][{wildcards.interface.replace('_', '')}][0-9]*$' > {output} 2> {log}")
 
 checkpoint complex_mutant_models:
     """
