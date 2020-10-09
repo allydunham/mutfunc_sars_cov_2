@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Append all amino acid mutations to the end of input arguments
+Append all possible amino acid mutations to input
 """
 import argparse
+import re
 
 AMINO_ACIDS = 'ACDEFGHIKLMNPQRSTVWY'
 
@@ -15,6 +16,10 @@ FOLDX_CODES = {'y': 'T', 'p': 'Y', 's': 'S', 'h': 'P', 'z': 'Y',
 def main(args):
     """Main"""
     wt_aas = set(args.positions) if args.unique else args.positions
+
+    if args.regex is not None:
+        pattern = re.compile(args.regex)
+        wt_aas = [x for x in wt_aas if pattern.match]
 
     if args.sort is not None:
         wt_aas = sorted(list(wt_aas), key=lambda x: int(x[args.sort:]))
@@ -55,6 +60,9 @@ def parse_args():
 
     parser.add_argument('--sort', '-o', default=None, type=int,
                         help="Index of start of position in string, to sort on")
+
+    parser.add_argument('--regex', '-r', default=None, type=str,
+                        help="Only keep inputs matching the given pattern")
 
     args = parser.parse_args()
     if args.wt is None and args.exclude:
