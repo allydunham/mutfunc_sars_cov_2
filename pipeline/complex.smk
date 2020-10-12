@@ -109,6 +109,9 @@ checkpoint complex_mutant_models:
     output:
         directory('data/complex/{complex}/{interface}/mutant_pdbs')
 
+    resources:
+        mem_mb = 16000
+
     log:
         'logs/complex_mutant_models/{complex}_{interface}.log'
 
