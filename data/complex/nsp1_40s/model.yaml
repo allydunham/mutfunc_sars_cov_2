@@ -5,100 +5,100 @@ chains:
     uniprot: ''
     name: '18S ribosomal RNA'
   A:
-    uniprot: ''
+    uniprot: 'P08865'
     name: '40S ribosomal protein SA'
   B:
-    uniprot: ''
+    uniprot: 'P61247'
     name: '40S ribosomal protein S3A'
   C:
-    uniprot: ''
+    uniprot: 'P15880'
     name: '40S ribosomal protein S2'
   D:
-    uniprot: ''
+    uniprot: 'P23396'
     name: '40S ribosomal protein S3'
   E:
-    uniprot: ''
+    uniprot: 'P62701'
     name: '40S ribosomal protein S4, X isoform'
   F:
-    uniprot: ''
+    uniprot: 'P46782'
     name: '40S ribosomal protein S5'
   G:
-    uniprot: ''
+    uniprot: 'P62753'
     name: '40S ribosomal protein S6'
   H:
-    uniprot: ''
+    uniprot: 'P62081'
     name: '40S ribosomal protein S7'
   I:
-    uniprot: ''
+    uniprot: 'P62241'
     name: '40S ribosomal protein S8'
   J:
-    uniprot: ''
+    uniprot: 'P46781'
     name: '40S ribosomal protein S9'
   K:
-    uniprot: ''
+    uniprot: 'P46783'
     name: '40S ribosomal protein S10'
   L:
-    uniprot: ''
+    uniprot: 'P62280'
     name: '40S ribosomal protein S11'
   M:
-    uniprot: ''
+    uniprot: 'P25398'
     name: '40S ribosomal protein S12'
   N:
-    uniprot: ''
+    uniprot: 'P62277'
     name: '40S ribosomal protein S13'
   O:
-    uniprot: ''
+    uniprot: 'P62263'
     name: '40S ribosomal protein S14'
   P:
-    uniprot: ''
+    uniprot: 'P62841'
     name: '40S ribosomal protein S15'
   Q:
-    uniprot: ''
+    uniprot: 'P62249'
     name: '40S ribosomal protein S16'
   R:
-    uniprot: ''
+    uniprot: 'P08708'
     name: '40S ribosomal protein S17'
   S:
-    uniprot: ''
+    uniprot: 'P62269'
     name: '40S ribosomal protein S18'
   T:
-    uniprot: ''
+    uniprot: 'P39019'
     name: '40S ribosomal protein S19'
   U:
-    uniprot: ''
+    uniprot: 'P60866'
     name: '40S ribosomal protein S20'
   V:
-    uniprot: ''
+    uniprot: 'P63220'
     name: '40S ribosomal protein S21'
   W:
-    uniprot: ''
+    uniprot: 'P62244'
     name: '40S ribosomal protein S15A'
   X:
-    uniprot: ''
+    uniprot: 'P62266'
     name: '40S ribosomal protein S23'
   Y:
-    uniprot: ''
+    uniprot: 'P62847'
     name: '40S ribosomal protein S24'
   Z:
-    uniprot: ''
+    uniprot: 'P62851'
     name: '40S ribosomal protein S25'
   a:
-    uniprot: ''
+    uniprot: 'P62854'
     name: '40S ribosomal protein S26'
   b:
-    uniprot: ''
+    uniprot: 'P42677'
     name: '40S ribosomal protein S27'
   c:
-    uniprot: ''
+    uniprot: 'P62857'
     name: '40S ribosomal protein S28'
   d:
-    uniprot: ''
+    uniprot: 'P62273'
     name: '40S ribosomal protein S29'
   e:
-    uniprot: ''
+    uniprot: 'P62861'
     name: '40S ribosomal protein S30'
   f:
-    uniprot: ''
+    uniprot: 'P62979'
     name: 'ribosomal protein S27A'
   g:
     uniprot: 'P63244'
@@ -107,7 +107,7 @@ chains:
     uniprot: 'P0DTD1'
     name: 'nsp1'
   h:
-    uniprot: ''
+    uniprot: 'P62945'
     name: '60S ribosomal protein L41'
 
 interfaces:
