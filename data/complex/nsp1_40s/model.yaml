@@ -111,4 +111,11 @@ chains:
     name: '60S ribosomal protein L41'
 
 interfaces:
-  - 'j'
+  - 'j_2'
+  - 'j_C'
+  - 'j_D'
+  - 'j_J'
+  - 'j_e'
+
+mutate_chains: 'j'
+

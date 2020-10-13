@@ -7,5 +7,9 @@ chains:
   B:
     uniprot: 'P0DTC2'
     name: 's'
+
 interfaces:
   - 'A_B'
+
+mutate_chains: 'B'
+

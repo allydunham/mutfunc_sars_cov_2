@@ -87,7 +87,8 @@ rule complex_variants:
     Make list of variants in an interface
     """
     input:
-        'data/complex/{complex}/{interface}/wt/Interface_Residues_model_Repair_AC.fxout'
+        yaml='data/complex/{complex}/model.yaml',
+        residues='data/complex/{complex}/{interface}/wt/Interface_Residues_model_Repair_AC.fxout'
 
     output:
         'data/complex/{complex}/{interface}/individual_list'
@@ -96,7 +97,12 @@ rule complex_variants:
         'logs/complex_variants/{complex}_{interface}.log'
 
     run:
-        shell(f"tail -n +10 {input} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 --regex '^[A-Z][{wildcards.interface.replace('_', '')}][0-9]*$' > {output} 2> {log}")
+        # Supply chains string if in the config yaml, else use all chains defined in the interface
+        yaml = YAML(typ='safe')
+        config = yaml.load(Path(input.yaml))
+        allowed_chains = config['mutate_chains'] if 'mutate_chains' in config else wildcards.interface.replace('_', '')
+        regex = f"--regex '^[A-Z][{allowed_chains}][0-9]*$' "
+        shell(f"tail -n +10 {input.residues} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 {regex}> {output} 2> {log}")
 
 checkpoint complex_mutant_models:
     """
