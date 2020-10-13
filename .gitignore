@@ -9,3 +9,5 @@ snakemake.yaml
 .Rproj.user
 figures/*
 docs/methods.md
+Unrecognized_molecules.txt
+rotabase.txt
