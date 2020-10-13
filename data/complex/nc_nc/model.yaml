@@ -1,0 +1,20 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb7c22.ent'
+model: '7c22.1'
+chains:
+  A:
+    uniprot: 'P0DTC9'
+    name: 'nc'
+  B:
+    uniprot: 'P0DTC9'
+    name: 'nc'
+  C:
+    uniprot: 'P0DTC9'
+    name: 'nc'
+  D:
+    uniprot: 'P0DTC9'
+    name: 'nc'
+
+interfaces:
+  - 'A_B'
+
+mutate_chains: 'A'
