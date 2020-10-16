@@ -128,7 +128,7 @@ rule complex_mutant_models:
         mkdir data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs &> {log}
         foldx --command=BuildModel --pdb-dir=data/complex/{wildcards.complex} --pdb=model_Repair.pdb --mutant-file={input.muts} --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --numberOfRuns=1 --clean-mode=3 --out-pdb=true &> {log}
         rm data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs/WT_* &> {log}
-        touch 'data/complex/{wildcards.complex}/{wildcards.interface}/.mutant_models_made' &> {log}
+        touch 'data/complex/{wildcards.complex}/{wildcards.interface}/mutant_models_made' &> {log}
         """
 
 rule complex_mut_analysis:
@@ -162,7 +162,7 @@ rule complex_mut_analysis:
         # Analyse complexes
         shell(f'mkdir {root}/mutant &> {log} && echo "mkdir {root}/mutant" &> {log} || true')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
-        shell(f"touch {root}/.mutant_analysis_done &> {log}")
+        shell(f"touch {root}/mutant_analysis_done &> {log}")
 
 rule complex_combine:
     """
