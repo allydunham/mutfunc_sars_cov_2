@@ -153,11 +153,9 @@ rule complex_mut_analysis:
         root = f'data/complex/{wildcards.complex}/{wildcards.interface}'
 
         # Make mutant list
-        input_pdbs = [f'{root}/mutant_pdbs/model_Repair_{n}.pdb' for n in glob_wildcards(os.path.join(f'{root}/mutant_pdbs', "model_Repair_{n}.pdb")).n]
+        mut_nums = [int(i) for i in glob_wildcards(f'{root}/mutant_pdbs/model_Repair_{{n}}.pdb').n]
         with open(f'{root}/mutant_list', 'w') as mutant_list:
-            pdbs = sorted(input, key=lambda x: int(x.replace('.', '_').split('_')[-2]))
-            for pdb in pdbs:
-                print(Path(pdb).name, file=mutant_list)
+            print(*[f'model_Repair_{n}.pdb' for n in sorted(mut_nums)], sep='\n, file=mutant_list)
 
         # Analyse complexes
         shell(f'mkdir {root}/mutant &> {log} && echo "mkdir {root}/mutant" &> {log} || true')
