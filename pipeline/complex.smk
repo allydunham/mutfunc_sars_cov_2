@@ -105,7 +105,7 @@ rule complex_variants:
         regex = f"--regex '^[A-Z][{allowed_chains}][0-9]*$' "
         shell(f"tail -n +10 {input.residues} | grep -v interface | tr '\n' '\t' | xargs python bin/protein_variants.py --unique --suffix $';\n' --exclude --wt 0 --foldx --sort 2 {regex}> {output} 2> {log}")
 
-checkpoint complex_mutant_models:
+rule complex_mutant_models:
     """
     Generate PDBs with each mutation in the interface using FoldX BuildModel
     """
@@ -114,7 +114,8 @@ checkpoint complex_mutant_models:
         pdb='data/complex/{complex}/model_Repair.pdb'
 
     output:
-        directory('data/complex/{complex}/{interface}/mutant_pdbs')
+        directory('data/complex/{complex}/{interface}/mutant_pdbs'),
+        'data/complex/{complex}/{interface}/mutant_models_made'
 
     resources:
         mem_mb = 16000
@@ -127,28 +128,20 @@ checkpoint complex_mutant_models:
         mkdir data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs &> {log}
         foldx --command=BuildModel --pdb-dir=data/complex/{wildcards.complex} --pdb=model_Repair.pdb --mutant-file={input.muts} --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --numberOfRuns=1 --clean-mode=3 --out-pdb=true &> {log}
         rm data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs/WT_* &> {log}
+        touch 'data/complex/{wildcards.complex}/{wildcards.interface}/.mutant_models_made' &> {log}
         """
 
-def get_mutant_pdbs(wildcards):
-    """
-    Identify mutant PDB files from complex_mutant_models
-    """
-    checkpoint_outdir = checkpoints.complex_mutant_models.get(**wildcards).output[0]
-    pdbs = expand('data/complex/{complex}/{interface}/mutant_pdbs/model_Repair_{n}.pdb',
-                  complex=wildcards.complex, interface=wildcards.interface,
-                  n=glob_wildcards(os.path.join(checkpoint_outdir, "model_Repair_{n}.pdb")).n)
-    return pdbs
-
-checkpoint complex_mut_analysis:
+rule complex_mut_analysis:
     """
     Analyse mutant interfaces using FoldX AnalyseComplex.
     """
     input:
-        get_mutant_pdbs
+        'data/complex/{complex}/{interface}/mutant_models_made'
 
     output:
         directory('data/complex/{complex}/{interface}/mutant'),
-        'data/complex/{complex}/{interface}/mutant_list'
+        'data/complex/{complex}/{interface}/mutant_list',
+        'data/complex/{complex}/{interface}/mutant_analysis_done'
 
     resources:
         mem_mb = 32000
@@ -158,39 +151,30 @@ checkpoint complex_mut_analysis:
 
     run:
         root = f'data/complex/{wildcards.complex}/{wildcards.interface}'
+
+        # Make mutant list
+        input_pdbs = [f'{root}/mutant_pdbs/model_Repair_{n}.pdb' for n in glob_wildcards(os.path.join(f'{root}/mutant_pdbs', "model_Repair_{n}.pdb")).n]
         with open(f'{root}/mutant_list', 'w') as mutant_list:
             pdbs = sorted(input, key=lambda x: int(x.replace('.', '_').split('_')[-2]))
             for pdb in pdbs:
                 print(Path(pdb).name, file=mutant_list)
+
+        # Analyse complexes
         shell(f'mkdir {root}/mutant &> {log} && echo "mkdir {root}/mutant" &> {log} || true')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
-
-def get_mutant_interface_files(wildcards):
-    """
-    Identify mutant interface files produced by complex_mut_analysis
-    """
-    checkpoint_outdir = checkpoints.complex_mut_analysis.get(**wildcards).output[0]
-    n = glob_wildcards(os.path.join(checkpoint_outdir, "Summary_model_Repair_{n}_AC.fxout")).n
-    root = f'data/complex/{wildcards.complex}/{wildcards.interface}/mutant'
-    wt_root = f'data/complex/{wildcards.complex}/{wildcards.interface}/wt'
-    return {
-        'indiv': [f'{root}/Indiv_energies_model_Repair_{i}_AC.fxout' for i in n],
-        'interaction': [f'{root}/Interaction_model_Repair_{i}_AC.fxout' for i in n],
-        'interface': [f'{root}/Interface_Residues_model_Repair_{i}_AC.fxout' for i in n],
-        'summary': [f'{root}/Summary_model_Repair_{i}_AC.fxout' for i in n],
-        'mutants': f'data/complex/{wildcards.complex}/{wildcards.interface}/individual_list',
-        'wt_interface': f'{wt_root}/Interface_Residues_model_Repair_AC.fxout',
-        'wt_interaction': f'{wt_root}/Interaction_model_Repair_AC.fxout',
-        'wt_indiv': f'{wt_root}/Indiv_energies_model_Repair_AC.fxout',
-        'wt_summary': f'{wt_root}/Summary_model_Repair_AC.fxout'
-    }
+        shell(f"touch {root}/.mutant_analysis_done &> {log}")
 
 rule complex_combine:
     """
     Combine output files from running complex_mut_analysis
     """
     input:
-        unpack(get_mutant_interface_files)
+        flag='data/complex/{complex}/{interface}/mutant_analysis_done',
+        mutants='data/complex/{complex}/{interface}/individual_list',
+        wt_interface='data/complex/{complex}/{interface}/wt/Interface_Residues_model_Repair_AC.fxout',
+        wt_interaction='data/complex/{complex}/{interface}/wt/Interaction_model_Repair_AC.fxout',
+        wt_indiv='data/complex/{complex}/{interface}/wt/Indiv_energies_model_Repair_AC.fxout',
+        wt_summary='data/complex/{complex}/{interface}/wt/Summary_model_Repair_AC.fxout'
 
     output:
         indiv='data/complex/{complex}/{interface}/individual_energies.tsv',
