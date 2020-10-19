@@ -30,14 +30,18 @@ The analysis scripts found in `analysis/` generate figures summarising the data.
 * FoldX5
 * Singularity (to run the VEP container)
 
-### Python Packages
+### Python
+
+Python 3.8.2 was used for all scripts.
 
 * Numpy
 * Pandas
 * Biopython
 * ruamel.yaml
 
-### R packages
+### R
+
+R version 3.6.3 was used for these analyses.
 
 * tidyverse
 * broom
