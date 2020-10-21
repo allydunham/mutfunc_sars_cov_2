@@ -131,6 +131,14 @@ rule complex_mutant_models:
         touch 'data/complex/{wildcards.complex}/{wildcards.interface}/mutant_models_made' &> {log}
         """
 
+def calc_mut_analysis_mb(wildcards):
+    """
+    Select RAM requirements
+    """
+    if wildcards.complex == 's_s':
+        return 64000
+    return 16000
+
 rule complex_mut_analysis:
     """
     Analyse mutant interfaces using FoldX AnalyseComplex.
@@ -144,7 +152,7 @@ rule complex_mut_analysis:
         'data/complex/{complex}/{interface}/mutant_analysis_done'
 
     resources:
-        mem_mb = 32000
+        mem_mb = calc_mut_analysis_mb
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
