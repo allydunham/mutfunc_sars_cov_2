@@ -1,6 +1,6 @@
 top_variants.md
 uniprot/**
 complex/*/*.yaml
-complex/*/*/mutant_pdbs/*
-complex/*/*/mutant/*
+complex/*/*/mutant_pdbs/
+complex/*/*/mutant/
 
