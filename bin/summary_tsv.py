@@ -48,6 +48,7 @@ def main(args):
     summary = summary.loc[summary.uniprot.isin(COVID_UNIPROT)]
     summary = summary.sort_values(by=['uniprot', 'name', 'position', 'mut'],
                                   axis='index', ignore_index=True)
+    summary = summary.dropna(axis='index', subset=['wt'])
 
     summary.to_csv(stdout, sep='\t', index=False, float_format='%.7g')
 
