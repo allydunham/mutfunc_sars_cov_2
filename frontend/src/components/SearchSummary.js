@@ -6,13 +6,14 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import * as deleterious from '../lib/deleterious';
 
 const TableCell = withStyles({
     root: {
       borderBottom: "none",
-      padding: '2px'
+      padding: '2px',
+      width: '50%'
     }
   })(MuiTableCell);
 
@@ -77,7 +78,7 @@ const SearchSummary = ({searchResults, data}) => {
 
             </Grid>
             {showDetails ? (
-                <Grid item>
+                <Grid item xs={12}>
                     <Table>
                     <TableBody>
                         <TableRow>
