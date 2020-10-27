@@ -36,7 +36,7 @@ const Footer = () => {
             />
             <div className={classes.separater}/>
             <Typography variant='caption' align='right'>
-                v1.0 - Data Updated: 19/08/2020
+                v1.0 - Data Updated: 22/10/2020
             </Typography>
         </footer>
     )
