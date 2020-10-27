@@ -3,7 +3,7 @@
 I have identified all significant predictions above 1% frequency and phosphosites
 and interfaces between 0.1% and 1%
 
-* S D314G (0.73) - FoldX predicts desabilising. In S-S interface, not predicted 
+* S D614G (0.73) - FoldX predicts desabilising. In S-S interface, not predicted 
                    destabilising but does cause one interface residue to be lost
 * NC R203K (0.27) - Significant & high quality SIFT4G score
 * NC G204R (0.27) - Significant & high quality SIFT4G score
@@ -18,7 +18,7 @@ and interfaces between 0.1% and 1%
 * ORF3a G196V (0.02) - FoldX predicts very destabilising
 * M T175M (0.02) - Significant & high quality SIFT4G 
 * NC P13L (0.02) - Significant & high quality SIFT4G
-* NSP3 T1198K (0.01) - Sifnificant but low quality SIFT4G score and slightly stabilising FoldX prediction
+* NSP3 T1198K (0.01) - Significant but low quality SIFT4G score and slightly stabilising FoldX prediction
 * NSP3 T428I (0.01) - FoldX predicts strongly stabilising and significant but low quality SIFT4G score 
 * NC D103Y (0.01) - Significant & high quality SIFT4G score
 * NSP7 S25L (0.01) - Significantly destabilising in the interface with NSP8
@@ -27,6 +27,7 @@ and interfaces between 0.1% and 1%
 * NC S183Y (0.002) - Phosphosite
 * NC T205I (0.002) - Phosphosite
 * S T29I (0.0016) - Phosphosite
+* ORF3a L108F (0.0015) - Homodimer interface, predicted destabilising
 * NC S202C (0.0011) - Phosphosite
 * NC S202T (0.001) - Phosphosite
 
