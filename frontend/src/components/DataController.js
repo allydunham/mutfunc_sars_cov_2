@@ -127,17 +127,35 @@ const DataController = ({hidden}) => {
     useEffect(() => {
         console.log('Fetching Data...');
         function reducer(map, value){
-            map[makeMutKey(value)] = {
-                ...value,
-                'position': nanOrNumber(value['position']),
-                'sift_score': nanOrNumber(value['sift_score']),
-                'sift_median': nanOrNumber(value['sift_median']),
-                'total_energy': nanOrNumber(value['total_energy']),
-                'interaction_energy': nanOrNumber(value['interaction_energy']),
-                'diff_interaction_energy': nanOrNumber(value['diff_interaction_energy']),
-                'diff_interface_residues': nanOrNumber(value['diff_interface_residues']),
-                'freq': nanOrNumber(value['freq'])
-            };
+            const key = makeMutKey(value)
+            if (!(key in map)){
+                map[key] = {
+                    'uniprot': value['uniprot'],
+                    'name': value['name'],
+                    'position': nanOrNumber(value['position']),
+                    'wt': value['wt'],
+                    'mut': value['mut'],
+                    'sift_score': nanOrNumber(value['sift_score']),
+                    'sift_median': nanOrNumber(value['sift_median']),
+                    'template': value['template'],
+                    'total_energy': nanOrNumber(value['total_energy']),
+                    'ptm': value['ptm'],
+                    'freq': nanOrNumber(value['freq']),
+                    'interfaces': []
+                }
+            }
+
+            if (value['int_name'] !== ''){
+                map[key]['interfaces'].push({
+                    'name': value['int_name'],
+                    'uniprot': value['int_uniprot'],
+                    'template': value['int_template'],
+                    'interaction_energy': nanOrNumber(value['interaction_energy']),
+                    'diff_interaction_energy': nanOrNumber(value['diff_interaction_energy']),
+                    'diff_interface_residues': nanOrNumber(value['diff_interface_residues'])
+                })
+            }
+
             return map
         }
         tsv(process.env.PUBLIC_URL + '/data/summary.tsv')

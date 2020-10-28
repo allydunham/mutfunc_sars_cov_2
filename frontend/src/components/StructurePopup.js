@@ -6,13 +6,14 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import ProteinViewer from './ProteinViewer'
 
-const StructurePopup = ({mut, interfaceModel, open, setOpen, width=900, height=700}) => {
+const StructurePopup = ({mut, int, open, setOpen, width=900, height=700}) => {
     let template = ''
     let chain = ''
     let path = ''
     let int_chain = ''
-    if (interfaceModel){
-        [template, chain, int_chain] = mut['int_template'].split('.')
+
+    if (int){
+        [template, chain, int_chain] = int['template'].split('.')
         path = [process.env.PUBLIC_URL, 'data/pdb_interface/', template, '.pdb'].join('')
     } else {
         [template, chain] = mut['template'].split('.')
@@ -23,7 +24,7 @@ const StructurePopup = ({mut, interfaceModel, open, setOpen, width=900, height=7
     return(
         <Dialog open={open} onClose={() => setOpen(false)} scroll='body' fullWidth maxWidth='lg'>
             <DialogTitle>
-                {interfaceModel ? 'Interface Structure Model' : 'Structure Model'}
+                {int ? 'Interface Structure Model' : 'Structure Model'}
             </DialogTitle>
             <DialogContent>
                 <Grid container justify='space-evenly' alignItems='center'>
@@ -49,7 +50,7 @@ const StructurePopup = ({mut, interfaceModel, open, setOpen, width=900, height=7
                         </Typography>
                         <Typography display='inline'>Mutated Protein</Typography>
                     </Grid>
-                    {interfaceModel ? (
+                    {int ? (
                     <Grid item>
                         <Typography display='inline' variant='h5' style={{color: '#fa8ce6'}}>
                             &#9632;&nbsp;
