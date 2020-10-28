@@ -6,7 +6,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import MuiTableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import * as deleterious from '../lib/deleterious';
 
 const TableCell = withStyles({
