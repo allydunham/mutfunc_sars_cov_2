@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Link from "@material-ui/core/Link";
 import Button from '@material-ui/core/Button';
+import Tooltip from "@material-ui/core/Tooltip";
+import WarningIcon from '@material-ui/icons/Warning';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { sarsDisplayNames } from '../lib/sars'
 
@@ -90,7 +92,7 @@ const InterfaceRow = ({mut, int}) => {
     <TableRow>
         <TableCell>
             <Button
-              color='secondary'
+              color='primary'
               onClick={() => setIntOpen(true)}
               disabled={int['template'] === ''}>
                 View Interface
@@ -139,13 +141,19 @@ const MutDetailStats = ({mut}) => {
                 <TableRow>
                     <TableCell>
                         SIFT4G Median IC: {isNaN(mut['sift_median']) ? 'NA': mut['sift_median']}
+                        &nbsp;
+                        {mut['sift_median'] > 3.5 || mut['sift_median'] < 2.75 ? (
+                            <Tooltip title="Median IC scores less than 2.75 or greater than 3.5 indicate potentially poor alignment quality. Check the alignment is informative before interpreting the SIFT4G Score">
+                                <WarningIcon color='error' fontSize='inherit'/>
+                            </Tooltip>
+                        ) : null}
                     </TableCell>
                 </TableRow>
 
                 <TableRow>
                     <TableCell>
                         <Button
-                          color='secondary'
+                          color='primary'
                           onClick={() => setAlignOpen(true)}
                           disabled={isNaN(mut['sift_score'])}>
                             View SIFT4G alignment
@@ -195,7 +203,7 @@ const MutDetailStats = ({mut}) => {
                 <TableRow>
                     <TableCell>
                         <Button
-                          color='secondary'
+                          color='primary'
                           onClick={() => setFxOpen(true)}
                           disabled={mut['template'] === ''}>
                             View Structure
