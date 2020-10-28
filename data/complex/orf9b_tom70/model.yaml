@@ -1,0 +1,14 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb7kdt.ent'
+model: '7kdt.1'
+chains:
+  A:
+    uniprot: 'O94826'
+    name: 'tom70'
+  B:
+    uniprot: 'P0DTD2'
+    name: 'orf9b'
+
+interfaces:
+  - 'A_B'
+
+mutate_chains: 'B'
