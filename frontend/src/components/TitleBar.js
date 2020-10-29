@@ -15,6 +15,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import SearchIcon from '@material-ui/icons/Search';
 import InfoIcon from '@material-ui/icons/Info';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { Link, useLocation } from "react-router-dom";
 // import BarChartIcon from '@material-ui/icons/BarChart';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -47,42 +48,49 @@ const styles = makeStyles((theme) => ({
     }
 }));
 
-const PageButton = ({type, page, setPage, icon}) => {
+const buttons = [
+    {name: 'search', path: '/', icon: <SearchIcon/>},
+    // Don't necessarily need this section, but could include some overview plots of the data.
+    // Likely they can just go in the paper
+    //{type: 'analysis', icon: <BarChartIcon/>},
+    {name: 'help', path: '/help', icon: <HelpOutlineIcon/>},
+    {name: 'download', path: '/download', icon: <GetAppIcon/>},
+    {name: 'about', path: '/about', icon: <InfoIcon/>}
+]
+
+const PageButton = ({text, path, icon}) => {
     const classes = styles(useTheme())
+    const page = useLocation()
+
     return(
         <Button
-          className={page === type ? classes.selectedButton : classes.button}
-          onClick={() => setPage(type)}
+          component={Link}
+          to={path}
+          className={page.pathname === path ? classes.selectedButton : classes.button}
           startIcon={icon}>
-            {type}
+            {text}
         </Button>
     )
 }
 
-const PageList = ({type, page, setPage, setDrawerOpen, icon}) => {
+const PageList = ({text, path, icon, setDrawerOpen}) => {
     const classes = styles(useTheme())
+    const page = useLocation()
+
     return(
         <ListItem
-          button={true}
-          onClick={() => {setPage(type); setDrawerOpen(false)}}
-          className={page === type ? classes.selectedListButton : classes.listButton}>
+          button
+          component={Link}
+          to={path}
+          onClick={() => {setDrawerOpen(false)}}
+          className={page.pathname === path ? classes.selectedListButton : classes.listButton}>
             <ListItemIcon>{icon}</ListItemIcon>
-            <ListItemText primary={type}/>
+            <ListItemText primary={text}/>
         </ListItem>
     )
 }
 
-const buttons = [
-    {type: 'search', icon: <SearchIcon/>},
-    // Don't necessarily need this section, but could include some overview plots of the data.
-    // Likely they can just go in the paper
-    //{type: 'analysis', icon: <BarChartIcon/>},
-    {type: 'help', icon: <HelpOutlineIcon/>},
-    {type: 'download', icon: <GetAppIcon/>},
-    {type: 'about', icon: <InfoIcon/>}
-]
-
-const TitleBar = ({page, setPage}) => {
+const TitleBar = () => {
     const theme = useTheme();
     const classes = styles(theme);
     const small = useMediaQuery(theme.breakpoints.down('sm'));
@@ -105,9 +113,8 @@ const TitleBar = ({page, setPage}) => {
                             {buttons.map((i, index) => (
                                 <PageList
                                   key={index}
-                                  type={i['type']}
-                                  page={page}
-                                  setPage={setPage}
+                                  text={i['name']}
+                                  path={i['path']}
                                   setDrawerOpen={setDrawerOpen}
                                   icon={i['icon']}
                                 />
@@ -130,9 +137,8 @@ const TitleBar = ({page, setPage}) => {
                     {buttons.map((i, index) => (
                         <PageButton
                           key={index}
-                          type={i['type']}
-                          page={page}
-                          setPage={setPage}
+                          text={i['name']}
+                          path={i['path']}
                           icon={i['icon']}
                         />
                     ))}

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import About from './components/About';
-import Analysis from './components/Analysis';
 import Download from './components/Download';
 import Help from './components/Help';
 import DataController from './components/DataController';
 import TitleBar from './components/TitleBar';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import { makeStyles } from '@material-ui/core/styles';
 import theme from './theme';
@@ -20,21 +20,38 @@ const styles = makeStyles({
     }
 });
 
-function App() {
+function InnerApp() {
     const classes = styles()
-    const [page, setPage] = useState('search')
+    const page = useLocation()
 
+    return(
+        <>
+        <TitleBar/>
+        <div className={classes.main}>
+            <Switch>
+                <Route path="/help">
+                    <Help/>
+                </Route>
+                <Route path="/about">
+                    <About/>
+                </Route>
+                <Route path="/download">
+                    <Download/>
+                </Route>
+            </Switch>
+            <DataController hidden={page.pathname !== '/'}/>
+        </div>
+        <Footer/>
+        </>
+    )
+}
+
+function App() {
     return (
         <ThemeProvider theme={theme}>
-            <TitleBar page={page} setPage={setPage}/>
-            <div className={classes.main}>
-                {page === 'analysis'? <Analysis/> : null}
-                {page === 'help'? <Help/> : null}
-                {page === 'about'? <About/> : null}
-                {page === 'download'? <Download/> : null}
-                <DataController hidden={page !== 'search'}/>
-            </div>
-            <Footer/>
+            <Router>
+                <InnerApp/>
+            </Router>
         </ThemeProvider>
   );
 }
