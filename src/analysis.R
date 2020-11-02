@@ -25,6 +25,12 @@ load_variants <- function(){
            log10_freq = log10(freq + 1e-5))
 }
 
+# Select a list of variants (x) from the dataset, written as e.g. s A22V
+view_variants <- function(df, x){
+  keys <- str_c(df$name, ' ', df$wt, df$position, df$mut)
+  df[keys %in% x,]
+}
+
 get_protein_limits <- function(variants){
   group_by(variants, name) %>%
     filter(position == min(position) | position == max(position)) %>%

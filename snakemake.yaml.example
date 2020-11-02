@@ -1,6 +1,9 @@
 general:
   check_online_updates: False
 
+frequency:
+  vcf: 'variants.vcf.gz'
+
 foldx:
   variants_per_run: 300
 

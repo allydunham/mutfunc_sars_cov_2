@@ -14,6 +14,8 @@ const sampleSearch = `s M1A
 nsp12 K603D
 nsp3 N1810G
 nsp10 I38A
+nsp10 V42A
+nsp8 P116A
 nsp7 N69I
 s 10
 P0DTC3 133

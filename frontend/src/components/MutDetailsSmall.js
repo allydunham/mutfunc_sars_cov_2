@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Link from "@material-ui/core/Link";
 import Button from '@material-ui/core/Button';
+import Tooltip from "@material-ui/core/Tooltip";
+import WarningIcon from '@material-ui/icons/Warning';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { sarsDisplayNames } from '../lib/sars'
 
@@ -48,9 +50,69 @@ const getInterfaceNumString = (change) => {
     }
 }
 
+const EmptyInterfaceRow = () => {
+    return(
+        <TableRow>
+            <TableCell>
+                No interfaces
+            </TableCell>
+        </TableRow>
+        )
+}
+
+const InterfaceRow = ({mut, int}) => {
+    const [intOpen, setIntOpen] = useState(false);
+
+    return(
+    <>
+    <TableRow>
+        <TableCell>
+            Interface partner: <Link href={"https://www.uniprot.org/uniprot/" + int['uniprot']} target="_blank" rel="noopener noreferrer">{int['uniprot']}</Link> {int['name']}
+        </TableCell>
+    </TableRow>
+
+    <TableRow>
+        <TableCell>
+            Template: <Link href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + int['template'].split('.')[0]} target="_blank" rel="noopener noreferrer">{int['template']}</Link>
+        </TableCell>
+    </TableRow>
+
+    <TableRow>
+        <TableCell>
+            Interface &Delta;&Delta;G: {isNaN(int['diff_interaction_energy']) ? 'NA': int['diff_interaction_energy']}
+        </TableCell>
+    </TableRow>
+
+    <TableRow>
+        <TableCell>
+            {getInterfaceNumString(int['diff_interface_residues'])}
+        </TableCell>
+    </TableRow>
+
+    <TableRow>
+        <TableCell>
+            <Button
+              color='primary'
+              onClick={() => setIntOpen(true)}
+              disabled={int['template'] === ''}>
+                View Interface
+            </Button>
+            <StructurePopup
+              mut={mut}
+              int={int}
+              open={intOpen}
+              setOpen={setIntOpen}
+              width={200}
+              height={200}
+            />
+        </TableCell>
+    </TableRow>
+    </>
+    )
+}
+
 const MutDetailStats = ({mut}) => {
     const [fxOpen, setFxOpen] = useState(false);
-    const [intOpen, setIntOpen] = useState(false);
     const [alignOpen, setAlignOpen] = useState(false);
 
     return(
@@ -79,13 +141,19 @@ const MutDetailStats = ({mut}) => {
                 <TableRow>
                     <TableCell>
                         SIFT4G Median IC: {isNaN(mut['sift_median']) ? 'NA': mut['sift_median']}
+                        &nbsp;
+                        {mut['sift_median'] > 3.5 || mut['sift_median'] < 2.75 ? (
+                            <Tooltip title="Median IC scores less than 2.75 or greater than 3.5 indicate potentially poor alignment quality. Check the alignment is informative before interpreting the SIFT4G Score">
+                                <WarningIcon color='error' fontSize='inherit'/>
+                            </Tooltip>
+                        ) : null}
                     </TableCell>
                 </TableRow>
 
                 <TableRow>
                     <TableCell>
                         <Button
-                          color='secondary'
+                          color='primary'
                           onClick={() => setAlignOpen(true)}
                           disabled={isNaN(mut['sift_score'])}>
                             View SIFT4G alignment
@@ -135,7 +203,7 @@ const MutDetailStats = ({mut}) => {
                 <TableRow>
                     <TableCell>
                         <Button
-                          color='secondary'
+                          color='primary'
                           onClick={() => setFxOpen(true)}
                           disabled={mut['template'] === ''}>
                             View Structure
@@ -158,63 +226,16 @@ const MutDetailStats = ({mut}) => {
                     </TableCell>
                 </TableRow>
 
-                <TableRow>
-                    <TableCell>
-                        Interface partner: {mut['int_name'] === '' ? null : (
-                            <Link
-                                href={"https://www.uniprot.org/uniprot/" + mut['int_uniprot']}
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                {mut['int_uniprot']}
-                            </Link>
-                        )}
-                        {mut['int_name'] === '' ? "None" : " " + mut['int_name']}
-                    </TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>
-                        Template: {mut['int_template'] === '' ? "None" : (
-                            <Link
-                            href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + mut['int_template'].split('.')[0]}
-                            target="_blank"
-                            rel="noopener noreferrer">
-                                {mut['int_template']}
-                            </Link>
-                        )}
-                    </TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>
-                        Interface &Delta;&Delta;G: {isNaN(mut['diff_interaction_energy']) ? 'NA': mut['diff_interaction_energy']}
-                    </TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>
-                        {getInterfaceNumString(mut['diff_interface_residues'])}
-                    </TableCell>
-                </TableRow>
-
-                <TableRow>
-                    <TableCell>
-                        <Button
-                          color='secondary'
-                          onClick={() => setIntOpen(true)}
-                          disabled={mut['int_template'] === ''}>
-                            View Interface
-                        </Button>
-                        <StructurePopup
-                          mut={mut}
-                          interfaceModel
-                          open={intOpen}
-                          setOpen={setIntOpen}
-                          width={200}
-                          height={200}
-                        />
-                    </TableCell>
-                </TableRow>
+                {mut['interfaces'].length === 0 ? (
+                    <EmptyInterfaceRow/>
+                ) : (
+                    mut['interfaces'].map((x) => (
+                    <InterfaceRow
+                      key={x['template']}
+                      mut={mut}
+                      int={x}
+                    />
+                )))}
             </TableBody>
         </Table>
     )

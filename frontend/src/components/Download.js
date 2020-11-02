@@ -25,7 +25,7 @@ const Download = () => {
     return(
         <div className={classes.root}>
             <Typography className={classes.content}>
-                The output data from the combined tools and sources is avaiable to download as a number of tsv tables.
+                The output data from the combined tools and sources is avaiable to download here and on the <Link href="http://ftp.ebi.ac.uk/pub/databases/mutfunc/" target="_blank" rel="noopener noreferrer">Mutfunc FTP</Link>.
                 Note that the protein names used in these tables are the internal identifiers and in some cases are slightly different from those displayed on the website, for example all are lower case and "nc" is used for N.
             </Typography>
 

@@ -108,17 +108,35 @@ rule index_annotation:
     shell:
         "tabix -p gff {input}"
 
+rule unzip_variant_vcf:
+    """
+    Unzip variants VCF file
+    """
+    input:
+        vcf=config['frequency']['vcf']
+
+    output:
+        vcf="data/frequency/variants.unfiltered.vcf"
+
+    log:
+        "logs/unzip_variant_vcf.log"
+
+    shell:
+        """
+        gunzip -c {input.vcf} > {output.vcf} 2> {log}
+        """
+
 rule filter_problematic_sites:
     """
     Identify and filter problematic genome positions
     """
     input:
         sites="data/frequency/problematic_sites_sarsCov2.vcf",
-        vcf="data/frequency/rob-12-6-20.unfiltered.pruned.vcf"
+        vcf="data/frequency/variants.unfiltered.vcf"
 
     output:
         tbl="data/frequency/filtered_sites.tsv",
-        vcf="data/frequency/rob-12-6-20.filtered.vcf"
+        vcf="data/frequency/variants.filtered.vcf"
 
     log:
         "logs/filter_problematic_sites.log"
@@ -134,7 +152,7 @@ rule variant_frequencies:
     Calculate allele frequencies from VCF file
     """
     input:
-        vcf="data/frequency/rob-12-6-20.filtered.vcf",
+        vcf="data/frequency/variants.filtered.vcf",
         sites="data/frequency/filtered_sites.tsv"
 
     output:
@@ -151,7 +169,7 @@ rule annotate_variants:
     Annotate variants to proteins using Ensembl VEP
     """
     input:
-        vcf="data/frequency/rob-12-6-20.filtered.vcf",
+        vcf="data/frequency/variants.filtered.vcf",
         gff="data/frequency/gene_annotation.gff3.gz",
         gfftbi="data/frequency/gene_annotation.gff3.gz.tbi",
         fasta="data/frequency/genome.fa",
@@ -163,7 +181,7 @@ rule annotate_variants:
 
     log:
         "logs/annotate_variants.log"
-    
+
     resources:
         mem_mb = 25000
 

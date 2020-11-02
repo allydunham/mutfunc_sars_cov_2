@@ -130,7 +130,7 @@ const Help = () => {
             <Typography variant='h6' className={classes.subheading}>
                 Structure
             </Typography>
-            <Typography className={classes.content}>
+            <Typography component={'span'} className={classes.content}>
                 The structural data consists of:
                 <ul>
                     <li>Whether the position has an post-translational modifications (currently only phosphorylations from <Link href="https://europepmc.org/article/med/32645325" target="_blank" rel="noopener noreferrer"> Bouhaddou et al. (2020) </Link> are included)</li>

@@ -25,7 +25,7 @@ export const ptm = (mut) => {
 
 export const interfacesText = "Interface"
 export const interfaces = (mut) => {
-    return(mut['int_name'] !== '')
+    return(mut['interfaces'].length > 0)
 }
 
 export const frequencyText = "Observed Frequency > 0.01"
