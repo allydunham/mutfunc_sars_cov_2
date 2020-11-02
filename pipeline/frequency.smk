@@ -37,7 +37,7 @@ def get_covid_annotation(wildcards):
     """
     Identify genome annotation source, based on config
     """
-    url = "ftp.ensemblgenomes.org/pub/viruses/gff3/sars_cov_2/Sars_cov_2.ASM985889v3.100.gff3.gz"
+    url = "ftp.ensemblgenomes.org/pub/viruses/gff3/sars_cov_2/Sars_cov_2.ASM985889v3.101.gff3.gz"
     path = "data/frequency/gene_annotation.gff3.gz"
     if not config['general']['check_online_updates'] and os.path.isfile(path):
         return path
@@ -183,7 +183,7 @@ rule annotate_variants:
         "logs/annotate_variants.log"
 
     resources:
-        mem_mb = 25000
+        mem_mb = 64000
 
     singularity:
         "docker://ensemblorg/ensembl-vep"
