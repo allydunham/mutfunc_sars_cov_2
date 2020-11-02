@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import { makeStyles } from '@material-ui/core/styles';
+import config from '../config'
 
 const styles = makeStyles({
     root: {
@@ -77,9 +78,25 @@ const About = () => {
                       className={classes.image}
                     />
                 </Link>
+                <Link
+                  href="https://www.gisaid.org/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                    <img
+                      src={process.env.PUBLIC_URL + 'images/gisaid_logo.png'}
+                      alt='gisaid-logo'
+                      height='75px'
+                      className={classes.image}
+                    />
+                </Link>
             </div>
+            <br/>
             <Typography className={classes.text}>
-                In addition Phosphorylation data was sourced from <Link href="https://europepmc.org/article/med/32645325" target="_blank" rel="noopener noreferrer"> Bouhaddou et al. (2020) </Link>
+                The variant alignment used to calculate frequencies is from the {config.vcf_version} release of <Link href="https://github.com/roblanf/sarscov2phylo" target="_blank" rel="noopener noreferrer">sarscov2phylo</Link>
+            </Typography>
+            <br/>
+            <Typography className={classes.text}>
+                Phosphorylation data was sourced from <Link href="https://europepmc.org/article/med/32645325" target="_blank" rel="noopener noreferrer"> Bouhaddou et al. (2020) </Link>
             </Typography>
             <Typography variant='h5' className={classes.heading}>
                 Tools

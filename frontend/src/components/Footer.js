@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import config from '../config'
 
 const styles = makeStyles({
     separater: {
@@ -36,7 +37,7 @@ const Footer = () => {
             />
             <div className={classes.separater}/>
             <Typography variant='caption' align='right'>
-                v1.0 - Data Updated: 22/10/2020
+                v{config.version} - Data Updated: {config.update_date}
             </Typography>
         </footer>
     )
