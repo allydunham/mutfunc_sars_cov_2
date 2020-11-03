@@ -1,2 +1,2 @@
 #!/usr/bin/env Rscript
-# Generate figure 2 (Overview of relationships between data types and comparisons to experiments?)
+# Generate figure 2 (Interface frequencies, Spike DMS, Human interface variant freqs?, In silico DMS?)

@@ -1,2 +1,2 @@
 #!/usr/bin/env Rscript
-# Generate figure 4 (High frequency variants)
+# Generate figure 4 (Experimental results)
