@@ -55,7 +55,7 @@ const EmptyInterfaceRow = () => {
     return(
         <TableRow>
             <TableCell>
-                No interfaces
+                No interfaces in this dataset
             </TableCell>
         </TableRow>
         )
@@ -68,7 +68,7 @@ const InterfaceRow = ({mut, int}) => {
     <TableRow>
         <TableCell>
             Interface partner: <Link href={"https://www.uniprot.org/uniprot/" + int['uniprot']} target="_blank" rel="noopener noreferrer"
-            >{int['uniprot']}</Link> {int['name']}
+            >{int['uniprot']}</Link> {int['name'] in sarsDisplayNames ? sarsDisplayNames[int['name']] : int['name']}
         </TableCell>
         <TableCell>
             Template: <Link href={"https://www.ebi.ac.uk/pdbe/entry/pdb/" + int['template'].split('.')[0]} target="_blank" rel="noopener noreferrer">{int['template']}</Link>
