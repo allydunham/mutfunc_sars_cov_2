@@ -149,11 +149,10 @@ rule filter_problematic_sites:
 
 rule variant_frequencies:
     """
-    Calculate allele frequencies from VCF file
+    Calculate overall allele frequencies from VCF file
     """
     input:
-        vcf="data/frequency/variants.filtered.vcf",
-        sites="data/frequency/filtered_sites.tsv"
+        vcf="data/frequency/variants.filtered.vcf"
 
     output:
         "data/frequency/allele_freqs.tsv"
@@ -163,6 +162,40 @@ rule variant_frequencies:
 
     shell:
         "vcftools --vcf {input.vcf} --freq --stdout > {output} 2> {log}"
+
+rule sample_subsets:
+    """
+    Generate sample subsets from VCF file
+    """
+    input:
+        vcf="data/frequency/variants.filtered.vcf"
+
+    output:
+        "data/frequency/samples.tsv",
+        "data/frequency/subsets/last90days.samples"
+
+    log:
+        "logs/sample_subsets.log"
+
+    shell:
+        "python bin/sample_subsets.py --dir data/frequency/subsets --tsv data/frequency/samples.tsv {input.vcf} &> {log}"
+
+rule subset_frequencies:
+    """
+    Calculate allele frequencies from a subset of samples in a VCF file
+    """
+    input:
+        vcf="data/frequency/variants.filtered.vcf",
+        subset="data/frequency/subsets/{subset}.samples"
+
+    output:
+        "data/frequency/subsets/{subset}.tsv"
+
+    log:
+        "logs/subset_frequencies/{subset}.log"
+
+    shell:
+        "vcftools --vcf {input.vcf} --keep {input.subset} --freq --stdout > {output} 2> {log}"
 
 rule annotate_variants:
     """
