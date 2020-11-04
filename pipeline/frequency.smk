@@ -171,14 +171,26 @@ rule sample_subsets:
         vcf="data/frequency/variants.filtered.vcf"
 
     output:
-        "data/frequency/samples.tsv",
-        "data/frequency/subsets/last90days.samples"
+        samples="data/frequency/samples.tsv",
+        summary="data/frequency/subsets/summary.tsv",
+        "data/frequency/subsets/last90days.samples",
+        "data/frequency/subsets/NorthAfrica.samples",
+        "data/frequency/subsets/SubSaharanAfrica.samples",
+        "data/frequency/subsets/MiddleEast.samples",
+        "data/frequency/subsets/SouthAsia.samples",
+        "data/frequency/subsets/EastAsia.samples",
+        "data/frequency/subsets/SouthEastAsia.samples",
+        "data/frequency/subsets/Europe.samples",
+        "data/frequency/subsets/NorthAmerica.samples",
+        "data/frequency/subsets/CentralAmerica.samples",
+        "data/frequency/subsets/SouthAmerica.samples",
+        "data/frequency/subsets/Oceania.samples"
 
     log:
         "logs/sample_subsets.log"
 
     shell:
-        "python bin/sample_subsets.py --dir data/frequency/subsets --tsv data/frequency/samples.tsv {input.vcf} &> {log}"
+        "python bin/sample_subsets.py --dir data/frequency/subsets --tsv {output.samples} --summary {output.summary} {input.vcf} &> {log}"
 
 rule subset_frequencies:
     """
