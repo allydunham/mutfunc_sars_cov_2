@@ -144,10 +144,13 @@ def main(args):
     if not os.path.isdir(args.dir):
         os.mkdir(args.dir)
 
+    # Filter all samples here?
+
     # Identify Subsets
     today = date.today()
     period = timedelta(days=90)
     subsets = {}
+    subsets['overall'] = [i.string for i in samples]
     subsets['last90days'] = [i.string for i in samples if (today - i.date) < period]
 
     for region, areas in REGIONS.items():
