@@ -160,7 +160,9 @@ def main(args):
         with open(args.summary, 'w') as summary_file:
             print('name', 'n', 'desc', sep='\t', file=summary_file)
             for name, subset in subsets.items():
-                if name == 'last90days':
+                if name == 'overall':
+                    desc = 'All samples'
+                elif name == 'last90days':
                     desc = f'Samples taken in up to 90 days before {today}'
                 else:
                     desc = ', '.join(REGIONS[name])
