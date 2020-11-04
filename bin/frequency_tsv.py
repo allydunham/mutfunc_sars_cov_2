@@ -5,6 +5,7 @@ Exctract variant frequencies from VCF and map based on GFF file
 import argparse
 import bisect
 import gzip
+from pathlib import Path
 
 UNIPROT_IDS = {
     'orf1ab': 'P0DTD1', 'orf1a': 'P0DTC1', 's': 'P0DTC2',
@@ -89,7 +90,7 @@ def calculate_protein_freqs(vep_file, allele_freqs, transcript_map):
         gene = 'nc' if gene == 'n' else gene # Mutfunc uses nc internally
         uniprot = UNIPROT_IDS[gene]
         dna_position = line[0].split(',')[0][1:-1]
-        freq = allele_freqs[f'{dna_position}{line[2]}']
+        dna_key = f'{dna_position}{line[2]}'
         position = int(line[9])
         wt, mut = line[10].split('/')
 
@@ -108,12 +109,13 @@ def calculate_protein_freqs(vep_file, allele_freqs, transcript_map):
 
         key = f'{gene}_{position}_{mut}'
 
-        if key in prot_freqs:
-            prot_freqs[key]['freq'] += freq
-        else:
+        if not key in prot_freqs:
             prot_freqs[key] = {'uniprot': uniprot, 'name': gene,
                                'position': position, 'wt': wt,
-                               'mut': mut, 'freq': freq}
+                               'mut': mut, **{n: 0 for n in allele_freqs.keys()}}
+
+        for freq_name in allele_freqs.keys():
+            prot_freqs[key][freq_name] += allele_freqs[freq_name][dna_key]
 
     return prot_freqs
 
@@ -124,17 +126,17 @@ def make_prot_freq_sort_key(x):
     gene, position, mut = x.split('_')
     return 1000000 * GENE_SORT_ORDER[gene] + 100 * int(position) + (ord(mut) - 65)
 
-def print_freq_tsv(prot_freqs):
+def print_freq_tsv(prot_freqs, freq_cols):
     """
     Print tsv giving frequency of each protein substitution, including sorting
     frequencies correctly
     """
     sorted_keys = sorted(list(prot_freqs.keys()), key=make_prot_freq_sort_key)
-    print('uniprot', 'name', 'position', 'wt', 'mut', 'freq', sep='\t')
+    print('uniprot', 'name', 'position', 'wt', 'mut', *freq_cols, sep='\t')
     for k in sorted_keys:
         i = prot_freqs[k]
         print(i['uniprot'], i['name'], i['position'],
-              i['wt'], i['mut'], i['freq'], sep='\t')
+              i['wt'], i['mut'], *[i[k] for k in freq_cols], sep='\t')
 
 def main(args):
     """Main"""
@@ -143,15 +145,18 @@ def main(args):
         gene_map, transcript_map = import_gene_map(gff_file)
 
     # Import Allele freqs
-    with open(args.freqs, 'r') as freqs_file:
-        allele_freqs = import_allele_freqs(freqs_file)
+    allele_freqs = {}
+    for freq_path in args.freqs:
+        name = Path(freq_path).stem
+        with open(freq_path, 'r') as freq_file:
+            allele_freqs[name] = import_allele_freqs(freq_file)
 
     # Calculate (known) protein substitution freqs
     with open(args.vep, 'r') as vep_file:
         prot_freqs = calculate_protein_freqs(vep_file, allele_freqs, transcript_map)
 
     # Print Output Table
-    print_freq_tsv(prot_freqs)
+    print_freq_tsv(prot_freqs, freq_cols=[Path(x).stem for x in args.freqs])
 
 def parse_args():
     """Parse arguments"""
@@ -159,8 +164,8 @@ def parse_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('vep', metavar='V', help='VEP Predictions')
-    parser.add_argument('freqs', metavar='F', help='Allele frequencies')
     parser.add_argument('annotation', metavar='A', help='GFF Annotation file')
+    parser.add_argument('freqs', metavar='F', nargs='+', help='Allele frequency files')
 
     return parser.parse_args()
 

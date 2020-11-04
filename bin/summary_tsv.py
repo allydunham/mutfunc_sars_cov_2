@@ -37,7 +37,8 @@ def main(args):
                            'diff_interaction_energy', 'diff_interface_residues']]
 
     frequency = pd.read_csv(args.frequency, sep='\t', index_col=False)
-
+    frequency = frequency[['uniprot', 'name', 'position', 'wt', 'mut', 'overall']]
+    frequency = frequency.rename(columns={'overall': 'freq'})
 
     # Merge
     base_cols = ['uniprot', 'name', 'position']

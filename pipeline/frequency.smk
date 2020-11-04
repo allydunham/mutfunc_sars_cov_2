@@ -226,9 +226,21 @@ rule frequency_tsv:
     Generate tsv file of observed variant frequencies
     """
     input:
-        vep="data/frequency/variant_annotation.tsv",
-        freqs="data/frequency/allele_freqs.tsv",
-        gff="data/frequency/gene_annotation.gff3.gz"
+        "data/frequency/variant_annotation.tsv",
+        "data/frequency/gene_annotation.gff3.gz",
+        "data/frequency/subsets/overall.tsv",
+        "data/frequency/subsets/last90days.tsv",
+        "data/frequency/subsets/NorthAfrica.tsv",
+        "data/frequency/subsets/SubSaharanAfrica.tsv",
+        "data/frequency/subsets/MiddleEast.tsv",
+        "data/frequency/subsets/SouthAsia.tsv",
+        "data/frequency/subsets/EastAsia.tsv",
+        "data/frequency/subsets/SouthEastAsia.tsv",
+        "data/frequency/subsets/Europe.tsv",
+        "data/frequency/subsets/NorthAmerica.tsv",
+        "data/frequency/subsets/CentralAmerica.tsv",
+        "data/frequency/subsets/SouthAmerica.tsv",
+        "data/frequency/subsets/Oceania.tsv"
 
     output:
         "data/output/frequency.tsv"
@@ -237,4 +249,4 @@ rule frequency_tsv:
         "logs/frequency_tsv.log"
 
     shell:
-        "python bin/frequency_tsv.py {input.vep} {input.freqs} {input.gff} > {output} 2> {log}"
+        "python bin/frequency_tsv.py {input} > {output} 2> {log}"
