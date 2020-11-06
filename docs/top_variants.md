@@ -145,3 +145,29 @@ from the last 90 days
 * NSP2 P585S (0.0148 &rarr; 0.000119, -0.0147)
 * ORF3A G172R (0.00326 &rarr; 0.018, +0.0147)
 * S S98F (0.00401 &rarr; 0.0186, +0.0146)
+
+# Regional Variants
+
+Selected list of regional variants with requency > 0.05 in the whole dataset or the 
+region in question and at least one significant prediction. The change in frequency
+is deemed very significant based on a binomial test (q < 0.001, FDR corrected)
+
+* S D614G (0.870373 &rarr; EastAsia: 0.475913, SouthEastAsia: 0.275974, Europe: 0.89445, MiddleEast: 0.719187, SouthAmerica: 0.943871, SubSaharanAfrica: 0.943555, Oceania: 0.894742, SouthAsia: 0.828426, NorthAmerica: 0.879833) - Destabilisng and in S-S interface
+* NC P13L (0.0138801 &rarr; SouthEastAsia: 0.534903, SouthAsia: 0.109148) - Significant SIFT4G prediction
+* NC A220V (0.0435423 &rarr; Europe: 0.0811194) - Significant SIFT4G prediction (much more common recently)
+* NC I292T (0.0034003 &rarr; SouthAmerica: 0.16441) - Destabilising FoldX score
+* NSP5 L89F (0.0160659 &rarr; NorthAmerica: 0.0585467) - Significant SIFT4G score
+* NSP7 S25L (0.0161639 &rarr; EastAsia: 0.19425) - Stabilises nsp7-nsp8 interface
+* NSP8 Y138H (0.00225659 &rarr; SubSaharanAfrica: 0.180015) - Significant SIFT4G score and destabilising
+* ORF3a Q57H (0.246887256 &rarr; Europe: 0.113269509, NorthAmerica: 0.5892852617, Oceania: 0.0719047, SubSaharanAfrica: 0.051106, MiddleEast: 0.449045, SouthAmerica: 0.106727, SouthEastAsia: 0.103896, SouthAsia: 0.166732311, NorthAfrica: 0.574586) - Destabilising FoldX score and in homodimer interface 
+* NC R203K (0.395043 &rarr; NorthAmerica: 0.1382629, Oceania: 0.763899, Europe: 0.466088, EastAsia: 0.192068, SouthEastAsia: 0.129058, SouthAmerica: 0.577326, SubSaharanAfrica: 0.590389, MiddleEast: 0.300127, NorthAfrica: 0.158192, SouthAsia: 0.457188) - Significant SIFT4G score
+* NC G204R (0.39422694 &rarr; NorthAmerica: 0.137821046, Oceania: 0.763976, Europe: 0.4650769094, EastAsia: 0.190902, SouthEastAsia: 0.129058, SouthAmerica: 0.576948, SubSaharanAfrica: 0.590389, MiddleEast: 0.300761, NorthAfrica: 0.154696, SouthAsia: 0.455259) - Significant SIFT4G score
+* ORF3a R126S (0.00170169 &rarr; SubSaharanAfrica: 0.133588) - Significant SIFT4G score and destabilising FoldX score
+* ORF3a L46F (0.00348409 &rarr; SouthAsia: 0.0843137) - Significant SIFT4G score, destabilising and destabilises the homodimer interface
+* NC S187L (0.00262569 &rarr; SouthAmerica: 0.0642857) - Significant SIFT4G score
+* NSP7 L71F (0.00134069 &rarr; SouthAmerica: 0.0502901) - Significant SIFT4G score and destabilises the NSP7-NSP8 interface
+* NSP3 T428I (0.0176927 &rarr; SouthAmerica: 0.110323, SubSaharanAfrica: 0.0885496) - Stabilising
+* NSP5 G71S (0.0113282 &rarr; MiddleEast: 0.0778974) - Destabilising 
+* NC S194L (0.0430877 &rarr; SouthAsia: 0.115566, NorthAmerica: 0.0578045, MiddleEast: 0.076728) - Significant SIFT4G score and phosphosite
+* NSP5 P96S (0.000160785 &rarr; CentralAmerica: 0.0530973) - Destabilising 
+* NC H145Y (0.00115188 &rarr; CentralAmerica: 0.0530973) - Destabilising
