@@ -7,6 +7,7 @@ library(broom)
 library(ggpubr)
 library(ggtext)
 library(ggrepel)
+library(multipanelfigure)
 
 # Custom packages - available at github.com/allydunham
 library(plotlistr)
