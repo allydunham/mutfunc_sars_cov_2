@@ -53,8 +53,8 @@ overall_top_freq_plot <- function(variants){
     theme(axis.ticks = element_blank(), axis.text = element_blank(),
           axis.title.y = element_blank())
   
-  p_complex <- ggplot(frequent_variants_unique, aes(y = reorder(str, overall_freq), x = diff_interaction_energy)) +
-    geom_point(mapping = aes(colour = abs(total_energy) > 1), show.legend = FALSE) +
+  p_complex <- ggplot(frequent_variants, aes(y = reorder(str, freq), x = diff_interaction_energy)) +
+    geom_point(mapping = aes(colour = abs(diff_interaction_energy) > 1), show.legend = FALSE) +
     geom_text_repel(mapping = aes(label=complex), direction = 'x') +
     geom_vline(xintercept = 1) +
     geom_vline(xintercept = -1) +
@@ -124,8 +124,8 @@ changing_top_freq_plot <- function(variants, freqs){
     theme(axis.ticks = element_blank(), axis.text = element_blank(),
           axis.title.y = element_blank())
   
-  p_complex <- ggplot(frequent_variants, aes(y = reorder(str, overall_freq), x = diff_interaction_energy)) +
-    geom_point(mapping = aes(colour = abs(total_energy) > 1), show.legend = FALSE) +
+  p_complex <- ggplot(frequent_variants, aes(y = reorder(str, diff), x = diff_interaction_energy)) +
+    geom_point(mapping = aes(colour = abs(diff_interaction_energy) > 1), show.legend = FALSE) +
     geom_text_repel(mapping = aes(label=complex), direction = 'x') +
     geom_vline(xintercept = 1) +
     geom_vline(xintercept = -1) +
@@ -212,7 +212,7 @@ regional_top_freq_plot <- function(regional_freq_tests){
           axis.title.y = element_blank())
   
   p_complex <- ggplot(frequent_variants_unique, aes(y = reorder(str, overall_freq), x = diff_interaction_energy)) +
-    geom_point(mapping = aes(colour = abs(total_energy) > 1), show.legend = FALSE) +
+    geom_point(mapping = aes(colour = abs(diff_interaction_energy) > 1), show.legend = FALSE) +
     geom_text_repel(mapping = aes(label=complex), direction = 'x') +
     geom_vline(xintercept = 1) +
     geom_vline(xintercept = -1) +
