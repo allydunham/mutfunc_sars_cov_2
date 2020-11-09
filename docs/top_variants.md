@@ -1,3 +1,34 @@
+# Interesting Variant Shortlist
+
+## S
+
+* D614G - High frequency, increased in freq, some regional variation, in S interface 
+          and FoldX destabilising. Well studied but not interaction changes as far as I
+          know
+* V1068F - Slightly high frequency, destabilises S interface
+* T29I - Slightly high frequency, destabilising and phosphosite
+* D574Y - Slightly high frequency, stabilising and in the interface
+* F486L, N501Y - Didn't meet frequency threshold (5e-4.3e-4) but the two most frequent 
+                 ACE2 interface variants destabilise the interface
+
+## N
+
+* R203K & G204R - both frequent, increasing and regionally diverse, but only predicted significant by SIFT4G
+* A220V - Frequent, big increase in europe but similarly on SIFT4G prediction
+* S194L - Somewhat frequent, regional variation, phosphosite and SIFT4G prediction
+* S197L, S183Y, T205I, S202N - Set of somewhat frequent phosphosites
+* S180I, S206F - Less frequent phosphosites
+* H145Y - Destabilising variant with increased frequency in Central America/Caribean
+
+## ORF3a
+
+* Q57H - High frequency, destabilising dimer interface variant, large regional frequency range
+* T223I - Destabilises dimer interface, increases in frequency
+* L46F - Destabilising to structure and dimer itnerface, more common in south asia
+* L108F, S166L - Stabilises dimer interface
+* R126S - Destabilising variant with increased frequency in Subsaharan Africa
+* Various other interface variants are frequent but not predicted destabilising
+
 # Common variants with interesting predicted effects
 
 I have identified all significant predictions above 1% frequency and phosphosites
