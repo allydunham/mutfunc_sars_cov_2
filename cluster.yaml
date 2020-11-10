@@ -2,6 +2,6 @@ __default__:
     output: '{rule}.{wildcards}.%J'
     error: '{rule}.{wildcards}.%J'
     queue: 'research-rh74'
-    name: 'Subtypes.{rule}.{wildcards}'
+    name: 'covid19_mutfunc.{rule}.{wildcards}'
     memory: 4096 
 
