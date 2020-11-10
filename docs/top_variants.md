@@ -10,6 +10,7 @@
 * D574Y - Slightly high frequency, stabilising and in the interface
 * F486L, N501Y - Didn't meet frequency threshold (5e-4.3e-4) but the two most frequent 
                  ACE2 interface variants destabilise the interface
+* N439K - Increases in frequency, in a paper, stabilising FoldX prediction
 
 ## N
 
@@ -28,6 +29,12 @@
 * L108F, S166L - Stabilises dimer interface
 * R126S - Destabilising variant with increased frequency in Subsaharan Africa
 * Various other interface variants are frequent but not predicted destabilising
+
+## nsp7
+
+* S25L - Frequent, increased in East Asia, slight decrease in frequency but maybe due to sample
+         composition, stabilises nsp8 interface
+* L71F - Frequent, increased in South America destabilises nsp8 interface
 
 # Common variants with interesting predicted effects
 
