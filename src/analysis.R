@@ -40,12 +40,13 @@ get_protein_limits <- function(variants){
 }
 
 classify_freq <- function(x){
-  out <- rep('> 0.01', length(x))
-  out[x < 0.01] <- '< 0.01'
-  out[x < 0.001] <- '< 0.001'
-  out[x < 0.0001] <- '< 0.0001'
-  out[is.na(x)] <- 'Not Observed'
-  out <- factor(out, levels = c('Not Observed', '< 0.0001', '< 0.001', '< 0.01', '> 0.01'))
+  out <- rep('> 10', length(x))
+  out[x < 0.1] <- '1-10'
+  out[x < 0.01] <- '0.1-1'
+  out[x < 0.001] <- '0.01-0.1'
+  out[x < 0.0001] <- '< 0.01'
+  out[is.na(x)] <- 'NA'
+  out <- factor(out, levels = c('NA', '< 0.01', '0.01-0.1', '0.1-1', '1-10', '> 10'))
   return(out)
 }
 
