@@ -57,24 +57,13 @@ p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
         axis.title = element_blank())
 
 ### Panel 4 - SIFT4G against frequency
-classify_freq <- function(x){
-  out <- rep('> 10', length(x))
-  out[x < 0.1] <- '1-10'
-  out[x < 0.01] <- '0.1-1'
-  out[x < 0.001] <- '0.01-0.1'
-  out[x < 0.0001] <- '< 0.01'
-  out[is.na(x)] <- 'NA'
-  out <- factor(out, levels = c('NA', '< 0.01', '0.01-0.1', '0.1-1', '1-10', '> 10'))
-  return(out)
-}
-
 p_sift_freq <- select(variants, sift_score, freq) %>%
   mutate(freq_cat = classify_freq(freq)) %>%
   drop_na(sift_score) %>%
   group_by(freq_cat) %>%
   summarise(mean = mean(sift_score), sd = sd(sift_score), .groups='drop') %>%
   ggplot() + 
-  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = clamp(mean - sd, 0), yend = mean + sd), colour = 'cornflowerblue', size = 0.5) +
+  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = clamp(mean - sd, 0), yend = mean + sd), colour = '#377eb8', size = 0.5) +
   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#377eb8') +
   geom_hline(yintercept = 0.05, linetype = 'dotted', colour = 'black') +
   labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score')
@@ -84,7 +73,7 @@ p_sift_dms <- select(spike, expression, sift_score, sift_median) %>%
   mutate(sig = ifelse(sift_score < 0.05, 'Deleterious', 'Neutral')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
-  geom_boxplot(fill = '#377eb8', notch = TRUE) +
+  geom_boxplot(fill = '#377eb8') +
   stat_compare_means(comparisons = list(c('Deleterious', 'Neutral')), method = 't.test', size = 2) +
   labs(x = 'SIFT4G Prediction', y = 'Spike DMS Expression Fitness')
 
@@ -99,14 +88,14 @@ p_foldx_freq <- select(variants, total_energy, freq) %>%
   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
   geom_hline(yintercept = 1, linetype = 'dotted', colour = 'black') +
   geom_hline(yintercept = -1, linetype = 'dotted', colour = 'black') +
-  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G))
+  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kj'%.%'mol'^-1*')'))
 
 ### Panel 7 FoldX against Spike DMS Expression Fitness
 p_foldx_dms <- select(spike, expression, total_energy) %>%
   mutate(sig = ifelse(total_energy < 1, ifelse(total_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
-  geom_boxplot(fill = '#e41a1c', notch = TRUE) +
+  geom_boxplot(fill = '#e41a1c') +
   stat_compare_means(comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral')),
                      method = 't.test', size = 2) +
   labs(x = 'FoldX Prediction', y = 'Spike DMS Expression Fitness')
@@ -121,7 +110,7 @@ p5 <- p_sift_dms  + labs(tag = 'E') + size
 p6 <- p_foldx_freq + labs(tag = 'F') + size
 p7 <- p_foldx_dms  + labs(tag = 'G') + size
 
-figure1 <- multi_panel_figure(width = 183, height = 183, columns = 4, rows = 3,
+figure <- multi_panel_figure(width = 183, height = 183, columns = 4, rows = 3,
                               panel_label_type = 'none', row_spacing = 0, column_spacing = 0) %>%
   fill_panel(p1, row = 1, column = 1:4) %>%
   fill_panel(p2, row = 2, column = 1) %>%
@@ -130,5 +119,5 @@ figure1 <- multi_panel_figure(width = 183, height = 183, columns = 4, rows = 3,
   fill_panel(p5, row = 3, column = 2) %>%
   fill_panel(p6, row = 3, column = 3) %>%
   fill_panel(p7, row = 3, column = 4)
-ggsave('figures/figures/figure1.pdf', figure1, width = figure_width(figure1), height = figure_height(figure1), units = 'mm')
-ggsave('figures/figures/figure1.png', figure1, width = figure_width(figure1), height = figure_height(figure1), units = 'mm')
+ggsave('figures/figures/figure1.pdf', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm')
+ggsave('figures/figures/figure1.png', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm')
