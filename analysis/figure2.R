@@ -9,6 +9,28 @@ spike <- read_csv('data/starr_ace2_spike.csv') %>%
   select(uniprot, name, position = site_SARS2, position_rbd = site_RBD, wt = wildtype, mut = mutant, binding=bind_avg, expression=expr_avg) %>%
   left_join(variants, by = c('uniprot', 'name', 'position', 'wt', 'mut'))
 
+### Panel - Frequency
+p_freqs_per_int <- select(variants, name, position, wt, mut, int_name, freq, diff_interaction_energy) %>% 
+  drop_na(int_name) %>%
+  mutate(int_name = ifelse(str_detect(int_name, 'ribosomal'), '40s', int_name)) %>%
+  group_by(name, int_name) %>%
+  summarise(positions = n_distinct(position),
+            muts_per_pos = sum(freq, na.rm = TRUE) / positions,
+            mean_ddg = mean(diff_interaction_energy * freq, na.rm = TRUE),
+            .groups = 'drop') %>%
+  mutate(mean_ddg = ifelse(is.na(mean_ddg), 0, mean_ddg),
+         name = display_names[name],
+         int_name = display_names[int_name],
+         int = str_c(name, ' - ', int_name)) %>%
+  ggplot(aes(x = muts_per_pos, y = mean_ddg)) +
+  geom_point(aes(size = positions), colour = '#984ea3') +
+  geom_text_repel(aes(label = int)) +
+  scale_x_log10() +
+  scale_y_log10() +
+  scale_size_area(name = 'Interface\nPositions') +
+  coord_cartesian(clip = 'off') +
+  labs(x = 'Variants per position per strain', y = expression('Frequency weighted mean interface'~Delta*Delta*G~'(kj'%.%'mol'^-1*')'))
+
 ### Panel - Frequency vs FoldX
 p_freq <- select(variants, position, wt, mut, freq, int_name, diff_interaction_energy) %>%
   drop_na(int_name) %>%
