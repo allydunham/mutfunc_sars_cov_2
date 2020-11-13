@@ -88,7 +88,7 @@ p_foldx_freq <- select(variants, total_energy, freq) %>%
   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
   geom_hline(yintercept = 1, linetype = 'dotted', colour = 'black') +
   geom_hline(yintercept = -1, linetype = 'dotted', colour = 'black') +
-  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kj'%.%'mol'^-1*')'))
+  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kJ'%.%'mol'^-1*')'))
 
 ### Panel 7 FoldX against Spike DMS Expression Fitness
 p_foldx_dms <- select(spike, expression, total_energy) %>%
