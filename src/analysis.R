@@ -60,7 +60,9 @@ display_names <- c(nsp1='nsp1', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='3CL
                    nsp13='Hel', nsp14='ExoN', nsp15='nsp15', nsp16='nsp16', s='S', orf3a='orf3a', e='E', 
                    m='M', orf6='orf6', orf7a='orf7a', orf7b='orf7b', orf8='orf8', nc='N', orf10='orf10',
                    orf9b='orf9b', orf14='orf14',
-                   ace2='ACE2', `40s`='40S Ribosome', tom70='TOM70')
+                   ace2='ACE2', `40s`='40S', tom70='TOM70', `40S ribosomal protein S3`='40S',
+                   `40S ribosomal protein S30`='40S', `18S ribosomal RNA`='40S',
+                   `40S ribosomal protein S2`='40S', `40S ribosomal protein S9`='40S')
 
 # Blank placeholder ggplot
 blank_plot <- function(text = NULL){
@@ -74,4 +76,42 @@ blank_plot <- function(text = NULL){
   if (!is.null(text)){
     p <- p + annotate(geom = 'text', x = 0.5, y = 0.5, label = text)
   }
+}
+
+# ROC Calculations
+calc_roc <- function(tbl, true_col, var_col, greater=TRUE){
+  true_col <- enquo(true_col)
+  var_col <- enquo(var_col)
+  
+  tbl <- select(tbl, !!true_col, !!var_col) %>%
+    drop_na()
+  if (nrow(tbl) == 0){
+    return(tibble(TP=NA, TN=NA, FP=NA, FN=NA))
+  }
+  
+  true <- pull(tbl, !!true_col)
+  var <- pull(tbl, !!var_col)
+  steps <- sort(unique(var))
+  
+  true_mat <- matrix(true, nrow = length(true), ncol = length(steps))
+  var_mat <- matrix(var, nrow = length(var), ncol = length(steps))
+  thresh_mat <- matrix(steps, nrow = length(var), ncol = length(steps), byrow = TRUE)
+  
+  if (greater){
+    preds <- var_mat >= thresh_mat
+  } else {
+    preds <- var_mat <= thresh_mat
+  }
+  
+  tp <- colSums(preds & true_mat)
+  tn <- colSums(!preds & !true_mat)
+  fp <- colSums(preds & !true_mat)
+  fn <- colSums(!preds & true_mat)
+  return(
+    tibble(thresh = steps, tp = tp, tn = tn, fp = fp, fn = fn,
+           tpr = tp / (tp + fn),
+           tnr = tn / (tn + fp),
+           fpr = 1 - tnr,
+           precision = tp / (tp + fp))
+    )
 }
