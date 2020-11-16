@@ -122,7 +122,7 @@ p_is_dms <- ggplot() +
   scale_fill_gradientn(colours = c('#5e4fa2', '#3288bd', '#66c2a5', '#abdda4', '#e6f598', '#ffffbf',
                                    '#fee08b', '#fdae61', '#f46d43', '#d53e4f', '#9e0142'),
                        values = scales::rescale(-5:5, to=0:1), na.value = 'white',
-                       limits = c(-5, 5), name="<img src='figures/figures/parts/orf3a_regions.png' width='120' /><br><br><br>Interface &Delta;&Delta;G (kJ.mol<sup>-1</sup>)<br>Clamped to &plusmn;5") +
+                       limits = c(-5, 5), name="<img src='figures/figures/misc_parts/orf3a_regions.png' width='120' /><br><br><br>Interface &Delta;&Delta;G (kJ.mol<sup>-1</sup>)<br>Clamped to &plusmn;5") +
   # Add WT to legend
   geom_point(aes(colour = 'WT'), y = -100, x = -100, shape = 15, size = 5) +
   scale_colour_manual(name='', values = c(WT='grey')) +

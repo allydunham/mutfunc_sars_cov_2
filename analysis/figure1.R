@@ -45,7 +45,7 @@ complexes <- select(variants, int_template, name, int_name, position) %>%
   summarise(n = sum(n), .groups='drop') %>%
   mutate(int = pdb_ints[int_template],
          int_name = pdb_names[int_template],
-         img = str_c("<img src='figures/figures/parts/", int, ".png", "' width='53' />"),
+         img = str_c("<img src='figures/figures/complexes/", int, ".png", "' width='53' />"),
          n = str_c(n, ' positions'))
 
 p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
