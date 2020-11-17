@@ -33,38 +33,6 @@ rule download_genome:
         gunzip data/frequency/genome.fa.gz &> {log}
         """
 
-def get_covid_annotation(wildcards):
-    """
-    Identify genome annotation source, based on config
-    """
-    url = "ftp.ensemblgenomes.org/pub/viruses/gff3/sars_cov_2/Sars_cov_2.ASM985889v3.101.gff3.gz"
-    path = "data/frequency/gene_annotation.gff3.gz"
-    if not config['general']['check_online_updates'] and os.path.isfile(path):
-        return path
-    return FTP.remote(url, keep_local=True)
-
-rule download_annotation:
-    """
-    Download UniProt SARS-CoV2 genome gff3
-    """
-    input:
-        get_covid_annotation
-
-    output:
-        "data/frequency/gene_annotation.gff3.gz"
-
-    log:
-        "logs/download_annotation.log"
-
-    shell:
-        """
-        mv {input} data/frequency/gene_annotation.gff3.gz &> {log}
-        gunzip data/frequency/gene_annotation.gff3.gz &> {log}
-        sed -i '/^###/d' data/frequency/gene_annotation.gff3 2> {log}
-        cat data/frequency/gene_annotation.gff3 src/orf1ab_frameshifted.gff3 2> {log}
-        bgzip data/frequency/gene_annotation.gff3 &> {log}
-        """
-
 def get_covid_mask(wildcards):
     """
     Identify genome mask, based on config
@@ -98,16 +66,20 @@ rule index_annotation:
     Tabix index gff3 file
     """
     input:
-        "data/frequency/gene_annotation.gff3.gz"
+        "data/frequency/gene_annotation.gff3"
 
     output:
+        "data/frequency/gene_annotation.gff3.gz"
         "data/frequency/gene_annotation.gff3.gz.tbi"
 
     log:
         "logs/index_annotation.log"
 
     shell:
-        "tabix -p gff {input}"
+        """"
+        bgzip -c {intput} > data/frequency/gene_annotation.gff3.gz 2> {log}
+        tabix -p gff data/frequency/gene_annotation.gff3.gz 2> {log}
+        """
 
 rule unzip_variant_vcf:
     """
@@ -195,12 +167,29 @@ rule variant_frequencies:
     shell:
         "vcftools --vcf {input.vcf} --keep {input.subset} --freq --stdout > {output} 2> {log}"
 
+rule strip_vcf_samples:
+    """
+    Generate VCF with all genotype data striped for VEP input
+    """
+    input:
+        vcf="data/frequency/variants.filtered.vcf",
+        subset="data/frequency/subsets/overall.samples"
+
+    output:
+        "data/frequency/variants.nosamples.vcf"
+
+    log:
+        "logs/variant_frequencies/strip_vcf_samples.log"
+
+    shell:
+        "vcftools --vcf {input.vcf} --remove {input.subset} --recode --stdout > {output} 2> {log}
+
 rule annotate_variants:
     """
     Annotate variants to proteins using Ensembl VEP
     """
     input:
-        vcf="data/frequency/variants.filtered.vcf",
+        vcf="data/frequency/variants.nosamples.vcf",
         gff="data/frequency/gene_annotation.gff3.gz",
         gfftbi="data/frequency/gene_annotation.gff3.gz.tbi",
         fasta="data/frequency/genome.fa",
