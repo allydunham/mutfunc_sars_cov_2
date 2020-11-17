@@ -61,6 +61,7 @@ rule download_annotation:
         mv {input} data/frequency/gene_annotation.gff3.gz &> {log}
         gunzip data/frequency/gene_annotation.gff3.gz &> {log}
         sed -i '/^###/d' data/frequency/gene_annotation.gff3 2> {log}
+        cat data/frequency/gene_annotation.gff3 src/orf1ab_frameshifted.gff3 2> {log}
         bgzip data/frequency/gene_annotation.gff3 &> {log}
         """
 

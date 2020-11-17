@@ -1,0 +1,4 @@
+MN908947.3	ensembl	gene	13468	21555	.	+	.	ID=gene:ENSSASG00005000002_shift;Name=ORF1ab_shifted;biotype=protein_coding;description=ORF1a polyprotein%3BORF1ab polyprotein [Source:NCBI gene (formerly Entrezgene)%3BAcc:43740578];gene_id=ENSSASG00005000002;logic_name=ensembl_covid;version=1
+MN908947.3	ensembl	mRNA	13468	21555	.	+	.	ID=transcript:ENSSAST00005000002_shift;Parent=gene:ENSSASG00005000002_shift;Name=ORF1ab_shift;biotype=protein_coding;transcript_id=ENSSAST00005000002_shift;version=1
+MN908947.3	ensembl	exon	13468	21555	.	+	.	Parent=transcript:ENSSAST00005000002_shift;Name=ENSSASE00005000002_shift;constitutive=1;ensembl_end_phase=0;ensembl_phase=0;exon_id=ENSSASE00005000002_shift;rank=1;version=1
+MN908947.3	ensembl	CDS	13468	21555	.	+	0	ID=CDS:ENSSASP00005000002_shift;Parent=transcript:ENSSAST00005000002_shift;protein_id=ENSSASP00005000002_shift
