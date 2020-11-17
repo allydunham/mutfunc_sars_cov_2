@@ -8,6 +8,10 @@ variants <- load_variants()
 freqs <- read_tsv('data/output/frequency.tsv')
 subsets <- read_tsv('data/frequency/subsets/summary.tsv')
 
+# white - f1f1f1
+# blue - 4df5c3
+# organge - d95f02
+# purple - 7570b3
 ### Panel - S - N439K (stabilising FoldX structure)
 # PyMol Coords
 # set_view (\
