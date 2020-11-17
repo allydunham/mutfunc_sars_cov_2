@@ -15,7 +15,7 @@ HTTP = RateLimitedHTTPRemoteProvider()
 configfile: 'snakemake.yaml'
 localrules:
     all, download_protein_fasta, swissmodel_download, complex_download,
-    download_genome, download_annotation, frequency_tsv,
+    download_genome, frequency_tsv,
     ptms_tsv, foldx_tsv, sift_tsv, complex_tsv, summary_tsv,
     split_fasta, sift4g_variants,
     swissmodel_unzip, swissmodel_select,

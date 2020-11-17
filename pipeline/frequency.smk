@@ -69,16 +69,16 @@ rule index_annotation:
         "data/frequency/gene_annotation.gff3"
 
     output:
-        "data/frequency/gene_annotation.gff3.gz"
-        "data/frequency/gene_annotation.gff3.gz.tbi"
+        gz="data/frequency/gene_annotation.gff3.gz",
+        tbi="data/frequency/gene_annotation.gff3.gz.tbi"
 
     log:
         "logs/index_annotation.log"
 
     shell:
-        """"
-        bgzip -c {intput} > data/frequency/gene_annotation.gff3.gz 2> {log}
-        tabix -p gff data/frequency/gene_annotation.gff3.gz 2> {log}
+        """
+        bgzip -c {input} > {output.gz} 2> {log}
+        tabix -p gff {output.gz} 2> {log}
         """
 
 rule unzip_variant_vcf:
@@ -182,7 +182,7 @@ rule strip_vcf_samples:
         "logs/variant_frequencies/strip_vcf_samples.log"
 
     shell:
-        "vcftools --vcf {input.vcf} --remove {input.subset} --recode --stdout > {output} 2> {log}
+        "vcftools --vcf {input.vcf} --remove {input.subset} --recode --stdout > {output} 2> {log}"
 
 rule annotate_variants:
     """
