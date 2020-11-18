@@ -179,7 +179,7 @@ rule strip_vcf_samples:
         "data/frequency/variants.nosamples.vcf"
 
     log:
-        "logs/variant_frequencies/strip_vcf_samples.log"
+        "logs/strip_vcf_samples.log"
 
     shell:
         "vcftools --vcf {input.vcf} --remove {input.subset} --recode --stdout > {output} 2> {log}"
@@ -217,7 +217,6 @@ rule frequency_tsv:
     """
     input:
         "data/frequency/variant_annotation.tsv",
-        "data/frequency/gene_annotation.gff3.gz",
         "data/frequency/subsets/overall.tsv",
         "data/frequency/subsets/last90days.tsv",
         "data/frequency/subsets/NorthAfrica.tsv",
