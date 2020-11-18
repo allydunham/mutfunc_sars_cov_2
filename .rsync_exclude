@@ -3,4 +3,4 @@ uniprot/**
 complex/*/*.yaml
 complex/*/*/mutant_pdbs/
 complex/*/*/mutant/
-
+frequency/gene_annotation.gff3
