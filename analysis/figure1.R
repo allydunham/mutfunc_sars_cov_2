@@ -19,7 +19,7 @@ p_coverage <- select(variants, name, position, sift_score, total_energy) %>%
   summarise(foldx = any(!is.na(total_energy)), .groups = 'drop_last') %>%
   summarise(prop = sum(foldx) / n() * 100, .groups = 'drop') %>%
   pivot_longer(-name, names_to = 'tool', values_to = 'prop') %>%
-  mutate(name = factor(name, levels = display_names)) %>%
+  mutate(name = factor(name, levels = unique(display_names))) %>%
   ggplot(aes(x = name, y = prop)) +
   geom_col(fill = '#4daf4a', width = 0.5) +
   lims(y = c(0, 100)) +
