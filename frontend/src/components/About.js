@@ -79,6 +79,17 @@ const About = () => {
                     />
                 </Link>
                 <Link
+                  href="https://www.ebi.ac.uk/pdbe/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                    <img
+                      src={process.env.PUBLIC_URL + 'images/pdbe_logo.png'}
+                      alt='pdbe-logo'
+                      height='75px'
+                      className={classes.image}
+                    />
+                </Link>
+                <Link
                   href="https://www.gisaid.org/"
                   target="_blank"
                   rel="noopener noreferrer">
