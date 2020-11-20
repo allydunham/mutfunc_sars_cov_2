@@ -27,9 +27,9 @@ foldx_img <- readPNG('figures/figures/misc_parts/foldx_logo.png')
 
 title_size = 3.5
 main_size = 2.5
-panel_colour <- '#faebff'
+panel_colour <- '#e4edff'
 p_schematic <- ggplot() +
-  coord_fixed(expand = FALSE, xlim = c(0, 3), ylim = c(0, 1), clip = 'off') +
+  coord_cartesian(expand = FALSE, xlim = c(0, 3), ylim = c(0, 1), clip = 'off') +
   scale_x_continuous(breaks = c(0.5, 1.5, 2.5), labels = c('Sources', 'Data', 'Predictions'), position = 'top') +
   
   # Boxes and arrows
@@ -67,14 +67,15 @@ p_schematic <- ggplot() +
   annotation_raster(sift_img, xmin = 2.25, xmax = 2.45, ymin = 0.75, ymax = 0.95) +
   annotate('text', label='Conservation\nSIFT4G Score', x = 2.5, y = 0.865, vjust = 0.5, hjust = 0, size = main_size) +
   annotation_raster(foldx_img, xmin = 2.2, xmax = 2.45, ymin = 0.568, ymax = 0.682) +
-  annotate('richtext', label='Protein stability &Delta;&Delta;G', x = 2.5, y = 0.675, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
-  annotate('richtext', label='Interface stability &Delta;&Delta;G', x = 2.5, y = 0.575, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
+  annotate('richtext', label='Folding &Delta;&Delta;G', x = 2.5, y = 0.675, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
+  annotate('richtext', label='Binding &Delta;&Delta;G', x = 2.5, y = 0.575, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
   annotate('text', label='PTM Locations', x = 2.5, y = 0.3, vjust = 0, hjust = 0.5, size = main_size) +
   annotate('text', label='Variant Frequency', x = 2.5, y = 0.1, vjust = 0, hjust = 0.5, size = main_size) +
 
   # Theme
   theme(axis.title = element_blank(), axis.text.y = element_blank(),
-        axis.ticks = element_blank(), panel.grid.major.y = element_blank())
+        axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
+        axis.text.x = element_text(size = 10))
 
 ### Panel 2 - Structural Coverage
 p_coverage <- select(variants, name, position, sift_score, total_energy) %>%
@@ -114,7 +115,8 @@ complexes <- select(variants, int_template, name, int_name, position) %>%
 
 p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
   geom_richtext(y = 0.5, fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
-  facet_wrap(~int_name, nrow = 2, scales = 'free') +
+  coord_cartesian(clip = 'off') +
+  facet_wrap(~int_name, nrow = 2, scales = 'free', ) +
   theme(panel.grid.major.y = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks = element_blank(),
@@ -127,9 +129,9 @@ p_sift_freq <- select(variants, sift_score, freq) %>%
   group_by(freq_cat) %>%
   summarise(mean = mean(sift_score), sd = sd(sift_score), .groups='drop') %>%
   ggplot() + 
+  geom_hline(yintercept = 0.05, linetype = 'dotted', colour = 'black') +
   geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = clamp(mean - sd, 0), yend = mean + sd), colour = '#377eb8', size = 0.5) +
   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#377eb8') +
-  geom_hline(yintercept = 0.05, linetype = 'dotted', colour = 'black') +
   labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score')
 
 ### Panel 5 - SIFT4G against Spike DMS Expression Fitness
@@ -137,7 +139,7 @@ p_sift_dms <- select(spike, expression, sift_score, sift_median) %>%
   mutate(sig = ifelse(sift_score < 0.05, 'Deleterious', 'Neutral')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
-  geom_boxplot(fill = '#377eb8') +
+  geom_boxplot(fill = '#377eb8', outlier.shape = 20) +
   stat_compare_means(comparisons = list(c('Deleterious', 'Neutral')), method = 't.test', size = 2) +
   labs(x = 'SIFT4G Prediction', y = 'Spike DMS Expression Fitness')
 
@@ -148,10 +150,10 @@ p_foldx_freq <- select(variants, total_energy, freq) %>%
   group_by(freq_cat) %>%
   summarise(mean = mean(total_energy), sd = sd(total_energy), .groups='drop') %>%
   ggplot() + 
-  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = mean - sd, yend = mean + sd), colour = '#e41a1c', size = 0.5) +
-  geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
   geom_hline(yintercept = 1, linetype = 'dotted', colour = 'black') +
   geom_hline(yintercept = -1, linetype = 'dotted', colour = 'black') +
+  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = mean - sd, yend = mean + sd), colour = '#e41a1c', size = 0.5) +
+  geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
   labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kJ'%.%'mol'^-1*')'))
 
 ### Panel 7 FoldX against Spike DMS Expression Fitness
@@ -159,13 +161,13 @@ p_foldx_dms <- select(spike, expression, total_energy) %>%
   mutate(sig = ifelse(total_energy < 1, ifelse(total_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
-  geom_boxplot(fill = '#e41a1c') +
+  geom_boxplot(fill = '#e41a1c', outlier.shape = 20) +
   stat_compare_means(comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral')),
                      method = 't.test', size = 2) +
   labs(x = 'FoldX Prediction', y = 'Spike DMS Expression Fitness')
 
 ### Assemble figure
-size <- theme(text = element_text(size = 8))
+size <- theme(text = element_text(size = 7))
 p1 <- p_schematic + labs(tag = 'A') + size
 p2 <- p_coverage + labs(tag = 'B') + size
 p3 <- p_complexes + labs(tag = 'C') + size
