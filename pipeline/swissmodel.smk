@@ -49,7 +49,7 @@ rule swissmodel_unzip:
         """
         unzip -d data/swissmodel/{wildcards.gene_id} {input} &>> {log}
         outdir=$(ls data/swissmodel/{wildcards.gene_id}) &>> {log}
-        mv data/swissmodel/{wildcards.gene_id}/${{outdir}}/model/* data/swissmodel/{wildcards.gene_id}/ &>> {log}
+        mv data/swissmodel/{wildcards.gene_id}/${{outdir}}/model/* data/swissmodel/{wildcards.gene_id}/ || echo "No high quality models" &>> {log}
         rm -r data/swissmodel/{wildcards.gene_id}/${{outdir}} &>> {log}
         touch data/swissmodel/{wildcards.gene_id}/.unzipped &>> {log}
         """
