@@ -177,18 +177,18 @@ const Download = () => {
                     <li>diff_intraclashesgroup2: Change in intraclashesgroup2 from WT to mutant</li>
                     <li>interaction_energy: Interface &Delta;G for the mutant protein</li>
                     <li>diff_interaction_energy: &Delta;&Delta;G from WT to mutant</li>
-                    <li>backbone_hbond - entropy_complex: Breakdown of &Delta;G contributions to interaction_energy from the different terms in FOldX's model</li>
+                    <li>backbone_hbond - entropy_complex: Breakdown of &Delta;G contributions to interaction_energy from the different terms in FoldX's model</li>
                     <li>diff_backbone_hbond - diff_entropy_complex: Same breakdown for &Delta;&Delta;G between each term in WT and mutant</li>
-                    <li>number_of_residues:</li>
-                    <li>diff_number_of_residues:</li>
+                    <li>number_of_residues: Number of residues in the interface</li>
+                    <li>diff_number_of_residues: Change in number of interface residues between WT and mutant</li>
                     <li>number_of_interface_residues: Number of amino acids involved in the mutant interface</li>
                     <li>diff_interface_residues: Change in number_of_interface_residues compared to the WT</li>
                     <li>interface_residues_clashing: Number of clashing interface residues in the mutant</li>
                     <li>diff_interface_residues_clashing: Change in clashing residues from the WT</li>
                     <li>interface_residues_vdw_clashing: Number of interface residues with Van der Waals clashes in the mutant</li>
                     <li>diff_interface_residues_vdw_clashing: Change in number of Van der Waals clasing residues from the WT</li>
-                    <li>interface_residues_bb_clashing:</li>
-                    <li>diff_interface_residues_bb_clashing:</li>
+                    <li>interface_residues_bb_clashing: Number of interface residues with backbone clashes</li>
+                    <li>diff_interface_residues_bb_clashing: Change in number of interface residues with backbone clashes between WT and mutant</li>
                     <li>residues_lost: List of amino acids lost from the interface on mutation</li>
                     <li>residues_gained: List of amino acids added to the interface on mutation</li>
                     <li>interface_residues: List of amino acids in the mutated interface</li>
