@@ -36,7 +36,7 @@ p_spike_dms <- select(spike, position, wt, mut, binding, int_name, diff_interact
   filter(int_name == 'ace2') %>%
   mutate(sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising')) %>%
   ggplot(aes(x = sig, y = binding)) +
-  geom_boxplot(fill = '#984ea3') +
+  geom_boxplot(fill = '#984ea3', outlier.shape = 20) +
   stat_compare_means(comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral')), method = 't.test', size = 2) +
   coord_cartesian(clip = 'off') +
   labs(x = 'FoldX Interface Prediction', y = 'ACE2 Binding Fitness')
@@ -46,19 +46,27 @@ dms_models <- select(spike, binding, ddg=total_energy, int_ddg = diff_interactio
   mutate(binding_sig = binding < log10(0.5)) %>% # Binding rate half wt
   pivot_longer(c(-binding, -binding_sig), names_to = 'tool', values_to = 'score') %>%
   group_by(tool) %>%
-  group_modify(~calc_roc(., binding_sig, score, greater = .y$tool != 'sift_score'))
+  group_modify(~calc_roc(., binding_sig, score, greater = .y$tool != 'sift_score')) %>%
+  ungroup() %>%
+  add_row(tool = c('sift_score', 'sift_score', 'ddg', 'ddg', 'int_ddg', 'int_ddg'))
 
+dms_auc <- group_by(dms_models, tool) %>%
+  summarise(auc = integrate(approxfun(fpr, tpr), lower = 0, upper = 1, subdivisions = 1000)$value, .groups = 'drop') %>%
+  {structure(.$auc, names = .$tool)} %>%
+  signif(digits = 2)
+
+tool_labs <- c(ddg=expression(Delta*Delta*'G'),
+               int_ddg=expression('Interface'~Delta*Delta*'G'),
+               sift_score='SIFT4G Score')
+               
 p_roc <- ggplot(dms_models, aes(x = fpr, y = tpr, colour = tool)) +
-  geom_step(direction = 'hv') +
+  geom_line() +
   geom_abline(slope = 1, linetype = 'dashed', colour = 'black') +
   labs(x = 'False Positive Rate', y = 'True Positive Rate') +
-  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '',
-                      labels = c(ddg=expression(Delta*Delta*G),
-                                 int_ddg=expression('Interface'~Delta*Delta*G),
-                                 sift_score='SIFT4G Score')) +
-  # Interfaces
-  annotate('segment', x = 0.5439189, y = 0.6075949, xend = 0.57, yend = 0.45) +
-  annotate('text', x = 0.57, y = 0.44, label = 'Delta*Delta*"G Threshold"%~~%0', hjust = 0.1, vjust = 1, parse = TRUE, size = 2) +
+  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '', labels = tool_labs) +
+  annotate('segment', x = c(0.5439189, 0.1340369), y = c(0.6075949, 0.2203732), xend = c(0.57, 0.25), yend = c(0.45, 0.1)) +
+  annotate('text', x = c(0.57, 0.26), y = c(0.44, 0.1), label = c('Delta*Delta*"G Threshold"%~~%0', '"SIFT4G Score Threshold = 0"'),
+           hjust = c(0.1, 0), vjust = c(1, 0.5), parse = TRUE, size = 2) +
   theme(legend.position = 'top',
         legend.margin = margin(l = -5, b = -5, unit = 'mm'),
         legend.spacing.x = unit(0, 'mm'))
