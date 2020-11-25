@@ -2,6 +2,7 @@ import React from 'react';
 import About from './components/About';
 import Download from './components/Download';
 import Help from './components/Help';
+import Changelog from './components/Changelog';
 import DataController from './components/DataController';
 import TitleBar from './components/TitleBar';
 import Footer from './components/Footer';
@@ -37,6 +38,9 @@ function InnerApp() {
                 </Route>
                 <Route path="/download">
                     <Download/>
+                </Route>
+                <Route path="/changelog">
+                    <Changelog/>
                 </Route>
             </Switch>
             <DataController hidden={page.pathname !== '/'}/>
