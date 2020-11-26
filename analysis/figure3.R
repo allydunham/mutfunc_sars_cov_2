@@ -26,22 +26,22 @@ p_s_variants <- ggplot() +
   coord_fixed(expand = FALSE, xlim = c(0, 1), ylim = c(0, 1), clip = 'off') +
   annotation_raster(s_img, xmin = 0.1, xmax = 0.9, ymin = 0.1, ymax = 0.9) +
   
-  annotate('segment', x = 0.7, xend = 0.75, y = 0.715, yend = 0.8) +
-  annotate('richtext', x = 0.755, y = 0.81, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>N439K (0.9%)</b><br>&Delta;&Delta;G = -0.76&thinsp;kJ.mol<sup>-1</sup>',
+  annotate('segment', x = 0.425, xend = 0.3, y = 0.675, yend = 0.8) +
+  annotate('richtext', x = 0.295, y = 0.81, hjust = 1, vjust = 1, size = label_text_size,
+           label = '<b>A222V (4.5%)</b><br>&Delta;&Delta;G = 1.76&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.405, xend = 0.31, y = 0.58, yend = 0.85) +
-  annotate('richtext', x = 0.3, y = 0.86, hjust = 1, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.49, xend = 0.75, y = 0.62, yend = 0.85) +
+  annotate('richtext', x = 0.755, y = 0.86, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>T29I (0.2%)</b><br>&Delta;&Delta;G = 3.94&thinsp;kJ.mol<sup>-1</sup><br>Phosphosite',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.475, xend = 0.6, y = 0.41, yend = 0.2) +
-  annotate('richtext', x = 0.605, y = 0.21, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.535, xend = 0.65, y = 0.45, yend = 0.3) +
+  annotate('richtext', x = 0.655, y = 0.31, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>D614G (87%)</b><br>&Delta;&Delta;G = 0.077&thinsp;kJ.mol<sup>-1</sup><br>In S-S interface<br>Removes 1 interface residue',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.25, xend = 0.1, y = 0.33, yend = 0.15) +
+  annotate('segment', x = 0.29, xend = 0.1, y = 0.36, yend = 0.15) +
   annotate('richtext', x = 0.07, y = 0.14, vjust = 1, hjust = 0, size = label_text_size,
            label = '<b>V1068F (0.2%)</b><br>In S-S interface<br>Interface &Delta;&Delta;G = 2.05&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
