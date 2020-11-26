@@ -55,6 +55,7 @@ const About = () => {
                             <li>Orf3a homodimer</li>
                             <li>Orf9b homodimer</li>
                             <li>Orf9b - Tom70</li>
+                            <li>Replication Complex (nsp7, nsp8, RdRp and Hel)</li>
                         </ul>
                     </li>
                     <li>Phosphorylation sites</li>
