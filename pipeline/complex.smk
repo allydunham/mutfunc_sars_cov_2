@@ -135,7 +135,7 @@ def calc_mut_analysis_mb(wildcards):
     """
     Select RAM requirements
     """
-    ram = {'s_s': 64000, 'nsp7_nsp8_pol': 32000}
+    ram = {'s_s': 64000, 'nsp7_nsp8_pol': 32000, 'nsp1_40s': 32000}
     return ram.get(wildcards.complex, 16000)
 
 rule complex_mut_analysis:
