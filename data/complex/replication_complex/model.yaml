@@ -1,0 +1,29 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb7cxm.ent'
+model: '7cxm.1'
+chains:
+  A:
+    uniprot: 'P0DTD1'
+    name: 'nsp12'
+  B:
+    uniprot: 'P0DTD1'
+    name: 'nsp8'
+  C:
+    uniprot: 'P0DTD1'
+    name: 'nsp7'
+  D:
+    uniprot: 'P0DTD1'
+    name: 'nsp8'
+  E:
+    uniprot: 'P0DTD1'
+    name: 'nsp13'
+  F:
+    uniprot: 'P0DTD1'
+    name: 'nsp13'
+interfaces:
+  - 'A_B'
+  - 'A_C'
+  - 'A_D'
+  - 'A_E'
+  - 'B_F'
+  - 'E_C'
+  - 'E_D'
