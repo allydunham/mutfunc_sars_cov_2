@@ -28,17 +28,17 @@ p_s_variants <- ggplot() +
   
   annotate('segment', x = 0.7, xend = 0.75, y = 0.715, yend = 0.8) +
   annotate('richtext', x = 0.755, y = 0.81, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>N439K (0.9%)</b><br>&Delta;&Delta;G = -1.15&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>N439K (0.9%)</b><br>&Delta;&Delta;G = -0.76&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.405, xend = 0.31, y = 0.58, yend = 0.85) +
   annotate('richtext', x = 0.3, y = 0.86, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>T29I (0.2%)</b><br>&Delta;&Delta;G = 1.59&thinsp;kJ.mol<sup>-1</sup><br>Phosphosite',
+           label = '<b>T29I (0.2%)</b><br>&Delta;&Delta;G = 3.94&thinsp;kJ.mol<sup>-1</sup><br>Phosphosite',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.475, xend = 0.6, y = 0.41, yend = 0.2) +
   annotate('richtext', x = 0.605, y = 0.21, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>D614G (87%)</b><br>&Delta;&Delta;G = 1.65&thinsp;kJ.mol<sup>-1</sup><br>In S-S interface',
+           label = '<b>D614G (87%)</b><br>&Delta;&Delta;G = 0.077&thinsp;kJ.mol<sup>-1</sup><br>In S-S interface<br>Removes 1 interface residue',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.25, xend = 0.1, y = 0.33, yend = 0.15) +
@@ -94,7 +94,7 @@ p_orf3a_variants <- ggplot() +
   
   annotate('segment', x = 0.69, xend = 0.71, y = 0.82, yend = 0.87) +
   annotate('richtext', x = 0.69, y = 0.87, hjust = 0, vjust = 0, size = label_text_size,
-           label = '<b>T223I (1.1%)</b><br>In dimer interface<br>Interface &Delta;&Delta;G = 2.51&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>T223I (1.1%)</b><br>In dimer interface<br>Interface &Delta;&Delta;G = 1.05&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.36, xend = 0.4, y = 0.45, yend = 0.79) +
@@ -136,7 +136,7 @@ p_nsp7_nsp8_nsp12_variants <- ggplot() +
   annotate('segment', x = 0.565, xend = 0.7, y = 0.71, yend = 0.8) +
   annotate('segment', x = 0.555, xend = 0.7, y = 0.38, yend = 0.8) +
   annotate('richtext', x = 0.71, y = 0.815, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>nsp8 I107V (0.2%)</b><br>&Delta;&Delta;G = 1.22&thinsp;kJ.mol<sup>-1</sup><br>In nsp7 and RdRp<br>interfaces',
+           label = '<b>nsp8 I107V (0.2%)</b><br>&Delta;&Delta;G = 0.96&thinsp;kJ.mol<sup>-1</sup><br>In nsp7 and RdRp<br>interfaces',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.55, xend = 0.4, y = 0.6, yend = 0.75) +

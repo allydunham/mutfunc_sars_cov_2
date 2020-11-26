@@ -1,5 +1,6 @@
 Pipfile.lock
 data/**
+backup/**
 .snakemake/*
 logs/*
 test/*

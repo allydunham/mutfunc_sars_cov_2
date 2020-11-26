@@ -43,10 +43,9 @@ classify_freq <- function(x){
   out <- rep('> 10', length(x))
   out[x < 0.1] <- '1-10'
   out[x < 0.01] <- '0.1-1'
-  out[x < 0.001] <- '0.01-0.1'
-  out[x < 0.0001] <- '< 0.01'
+  out[x < 0.001] <- '< 0.1'
   out[is.na(x)] <- 'NA'
-  out <- factor(out, levels = c('NA', '< 0.01', '0.01-0.1', '0.1-1', '1-10', '> 10'))
+  out <- factor(out, levels = c('NA', '< 0.1', '0.1-1', '1-10', '> 10'))
   return(out)
 }
 
@@ -91,7 +90,7 @@ calc_roc <- function(tbl, true_col, var_col, greater=TRUE){
   
   true <- pull(tbl, !!true_col)
   var <- pull(tbl, !!var_col)
-  steps <- sort(unique(var))
+  steps <- c(-Inf, sort(unique(var)), Inf)
   
   true_mat <- matrix(true, nrow = length(true), ncol = length(steps))
   var_mat <- matrix(var, nrow = length(var), ncol = length(steps))
@@ -107,11 +106,17 @@ calc_roc <- function(tbl, true_col, var_col, greater=TRUE){
   tn <- colSums(!preds & !true_mat)
   fp <- colSums(preds & !true_mat)
   fn <- colSums(!preds & true_mat)
-  return(
-    tibble(thresh = steps, tp = tp, tn = tn, fp = fp, fn = fn,
-           tpr = tp / (tp + fn),
-           tnr = tn / (tn + fp),
-           fpr = 1 - tnr,
-           precision = tp / (tp + fp))
-    )
+  tbl <- tibble(thresh = steps, tp = tp, tn = tn, fp = fp, fn = fn,
+                tpr = tp / (tp + fn),
+                tnr = tn / (tn + fp),
+                fpr = fp / (tn + fp),
+                precision = tp / (tp + fp))
+  
+  if (greater){
+    tbl <- arrange(tbl, desc(thresh))
+  } else {
+    tbl <- arrange(tbl, thresh)
+  }
+  
+  return(tbl)
 }
