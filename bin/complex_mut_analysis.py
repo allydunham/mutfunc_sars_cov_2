@@ -10,22 +10,16 @@ import subprocess
 import itertools
 import argparse
 
-def make_analyse_complex(pdb_dir, interface, output_dir):
+def run_analyse_complex(pdb, pdb_dir, interface, output_dir):
     """
-    Generate function to run Folx AnalyseComplex command on an input PDB
+    Run FoldX AnalyseComplex command on a single PDB
     """
-    def run(pdb):
-        """
-        Run FoldX AnalyseComplex command on a single PDB
-        """
-        command = ['foldx', '--command=AnalyseComplex', f'--pdb={pdb}',
-                   '--pdb-dir={pdb_dir}', '--clean-mode=3',
-                   '--output-dir={output_dir}', '--analyseComplexChains={interface}']
-        print(' '.join(command))
-        #subprocess.run()
-        print(pdb, 'done')
-
-    return run
+    command = ['foldx', '--command=AnalyseComplex', f'--pdb={pdb}',
+               f'--pdb-dir={pdb_dir}', '--clean-mode=3',
+               f'--output-dir={output_dir}',
+               f'--analyseComplexChains={interface}']
+    subprocess.run(command, capture_output=True)
+    print(pdb, 'done', flush=True)
 
 def main(args):
     """
@@ -37,12 +31,13 @@ def main(args):
     mutant_pdbs = [i for i in os.listdir(args.pdb) if i.endswith('.pdb')]
     total = len(mutant_pdbs)
 
-    func = make_analyse_complex(args.pdb, args.interface.replace('_', ','), args.output)
     with multiprocessing.Pool(processes=args.processes) as pool:
-        print('Opened worker pool with', pool._processes, 'workers')
-        for i, _ in enumerate(pool.imap(func, mutant_pdbs)):
-            print(f'{i}/{total}')
-
+        print('Opened worker pool with', pool._processes, 'workers', flush=True)
+        args = zip(mutant_pdbs,
+                   itertools.cycle([args.pdb]),
+                   itertools.cycle([args.interface.replace('_', ',')]),
+                   itertools.cycle([args.output]))
+        pool.starmap(run_analyse_complex, args)
 
 def parse_args():
     """Process arguments"""

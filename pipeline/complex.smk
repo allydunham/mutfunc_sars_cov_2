@@ -131,6 +131,13 @@ rule complex_mutant_models:
         touch 'data/complex/{wildcards.complex}/{wildcards.interface}/mutant_models_made' &> {log}
         """
 
+def get_mut_complex_ram(wildcards):
+    """
+    Get RAM to use for each complex
+    """
+    ram = {'s_s': 64000, 'nsp1_40s': 32000}
+    return ram.get(wildcards.complex, 16000)
+
 rule complex_mut_analysis:
     """
     Analyse mutant interfaces using FoldX AnalyseComplex.
@@ -144,8 +151,9 @@ rule complex_mut_analysis:
         'data/complex/{complex}/{interface}/mutant_analysis_done'
 
     resources:
-        mem_mb = 64000
-        threads = 9
+        mem_mb = get_mut_complex_ram,
+    
+    threads: 8 
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
@@ -155,18 +163,6 @@ rule complex_mut_analysis:
         python bin/complex_mut_analysis.py --processes 8 data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs {wildcards.interface} data/complex/{wildcards.complex}/{wildcards.interface}/mutant &> {log}
         touch data/complex/{wildcards.complex}/{wildcards.interface}/mutant_analysis_done &> {log}
         """
-    run:
-        root = f'data/complex/{wildcards.complex}/{wildcards.interface}'
-
-        # Make mutant list
-        mut_nums = [int(i) for i in glob_wildcards(f'{root}/mutant_pdbs/model_Repair_{{n}}.pdb').n]
-        with open(f'{root}/mutant_list', 'w') as mutant_list:
-            print(*[f'model_Repair_{n}.pdb' for n in sorted(mut_nums)], sep='\n', file=mutant_list)
-
-        # Analyse complexes
-        shell(f'')
-        shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
-        shell(f"")
 
 rule complex_combine:
     """
