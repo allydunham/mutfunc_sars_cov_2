@@ -131,13 +131,6 @@ rule complex_mutant_models:
         touch 'data/complex/{wildcards.complex}/{wildcards.interface}/mutant_models_made' &> {log}
         """
 
-def calc_mut_analysis_mb(wildcards):
-    """
-    Select RAM requirements
-    """
-    ram = {'s_s': 64000, 'nsp7_nsp8_pol': 32000}
-    return ram.get(wildcards.complex, 16000)
-
 rule complex_mut_analysis:
     """
     Analyse mutant interfaces using FoldX AnalyseComplex.
@@ -151,11 +144,17 @@ rule complex_mut_analysis:
         'data/complex/{complex}/{interface}/mutant_analysis_done'
 
     resources:
-        mem_mb = calc_mut_analysis_mb
+        mem_mb = 64000
+        threads = 9
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'
 
+    shell:
+        """
+        python bin/complex_mut_analysis.py --processes 8 data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs {wildcards.interface} data/complex/{wildcards.complex}/{wildcards.interface}/mutant &> {log}
+        touch data/complex/{wildcards.complex}/{wildcards.interface}/mutant_analysis_done &> {log}
+        """
     run:
         root = f'data/complex/{wildcards.complex}/{wildcards.interface}'
 
@@ -165,9 +164,9 @@ rule complex_mut_analysis:
             print(*[f'model_Repair_{n}.pdb' for n in sorted(mut_nums)], sep='\n', file=mutant_list)
 
         # Analyse complexes
-        shell(f'mkdir {root}/mutant &> {log} && echo "mkdir {root}/mutant" &> {log} || true')
+        shell(f'')
         shell(f"foldx --command=AnalyseComplex --pdb-list=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_list --pdb-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant_pdbs --clean-mode=3 --output-dir=data/complex/{wildcards.complex}/{wildcards.interface}/mutant --analyseComplexChains={wildcards.interface.replace('_', ',')} &> {log}")
-        shell(f"touch {root}/mutant_analysis_done &> {log}")
+        shell(f"")
 
 rule complex_combine:
     """
