@@ -147,7 +147,6 @@ rule complex_mut_analysis:
 
     output:
         directory('data/complex/{complex}/{interface}/mutant'),
-        'data/complex/{complex}/{interface}/mutant_list',
         'data/complex/{complex}/{interface}/mutant_analysis_done'
 
     resources:
