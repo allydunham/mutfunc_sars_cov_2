@@ -43,42 +43,40 @@ p_spike_dms <- select(spike, position, wt, mut, binding, int_name, diff_interact
 
 ### Panel 3 - Spike DMS model
 dms_models <- select(spike, binding, ddg=total_energy, int_ddg = diff_interaction_energy, sift_score) %>%
-  mutate(binding_sig = binding < log10(0.5)) %>% # Binding rate half wt
+  mutate(binding_sig = binding < log10(0.1), # Binding rate 1/10th wt and where tail begins on hist
+         ddg_int_only = ifelse(is.na(int_ddg), NA, ddg), # Versions of other scores for interface residues only
+         sift_score_int_only = ifelse(is.na(int_ddg), NA, sift_score)) %>%
   pivot_longer(c(-binding, -binding_sig), names_to = 'tool', values_to = 'score') %>%
-  group_by(tool) %>%
+  mutate(interface_only = ifelse(tool %in% c('ddg', 'sift_score'), FALSE, TRUE),
+         tool = str_remove(tool, '_int_only')) %>%
+  drop_na(score) %>%
+  group_by(tool, interface_only) %>%
   group_modify(~calc_roc(., binding_sig, score, greater = .y$tool != 'sift_score')) %>%
-  ungroup() %>%
-  add_row(tool = c('sift_score', 'sift_score', 'ddg', 'ddg', 'int_ddg', 'int_ddg'))
+  ungroup()
 
-dms_auc <- group_by(dms_models, tool) %>%
+tool_labs <- c(ddg='Delta*Delta*"G',
+               sift_score='"SIFT4G Score',
+               int_ddg='"Interface"~Delta*Delta*"G')
+
+dms_auc <- group_by(dms_models, tool, interface_only) %>%
   summarise(auc = integrate(approxfun(fpr, tpr), lower = 0, upper = 1, subdivisions = 1000)$value, .groups = 'drop') %>%
-  {structure(.$auc, names = .$tool)} %>%
-  signif(digits = 2)
-
-tool_labs <- c(ddg=expression(Delta*Delta*'G'),
-               int_ddg=expression('Interface'~Delta*Delta*'G'),
-               sift_score='SIFT4G Score')
-               
+  arrange(desc(auc)) %>%
+  mutate(fpr = 1, tpr = c(0.15, 0.25, 0.05, 0.15, 0.05),
+         lab = str_c(tool_labs[tool], ' (AUC = ', signif(auc, 2), ')"'))
+        
 p_roc <- ggplot(dms_models, aes(x = fpr, y = tpr, colour = tool)) +
-  geom_line() +
+  facet_wrap(~interface_only, labeller = as_labeller(c(`TRUE`='Interface Residues', `FALSE`='All Residues'))) +
   geom_abline(slope = 1, linetype = 'dashed', colour = 'black') +
+  geom_line(show.legend = FALSE) +
+  geom_text(data = dms_auc, mapping = aes(label = lab), parse=TRUE, hjust = 1, size = 2, show.legend = FALSE) +
+  coord_fixed() +
   labs(x = 'False Positive Rate', y = 'True Positive Rate') +
-  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '', labels = tool_labs) +
-  annotate('segment', x = c(0.5439189, 0.1340369), y = c(0.6075949, 0.2203732), xend = c(0.57, 0.25), yend = c(0.45, 0.1)) +
-  annotate('text', x = c(0.57, 0.26), y = c(0.44, 0.1), label = c('Delta*Delta*"G Threshold"%~~%0', '"SIFT4G Score Threshold = 0"'),
-           hjust = c(0.1, 0), vjust = c(1, 0.5), parse = TRUE, size = 2) +
-  theme(legend.position = 'top',
-        legend.margin = margin(l = -5, b = -5, unit = 'mm'),
-        legend.spacing.x = unit(0, 'mm'))
-
-p_pr <- ggplot(dms_models, aes(x = tpr, y = precision, colour = tool)) +
-  geom_step(direction = 'hv') +
-  geom_hline(yintercept = 0.5, linetype = 'dashed', colour = 'black') +
-  labs(x = 'False Positive Rate', y = 'True Positive Rate') +
-  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '',
-                      labels = c(ddg=expression(Delta*Delta*G),
-                                 int_ddg=expression('Interface'~Delta*Delta*G),
-                                 sift_score='SIFT4G Score'))
+  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '') +
+  geom_segment(data = tibble(x = 0.5362135, y = 0.700, xend = 0.7, yend = 0.47, interface_only=TRUE),
+               mapping = aes(x=x, y=y, xend=xend, yend=yend), inherit.aes = FALSE) +
+  geom_text(data = tibble(x = 0.7, y = 0.47, interface_only=TRUE), mapping = aes(x=x, y=y),
+            label = 'Delta*Delta*"G Threshold"%~~%0',
+            hjust = 0.1, vjust = 1.05, parse = TRUE, size = 2, inherit.aes = FALSE)
 
 ### Panel 4 - N in silico DMS
 is_dms_nc <- select(variants, name, position, wt, mut, log10_freq, int_name, diff_interaction_energy) %>%
