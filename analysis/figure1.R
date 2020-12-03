@@ -96,9 +96,10 @@ p_coverage <- select(variants, name, position, sift_score, total_energy) %>%
   
 ### Panel 3 - Complexes
 pdb_ints <- c(`2ahm`='nsp7_nsp8', `5c8s`='nsp10_nsp14', `6m0j`='ace2_s', `6w4b`='nsp9_nsp9', `6w75`='nsp10_nsp16', `6x29`='s_s',
-              `6xdc`='orf3a_orf3a', `6zoj`='nsp1_40s', `7btf`='nsp7_nsp8_pol', `7c22`='nc_nc', `7kdt`='orf9b_tom70')
+              `6xdc`='orf3a_orf3a', `6zoj`='nsp1_40s', `7btf`='nsp7_nsp8_pol', `7c22`='nc_nc', `7kdt`='orf9b_tom70', `7cxm`='replication_complex')
 pdb_names <- c(`2ahm`='nsp7 - nsp8', `5c8s`='nsp10 - ExoN', `6m0j`='S - ACE2', `6w4b`='nsp9 - nsp9', `6w75`='nsp10 - nsp16', `6x29`='S - S',
-               `6xdc`='orf3a - orf3a', `6zoj`='nsp1 - 40S Ribosome', `7btf`='nsp7 - nsp8 - RdRp', `7c22`='N - N', `7kdt`='orf9b - TOM70')
+               `6xdc`='orf3a - orf3a', `6zoj`='nsp1 - 40S Ribosome', `7btf`='nsp7 - nsp8 - RdRp', `7c22`='N - N', `7kdt`='orf9b - TOM70',
+               `7cxm`='Replication Complex')
 
 complexes <- select(variants, int_template, name, int_name, position) %>%
   drop_na() %>%
