@@ -49,7 +49,7 @@ classify_freq <- function(x){
   return(out)
 }
 
-int_colour_scale <- c(None='black', ace2='#a6cee3', nsp10='#1f78b4', nsp12='#b2df8a', nsp14='#33a02c',
+int_colour_scale <- c(None='black', ace2='#a6cee3', tom70='brown', nsp10='#1f78b4', nsp12='#b2df8a', nsp13='green', nsp14='#33a02c',
                       nsp16='#fb9a99', nsp7='#e31a1c', nsp8='#fdbf6f', nsp9='#ff7f00', `40S ribosomal protein S3`='#cab2d6',
                       `40S ribosomal protein S30`='#cab2d6', `18S ribosomal RNA`='#cab2d6', `40S ribosomal protein S2`='#cab2d6',
                       `40S ribosomal protein S9`='#cab2d6', s='#6a3d9a', orf3a='#ffff99', nc='#b15928', orf9b='#ffff33')
