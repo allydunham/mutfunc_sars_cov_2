@@ -88,5 +88,62 @@ plots$ddg <- (ggplot(conserved) +
                     labs(x = 'Position', y = expression("Mean"~Delta*Delta*"G"))) %>%
   labeled_plot(units = 'cm', height = 2.5 * n_distinct(conserved$name), width = 20)
 
+### In silico DMSs
+is_dms <- function(tbl, interface){
+  tbl <- group_by(tbl, name, position, wt, mut, log10_freq) %>%
+    summarise(diff_interaction_energy = diff_interaction_energy[which.max(abs(diff_interaction_energy))], .groups = 'drop') %>%
+    mutate(wt_int = factor(wt, levels = sort(Biostrings::AA_STANDARD)) %>% as.integer(),
+                mut_int = factor(mut, levels = sort(Biostrings::AA_STANDARD)) %>% as.integer())
+    
+  tbl_summary <- group_by(tbl, position, wt_int) %>%
+    summarise(mean_ddg = mean(diff_interaction_energy), .groups = 'drop')
+  
+  p <- ggplot() + 
+    # Scale covers ddG heatmap, mean row and freq plot
+    scale_x_continuous(breaks = c(1:20, 22, 24:29), limits = c(0, 29),
+                       labels = c(sort(Biostrings::AA_STANDARD), expression(bar(Delta*Delta*G)), -5:0)) +
+    
+    # ddG heatmap & means row
+    geom_tile(data = tbl, mapping = aes(x = mut_int, y = position, fill = clamp(diff_interaction_energy, lower = -5, upper = 5))) +
+    geom_tile(data = tbl_summary, mapping = aes(x = wt_int, y = position), fill = 'grey', show.legend = FALSE) +
+    geom_tile(data = tbl_summary, mapping = aes(x = 22, y = position, fill = mean_ddg), show.legend = FALSE) +
+    scale_fill_gradientn(colours = c('#5e4fa2', '#3288bd', '#66c2a5', '#abdda4', '#e6f598', '#ffffbf',
+                                     '#fee08b', '#fdae61', '#f46d43', '#d53e4f', '#9e0142'),
+                         values = scales::rescale(-5:5, to=0:1), na.value = 'white', limits = c(-5, 5),
+                         name = 'Interface &Delta;&Delta;G (kJ.mol<sup>-1</sup>)<br>Clamped to &plusmn;5<br>Largest effect used for multiple models') +
+    # Add WT to legend
+    geom_point(aes(colour = 'WT'), y = -100, x = -100, shape = 15, size = 5, show.legend = FALSE) +
+    scale_colour_manual(name='', values = c(WT='grey')) +
+    
+    # Freq plot
+    annotate('segment', x = 24:29, xend = 24:29, y = 0, yend = max(tbl$position), linetype = 'dotted', colour = 'grey') +
+    geom_segment(data = tbl, mapping = aes(y=position, yend=position, x = 29 + log10_freq),
+                 xend = 24) +
+    geom_point(data = tbl, mapping = aes(y=position, x = 29 + log10_freq), shape=20) +
+    
+    # Misc
+    labs(x = expression('log'[10]~'Frequency'), y = 'Position', title = interface) +
+    coord_cartesian(clip = 'off', expand = FALSE) +
+    theme(axis.ticks.x = element_blank(),
+          axis.title.x = element_text(hjust = 1.05),
+          panel.grid.major.y = element_blank(),
+          plot.margin = unit(c(2,2,5,2), 'mm'),
+          legend.title = element_markdown())
+  labeled_plot(p, units = 'cm', height = max(max(tbl$position) * 0.05, 30), width = 20)
+}
+
+plots$is_dms <- select(variants, name, position, wt, mut, log10_freq, int_name, int_template, diff_interaction_energy) %>%
+  drop_na(int_name, int_template) %>%
+  mutate(name = display_names[name],
+         int_name = display_names[int_name],
+         int = str_c(name, ' - ', int_name)) %>%
+  group_by(int) %>%
+  {
+    n <- group_keys(.)$int
+    group_map(., ~is_dms(.x, .y$int)) %>%
+      set_names(n)
+  }
+  
+
 ### Save plots ###
 save_plotlist(plots, 'figures/interfaces', verbose = 2, overwrite = 'all')
