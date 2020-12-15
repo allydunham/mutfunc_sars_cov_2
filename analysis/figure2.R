@@ -10,28 +10,49 @@ spike <- read_csv('data/starr_ace2_spike.csv') %>%
   left_join(variants, by = c('uniprot', 'name', 'position', 'wt', 'mut'))
 
 ### Panel 1 - Interfaces freq
+join_int_name <- function(x, y){
+  xy = str_c(x, ' - ', y)
+  ord <- map2_int(x, y, ~str_order(c(.x, .y), numeric=TRUE)[1]) == 2
+  xy[ord] = str_c(y, ' - ', x)[ord]
+  return(xy)
+}
+
+interface_positions <- 
+
 sig_vars <- select(variants, name, position, wt, mut, int_name, freq, diff_interaction_energy) %>%
-  drop_na(int_name, freq) %>%
+  drop_na(int_name) %>%
   mutate(name = display_names[name],
          int_name = display_names[int_name],
-         int = str_c(name, ' - ', int_name),
-         sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising'))
+         int = join_int_name(name, int_name),
+         sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising'),
+         observed = !is.na(freq)) %>%
+  count(int, sig, observed) %>%
+  complete(int, sig, observed, fill = list(n=0)) %>%
+  group_by(int) %>%
+  mutate(tot = sum(n),
+         prop = n / tot) %>%
+  ungroup() %>%
+  filter(observed) %>% 
+  mutate(int = factor(int, levels = group_by(., int) %>% summarise(p = sum(prop), .groups='drop') %>% arrange(p) %>% pull(int)))
 
-p_freq <- ggplot(mapping = aes(x = freq, y = int)) +
-  geom_boxplot(data = sig_vars, outlier.shape = 20, outlier.size = 0.5) +
-  geom_point(data = filter(sig_vars, sig == 'Stabilising'), mapping = aes(colour = 'Stabilising'),
-             shape = 16, size = 0.8, position = position_jitter(width = 0, height = 0.2)) +
-  geom_point(data = filter(sig_vars, sig == 'Destabilising'), mapping = aes(colour = 'Destabilising'),
-             shape = 16, size = 0.8, position = position_jitter(width = 0, height = 0.2)) +
-  scale_x_log10() +
-  scale_colour_manual(name = '', values = c(Neutral='gray30', Stabilising='#377eb8', Destabilising='#e41a1c')) +
-  labs(x = 'Variant Frequency') +
-  theme(axis.title.y = element_blank(),
+int_names = levels(sig_vars$int)
+nums <- group_by(sig_vars, int) %>% summarise(n = str_c(sum(n), '/', tot[1]), .groups = 'drop') %>% pull(n)
+p_counts <- ggplot(sig_vars, aes(x = as.integer(int), y = prop, fill = sig)) +
+  geom_col() +
+  coord_flip() +
+  scale_x_continuous(name = '', breaks = 1:length(int_names), labels = int_names,
+                     sec.axis = dup_axis(name = 'Total Observed Variants', labels = nums)) +
+  scale_y_continuous(name = 'Proportion of Possible Variants Observed', expand = expansion(mult = c(0, 0.05))) +
+  scale_fill_manual(name = '', values = c(Neutral='gray30', Stabilising='#377eb8', Destabilising='#e41a1c'),
+                    breaks = c('Stabilising', 'Neutral', 'Destabilising')) +
+  guides(fill = guide_legend(keywidth = unit(3, 'mm'), keyheight = unit(3, 'mm'))) +
+  theme(axis.title.y.left = element_blank(),
+        axis.ticks.y = element_blank(),
         panel.grid.major.y = element_blank(),
         panel.grid.major.x = element_line(linetype = 'dotted', colour = 'grey'),
         legend.position = 'top',
-        legend.margin = margin(l = -5, b = -5, unit = 'mm'),
-        legend.spacing.x = unit(-1, 'mm'))
+        legend.margin = margin(l = -4, b = -4, unit = 'mm'),
+        legend.spacing.x = unit(1, 'mm'))
 
 ### Panel 2 - Frequency vs ddG
 p_freq_ddg <- select(variants, diff_interaction_energy, freq) %>%
@@ -148,7 +169,7 @@ p_is_dms <- ggplot() +
 
 ### Assemble figure
 size <- theme(text = element_text(size = 7))
-p1 <- p_freq + labs(tag = 'A') + size
+p1 <- p_counts + labs(tag = 'A') + size
 p2 <- p_freq_ddg + labs(tag = 'B') + size
 p3 <- p_spike_dms + labs(tag = 'C') + size
 p4 <- p_roc + labs(tag = 'D') + size
