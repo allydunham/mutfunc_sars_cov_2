@@ -38,7 +38,7 @@ sig_vars <- select(variants, name, position, wt, mut, int_name, freq, diff_inter
 int_names = levels(sig_vars$int)
 nums <- group_by(sig_vars, int) %>% summarise(n = str_c(sum(n), '/', tot[1]), .groups = 'drop') %>% pull(n)
 p_counts <- ggplot(sig_vars, aes(x = as.integer(int), y = prop, fill = sig)) +
-  geom_col() +
+  geom_col(width = 0.6) +
   coord_flip() +
   scale_x_continuous(name = '', breaks = 1:length(int_names), labels = int_names,
                      sec.axis = dup_axis(name = 'Total Observed Variants', labels = nums)) +
