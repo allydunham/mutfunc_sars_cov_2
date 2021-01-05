@@ -1,5 +1,6 @@
 general:
   check_online_updates: False
+  frontend_dir: "/path/to/frontend"
 
 frequency:
   vcf: 'variants.vcf.gz'
