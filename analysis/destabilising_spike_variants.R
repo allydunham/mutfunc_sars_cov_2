@@ -76,6 +76,7 @@ plots$destabilising_counts <- pivot_longer(sample_counts, -sample, names_to = 'm
   scale_fill_brewer(palette = 'Set1') +
   scale_x_continuous(breaks = 0:max(sample_counts$n_any)) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.11))) +
+  coord_cartesian(clip = 'off') +
   labs(x = 'Count', y = 'Number of Samples') +
   theme(axis.ticks.x = element_blank())
 

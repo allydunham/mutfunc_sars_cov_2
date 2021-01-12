@@ -31,26 +31,32 @@ plots$sift_cat <- select(variants, sift_sig, mut_escape_mean, mut_escape_median,
   pivot_longer(-sift_sig, names_to = 'metric', values_to = 'mut_escape', names_prefix='mut_escape_') %>%
   ggplot(aes(x = sift_sig, y = mut_escape)) +
   facet_wrap(~metric) +
-  geom_boxplot(show.legend = FALSE) +
-  stat_compare_means(method = 't.test', comparisons = list(c('Deleterious', 'Neutral'))) +
-  labs(x = 'SIFT4G Prediction', y = 'Antibody Escape Proportion')
+  geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
+  stat_compare_means(method = 't.test', size = 2, comparisons = list(c('Deleterious', 'Neutral'))) +
+  labs(x = 'SIFT4G Prediction', y = 'Antibody Escape Proportion') + 
+  coord_cartesian(clip = 'off') +
+  theme(text = element_text(size = 9))
 
 plots$foldx_cat <- select(variants, foldx_sig, mut_escape_mean, mut_escape_median, mut_escape_max) %>%
   pivot_longer(-foldx_sig, names_to = 'metric', values_to = 'mut_escape', names_prefix='mut_escape_') %>%
   ggplot(aes(x = foldx_sig, y = mut_escape)) +
   facet_wrap(~metric) +
-  geom_boxplot(show.legend = FALSE) +
-  stat_compare_means(method = 't.test', comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral'), c('Destabilising', 'Stabilising'))) +
-  labs(x = 'FoldX Prediction', y = 'Antibody Escape Proportion')
+  geom_boxplot(show.legend = FALSE, fill = '#377eb8', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
+  stat_compare_means(method = 't.test', size = 2, comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral'), c('Destabilising', 'Stabilising'))) +
+  labs(x = 'FoldX Prediction', y = 'Antibody Escape Proportion') + 
+  coord_cartesian(clip = 'off') +
+  theme(text = element_text(size = 9))
 
 plots$int_cat <- select(variants, int_name, int_sig, mut_escape_mean, mut_escape_median, mut_escape_max) %>%
   drop_na(int_sig) %>%
   pivot_longer(mut_escape_mean:mut_escape_max, names_to = 'metric', values_to = 'mut_escape', names_prefix='mut_escape_') %>%
   ggplot(aes(x = int_sig, y = mut_escape)) +
   facet_grid(rows = vars(int_name), cols = vars(metric)) +
-  geom_boxplot(show.legend = FALSE) +
-  stat_compare_means(method = 't.test', comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral'), c('Destabilising', 'Stabilising'))) +
-  labs(x = 'FoldX Interface Prediction', y = 'Antibody Escape Proportion')
+  geom_boxplot(show.legend = FALSE, fill = '#4daf4a', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
+  stat_compare_means(method = 't.test', size = 2, comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral'), c('Destabilising', 'Stabilising'))) +
+  labs(x = 'FoldX Interface Prediction', y = 'Antibody Escape Proportion') + 
+  coord_cartesian(clip = 'off') +
+  theme(text = element_text(size = 9))
 
 ### Save plots ###
 save_plotlist(plots, 'figures/antibody_escape', verbose = 2, overwrite = 'all')
