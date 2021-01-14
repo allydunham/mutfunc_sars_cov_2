@@ -69,10 +69,10 @@ def read_naccess_rsa(model):
     df['wt'] = [seq1(i) for i in df['wt']]
     positions = [int(i) for i in model.positions.split(',')]
     df = df[df['position'].isin(positions)]
-    df = df['uniprot', 'name', 'position', 'wt', 'template', 'chain', 'all_atoms_abs',
+    df = df[['uniprot', 'name', 'position', 'wt', 'template', 'chain', 'all_atoms_abs',
             'all_atoms_rel', 'side_chain_abs', 'side_chain_rel', 'main_chain_abs',
             'main_chain_rel', 'non_polar_abs', 'non_polar_rel', 'all_polar_abs',
-            'all_polar_rel']
+            'all_polar_rel']]
     return df
 
 def main(args):
@@ -82,23 +82,23 @@ def main(args):
         os.mkdir(args.dir)
 
     # Import models to process
-    print('Reading model tables...', end=' ')
+    print('Reading model tables...', end=' ', file=sys.stderr)
     models = pd.concat([parse_model_table(i) for i in args.models], axis=0).reset_index(drop=True)
-    print('done')
+    print('done', file=sys.stderr)
 
     # Filter PDB for Naccess
     for model in models.itertuples():
         path = f'data/swissmodel/{model.uniprot}_{model.name}/{model.model}/model.pdb'
-        print('Filtering ', path, '...', sep='', end=' ')
+        print('Filtering ', path, '...', sep='', end=' ', file=sys.stderr)
         filter_pdb(path, f'{args.dir}/{model.uniprot}_{model.name}_{model.model}.pdb', model.chain)
-        print('done')
+        print('done', file=sys.stderr)
 
     # Run Naccess and load results
     os.chdir(args.dir)
     accessibility = []
     for model in models.itertuples():
         path = f'{model.uniprot}_{model.name}_{model.model}.pdb'
-        print('Running Naccess on', path)
+        print('Running Naccess on', path, file=sys.stderr)
         run_naccess(path)
         accessibility.append(read_naccess_rsa(model))
 

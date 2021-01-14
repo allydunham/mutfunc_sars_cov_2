@@ -66,6 +66,7 @@ rule all:
         "data/output/ptms.tsv",
         "data/output/complex.tsv",
         "data/output/frequency.tsv",
+        "data/output/naccess.tsv",
         "data/output/summary.tsv"
 
 rule swissmodel_downloads:
