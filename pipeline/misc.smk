@@ -62,6 +62,23 @@ rule ptms_tsv:
     shell:
         'python bin/ptms_tsv.py --config snakemake.yaml > {output} 2> {log}'
 
+rule surface_accessibility:
+    """
+    Use Naccess to calculate surface accessibility for each PDB file downloaded from SWISS-Model
+    """
+    input:
+        [f'data/swissmodel/{i}.models' for i in SWISSMODEL_IDS.keys()]
+
+    output:
+        directory('data/naccess'),
+        'data/output/surface_accessibility.tsv'
+
+    log:
+        'logs/surface_accessibility.log'
+
+    shell:
+        'python bin/surface_accessibility.py --dir data/naccess {input} > {output} 2> {log}'
+
 rule summary_tsv:
     """
     Generate summary output table
