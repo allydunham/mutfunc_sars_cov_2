@@ -12,7 +12,7 @@
 
 ## Config ##
 project_name="COVID-19 Mutfunc"
-local_dir=$HOME/phd/covid19_mutfunc
+local_dir=$HOME/phd/sars_mutfunc/pipeline
 remote_dirs=( "ebi:/hps/research1/beltrao/ally/covid19_mutfunc" "ebi:/nfs/research1/beltrao/ally/covid19_mutfunc" )
 folders=( "data" "docs" "logs" )
 
