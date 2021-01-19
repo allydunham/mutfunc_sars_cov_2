@@ -22,6 +22,7 @@ def main(args):
     foldx = pd.read_csv(args.foldx, sep='\t', index_col=False, dtype={'model': str})
     foldx['template'] = foldx['template'].str.cat(foldx['chain'], sep='.')
     foldx = foldx[['uniprot', 'name', 'position', 'mut', 'template', 'total_energy']]
+    foldx = foldx.rename(columns={'total_energy': 'foldx_ddg'})
 
     ptms = pd.read_csv(args.ptms, sep='\t', index_col=False)
     ptms = ptms[['uniprot', 'name', 'position', 'ptm']]
@@ -40,16 +41,26 @@ def main(args):
     frequency = frequency[['uniprot', 'name', 'position', 'wt', 'mut', 'overall']]
     frequency = frequency.rename(columns={'overall': 'freq'})
 
+    accessibility = pd.read_csv(args.accessibility, sep='\t', index_col=False)
+    accessibility = accessibility[['uniprot', 'name', 'position', 'wt', 'all_atoms_rel']]
+    sa_rename = {'all_atoms_rel': 'relative_surface_accessibility'}
+    accessibility = accessibility.rename(columns=sa_rename)
+
     # Merge
     base_cols = ['uniprot', 'name', 'position']
     summary = sift.merge(foldx, how='outer', on=base_cols + ['mut'])
     summary = summary.merge(ptms, how='outer', on=base_cols)
     summary = summary.merge(complexes, how='outer', on=base_cols + ['mut'])
     summary = summary.merge(frequency, how='outer', on=base_cols + ['wt', 'mut'])
+    summary = summary.merge(accessibility, how='outer', on=base_cols + ['wt'])
     summary = summary.loc[summary.uniprot.isin(COVID_UNIPROT)]
     summary = summary.sort_values(by=['uniprot', 'name', 'position', 'mut'],
                                   axis='index', ignore_index=True)
     summary = summary.dropna(axis='index', subset=['wt'])
+    summary = summary[['uniprot', 'name', 'position', 'wt', 'mut', 'freq', 'ptm',
+                       'sift_score', 'sift_median',
+                       'template', 'relative_surface_accessibility', 'foldx_ddg',
+                       'int_uniprot', 'int_name', 'int_template', 'interaction_energy', 'diff_interaction_energy', 'diff_interface_residues']]
 
     summary.to_csv(stdout, sep='\t', index=False, float_format='%.7g')
 
@@ -63,6 +74,7 @@ def parse_args():
     parser.add_argument('ptms', metavar='P', help="PTM output table")
     parser.add_argument('complex', metavar='C', help="Complexes output table")
     parser.add_argument('frequency', metavar='R', help="Frequency output table")
+    parser.add_argument('accessibility', metavar='A', help="Surface Accessibility output table")
 
     # args = parser.parse_args(["data/output/sift.tsv", "data/output/foldx.tsv", "data/output/ptms.tsv", "data/output/complex.tsv", "data/output/frequency.tsv"])
     return parser.parse_args()

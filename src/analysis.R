@@ -10,7 +10,8 @@ load_variants <- function(){
     mut = col_character(),
     sift_score = col_double(),
     template = col_character(),
-    total_energy = col_double(),
+    relative_surface_accessibility = col_double(),
+    foldx_ddg = col_double(),
     ptm = col_character(),
     int_uniprot = col_character(),
     int_name = col_character(),
@@ -21,6 +22,7 @@ load_variants <- function(){
     freq = col_double()
   )
   read_tsv('data/output/summary.tsv', col_types = columns) %>%
+    rename(total_energy = foldx_ddg) %>%
     mutate(log10_sift = log10(sift_score + 1e-5),
            log10_freq = log10(freq + 1e-5))
 }
