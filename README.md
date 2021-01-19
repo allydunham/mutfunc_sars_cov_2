@@ -30,6 +30,7 @@ The analysis scripts found in `analysis/` generate figures summarising the data.
 * FoldX 5
 * Naccess
 * Singularity (to run the VEP container)
+* Ensembl VEP
 
 ### Python
 
