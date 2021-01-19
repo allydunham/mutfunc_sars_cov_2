@@ -27,7 +27,8 @@ The analysis scripts found in `analysis/` generate figures summarising the data.
 ### Tools
 
 * SIFT4G (I used a slightly modified version that outputs scores to 4 decimal places instead of 2)
-* FoldX5
+* FoldX 5
+* Naccess
 * Singularity (to run the VEP container)
 
 ### Python
