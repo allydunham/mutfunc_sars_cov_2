@@ -17,31 +17,38 @@ antibody_averages <- group_by(antibody, position, wt, mut) %>%
             .groups = 'drop') %>%
   mutate(name='s')
 
-surface_accessibility <- read_tsv('data/output/surface_accessibility.tsv') %>%
-  select(uniprot, name, position, wt, side_chain_abs)
-
 variants <- load_variants() %>%
-  select(uniprot, name, position, wt, mut, freq, sift_score, total_energy, int_name, diff_interaction_energy) %>%
+  select(uniprot, name, position, wt, mut, freq, ptm, sift_score, total_energy, int_name,
+         diff_interaction_energy, all_atom_rel=relative_surface_accessibility) %>%
   left_join(antibody_averages, by = c('name', 'position', 'wt', 'mut')) %>%
-  left_join(surface_accessibility, by = c('uniprot', 'name', 'position', 'wt')) %>%
   drop_na(mut_escape_mean) %>%
   mutate(sift_sig = ifelse(sift_score < 0.05, 'Deleterious', 'Neutral'),
          foldx_sig = ifelse(total_energy < 1, ifelse(total_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising'),
-         int_sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising')) %>%
-  select(position, wt, mut, side_chain_abs, sift_sig, foldx_sig, int_name, int_sig, mut_escape_mean, mut_escape_median, mut_escape_max) %>%
+         int_sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising'))
+
+variants_long <- select(variants, position, wt, mut, all_atom_rel, sift_sig, foldx_sig, int_name, int_sig, mut_escape_mean, mut_escape_median, mut_escape_max) %>%
   pivot_longer(starts_with('mut_escape'), names_to = 'metric', values_to = 'mut_escape', names_prefix='mut_escape_') %>%
   pivot_longer(c(sift_sig, foldx_sig, int_sig), names_to = 'tool', values_to = 'sig') %>%
   mutate(int_name = str_to_upper(int_name),
          tool = c(sift_sig='SIFT4G', foldx_sig='FoldX', int_sig='FoldX Interface')[tool],
          tool = ifelse(!is.na(int_name) & tool == 'FoldX Interface', str_c(tool, ' (', int_name, ')'), tool),
-         surface_accessible = ifelse(side_chain_abs > 25, 'Surface Residue', 'Core Residue'),
+         surface_accessible = ifelse(all_atom_rel > 30, 'Surface Residue', 'Core Residue'),
          metric = str_to_title(metric)) %>%
   drop_na(sig) %>%
   select(-int_name)
 
 ### Analysis ###
 plots <- list()
-plots$sift_cat <- filter(variants, tool == 'SIFT4G') %>%
+plots$escape_points <- (ggplot(antibody, aes(x = position, y = mut_escape)) + 
+                          geom_point(shape = 20, size = 0.5) +
+                          geom_line(data = antibody_averages, mapping = aes(y = mut_escape_mean, colour = 'Mean'), size = 0.5) +
+                          geom_line(data = antibody_averages, mapping = aes(y = mut_escape_median, colour = 'Median'), size = 0.5) +
+                          facet_wrap(~mut, ncol = 5) +
+                          scale_color_brewer(type = 'qual', palette = 'Dark2', name = '') +
+                          labs(x = 'Spike Position', y = 'Escape Proportion')) %>%
+  labeled_plot(units = 'cm', height = 24, width = 30)
+
+plots$sift_cat <- filter(variants_long, tool == 'SIFT4G') %>%
   ggplot(aes(x = sig, y = mut_escape)) +
   facet_grid(cols = vars(metric), rows = vars(surface_accessible)) +
   geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
@@ -50,7 +57,7 @@ plots$sift_cat <- filter(variants, tool == 'SIFT4G') %>%
   coord_cartesian(clip = 'off') +
   theme(text = element_text(size = 9))
 
-plots$foldx_cat <- filter(variants, tool == 'FoldX') %>%
+plots$foldx_cat <- filter(variants_long, tool == 'FoldX') %>%
   ggplot(aes(x = sig, y = mut_escape)) +
   facet_grid(cols = vars(metric), rows = vars(surface_accessible)) +
   geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
@@ -59,7 +66,7 @@ plots$foldx_cat <- filter(variants, tool == 'FoldX') %>%
   coord_cartesian(clip = 'off') +
   theme(text = element_text(size = 9))
 
-plots$int_s_cat <- filter(variants, tool == 'FoldX Interface (S)') %>%
+plots$int_s_cat <- filter(variants_long, tool == 'FoldX Interface (S)') %>%
   ggplot(aes(x = sig, y = mut_escape)) +
   facet_grid(cols = vars(metric), rows = vars(surface_accessible)) +
   geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
@@ -68,7 +75,7 @@ plots$int_s_cat <- filter(variants, tool == 'FoldX Interface (S)') %>%
   coord_cartesian(clip = 'off') +
   theme(text = element_text(size = 9))
 
-plots$int_ace2_cat <- filter(variants, tool == 'FoldX Interface (ACE2)') %>%
+plots$int_ace2_cat <- filter(variants_long, tool == 'FoldX Interface (ACE2)') %>%
   ggplot(aes(x = sig, y = mut_escape)) +
   facet_grid(cols = vars(metric), rows = vars(surface_accessible)) +
   geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
@@ -76,6 +83,11 @@ plots$int_ace2_cat <- filter(variants, tool == 'FoldX Interface (ACE2)') %>%
   labs(x = 'FoldX Interface Prediction', y = 'Antibody Escape Proportion') + 
   coord_cartesian(clip = 'off') +
   theme(text = element_text(size = 9))
+
+### High escape variants
+ggplot(variants, aes(x = clamp(total_energy, upper = 10), y = mut_escape_mean, colour = sift_sig)) + 
+  geom_point(shape = 20) +
+  geom_vline(xintercept = c(-1, 1))
 
 ### Save plots ###
-save_plotlist(plots, 'figures/antibody_escape', verbose = 2, overwrite = 'all')
+save_plotlist(plots, 'figures/antibody_escape', verbose = 2)
