@@ -26,7 +26,7 @@ def filter_fastas(path):
             continue
 
         if (organism == 'Severe acute respiratory syndrome-related coronavirus' and
-            isolate is None):
+            isolate is not None):
             continue
 
         yield seq
