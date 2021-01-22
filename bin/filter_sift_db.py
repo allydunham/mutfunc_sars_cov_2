@@ -8,14 +8,6 @@ import argparse
 from Bio import SeqIO
 
 def filter_fastas(path):
-    # Use specified Isolates for cases with many closely related strains
-    organism_isolates = {
-        'Severe acute respiratory syndrome coronavirus 2': 'Wuhan-Hu-1',
-        : '',
-        'Middle East respiratory syndrome-related coronavirus': '',
-        'Severe acute respiratory syndrome-related coronavirus': ''
-    }
-
     for seq in SeqIO.parse(path, "fasta"):
         desc = seq.description
         organism = desc.split('organism=')[1].split(']')[0] if 'organism=' in desc else None
@@ -39,15 +31,8 @@ def filter_fastas(path):
 
         yield seq
 
-
-
-def main():
+def main(args):
     """Main"""
-    organism_isolates = {'organism=Severe acute respiratory syndrome coronavirus 2',
-                         'organism=SARS coronavirus',
-                         'organism=Middle East respiratory syndrome-related coronavirus'}
-
-    gen = (r for r in  if not any(i in r.description for i in exclude_organisms))
     SeqIO.write(filter_fastas(args.fasta), sys.stdout, "fasta")
 
 def parse_args():
