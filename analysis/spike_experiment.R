@@ -38,4 +38,4 @@ plots$sift_score <- select(spike, binding, expression, sift_score) %>%
   labs(x = 'SIFT4G Classification (Score < 0.05)', y = 'Deep Mutational Scanning Fitness') +
   scale_fill_brewer(type = 'qual', palette = 'Set1')
 
-save_plotlist(plots, 'figures/ace2_dms')
+save_plotlist(plots, 'figures/ace2_dms', overwrite = 'all')
