@@ -85,9 +85,29 @@ plots$int_ace2_cat <- filter(variants_long, tool == 'FoldX Interface (ACE2)') %>
   theme(text = element_text(size = 9))
 
 ### High escape variants
-ggplot(variants, aes(x = clamp(total_energy, upper = 10), y = mut_escape_mean, colour = sift_sig)) + 
+plots$high_mean_escape <- (ggplot(variants, aes(x = clamp(total_energy, upper = 10), y = mut_escape_mean,
+                     colour = sift_sig, label = str_c(wt, position, mut))) + 
+  geom_vline(xintercept = c(-1, 1)) +
   geom_point(shape = 20) +
-  geom_vline(xintercept = c(-1, 1))
+  geom_point(mapping = aes(shape = int_sig), size = 2) +
+  geom_text_repel(data = filter(variants, mut_escape_mean > 0.1), colour = 'black', show.legend = FALSE) +
+  labs(x = expression(Delta*Delta*'G (Clamped to < 10)'), y = 'Mean Escape Proportion') +
+  scale_colour_manual(values = c(Deleterious = 'red', Neutral = 'black'), name = 'SIFT4G Prediction') +
+  scale_shape_manual(values = c(Destabilising=8, Neutral=4, Stabilising=3), na.translate = FALSE,
+                     name = 'FoldX Interface Prediction')) %>%
+  labeled_plot(units = 'cm', height = 20, width = 25)
+
+plots$high_max_escape <- (ggplot(variants, aes(x = clamp(total_energy, upper = 10), y = mut_escape_max,
+                                               colour = sift_sig, label = str_c(wt, position, mut))) + 
+                             geom_vline(xintercept = c(-1, 1)) +
+                             geom_point(shape = 20) +
+                             geom_point(mapping = aes(shape = int_sig), size = 2) +
+                             geom_text_repel(data = filter(variants, mut_escape_max > 0.4), colour = 'black', show.legend = FALSE) +
+                             labs(x = expression(Delta*Delta*'G (Clamped to < 10)'), y = 'Max Escape Proportion') +
+                             scale_colour_manual(values = c(Deleterious = 'red', Neutral = 'black'), name = 'SIFT4G Prediction') +
+                             scale_shape_manual(values = c(Destabilising=8, Neutral=4, Stabilising=3), na.translate = FALSE,
+                                                name = 'FoldX Interface Prediction')) %>%
+  labeled_plot(units = 'cm', height = 20, width = 25)
 
 ### Save plots ###
 save_plotlist(plots, 'figures/antibody_escape', verbose = 2)

@@ -25,10 +25,6 @@ def filter_fastas(path):
             isolate != 'HCoV-EMC/2012'):
             continue
 
-        if (organism == 'Severe acute respiratory syndrome-related coronavirus' and
-            isolate is not None):
-            continue
-
         yield seq
 
 def main(args):
