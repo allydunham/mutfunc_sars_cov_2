@@ -17,8 +17,6 @@ join_int_name <- function(x, y){
   return(xy)
 }
 
-interface_positions <- 
-
 sig_vars <- select(variants, name, position, wt, mut, int_name, freq, diff_interaction_energy) %>%
   drop_na(int_name) %>%
   mutate(name = display_names[name],
