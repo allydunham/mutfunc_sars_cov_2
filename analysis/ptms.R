@@ -4,28 +4,7 @@ source('src/config.R')
 source('src/analysis.R')
 
 ### Import Data ###
-columns <- cols(
-  uniprot = col_character(),
-  name = col_character(),
-  position = col_double(),
-  wt = col_character(),
-  mut = col_character(),
-  sift_score = col_double(),
-  template = col_character(),
-  total_energy = col_double(),
-  ptm = col_character(),
-  int_uniprot = col_character(),
-  int_name = col_character(),
-  int_template = col_character(),
-  interaction_energy = col_double(),
-  diff_interaction_energy = col_double(),
-  diff_interface_residues = col_integer(),
-  freq = col_double()
-)
-variants <- read_tsv('data/output/summary.tsv', col_types = columns) %>%
-  mutate(log10_sift = log10(sift_score + 1e-5),
-         log10_freq = log10(freq + 1e-5))
-
+variants <- load_variants()
 sift <- read_tsv('data/output/sift.tsv')
 foldx <- read_tsv('data/output/foldx.tsv')
 
