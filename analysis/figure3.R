@@ -71,7 +71,7 @@ p_s_ace2_variants <- ggplot() +
   
   annotate('segment', x = 0.42, xend = 0.495, y = 0.46, yend = 0.24) +
   annotate('richtext', x = 0.51, y = 0.25, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>N501Y (0.04%)</b><br>Interface &Delta;&Delta;G = 5.03&thinsp;kJ.mol<sup>-1</sup><br>SIFT4G Score = 0.04',
+           label = '<b>N501Y (0.04%)</b><br>Interface &Delta;&Delta;G = 5.03&thinsp;kJ.mol<sup>-1</sup><br>SIFT4G Score = 0.045',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   labs(subtitle = 'Spike - ACE2 Complex') +
