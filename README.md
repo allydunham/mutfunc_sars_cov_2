@@ -31,6 +31,7 @@ The analysis scripts found in `analysis/` generate figures summarising the data.
 * Naccess
 * Singularity (to run the VEP container)
 * Ensembl VEP
+* MMseqs2
 
 ### Python
 
