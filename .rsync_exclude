@@ -1,5 +1,6 @@
 top_variants.md
 uniprot/**
+sift/database/*
 complex/*/*.yaml
 complex/*/*/mutant_pdbs/
 complex/*/*/mutant/
