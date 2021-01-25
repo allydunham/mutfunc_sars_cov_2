@@ -8,9 +8,6 @@ frequency:
 foldx:
   variants_per_run: 300
 
-sift:
-  db_path: 'path/to/sift/database.fa'
-
 swissmodel:
   min_seq_id: 30
   min_coverage: 0
