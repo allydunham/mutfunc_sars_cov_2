@@ -3,9 +3,7 @@ Rules to analyse interface interactions using FoldX's AnalyseComplex command
 """
 from snakemake.exceptions import MissingInputException
 
-COMPLEXES = ['nsp9_nsp9', 'nsp7_nsp8', 'nsp7_nsp8_pol', 'nsp10_nsp14',
-             'nsp10_nsp16', 'ace2_spike', 'nsp1_40s', 's_s', 'nc_nc',
-             'orf3a_orf3a', 'orf9b_orf9b', 'orf9b_tom70', 'replication_complex']
+COMPLEXES = [i for i in os.listdir('data/complex') if os.path.isdir(f'data/complex/{i}')]
 
 # TODO add possibility of protocols other than https
 def get_complex_file(wildcards):
@@ -151,8 +149,8 @@ rule complex_mut_analysis:
 
     resources:
         mem_mb = get_mut_complex_ram,
-    
-    threads: 8 
+
+    threads: 8
 
     log:
         'logs/complex_mut_analysis/{complex}_{interface}.log'

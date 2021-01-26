@@ -1,0 +1,18 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb7jmo.ent'
+model: '7jmo.1'
+chains:
+  A:
+    uniprot: 'P0DTC2'
+    name: 's'
+  H:
+    uniprot: ''
+    name: 'COVA2-04 heavy chain'
+  L:
+    uniprot: ''
+    name: 'COVA2-04 light chain'
+
+interfaces:
+  - 'A_H'
+  - 'A_L'
+
+mutate_chains: 'A'
