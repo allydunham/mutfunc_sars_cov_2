@@ -4,7 +4,8 @@ source('src/config.R')
 source('src/analysis.R')
 library(png)
 
-variants <- load_variants()
+variants <- load_variants() %>%
+  mutate(freq_cat = classify_freq(freq))
 spike <- read_csv('data/starr_ace2_spike.csv') %>% 
   mutate(uniprot = 'P0DTC2', name = 's') %>%
   select(uniprot, name, position = site_SARS2, position_rbd = site_RBD, wt = wildtype, mut = mutant, binding=bind_avg, expression=expr_avg) %>%
@@ -124,16 +125,37 @@ p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
         axis.title = element_blank())
 
 ### Panel 4 - SIFT4G against frequency
-p_sift_freq <- select(variants, sift_score, freq) %>%
-  mutate(freq_cat = classify_freq(freq)) %>%
-  drop_na(sift_score) %>%
-  group_by(freq_cat) %>%
-  summarise(mean = mean(sift_score), sd = sd(sift_score), .groups='drop') %>%
-  ggplot() + 
+# p_sift_freq <- select(variants, sift_score, freq) %>%
+#   mutate(freq_cat = classify_freq(freq)) %>%
+#   drop_na(sift_score) %>%
+#   group_by(freq_cat) %>%
+#   summarise(mean = mean(sift_score), sd = sd(sift_score), .groups='drop') %>%
+#   ggplot() + 
+#   geom_hline(yintercept = 0.05, linetype = 'dotted', colour = 'black') +
+#   geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = clamp(mean - sd, 0), yend = mean + sd), colour = '#377eb8', size = 0.5) +
+#   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#377eb8') +
+#   labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score')
+
+freq_cat_summary <- group_by(variants, freq_cat) %>%
+  summarise(n = n(), 
+            mean_sift = mean(sift_score, na.rm = TRUE),
+            median_sift = median(sift_score, na.rm = TRUE),
+            mean_foldx = mean(total_energy, na.rm = TRUE),
+            median_foldx = median(total_energy, na.rm = TRUE),
+            .groups = 'drop')
+
+p_sift_freq <- ggplot(variants, aes(x = freq_cat, y = sift_score)) + 
+  geom_violin(fill = '#377eb8', colour = '#377eb8', scale = 'width') +
   geom_hline(yintercept = 0.05, linetype = 'dotted', colour = 'black') +
-  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = clamp(mean - sd, 0), yend = mean + sd), colour = '#377eb8', size = 0.5) +
-  geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#377eb8') +
-  labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score')
+  geom_text(data = freq_cat_summary, mapping = aes(x = freq_cat, y = 1.05, label = n), size = 1.8) +
+  geom_point(data = freq_cat_summary, mapping = aes(x = freq_cat, y = median_sift, colour = 'Median'), shape = 20) +
+  geom_line(data = freq_cat_summary, mapping = aes(x = freq_cat, y = median_sift, colour = 'Median', group = 1)) +
+  geom_point(data = freq_cat_summary, mapping = aes(x = freq_cat, y = mean_sift, colour = 'Mean'), shape = 20) +
+  geom_line(data = freq_cat_summary, mapping = aes(x = freq_cat, y = mean_sift, colour = 'Mean', group = 1)) +
+  labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score') + 
+  scale_y_continuous(breaks = seq(0, 1, 0.2)) +
+  scale_colour_manual(name = '', values = c(Mean='darkblue', Median='#ff7f00')) +
+  theme(legend.position = 'top', legend.box.margin = margin(0, 0, 0, 0), legend.margin = margin(0, 0, -18, 0))
 
 ### Panel 5 - SIFT4G against Spike DMS Expression Fitness
 p_sift_dms <- select(spike, expression, sift_score, sift_median) %>%
@@ -145,17 +167,32 @@ p_sift_dms <- select(spike, expression, sift_score, sift_median) %>%
   labs(x = 'SIFT4G Prediction', y = 'Spike DMS Expression Fitness')
 
 ### Panel 6 - FoldX against frequency
-p_foldx_freq <- select(variants, total_energy, freq) %>%
-  mutate(freq_cat = classify_freq(freq)) %>%
-  drop_na(total_energy) %>%
-  group_by(freq_cat) %>%
-  summarise(mean = mean(total_energy), sd = sd(total_energy), .groups='drop') %>%
-  ggplot() + 
+# p_foldx_freq <- select(variants, total_energy, freq) %>%
+#   mutate(freq_cat = classify_freq(freq)) %>%
+#   drop_na(total_energy) %>%
+#   group_by(freq_cat) %>%
+#   summarise(mean = mean(total_energy), sd = sd(total_energy), .groups='drop') %>%
+#   ggplot() + 
+#   geom_hline(yintercept = 1, linetype = 'dotted', colour = 'black') +
+#   geom_hline(yintercept = -1, linetype = 'dotted', colour = 'black') +
+#   geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = mean - sd, yend = mean + sd), colour = '#e41a1c', size = 0.5) +
+#   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
+#   labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kJ'%.%'mol'^-1*')'))
+
+p_foldx_freq <- ggplot(variants, aes(x = freq_cat, y = clamp(total_energy, -10, 10))) + 
+  geom_violin(fill = '#e41a1c', colour = '#e41a1c', scale = 'width') +
   geom_hline(yintercept = 1, linetype = 'dotted', colour = 'black') +
   geom_hline(yintercept = -1, linetype = 'dotted', colour = 'black') +
-  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = mean - sd, yend = mean + sd), colour = '#e41a1c', size = 0.5) +
-  geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#e41a1c') +
-  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*G~'(kJ'%.%'mol'^-1*')'))
+  geom_text(data = freq_cat_summary, mapping = aes(x = freq_cat, y = 10.5, label = n), size = 1.8) +
+  geom_point(data = freq_cat_summary, mapping = aes(x = freq_cat, y = median_foldx, colour = 'Median'), shape = 20) +
+  geom_line(data = freq_cat_summary, mapping = aes(x = freq_cat, y = median_foldx, colour = 'Median', group = 1)) +
+  geom_point(data = freq_cat_summary, mapping = aes(x = freq_cat, y = mean_foldx, colour = 'Mean'), shape = 20) +
+  geom_line(data = freq_cat_summary, mapping = aes(x = freq_cat, y = mean_foldx, colour = 'Mean', group = 1)) +
+  labs(x = 'Variant Frequency (%)', y = expression('FoldX'~Delta*Delta*'G (kJ' %.% 'mol'^-1*', clamped to'%+-%'10)')) + 
+  scale_colour_manual(name = '', values = c(Mean='darkblue', Median='#ff7f00')) +
+  theme(legend.position = 'top',
+        legend.box.margin = margin(0, 0, 0, 0),
+        legend.margin = margin(0, 0, -18, 0))
 
 ### Panel 7 FoldX against Spike DMS Expression Fitness
 p_foldx_dms <- select(spike, expression, total_energy) %>%
@@ -177,7 +214,7 @@ p5 <- p_sift_dms  + labs(tag = 'E') + size
 p6 <- p_foldx_freq + labs(tag = 'F') + size
 p7 <- p_foldx_dms  + labs(tag = 'G') + size
 
-figure <- multi_panel_figure(width = 183, height = 183, columns = 4, rows = 3,
+figure <- multi_panel_figure(width = c(50, 41.5, 50, 41.5), height = 183, rows = 3,
                               panel_label_type = 'none', row_spacing = 0, column_spacing = 0) %>%
   fill_panel(p1, row = 1, column = 1:4) %>%
   fill_panel(p2, row = 2, column = 1) %>%
