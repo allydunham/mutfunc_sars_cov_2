@@ -84,6 +84,20 @@ plots$int_ace2_cat <- filter(variants_long, tool == 'FoldX Interface (ACE2)') %>
   coord_cartesian(clip = 'off') +
   theme(text = element_text(size = 9))
 
+plots$sift_foldx_cat <- select(variants, position, wt, mut, all_atom_rel, sift_score, total_energy, mut_escape_mean, mut_escape_max) %>%
+  pivot_longer(starts_with('mut_escape'), names_to = 'metric', values_to = 'mut_escape', names_prefix='mut_escape_') %>%
+  mutate(sig = ifelse(sift_score > 0.05 & total_energy > 1, 'Destabilising & Neutral', 'Not'),
+         surface_accessible = ifelse(all_atom_rel > 30, 'Surface Residue', 'Core Residue'),
+         metric = str_to_title(metric)) %>%
+  ggplot(aes(x = sig, y = mut_escape)) +
+  facet_grid(cols = vars(metric), rows = vars(surface_accessible)) +
+  geom_boxplot(show.legend = FALSE, fill = '#e41a1c', outlier.shape = 20, outlier.size = 0.5, size = 0.2) +
+  stat_compare_means(method = 't.test', size = 2, comparisons = list(c('Destabilising & Neutral', 'Not'))) +
+  labs(x = 'Prediction', y = 'Antibody Escape Proportion') + 
+  coord_cartesian(clip = 'off') +
+  theme(text = element_text(size = 9))
+
+
 ### High escape variants
 plots$high_mean_escape <- (ggplot(variants, aes(x = clamp(total_energy, upper = 10), y = mut_escape_mean,
                      colour = sift_sig, label = str_c(wt, position, mut))) + 
