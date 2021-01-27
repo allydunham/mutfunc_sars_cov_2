@@ -1,0 +1,37 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb7cak.ent'
+model: '7cak.1'
+chains:
+  A:
+    uniprot: 'P0DTC2'
+    name: 's'
+  B:
+    uniprot: 'P0DTC2'
+    name: 's'
+  C:
+    uniprot: 'P0DTC2'
+    name: 's'
+  D:
+    uniprot: ''
+    name: 'H014 Fab Light Chain'
+  E:
+    uniprot: ''
+    name: 'H014 Fab Heavy Chain'
+  F:
+    uniprot: ''
+    name: 'H014 Fab Light Chain'
+  G:
+    uniprot: ''
+    name: 'H014 Fab Heavy Chain'
+  H:
+    uniprot: ''
+    name: 'H014 Fab Light Chain'
+  I:
+    uniprot: ''
+    name: 'H014 Fab Heavy Chain'
+
+interfaces:
+  - 'A_D'
+  - 'A_E'
+
+mutate_chains: 'A'
+

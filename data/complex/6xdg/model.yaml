@@ -1,0 +1,26 @@
+url: 'http://www.ebi.ac.uk/pdbe/entry-files/download/pdb6xdg.ent'
+model: '6xdg.1'
+chains:
+  E:
+    uniprot: 'P0DTC2'
+    name: 's'
+  D:
+    uniprot: ''
+    name: 'REGN10933 antibody Fab fragment light chain'
+  A:
+    uniprot: ''
+    name: 'REGN10987 antibody Fab fragment light chain'
+  B:
+    uniprot: ''
+    name: 'REGN10933 antibody Fab fragment heavy chain'
+  C:
+    uniprot: ''
+    name: 'REGN10987 antibody Fab fragment heavy chain'
+
+interfaces:
+  - 'E_A'
+  - 'E_B'
+  - 'E_C'
+  - 'E_D'
+
+mutate_chains: 'E'
