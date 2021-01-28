@@ -96,11 +96,10 @@ p_coverage <- select(variants, name, position, sift_score, total_energy) %>%
         axis.ticks.y = element_blank())
   
 ### Panel 3 - Complexes
-pdb_ints <- c(`2ahm`='nsp7_nsp8', `5c8s`='nsp10_nsp14', `6m0j`='ace2_s', `6w4b`='nsp9_nsp9', `6w75`='nsp10_nsp16', `6x29`='s_s',
-              `6xdc`='orf3a_orf3a', `6zoj`='nsp1_40s', `7btf`='nsp7_nsp8_pol', `7c22`='nc_nc', `7kdt`='orf9b_tom70', `7cxm`='replication_complex')
 pdb_names <- c(`2ahm`='nsp7 - nsp8', `5c8s`='nsp10 - ExoN', `6m0j`='S - ACE2', `6w4b`='nsp9 - nsp9', `6w75`='nsp10 - nsp16', `6x29`='S - S',
                `6xdc`='orf3a - orf3a', `6zoj`='nsp1 - 40S Ribosome', `7btf`='nsp7 - nsp8 - RdRp', `7c22`='N - N', `7kdt`='orf9b - TOM70',
-               `7cxm`='Replication Complex')
+               `7cxm`='RTC', `6xdg`='RBD - REGN', `7cai`='S - H014 (1)', `7cak`='S - H014 (2)',
+               `7jmo`='RBD - COVA2-04')
 
 complexes <- select(variants, int_template, name, int_name, position) %>%
   drop_na() %>%
@@ -110,9 +109,8 @@ complexes <- select(variants, int_template, name, int_name, position) %>%
   count(int_template, name, int_name) %>%
   group_by(int_template) %>%
   summarise(n = sum(n), .groups='drop') %>%
-  mutate(int = pdb_ints[int_template],
-         int_name = pdb_names[int_template],
-         img = str_c("<img src='figures/figures/complexes/", int, ".png", "' width='53' />"),
+  mutate(int_name = pdb_names[int_template],
+         img = str_c("<img src='figures/figures/complexes/", int_template, ".png", "' width='53' />"),
          n = str_c(n, ' positions'))
 
 p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
@@ -136,7 +134,8 @@ p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
 #   geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#377eb8') +
 #   labs(x = 'Variant Frequency (%)', y = 'SIFT4G Score')
 
-freq_cat_summary <- group_by(variants, freq_cat) %>%
+freq_cat_summary <- distinct(variants, uniprot, name, position, wt, mut, .keep_all = TRUE) %>%
+  group_by(freq_cat) %>%
   summarise(n = n(), 
             mean_sift = mean(sift_score, na.rm = TRUE),
             median_sift = median(sift_score, na.rm = TRUE),
@@ -158,7 +157,8 @@ p_sift_freq <- ggplot(variants, aes(x = freq_cat, y = sift_score)) +
   theme(legend.position = 'top', legend.box.margin = margin(0, 0, 0, 0), legend.margin = margin(0, 0, -18, 0))
 
 ### Panel 5 - SIFT4G against Spike DMS Expression Fitness
-p_sift_dms <- select(spike, expression, sift_score, sift_median) %>%
+p_sift_dms <- select(spike, name, position, wt, mut, expression, sift_score, sift_median) %>%
+  distinct(.keep_all = TRUE) %>%
   mutate(sig = ifelse(sift_score < 0.05, 'Deleterious', 'Neutral')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
@@ -195,7 +195,8 @@ p_foldx_freq <- ggplot(variants, aes(x = freq_cat, y = clamp(total_energy, -10, 
         legend.margin = margin(0, 0, -18, 0))
 
 ### Panel 7 FoldX against Spike DMS Expression Fitness
-p_foldx_dms <- select(spike, expression, total_energy) %>%
+p_foldx_dms <- select(spike, name, position, wt, mut, expression, total_energy) %>%
+  distinct(.keep_all = TRUE) %>%
   mutate(sig = ifelse(total_energy < 1, ifelse(total_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising')) %>%
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
@@ -214,7 +215,7 @@ p5 <- p_sift_dms  + labs(tag = 'E') + size
 p6 <- p_foldx_freq + labs(tag = 'F') + size
 p7 <- p_foldx_dms  + labs(tag = 'G') + size
 
-figure <- multi_panel_figure(width = c(50, 41.5, 50, 41.5), height = 183, rows = 3,
+figure <- multi_panel_figure(width = c(47, 43.5, 47, 43.5), height = 183, rows = 3,
                               panel_label_type = 'none', row_spacing = 0, column_spacing = 0) %>%
   fill_panel(p1, row = 1, column = 1:4) %>%
   fill_panel(p2, row = 2, column = 1) %>%
