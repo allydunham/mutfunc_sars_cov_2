@@ -54,7 +54,11 @@ classify_freq <- function(x){
 int_colour_scale <- c(None='black', ace2='#a6cee3', tom70='brown', nsp10='#1f78b4', nsp12='#b2df8a', nsp13='green', nsp14='#33a02c',
                       nsp16='#fb9a99', nsp7='#e31a1c', nsp8='#fdbf6f', nsp9='#ff7f00', `40S ribosomal protein S3`='#cab2d6',
                       `40S ribosomal protein S30`='#cab2d6', `18S ribosomal RNA`='#cab2d6', `40S ribosomal protein S2`='#cab2d6',
-                      `40S ribosomal protein S9`='#cab2d6', s='#6a3d9a', orf3a='#ffff99', nc='#b15928', orf9b='#ffff33')
+                      `40S ribosomal protein S9`='#cab2d6', s='#6a3d9a', orf3a='#ffff99', nc='#b15928', orf9b='#ffff33',
+                      `REGN10987 antibody Fab fragment heavy chain`='#b15928', `REGN10933 antibody Fab fragment heavy chain`='#b15928',
+                      `REGN10987 antibody Fab fragment light chain`='#b15928', `REGN10933 antibody Fab fragment light chain`='#b15928',
+                      `H014 Fab Heavy Chain`='#b15928', `H014 Fab Light Chain`='#b15928',
+                      `COVA2-04 light chain`='#b15928', `COVA2-04 heavy chain`='#b15928')
 
 display_names <- c(nsp1='nsp1', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='3CL-PRO', nsp6='nsp6',
                    nsp7='nsp7', nsp8='nsp8', nsp9='nsp9', nsp10='nsp10', nsp11='nsp11', nsp12='RdRp',
@@ -63,7 +67,13 @@ display_names <- c(nsp1='nsp1', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='3CL
                    orf9b='orf9b', orf14='orf14',
                    ace2='ACE2', `40s`='40S', tom70='TOM70', `40S ribosomal protein S3`='40S',
                    `40S ribosomal protein S30`='40S', `18S ribosomal RNA`='40S',
-                   `40S ribosomal protein S2`='40S', `40S ribosomal protein S9`='40S')
+                   `40S ribosomal protein S2`='40S', `40S ribosomal protein S9`='40S',
+                   `REGN10987 antibody Fab fragment heavy chain`='REGN10987 Heavy Chain',
+                   `REGN10933 antibody Fab fragment heavy chain`='REGN10933 Heavy Chain',
+                   `REGN10987 antibody Fab fragment light chain`='REGN10987 Light Chain',
+                   `REGN10933 antibody Fab fragment light chain`='REGN10933 Light Chain',
+                   `H014 Fab Heavy Chain`='H014 Heavy Chain', `H014 Fab Light Chain`='H014 Light Chain',
+                   `COVA2-04 light chain`='COVA2-04 Light Chain', `COVA2-04 heavy chain`='COVA2-04 Heavy Chain')
 
 # Blank placeholder ggplot
 blank_plot <- function(text = NULL){
