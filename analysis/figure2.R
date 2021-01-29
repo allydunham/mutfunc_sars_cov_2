@@ -76,10 +76,13 @@ p_spike_dms <- select(spike, position, wt, mut, binding, int_name, diff_interact
   labs(x = 'FoldX Interface Prediction', y = 'ACE2 Binding Fitness')
 
 ### Panel 3 - Spike DMS model
-dms_models <- select(spike, binding, ddg=total_energy, int_ddg = diff_interaction_energy, sift_score) %>%
+dms_models <- select(spike, position, wt, mut, binding, ddg=total_energy, int_name, int_ddg = diff_interaction_energy, sift_score) %>%
+  filter(int_name == 'ace2' | is.na(int_name)) %>%
+  distinct(position, wt, mut, .keep_all = TRUE) %>%
   mutate(binding_sig = binding < log10(0.1), # Binding rate 1/10th wt and where tail begins on hist
          ddg_int_only = ifelse(is.na(int_ddg), NA, ddg), # Versions of other scores for interface residues only
          sift_score_int_only = ifelse(is.na(int_ddg), NA, sift_score)) %>%
+  select(binding, binding_sig, sift_score, ddg, int_ddg, ddg_int_only, sift_score_int_only) %>%
   pivot_longer(c(-binding, -binding_sig), names_to = 'tool', values_to = 'score') %>%
   mutate(interface_only = ifelse(tool %in% c('ddg', 'sift_score'), FALSE, TRUE),
          tool = str_remove(tool, '_int_only')) %>%
@@ -90,12 +93,12 @@ dms_models <- select(spike, binding, ddg=total_energy, int_ddg = diff_interactio
 
 tool_labs <- c(ddg='Delta*Delta*"G',
                sift_score='"SIFT4G Score',
-               int_ddg='"Interface"~Delta*Delta*"G')
+               int_ddg='"ACE2 Interface"~Delta*Delta*"G')
 
 dms_auc <- group_by(dms_models, tool, interface_only) %>%
   summarise(auc = integrate(approxfun(fpr, tpr), lower = 0, upper = 1, subdivisions = 1000)$value, .groups = 'drop') %>%
-  arrange(desc(auc)) %>%
-  mutate(fpr = 1.05, tpr = c(0.12, 0.19, 0.05, 0.12, 0.05),
+  arrange(interface_only, desc(auc)) %>%
+  mutate(fpr = 1.05, tpr = c(0.12, 0.05, 0.19, 0.12, 0.05),
          lab = str_c(tool_labs[tool], ' (AUC = ', signif(auc, 2), ')"'))
         
 p_roc <- ggplot(dms_models, aes(x = fpr, y = tpr, colour = tool)) +
@@ -105,12 +108,7 @@ p_roc <- ggplot(dms_models, aes(x = fpr, y = tpr, colour = tool)) +
   geom_line(show.legend = FALSE) +
   geom_text(data = dms_auc, mapping = aes(label = lab), parse=TRUE, hjust = 1, size = 2, show.legend = FALSE) +
   labs(x = 'False Positive Rate', y = 'True Positive Rate') +
-  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '') +
-  geom_segment(data = tibble(x = 0.5362135, y = 0.700, xend = 0.25, yend = 0.8, interface_only=TRUE),
-               mapping = aes(x=x, y=y, xend=xend, yend=yend), inherit.aes = FALSE) +
-  geom_text(data = tibble(x = 0.25, y = 0.8, interface_only=TRUE), mapping = aes(x=x, y=y),
-            label = 'Delta*Delta*"G Threshold"%~~%0',
-            hjust = 0.5, vjust = -0.25, parse = TRUE, size = 2, inherit.aes = FALSE)
+  scale_colour_brewer(type = 'qual', palette = 'Dark2', name = '')
 
 ### Panel 5 - N in silico DMS
 is_dms_nc <- select(variants, name, position, wt, mut, log10_freq, int_name, diff_interaction_energy) %>%
@@ -119,7 +117,7 @@ is_dms_nc <- select(variants, name, position, wt, mut, log10_freq, int_name, dif
          mut_int = factor(mut, levels = sort(Biostrings::AA_STANDARD)) %>% as.integer())
 
 is_dms_nc_summary <- group_by(is_dms_nc, position, wt_int) %>%
-  summarise(mean_ddg = mean(diff_interaction_energy))
+  summarise(mean_ddg = mean(diff_interaction_energy), .groups = 'drop')
 
 nc_regions <- tibble(colour = c('#1b9e77', '#d95f02', '#7570b3', '#e7298a'),
                      start = c(257, 303, 326, 345), end = c(287, 323, 342, 361))
@@ -162,8 +160,6 @@ p_is_dms <- ggplot() +
         panel.grid.major.y = element_blank(),
         plot.margin = unit(c(2,2,5,2), 'mm'),
         legend.title = element_markdown())
-
-### Panel 6 - N interface variants?
 
 ### Assemble figure
 size <- theme(text = element_text(size = 7))
