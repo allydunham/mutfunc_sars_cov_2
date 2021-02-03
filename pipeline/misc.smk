@@ -89,7 +89,9 @@ rule summary_tsv:
         ptm="data/output/ptms.tsv",
         complex="data/output/complex.tsv",
         frequency="data/output/frequency.tsv",
-        accessibility="data/output/surface_accessibility.tsv"
+        accessibility="data/output/surface_accessibility.tsv",
+        antibodies="data/greaney_spike_antibody.csv",
+        annotation="docs/annotation.tsv"
 
     output:
         "data/output/summary.tsv"
@@ -98,4 +100,4 @@ rule summary_tsv:
         "logs/summary_tsv.log"
 
     shell:
-        "python bin/summary_tsv.py {input.sift} {input.foldx} {input.ptm} {input.complex} {input.frequency} {input.accessibility} > {output} 2> {log}"
+        "python bin/summary_tsv.py {input.sift} {input.foldx} {input.ptm} {input.complex} {input.frequency} {input.accessibility} {input.antibodies} {input.annotation} > {output} 2> {log}"
