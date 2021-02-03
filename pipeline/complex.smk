@@ -133,7 +133,7 @@ def get_mut_complex_ram(wildcards):
     """
     Get RAM to use for each complex
     """
-    ram = {'s_s': 64000, 'nsp1_40s': 32000}
+    ram = {'6x29': 64000, '6zoj': 64000}
     return ram.get(wildcards.complex, 16000)
 
 rule complex_mut_analysis:

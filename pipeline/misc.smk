@@ -70,14 +70,14 @@ rule naccess_tsv:
         [f'data/swissmodel/{i}.models' for i in SWISSMODEL_IDS.keys()]
 
     output:
-        directory('data/naccess'),
-        'data/output/naccess.tsv'
+        dir=directory('data/naccess'),
+        tsv='data/output/naccess.tsv'
 
     log:
         'logs/naccess_tsv.log'
 
     shell:
-        'python bin/surface_accessibility.py --dir data/naccess {input} > {output} 2> {log}'
+        'python bin/surface_accessibility.py --dir {output.dir} {input} > {output.tsv} 2> {log}'
 
 rule summary_tsv:
     """
