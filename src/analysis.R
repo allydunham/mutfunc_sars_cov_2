@@ -19,7 +19,10 @@ load_variants <- function(){
     interaction_energy = col_double(),
     diff_interaction_energy = col_double(),
     diff_interface_residues = col_integer(),
-    freq = col_double()
+    freq = col_double(),
+    mut_escape_mean = col_double(),
+    mut_escape_max = col_double(),
+    annotation = col_character()
   )
   read_tsv('data/output/summary.tsv', col_types = columns) %>%
     rename(total_energy = foldx_ddg) %>%
