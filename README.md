@@ -2,19 +2,14 @@
 
 This repository contains the code for the SARS-CoV-2 Mutfunc pipeline and website.
 The project has been published in PAPER, where the methods and dataset are described.
-The code is split into three sections: the pipeline, the website and analysis scripts.
+This repo contains code for running the data pipeline and analysis scripts.
+The source code for the [web interface](https://github.com/allydunham/mutfunc_sars_cov_2_frontend/) is stored separately.
 
 ## Pipeline
 
 The pipeline manages generation of the dataset, including downloading most source data from online repositories.
 It is managed by Snakemake, with a master `Snakefile` and additional rulesets for each section in the `pipeline/` directory.
 Scripts for various sections of the pipeline are found in `bin/` and some modules are in `src/`.
-
-## Website
-
-The website code is in `frontend/`.
-It is made with [Reactjs](https://reactjs.org/) and [Material UI](https://material-ui.com/), using
-[PV - Protein Viewer](https://biasmv.github.io/pv/) and [React MSA Viewer](https://github.com/plotly/react-msa-viewer) to display proteins and sequences.
 
 ## Analysis
 

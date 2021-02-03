@@ -21,6 +21,7 @@ variants <- read_tsv('data/frequency/variant_annotation.tsv', comment = '##') %>
   select(-tmp)
 
 # Make position list to pass to VCFTools for filtering (must be done before next stage of script will run)
+# vcftools --vcf data/frequency/variants.filtered.vcf --positions data/spike_destabilising_positions.tsv --recode --recode-INFO-all --stdout > data/spike_destabilising_positions.vcf
 select(variants, `#chrom` = chrom, rna_position) %>% distinct() %>% write_tsv('data/spike_destabilising_positions.tsv')
 
 # Load and melt vcf (must use data.table initially to quickly handle large number of columns)
@@ -45,12 +46,14 @@ sample_counts <- as_tibble(samples) %>%
             n_struct = sum(total_energy > 1 | int_ddg_s > 1 | int_ddg_ace2 > 1, na.rm = TRUE),
             n_sift = sum(sift_score < 0.05, na.rm = TRUE),
             n_foldx = sum(total_energy > 1, na.rm = TRUE),
+            n_foldx_not_sift = sum(total_energy > 1 & sift_score < 0.05, na.rm = TRUE),
             n_int_s = sum(int_ddg_s > 1, na.rm = TRUE),
             n_int_ace2 = sum(int_ddg_ace2 > 1, na.rm = TRUE),
             .groups = 'drop') %>%
   {
     unmutated_samples <- sample_names[!sample_names %in% .$sample]
-    bind_rows(., tibble(sample=unmutated_samples, n_any = 0, n_struct = 0, n_sift = 0, n_foldx = 0, n_int_s = 0, n_int_ace2 = 0))
+    bind_rows(., tibble(sample=unmutated_samples, n_any = 0, n_struct = 0, n_sift = 0, n_foldx = 0,
+                        n_foldx_not_sift = 0, n_int_s = 0, n_int_ace2 = 0))
   }
 
 # Calculate summary proportions
@@ -58,14 +61,15 @@ sample_props <- c(overall = sum(!sample_counts$n_any == 0) / n_samples,
                   structural = sum(!sample_counts$n_struct == 0) / n_samples,
                   sift = sum(!sample_counts$n_sift == 0) / n_samples,
                   foldx = sum(!sample_counts$n_foldx == 0) / n_samples,
+                  foldx_not_sift = sum(!sample_counts$n_foldx_not_sift == 0) / n_samples,
                   int_s = sum(!sample_counts$n_int_s == 0) / n_samples,
                   int_ace2 = sum(!sample_counts$n_int_ace2 == 0) / n_samples)
 
 # Analysis
 plots <- list()
 metric_names = c(any="'Any Significant Prediction'", struct="'Any Structural Prediction'", sift="'SIFT4G Score < 0.05'",
-                 foldx='"FoldX"~Delta*Delta*"G > 1"', int_s="'FoldX Spike Interface'~Delta*Delta*'G > 1'",
-                 int_ace2="'FoldX Ace2 Interface'~Delta*Delta*'G > 1'")
+                 foldx='"FoldX"~Delta*Delta*"G > 1"', foldx_not_sift='"FoldX"~Delta*Delta*"G > 1 and SIFT4G Score < 0.05"',
+                 int_s="'FoldX Spike Interface'~Delta*Delta*'G > 1'", int_ace2="'FoldX Ace2 Interface'~Delta*Delta*'G > 1'")
 plots$destabilising_counts <- pivot_longer(sample_counts, -sample, names_to = 'metric', values_to = 'count', names_prefix = 'n_') %>%
   count(metric, count) %>%
   mutate(metric = factor(metric_names[metric], levels = metric_names)) %>%

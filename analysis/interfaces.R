@@ -86,7 +86,7 @@ plots$ddg <- (ggplot(conserved) +
                     coord_cartesian(clip = 'off') +
                     scale_colour_manual(name = 'Interface\nProtein', values = int_colour_scale) +
                     labs(x = 'Position', y = expression("Mean"~Delta*Delta*"G"))) %>%
-  labeled_plot(units = 'cm', height = 2.5 * n_distinct(conserved$name), width = 20)
+  labeled_plot(units = 'cm', height = 2.5 * n_distinct(conserved$name), width = 40)
 
 ### In silico DMSs
 is_dms <- function(tbl, interface){
