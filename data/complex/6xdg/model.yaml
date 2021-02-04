@@ -6,16 +6,16 @@ chains:
     name: 's'
   D:
     uniprot: ''
-    name: 'REGN10933 antibody Fab fragment light chain'
+    name: 'REGN10933 Fab Light Chain'
   A:
     uniprot: ''
-    name: 'REGN10987 antibody Fab fragment light chain'
+    name: 'REGN10987 Fab Light Chain'
   B:
     uniprot: ''
-    name: 'REGN10933 antibody Fab fragment heavy chain'
+    name: 'REGN10933 Fab Heavy Chain'
   C:
     uniprot: ''
-    name: 'REGN10987 antibody Fab fragment heavy chain'
+    name: 'REGN10987 Fab Heavy Chain'
 
 interfaces:
   - 'E_A'

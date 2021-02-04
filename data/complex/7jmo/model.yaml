@@ -6,10 +6,10 @@ chains:
     name: 's'
   H:
     uniprot: ''
-    name: 'COVA2-04 heavy chain'
+    name: 'COVA2-04 Heavy Chain'
   L:
     uniprot: ''
-    name: 'COVA2-04 light chain'
+    name: 'COVA2-04 Light Chain'
 
 interfaces:
   - 'A_H'
