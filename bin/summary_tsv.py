@@ -63,7 +63,8 @@ def main(args):
 
     # Annotation
     groups = ['uniprot', 'name', 'position', 'wt', 'mut']
-    annotation = pd.read_csv(args.annotation, sep='\t', index_col=False)
+    annotation = pd.read_csv(args.annotation, sep='\t', index_col=False,
+                             comment='#', skip_blank_lines=True)
     annotation = annotation.groupby(groups)['annotation'].apply(';'.join).reset_index()
 
     ## Merge table
