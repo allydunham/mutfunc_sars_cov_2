@@ -4,7 +4,7 @@
 uniprot	name	position	wt	mut	annotation
 
 # Misc
-P0DTC2	s	614	D	G	Present in the B lineage, which emerged in early 2020 and became the dominant strain [(WHO Report)](https://www.who.int/csr/don/31-december-2020-sars-cov2-variants/en/). It is present in all B lineage strains (e.g. UK and SA variants)
+P0DTC2	s	614	D	G	Present in the B lineage, which emerged in early 2020 and became the dominant viral strain [(WHO Report)](https://www.who.int/csr/don/31-december-2020-sars-cov2-variants/en/). It is in all B lineage strains (e.g. UK and SA variants)
 
 # Kemp et al. Paper variants
 P0DTC2	s	501	N	Y	Temporarily greatly increased in frequency in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
@@ -41,7 +41,6 @@ P0DTC2	s	501	N	Y	Present in strain B.1.351, detected in South Africa in December
 P0DTC2	s	18	L	F	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
 P0DTC2	s	246	R	I	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
 P0DTC2	s	417	K	N	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
-P0DTC2	s	501	N	Y	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
 
 # Brazil Variant P.1
 P0DTC2	s	18	L	F	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
