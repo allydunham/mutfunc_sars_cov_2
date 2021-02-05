@@ -1,3 +1,62 @@
+# Manual variant annotation
+# One annotation per line, multiple annotations per variant are concatenated when generating the summary TSV
+# ; is used as a separator, so cannot be used in the annotation
 uniprot	name	position	wt	mut	annotation
-P0DTC2	s	501	N	Y	Present in UK variant strain (B.1.1.7)
+
+# Misc
+P0DTC2	s	614	D	G	Present in the B lineage, which emerged in early 2020 and became the dominant strain [(WHO Report)](https://www.who.int/csr/don/31-december-2020-sars-cov2-variants/en/). It is present in all B lineage strains (e.g. UK and SA variants)
+
+# Kemp et al. Paper variants
 P0DTC2	s	501	N	Y	Temporarily greatly increased in frequency in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTC7	orf7a	39	T	I	Temporarily greatly increased in frequency in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTD1	nsp2	513	I	T	Temporarily emerged alongside RdRp F157L and became the dominant strain in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTD1	nsp12	157	F	L	Temporarily emerged alongside nsp2 I513T and became the dominant strain in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTC2	s	796	D	H	Emerged alongside a H69/V70 deletion in a patient undergoing convalescent antibody treatment [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3). It became the domiant strain upon initial emergence, dropped off and eventually increased to dominate again at the end of the case study
+P0DTC2	s	200	Y	H	Temporarily emerged in a patient undergoing convalescent antibody treatment. It was in the dominant strain for a time, alongside  S T240I, nsp2 I513T, RdRp F157L and nsp15 N177S [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTC2	s	240	T	I	Temporarily emerged in a patient undergoing convalescent antibody treatment. It was in the dominant strain for a time, alongside S Y200H, nsp2 I513T, RdRp F157L and nsp15 N177S [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTD1	nsp2	513	I	T	Temporarily emerged in a patient undergoing convalescent antibody treatment. It was in the dominant strain for a time, alongside S Y200H, S T240I, RdRp F157L and nsp15 N177S [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTD1	nsp12	157	F	L	Temporarily emerged in a patient undergoing convalescent antibody treatment. It was in the dominant strain for a time, alongside S Y200H, S T240I, nsp2 I513T, and nsp15 N177S [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+P0DTD1	nsp15	177	N	S	Temporarily emerged in a patient undergoing convalescent antibody treatment. It was in the dominant strain for a time, alongside S Y200H, S T240I, nsp2 I513T and RdRp F157L [(Kemp et al. 2020)](https://www.medrxiv.org/content/10.1101/2020.12.05.20241927v3)
+
+# UK Variant B.1.1.7
+P0DTC2	s	501	N	Y	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC2	s	570	A	D	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC2	s	681	P	H	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC2	s	716	T	I	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC2	s	982	S	A	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC2	s	1118	D	H	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC8	orf8	51	R	I	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC8	orf8	73	Y	C	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC9	nc	3	D	L	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTC9	nc	235	S	F	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTD1	nsp3	183	T	I	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTD1	nsp3	890	A	D	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+P0DTD1	nsp3	1412	I	T	Present in strain B.1.1.7, detected in the UK in December 2020 [(PHE Report)](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/947048/Technical_Briefing_VOC_SH_NJL2_SH2.pdf)
+
+# SA Variant B.1.351
+P0DTC2	s	80	D	A	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	215	D	G	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	484	E	K	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	501	N	Y	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	18	L	F	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	246	R	I	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	417	K	N	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+P0DTC2	s	501	N	Y	Present in strain B.1.351, detected in South Africa in December 2020 [(Tegally et al. 2020)](https://doi.org/10.1101/2020.12.21.20248640)
+
+# Brazil Variant P.1
+P0DTC2	s	18	L	F	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	20	T	N	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	26	P	S	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	138	D	Y	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	190	R	S	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	417	K	T	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	484	E	K	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	501	N	Y	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	655	H	Y	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC2	s	1027	T	I	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTD1	nsp3	370	S	L	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTD1	nsp3	977	K	Q	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTD1	nsp13	341	E	D	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC8	orf8	92	E	K	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+P0DTC9	nc	80	P	R	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
+
