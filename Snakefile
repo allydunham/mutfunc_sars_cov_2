@@ -127,6 +127,6 @@ rule copy_to_frontend:
 
         shell(f"rm -rf {target}/public/data/pdb_foldx/* &> {log}")
         shell(f"rm -rf {target}/public/data/pdb_interface/* &> {log}")
-        shell(f"python bin/copy_models.py swissmodel data/swissmodel {target}/public/data/pdb_foldx &> {log}")
-        shell(f"python bin/copy_models.py complex data/complex {target}/public/data/pdb_interface &> {log}")
+        shell(f"python bin/copy_models.py swissmodel {target}/public/data/pdb_foldx &> {log}")
+        shell(f"python bin/copy_models.py complex {target}/public/data/pdb_interface &> {log}")
 
