@@ -163,7 +163,7 @@ p_sift_dms <- select(spike, name, position, wt, mut, expression, sift_score, sif
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
   geom_boxplot(fill = '#377eb8', outlier.shape = 20) +
-  stat_compare_means(comparisons = list(c('Deleterious', 'Neutral')), method = 't.test', size = 2) +
+  stat_compare_means(comparisons = list(c('Deleterious', 'Neutral')), size = 2) +
   labs(x = 'SIFT4G Prediction', y = 'Spike DMS Expression Fitness')
 
 ### Panel 6 - FoldX against frequency
@@ -201,8 +201,7 @@ p_foldx_dms <- select(spike, name, position, wt, mut, expression, total_energy) 
   drop_na() %>%
   ggplot(aes(x = sig, y = expression)) +
   geom_boxplot(fill = '#e41a1c', outlier.shape = 20) +
-  stat_compare_means(comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral')),
-                     method = 't.test', size = 2) +
+  stat_compare_means(comparisons = list(c('Destabilising', 'Neutral'), c('Stabilising', 'Neutral')), size = 2) +
   labs(x = 'FoldX Prediction', y = 'Spike DMS Expression Fitness')
 
 ### Assemble figure
