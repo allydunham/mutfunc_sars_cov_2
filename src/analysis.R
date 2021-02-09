@@ -71,12 +71,12 @@ display_names <- c(nsp1='nsp1', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='3CL
                    ace2='ACE2', `40s`='40S', tom70='TOM70', `40S ribosomal protein S3`='40S',
                    `40S ribosomal protein S30`='40S', `18S ribosomal RNA`='40S',
                    `40S ribosomal protein S2`='40S', `40S ribosomal protein S9`='40S',
-                   `REGN10987 antibody Fab fragment heavy chain`='REGN10987 HC',
-                   `REGN10933 antibody Fab fragment heavy chain`='REGN10933 HC',
-                   `REGN10987 antibody Fab fragment light chain`='REGN10987 LC',
-                   `REGN10933 antibody Fab fragment light chain`='REGN10933 LC',
-                   `H014 Fab Heavy Chain`='H014 HC', `H014 Fab Light Chain`='H014 LC',
-                   `COVA2-04 light chain`='COVA2-04 LC', `COVA2-04 heavy chain`='COVA2-04 HC')
+                   `REGN10987 Fab Heavy Chain`='REGN10987 Heavy Chain',
+                   `REGN10933 Fab Heavy Chain`='REGN10933 Heavy Chain',
+                   `REGN10987 Fab Light Chain`='REGN10987 Light Chain',
+                   `REGN10933 Fab Light Chain`='REGN10933 Light Chain',
+                   `H014 Fab Heavy Chain`='H014 Heavy Chain', `H014 Fab Light Chain`='H014 Light Chain',
+                   `COVA2-04 Light Chain`='COVA2-04 Light Chain', `COVA2-04 Heavy Chain`='COVA2-04 Heavy Chain')
 
 # Blank placeholder ggplot
 blank_plot <- function(text = NULL){
