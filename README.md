@@ -10,6 +10,8 @@ The source code for the [web interface](https://github.com/allydunham/mutfunc_sa
 The pipeline manages generation of the dataset, including downloading most source data from online repositories.
 It is managed by Snakemake, with a master `Snakefile` and additional rulesets for each section in the `pipeline/` directory.
 Scripts for various sections of the pipeline are found in `bin/` and some modules are in `src/`.
+Incorporating the phosphorylation data requires supplementary data file S2 from [Bouhaddou et al. (2020)](https://www.cell.com/cell/fulltext/S0092-8674\(20\)30811-4), saved as data/ptms/SuppTable\_annotated\_viral\_phosphosites\_revised.tsv.
+Antibody escape data comes from Table S1 from [Greaney et al. (2021)](https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(20\)30624-7), which must be saved as data/greaney\_spike\_antibody.csv
 
 ## Analysis
 
