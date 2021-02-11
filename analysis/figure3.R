@@ -12,9 +12,9 @@ label_text_size = 2.5
 
 # white - f3f3f3
 # pale blue - 34e8b9
-# UK blue - nitrogen
-# SA red - red
-# Br green - carbon
+# UK (B.1.1.7) blue - nitrogen
+# SA (B.1.351) red - red
+# Br (P.1) green - carbon
 # All 3 - black
 # SA/Br yellow - dash
 # UK/SA purple - purpleblue
@@ -38,70 +38,70 @@ p_s_variants <- ggplot() +
   # UK
   annotate('segment', x = 0.84, xend = 0.55, y = 0.34, yend = 0.46) +
   annotate('richtext', x = 0.85, y = 0.35, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>A570D (UK)</b><br>&Delta;&Delta;G = 2.28&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>A570D (B.1.1.7)</b><br>&Delta;&Delta;G = 2.28&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.21, xend = 0.37, y = 0.09, yend = 0.285) +
   annotate('richtext', x = 0.2, y = 0.1, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>P681H (UK)</b><br>&Delta;&Delta;G = 1.96&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>P681H (B.1.1.7)</b><br>&Delta;&Delta;G = 1.96&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.26, xend = 0.425, y = 0.74, yend = 0.625) +
   annotate('richtext', x = 0.25, y = 0.75, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>S982A (UK)</b><br>&Delta;&Delta;G = -1.33&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>S982A (B.1.1.7)</b><br>&Delta;&Delta;G = -1.33&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # SA
   annotate('segment', x = 0.74, xend = 0.49, y = 0.24, yend = 0.48) +
   annotate('richtext', x = 0.75, y = 0.25, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>D80A (SA)</b><br>&Delta;&Delta;G = 1.66&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>D80A (B.1.351)</b><br>&Delta;&Delta;G = 1.66&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.11, xend = 0.4, y = 0.29, yend = 0.45) +
   annotate('richtext', x = 0.1, y = 0.3, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>D215G (SA)</b><br>&Delta;&Delta;G = 2.56&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>D215G (B.1.351)</b><br>&Delta;&Delta;G = 2.56&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.21, xend = 0.415, y = 0.64, yend = 0.54) +
   annotate('richtext', x = 0.2, y = 0.65, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>R246N (SA)</b><br>&Delta;&Delta;G = 2.73&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>R246N (B.1.351)</b><br>&Delta;&Delta;G = 2.73&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # Br
   annotate('segment', x = 0.69, xend = 0.495, y = 0.14, yend = 0.43) +
   annotate('richtext', x = 0.7, y = 0.15, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>P26S (Brazil)</b><br>&Delta;&Delta;G = 1.03&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>P26S (P.1)</b><br>&Delta;&Delta;G = 1.03&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.84, xend = 0.52, y = 0.59, yend = 0.525) +
   annotate('richtext', x = 0.85, y = 0.6, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>D138Y (Brazil)</b><br>&Delta;&Delta;G = 4.16&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>D138Y (P.1)</b><br>&Delta;&Delta;G = 4.16&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.11, xend = 0.39, y = 0.49, yend = 0.52) +
   annotate('richtext', x = 0.1, y = 0.5, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>R190S (Brazil)</b><br>&Delta;&Delta;G = 3.47&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>R190S (P.1)</b><br>&Delta;&Delta;G = 3.47&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # SA/Br
   annotate('segment', x = 0.83, xend = 0.515, y = 0.49, yend = 0.51) +
   annotate('richtext', x = 0.84, y = 0.5, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>L18F (SA/Brazil)</b><br>&Delta;&Delta;G = 2.92&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>L18F (B.1.351/P.1)</b><br>&Delta;&Delta;G = 2.92&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.715, xend = 0.69, y = 0.75, yend = 0.705) +
   annotate('richtext', x = 0.72, y = 0.76, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>E484K (SA/Brazil)</b><br>In ACE2 and Antibody interface<br>Stabilises ACE2 and REGN10933 binding<br>Destabilises H014 binding',
+           label = '<b>E484K (B.1.351/P.1)</b><br>In ACE2 and Antibody interface<br>Stabilises ACE2 and REGN10933 binding<br>Destabilises H014 binding',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.30, xend = 0.605, y = 0.90, yend = 0.66) +
   annotate('richtext', x = 0.29, y = 0.91, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>K417 (SA/Brazil)</b><br>N mutant in SA, T mutant in Brazil<br>Both &Delta;&Delta;G > 1&thinsp;kJ.mol<sup>-1</sup><br>In ACE2 and Antibody binding site',
+           label = '<b>K417 (B.1.351/P.1)</b><br>N mutant in B.1.351, T mutant in P.1<br>Both &Delta;&Delta;G > 1&thinsp;kJ.mol<sup>-1</sup><br>In ACE2 and Antibody binding site',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # Key
-  geom_point(aes(colour = c('UK', 'SA', 'Brazil', 'SA/Brazil')), x = -100, y = -100) +
-  scale_colour_manual(name='', values = c(UK='#3333FF', SA='red', Brazil='#33FF33', `SA/Brazil`='#FF8000', `UK/SA`='#8000FF')) +
+  geom_point(aes(colour = c('B.1.1.7', 'B.1.351', 'P.1', 'B.1.351/P.1')), x = -100, y = -100) +
+  scale_colour_manual(name='', values = c(`B.1.1.7`='#3333FF', `B.1.351`='red', P.1='#33FF33', `B.1.351/P.1`='#FF8000', `B.1.1.7/B.1.351`='#8000FF')) +
   
   theme(axis.title = element_blank(), axis.text = element_blank(),
         axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
@@ -126,17 +126,17 @@ p_orf8_variants <- ggplot() +
   
   annotate('segment', x = 0.36, xend = 0.55, y = 0.86, yend = 0.57) +
   annotate('richtext', x = 0.35, y = 0.87, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>E92K (SA)</b><br>&Delta;&Delta;G = 1.21&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>E92K (B.1.351)</b><br>&Delta;&Delta;G = 1.21&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.74, xend = 0.64, y = 0.79, yend = 0.74) +
   annotate('richtext', x = 0.75, y = 0.8, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>A51I (UK)</b><br>&Delta;&Delta;G = 2.13&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>A51I (B.1.1.7)</b><br>&Delta;&Delta;G = 2.13&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.78, xend = 0.78, y = 0.16, yend = 0.42) +
   annotate('richtext', x = 0.75, y = 0.15, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>Y73C (UK)</b><br>&Delta;&Delta;G = 1.93&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>Y73C (B.1.1.7)</b><br>&Delta;&Delta;G = 1.93&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   theme(axis.title = element_blank(), axis.text = element_blank(),
