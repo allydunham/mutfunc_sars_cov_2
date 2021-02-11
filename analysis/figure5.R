@@ -161,8 +161,8 @@ p_structure <- ggplot() +
 
 ### Assemble figure
 size <- theme(text = element_text(size = 8))
-p1 <- p_pred_benchmark + labs(tag = 'A') + size
-p2 <- p_interfaces + labs(tag = 'B') + size
+p1 <- p_interfaces + labs(tag = 'A') + size
+p2 <- p_pred_benchmark + labs(tag = 'B') + size
 p3 <- p_experiment + labs(tag = 'C') + size
 p4 <- p_structure + labs(tag = 'D') + size
 
