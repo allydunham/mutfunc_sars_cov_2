@@ -26,18 +26,18 @@ p_s_variants <- ggplot() +
   
   # All strains
   annotate('segment', x = 0.48, xend = 0.5, y = 0.1, yend = 0.37) +
-  annotate('richtext', x = 0.5, y = 0.1, hjust = 1, vjust = 1, size = label_text_size,
+  annotate('richtext', x = 0.5, y = 0.09, hjust = 1, vjust = 1, size = label_text_size,
            label = '<b>D614G (All)</b><br>87% Frequency',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.62, xend = 0.63, y = 0.86, yend = 0.725) +
   annotate('richtext', x = 0.6, y = 0.87, hjust = 0, vjust = 0, size = label_text_size,
-           label = '<b>N501Y (All)</b><br>ACE2 Interface &Delta;&Delta;G = 5.75&thinsp;kJ.mol<sup>-1</sup><br>COVA2-04 Antibody Interface &Delta;&Delta;G = 1.57&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>N501Y (All)</b><br>ACE2 Int. &Delta;&Delta;G = 5.75&thinsp;kJ.mol<sup>-1</sup><br>COVA2-04 Antibody Int. &Delta;&Delta;G = 1.57&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # UK
-  annotate('segment', x = 0.89, xend = 0.545, y = 0.34, yend = 0.4625) +
-  annotate('richtext', x = 0.9, y = 0.35, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.84, xend = 0.55, y = 0.34, yend = 0.46) +
+  annotate('richtext', x = 0.85, y = 0.35, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>A570D (UK)</b><br>&Delta;&Delta;G = 2.28&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
@@ -73,8 +73,8 @@ p_s_variants <- ggplot() +
            label = '<b>P26S (Brazil)</b><br>&Delta;&Delta;G = 1.03&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.89, xend = 0.52, y = 0.59, yend = 0.525) +
-  annotate('richtext', x = 0.9, y = 0.6, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.84, xend = 0.52, y = 0.59, yend = 0.525) +
+  annotate('richtext', x = 0.85, y = 0.6, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>D138Y (Brazil)</b><br>&Delta;&Delta;G = 4.16&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
@@ -84,13 +84,13 @@ p_s_variants <- ggplot() +
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   # SA/Br
-  annotate('segment', x = 0.89, xend = 0.515, y = 0.49, yend = 0.51) +
-  annotate('richtext', x = 0.9, y = 0.5, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.83, xend = 0.515, y = 0.49, yend = 0.51) +
+  annotate('richtext', x = 0.84, y = 0.5, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>L18F (SA/Brazil)</b><br>&Delta;&Delta;G = 2.92&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.84, xend = 0.7, y = 0.75, yend = 0.7) +
-  annotate('richtext', x = 0.85, y = 0.76, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.715, xend = 0.69, y = 0.75, yend = 0.705) +
+  annotate('richtext', x = 0.72, y = 0.76, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>E484K (SA/Brazil)</b><br>In ACE2 and Antibody interface<br>Stabilises ACE2 and REGN10933 binding<br>Destabilises H014 binding',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
@@ -103,10 +103,15 @@ p_s_variants <- ggplot() +
   geom_point(aes(colour = c('UK', 'SA', 'Brazil', 'SA/Brazil')), x = -100, y = -100) +
   scale_colour_manual(name='', values = c(UK='#3333FF', SA='red', Brazil='#33FF33', `SA/Brazil`='#FF8000', `UK/SA`='#8000FF')) +
   
-  labs(subtitle = 'Spike') +
   theme(axis.title = element_blank(), axis.text = element_blank(),
         axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
-        legend.position = 'bottom')
+        legend.position = c(0.5, 0), 
+        legend.direction = 'horizontal',
+        legend.background = element_blank(),
+        panel.border = element_blank(),
+        plot.background = element_blank(),
+        panel.background = element_blank(),
+        plot.margin = margin(0,0,-10,0))
 
 ### Panel - orf8
 orf8_img <- readPNG('figures/figures/variants/orf8.png')
@@ -114,29 +119,31 @@ p_orf8_variants <- ggplot() +
   coord_fixed(expand = FALSE, xlim = c(0, 1), ylim = c(0, 1), clip = 'off') +
   annotation_raster(orf8_img, xmin = 0.1, xmax = 0.9, ymin = 0.1, ymax = 0.9) +
   
-  annotate('segment', x = 0.16, xend = 0.3, y = 0.14, yend = 0.35) +
-  annotate('richtext', x = 0.15, y = 0.15, hjust = 1, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.33, xend = 0.33, y = 0.16, yend = 0.41) +
+  annotate('richtext', x = 0.35, y = 0.15, hjust = 1, vjust = 1, size = label_text_size,
            label = '<b>S24L (4%)</b><br>&Delta;&Delta;G = -1.3&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.16, xend = 0.3, y = 0.14, yend = 0.35) +
-  annotate('richtext', x = 0.15, y = 0.85, hjust = 1, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.36, xend = 0.55, y = 0.86, yend = 0.57) +
+  annotate('richtext', x = 0.35, y = 0.87, hjust = 1, vjust = 1, size = label_text_size,
            label = '<b>E92K (SA)</b><br>&Delta;&Delta;G = 1.21&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.16, xend = 0.3, y = 0.14, yend = 0.35) +
-  annotate('richtext', x = 0.85, y = 0.85, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.74, xend = 0.64, y = 0.79, yend = 0.74) +
+  annotate('richtext', x = 0.75, y = 0.8, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>A51I (UK)</b><br>&Delta;&Delta;G = 2.13&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.16, xend = 0.3, y = 0.14, yend = 0.35) +
-  annotate('richtext', x = 0.85, y = 0.15, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.78, xend = 0.78, y = 0.16, yend = 0.42) +
+  annotate('richtext', x = 0.75, y = 0.15, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>Y73C (UK)</b><br>&Delta;&Delta;G = 1.93&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  labs(subtitle = 'orf8') +
   theme(axis.title = element_blank(), axis.text = element_blank(),
-        axis.ticks = element_blank(), panel.grid.major.y = element_blank())
+        axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
+        plot.background = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank())
 
 ### Panel - orf3a
 orf3a_img <- readPNG('figures/figures/variants/orf3a.png')
@@ -144,29 +151,31 @@ p_orf3a_variants <- ggplot() +
   coord_fixed(expand = FALSE, xlim = c(0, 1), ylim = c(0, 1), clip = 'off') +
   annotation_raster(orf3a_img, xmin = 0.1, xmax = 0.9, ymin = 0.1, ymax = 0.9) +
   
-  annotate('segment', x = 0.69, xend = 0.71, y = 0.82, yend = 0.87) +
-  annotate('richtext', x = 0.69, y = 0.87, hjust = 0, vjust = 0, size = label_text_size,
-           label = '<b>T223I (1.1%)</b><br>In dimer interface<br>Interface &Delta;&Delta;G = 1.05&thinsp;kJ.mol<sup>-1</sup>',
+  #annotate('segment', x = 1, xend = 0.71, y = 0.82, yend = 0.87) +
+  annotate('richtext', x = 1, y = 0.87, hjust = 1, vjust = 0, size = label_text_size,
+           label = '<b>T223I (1.1%)</b><br>In dimer interface<br>Int. &Delta;&Delta;G = 1.05&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.36, xend = 0.4, y = 0.45, yend = 0.79) +
+  annotate('segment', x = 0.39, xend = 0.39, y = 0.79, yend = 0.46) +
   annotate('richtext', x = 0.4, y = 0.8, hjust = 1, vjust = 0, size = label_text_size,
-           label = '<b>Q57H (25%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface<br>Interface &Delta;&Delta;G = 0.699&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>Q57H (25%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.6, xend = 0.7, y = 0.4, yend = 0.25) +
+  annotate('segment', x = 0.7, xend = 0.625, y = 0.25, yend = 0.41) +
   annotate('richtext', x = 0.705, y = 0.26, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>R126S (0.2%)</b><br>&Delta;&Delta;G = 3.43&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.28, xend = 0.19, y = 0.26, yend = 0.13) +
+  annotate('segment', x = 0.19, xend = 0.32, y = 0.13, yend = 0.26) +
   annotate('richtext', x = 0.17, y = 0.12, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>L46F (0.3%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface<br>Interface &Delta;&Delta;G = 2.51&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>L46F (0.3%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface<br>Int. &Delta;&Delta;G = 2.51&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  labs(subtitle = 'Orf3a') +
   theme(axis.title = element_blank(), axis.text = element_blank(),
-        axis.ticks = element_blank(), panel.grid.major.y = element_blank())
+        axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
+        plot.background = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank())
 
 ### Panel - nsp7 / nsp8 / nsp12
 # blue - 0x377eb8
@@ -177,34 +186,38 @@ p_nsp7_nsp8_nsp12_variants <- ggplot() +
   coord_fixed(expand = FALSE, xlim = c(0, 1), ylim = c(0, 1), clip = 'off') +
   annotation_raster(nsp7_nsp8_nsp12_img, xmin = 0.1, xmax = 0.9, ymin = 0.1, ymax = 0.9) +
   
-  annotate('segment', x = 0.565, xend = 0.7, y = 0.71, yend = 0.8) +
-  annotate('segment', x = 0.555, xend = 0.7, y = 0.38, yend = 0.8) +
-  annotate('richtext', x = 0.71, y = 0.815, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.65, xend = 0.6, y = 0.87, yend = 0.72) +
+  annotate('segment', x = 0.65, xend = 0.625, y = 0.87, yend = 0.33) +
+  annotate('richtext', x = 0.61, y = 0.875, hjust = 0, vjust = 0, size = label_text_size,
            label = '<b>nsp8 I107V (0.2%)</b><br>&Delta;&Delta;G = 0.96&thinsp;kJ.mol<sup>-1</sup><br>In nsp7 and RdRp<br>interfaces',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.55, xend = 0.4, y = 0.6, yend = 0.75) +
+  annotate('segment', x = 0.4, xend = 0.6, y = 0.75, yend = 0.6) +
   annotate('richtext', x = 0.39, y = 0.76, hjust = 1, vjust = 1, size = label_text_size, 
-           label = '<b>nsp7 S25L (1.6%)</b><br>In nsp8 interfaces<br>Interface &Delta;&Delta;G = -1.33 to -1.54&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>nsp7 S25L (1.6%)</b><br>In nsp8 interfaces<br>Int. &Delta;&Delta;G < -1.32&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.49, xend = 0.65, y = 0.39, yend = 0.2) +
-  annotate('richtext', x = 0.655, y = 0.21, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.535, xend = 0.535, y = 0.22, yend = 0.35) +
+  annotate('richtext', x = 0.525, y = 0.21, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>RdRp P323L (87%)</b><br>Linked to S D614G<br>Not predicted significant',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.39, xend = 0.15, y = 0.34, yend = 0.12) +
-  annotate('richtext', x = 0.12, y = 0.115, hjust = 0, vjust = 1, size = label_text_size,
+  annotate('segment', x = 0.05, xend = 0.425, y = 0.12, yend = 0.32) +
+  annotate('richtext', x = 0.02, y = 0.115, hjust = 0, vjust = 1, size = label_text_size,
            label = '<b>RdRp E254D (1%)</b><br>&Delta;&Delta;G = 2.32&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   geom_point(aes(x = -1, y = -1, colour = c('nsp7', 'nsp8', 'RdRp')), shape = 15, size = 4) +
   scale_colour_manual(name = '', values = c(nsp7='#984ea3', nsp8='#ff7f00', RdRp='#377eb8')) +
-  labs(subtitle = 'nsp7 - nsp8 - RdRp Complex') +
+  
   theme(axis.title = element_blank(), axis.text = element_blank(),
         axis.ticks = element_blank(), panel.grid.major.y = element_blank(),
-        legend.position = c(0.5, 0.01), legend.direction = 'horizontal',
-        legend.background = element_blank())
+        legend.position = c(0.5, -0.05), 
+        legend.direction = 'horizontal',
+        legend.background = element_blank(),
+        plot.background = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank())
 
 ### Assemble figure
 size <- theme(text = element_text(size = 8))
@@ -213,7 +226,7 @@ p2 <- p_orf8_variants + labs(tag = 'B') + size
 p3 <- p_orf3a_variants + labs(tag = 'C') + size
 p4 <- p_nsp7_nsp8_nsp12_variants + labs(tag = 'D') + size
 
-figure <- multi_panel_figure(width = c(60, 60, 60), height = c(180, 90), panel_label_type = 'none', row_spacing = 0, column_spacing = 0) %>%
+figure <- multi_panel_figure(width = c(60, 60, 60), height = c(170, 90), panel_label_type = 'none', row_spacing = 0, column_spacing = 0) %>%
   fill_panel(p1, row = 1, column = 1:3) %>%
   fill_panel(p2, row = 2, column = 1) %>%
   fill_panel(p3, row = 2, column = 2) %>%
