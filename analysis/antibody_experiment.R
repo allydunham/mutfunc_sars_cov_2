@@ -132,6 +132,33 @@ plots$high_max_escape <- (ggplot(variants, aes(x = clamp(total_energy, upper = 1
                                                 name = 'FoldX Interface Prediction')) %>%
   labeled_plot(units = 'cm', height = 20, width = 25)
 
+### Escape per position
+positions <- group_by(variants, position, wt) %>%
+  filter(!is.na(int_name) | int_name == 'ace2') %>%
+  summarise(sift = mean(sift_score, na.rm=TRUE),
+            ddg = mean(total_energy, na.rm=TRUE),
+            int_ddg = mean(diff_interaction_energy, na.rm=TRUE),
+            escape_max = mean(mut_escape_max, na.rm=TRUE),
+            escape_mean = mean(mut_escape_mean, na.rm=TRUE),
+            .groups = 'drop') %>%
+  pivot_longer(starts_with('escape_'), names_prefix = 'escape_', names_to = 'metric', values_to = 'escape') %>%
+  mutate(sift_sig = ifelse(sift < 0.05, 'Deleterious', 'Neutral'),
+         foldx_sig = ifelse(ddg < 1, ifelse(ddg < -1, 'Stabilising', 'Neutral'), 'Destabilising'),
+         int_sig = ifelse(int_ddg < 1, ifelse(int_ddg < -1, 'Stabilising', 'Neutral'), 'Destabilising'),
+         metric = str_to_title(metric))
+
+plots$high_escape_per_position <- (ggplot(positions, aes(x = ddg, y = escape, colour = sift_sig, label = str_c(wt, position))) +
+  facet_wrap(~metric, nrow = 1, scales = 'free_y') +
+  geom_vline(xintercept = c(-1, 1)) +
+  geom_point(shape = 20) +
+  geom_point(mapping = aes(shape = int_sig), size = 2) +
+  geom_text_repel(data = filter(positions, (escape > 0.15 & metric == 'Max') | (escape > 0.049 & metric == 'Mean')), colour = 'black', show.legend = FALSE) +
+  labs(x = expression('Mean'~Delta*Delta*'G'), y = 'Escape Proportion') +
+  scale_colour_manual(values = c(Deleterious = 'red', Neutral = 'black'), name = 'Mean SIFT4G Prediction') +
+  scale_shape_manual(values = c(Destabilising=8, Neutral=4, Stabilising=3), na.translate = FALSE,
+                     name = 'Mean FoldX Interface Prediction')) %>%
+  labeled_plot(units = 'cm', height = 20, width = 30)
+
 ### Experiment vs FoldX predictions
 plots$foldx_vs_experiment <- filter(variants, str_detect(int_name, 'chain')) %>%
   ggplot(aes(x = mut_escape_max, y = diff_interaction_energy, colour = int_name)) +
