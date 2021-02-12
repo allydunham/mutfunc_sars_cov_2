@@ -100,6 +100,9 @@ pdb_names <- c(`2ahm`='nsp7∙nsp8', `5c8s`='nsp10∙ExoN', `6m0j`='S∙ACE2', `
                `6xdc`='orf3a∙orf3a', `6zoj`='nsp1∙40S', `7btf`='nsp7∙nsp8∙RdRp', `7c22`='N∙N', `7kdt`='orf9b∙TOM70',
                `7cxm`='RTC', `6xdg`='S∙REGN', `7cai`='S∙H014 (1)', `7cak`='S∙H014 (2)', `7jmo`='S∙COVA2-04')
 
+human_complexes <- c('7kdt', '6m0j')
+antibody_complexes <- c('6xdg', '7cai', '7cak', '7jmo')
+
 complexes <- select(variants, int_template, name, int_name, position) %>%
   drop_na() %>%
   distinct() %>%
@@ -110,17 +113,25 @@ complexes <- select(variants, int_template, name, int_name, position) %>%
   summarise(n = sum(n), .groups='drop') %>%
   mutate(int_name = pdb_names[int_template],
          img = str_c("<img src='figures/figures/complexes/", int_template, ".png", "' width='53' />"),
-         n = str_c(n, ' positions'))
+         n = str_c(n, ' positions'),
+         category = ifelse(int_template %in% human_complexes, 'Virus - Human',
+                           ifelse(int_template %in% antibody_complexes, 'Virus - Antibody', 'Virus - Virus')))
 
-p_complexes <- ggplot(complexes, aes(x = n, label = img)) +
-  geom_richtext(y = 0.5, fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
+p_complexes_base <- ggplot() +
+  geom_richtext(aes(x = n, label = img), y = 0.5, fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   coord_cartesian(clip = 'off') +
-  facet_wrap(~int_name, nrow = 2, scales = 'free') +
+  facet_wrap(~int_name, nrow = 2, scales = 'free', dir = 'v') +
   theme(panel.grid.major.y = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks = element_blank(),
         axis.title = element_blank(),
-        strip.text = element_text(size = 5))
+        strip.text = element_text(size = 5),
+        text = element_text(size = 7))
+
+p_complexes <- ggarrange(p_complexes_base %+% filter(complexes, category == 'Virus - Virus') + labs(subtitle = 'Virus - Virus'),
+                         p_complexes_base %+% filter(complexes, category == 'Virus - Human') + labs(subtitle = 'Virus - Human'),
+                         p_complexes_base %+% filter(complexes, category == 'Virus - Antibody') + labs(subtitle = 'Virus - Antibody'),
+                         nrow = 1, widths = c(5, 1, 2))
 
 ### Panel 4 - SIFT4G against frequency
 # p_sift_freq <- select(variants, sift_score, freq) %>%
