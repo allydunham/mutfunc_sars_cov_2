@@ -3,7 +3,8 @@
 source('src/config.R')
 source('src/analysis.R')
 
-variants <- load_variants()
+variants <- load_variants() %>%
+  mutate(freq_cat = classify_freq(freq))
 spike <- read_csv('data/starr_ace2_spike.csv') %>% 
   mutate(uniprot = 'P0DTC2', name = 's') %>%
   select(uniprot, name, position = site_SARS2, position_rbd = site_RBD, wt = wildtype, mut = mutant, binding=bind_avg, expression=expr_avg) %>%
@@ -20,7 +21,7 @@ join_int_name <- function(x, y){
 sig_vars <- select(variants, name, position, wt, mut, int_name, freq, diff_interaction_energy) %>%
   drop_na(int_name) %>%
   mutate(name = display_names[name],
-         int_name = display_names[int_name],
+         int_name = str_replace(display_names[int_name], 'Heavy Chain', 'HC') %>% str_replace('Light Chain', 'LC'),
          int = join_int_name(name, int_name),
          sig = ifelse(diff_interaction_energy < 1, ifelse(diff_interaction_energy < -1, 'Stabilising', 'Neutral'), 'Destabilising'),
          observed = !is.na(freq)) %>%
@@ -39,8 +40,8 @@ p_counts <- ggplot(sig_vars, aes(x = as.integer(int), y = prop, fill = sig)) +
   geom_col(width = 0.6) +
   coord_flip() +
   scale_x_continuous(name = '', breaks = 1:length(int_names), labels = int_names,
-                     sec.axis = dup_axis(name = 'Total Observed Variants', labels = nums)) +
-  scale_y_continuous(name = 'Proportion of Possible Variants Observed', expand = expansion(mult = c(0, 0.05))) +
+                     sec.axis = dup_axis(name = '', labels = nums)) +
+  scale_y_continuous(name = 'Fraction of Interface Variants Observed', expand = expansion(mult = c(0, 0.05))) +
   scale_fill_manual(name = '', values = c(Neutral='gray30', Stabilising='#377eb8', Destabilising='#e41a1c'),
                     breaks = c('Stabilising', 'Neutral', 'Destabilising')) +
   guides(fill = guide_legend(keywidth = unit(3, 'mm'), keyheight = unit(3, 'mm'))) +
@@ -53,18 +54,27 @@ p_counts <- ggplot(sig_vars, aes(x = as.integer(int), y = prop, fill = sig)) +
         legend.spacing.x = unit(1, 'mm'))
 
 ### Panel 2 - Frequency vs ddG
-p_freq_ddg <- select(variants, diff_interaction_energy, freq) %>%
+freq_ddg <- select(variants, diff_interaction_energy, freq) %>%
   mutate(freq_cat = classify_freq(freq)) %>%
   drop_na(diff_interaction_energy) %>%
   group_by(freq_cat) %>%
-  summarise(mean = mean(diff_interaction_energy), sd = sd(diff_interaction_energy), .groups='drop') %>%
-  ggplot() + 
-  geom_hline(yintercept = 2:-2, linetype = 'dotted', colour = c('grey', 'black', 'grey', 'black', 'grey')) +
-  geom_segment(mapping = aes(x = freq_cat, xend = freq_cat, y = mean - sd, yend = mean + sd), colour = '#984ea3', size = 0.5) +
-  geom_point(mapping = aes(x = freq_cat, y = mean), colour = '#984ea3') +
-  labs(x = 'Variant Frequency (%)', y = expression('FoldX Interface'~Delta*Delta*G~'(kJ'%.%'mol'^-1*')')) +
-  theme(panel.grid.major.y = element_blank())
+  summarise(mean = mean(diff_interaction_energy),
+            median = median(diff_interaction_energy),
+            n = n(), .groups='drop')
 
+p_freq_ddg <- ggplot(variants, aes(x = freq_cat, y = clamp(diff_interaction_energy, -5, 5))) + 
+  geom_violin(fill = '#984ea3', colour = '#984ea3', scale = 'width') +
+  geom_hline(yintercept = c(-1, 1), linetype = 'dotted', colour = 'black') +
+  geom_text(data = freq_ddg, mapping = aes(x = freq_cat, y = 5.5, label = n), size = 1.8) +
+  geom_point(data = freq_ddg, mapping = aes(x = freq_cat, y = median, colour = 'Median'), shape = 20) +
+  geom_line(data = freq_ddg, mapping = aes(x = freq_cat, y = median, colour = 'Median', group = 1)) +
+  geom_point(data = freq_ddg, mapping = aes(x = freq_cat, y = mean, colour = 'Mean'), shape = 20) +
+  geom_line(data = freq_ddg, mapping = aes(x = freq_cat, y = mean, colour = 'Mean', group = 1)) +
+  labs(x = 'Variant Frequency (%)', y = 'Int. '~Delta*Delta*G~'(kJ'%.%'mol'^-1*', clamped to'%+-%'5)') + 
+  scale_colour_manual(name = '', values = c(Mean='darkblue', Median='#ff7f00')) +
+  lims(y = c(-5, 5)) +
+  theme(legend.position = 'top', legend.box.margin = margin(0, 0, 0, 0), legend.margin = margin(0, 0, -18, 0))
+  
 ### Panel 2 - Spike DMS vs. FoldX
 p_spike_dms <- select(spike, position, wt, mut, binding, int_name, diff_interaction_energy) %>%
   filter(int_name == 'ace2') %>%
