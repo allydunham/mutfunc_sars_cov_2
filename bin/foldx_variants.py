@@ -29,14 +29,14 @@ def main(args):
         sections = [ProteinRegion(chain=chain, positions=positions)]
 
     else:
-        sections = [ProteinRegion(chain) for chain in structure[0]]
+        sections = [ProteinRegion(chain.id) for chain in structure[0]]
 
     # List of valid chains is used to completely skip chains with no valid residues
     chains = {s.chain for s in sections}
 
     # Transform chain IDs in the same way as when repairing PDB files (e.g. numbers to
     # letters). This means this script must be run on the untransformed PDB file in the
-    # rare cases where there are 
+    # rare cases where there are
     chain_map = chains_to_letters([c.id for c in structure[0]])
 
     variants = []
@@ -44,7 +44,7 @@ def main(args):
         # Short-circuit chains we don't want, if specified
         if not chain.id in chains:
             continue
-        
+
         mapped_chain = chain_map[chain.id]
         for residue in chain:
             if not sections or any(residue in s for s in sections):
