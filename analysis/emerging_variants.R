@@ -3,6 +3,20 @@
 source('src/config.R')
 source('src/analysis.R')
 
+annotation <- read_tsv('data/frequency/variant_annotation.tsv', comment = '##') %>%
+  select(variants = `#Uploaded_variation`, allele = Allele, name=Gene, position = Protein_position, aa = Amino_acids) %>%
+  mutate(chrom = 'NC_045512v2') %>%
+  separate(aa, into = c('wt', 'mut'), sep = '/') %>%
+  tidyr::extract(variants, c('rna_wt', 'rna_position'), "([ATCG])([0-9]*).*", convert = TRUE) %>%
+  select(rna_position, rna_wt, rna_mut=allele, name, position, wt, mut) %>%
+  mutate(name = str_replace(name, 'nsp12_[12]', 'nsp12'))
+
+kemp_variants <- read_tsv('data/kemp_variants.tsv') %>%
+  select(rna_position = Locus, rna_wt = From, rna_mut = To, name = Protein, `1`:`101`) %>%
+  left_join(annotation, by = c('name', 'rna_position', 'rna_wt', 'rna_mut')) %>%
+  select(name, position, wt, mut, `1`:`101`) %>%
+  drop_na()
+
 variants <- load_variants()
 
 # Remdesivir at day 41, 54 & 83
@@ -38,3 +52,11 @@ view_variants(variants, c('s P330S', 's W64G'))
 # Day 95 (after 3rd CP): S D796H and double deletion re-emerges
 # Significant SIFT4G score for s D796H and 69 has strong structural effect
 view_variants(variants, c('s D796H'))
+
+### Plots
+plots <- list()
+kemp_variants <- pivot_longer(kemp_variants, c(-name, -position, -wt, -mut), names_to = 'day', values_to = 'kemp_freq') %>%
+  select(-wt) %>%
+  left_join(select(variants, -uniprot, ), by = c('name', 'position', 'mut')) %>%
+  select(name, position, wt, mut, day, kemp_freq, everything())
+
