@@ -4,82 +4,154 @@ Extract subsets from vcf sample headers
 """
 import argparse
 import os
+import sys
 from dataclasses import dataclass
 from datetime import date, timedelta
-from os import stat
 
-REGIONS = {
-    "NorthAfrica": ["Algeria", "Morocco", "Egypt", "Tunisia"],
-    "SubSaharanAfrica": ["Madagascar", "Senegal", "SouthAfrica", "DRC",
-                    "Reunion", "Kenya", "SierraLeone", "Gabon", "Botswana",
-                    "Congo", "Mali", "Benin", "Ghana", "Nigeria", "Uganda",
-                    "Zambia", ],
+NAME_REGIONS = {
+    "Caribbean": ["Anguilla", "AntiguaandBarbuda", "Aruba", "Bahamas", "Barbados",
+                  "Bonaire, SintEustatiusandSaba", "CaymanIslands", "Cuba", "Curaçao",
+                  "Dominica", "DominicanRepublic", "Grenada", "Guadeloupe", "Haiti", "Jamaica",
+                  "Martinique", "Montserrat", "PuertoRico", "SaintBarthélemy",
+                  "SaintKittsandNevis", "SaintLucia", "SaintMartin(Frenchpart)",
+                  "SaintVincentandtheGrenadines", "SintMaarten(Dutchpart)",
+                  "TrinidadandTobago", "TurksandCaicosIslands", "VirginIslands(British)",
+                  "VirginIslands(U.S.)"],
 
-    "MiddleEast": ["Turkey", "SaudiArabia", "UnitedArabEmirates", "Jordan",
-                   "Pakistan", "Iran", "Iraq", "Lebanon", "Oman", "Kuwait",
-                   "Israel", "Henan", "Guangdong", "Hangzhou", "Bahrein",
-                   "Bahrain", "Qatar", ],
-    "SouthAsia": ["India", "Bangladesh", "SriLanka", "Nepal"],
-    "EastAsia": ["Wuhan", "SouthKorea", "Taiwan", "Japan", "HongKong", "Thailand",
-                 "Harbin", "Lishui", "Beijing", "Shanghai", "Nanchang", "Xinyu",
-                 "Pingxiang", "Shangrao", "Jian", "Ganzhou", "Jiujiang", "Fujian",
-                 "Guangzhou", "Liaoning", "Shaoxing", "Fuyang", "Kazakhstan", "Hunan",
-                 "Yunnan", "Shandong", "Zhejiang", "Sichuan", "NanChang", "Changzhou",
-                 "Weifang", "Yichun", "Yingtan", "Fuzhou", "Tianmen", "Jingzhou",
-                 "Hefei", "Jiangsu", "Jiangxi", "Chongqing", "Shenzhen", "Foshan"],
-    "SouthEastAsia": ["Singapore", "Malaysia", "Timor-Leste", "Indonesia",
-                      "Brunei", "Myanmar", "Vietnam", "Philippines", "Cambodia"],
+    "CentralAmerica": ["Belize", "CostaRica", "ElSalvador", "Guatemala", "Honduras", "Mexico",
+                       "Nicaragua", "Panama"],
 
-    "Europe": ["England", "Scotland", "Wales", "NorthernIreland", "Ireland",
-               "Portugal", "Spain", "Belgium", "Sweden", "France", "Netherlands",
-               "Italy", "Switzerland", "Germany", "Romania", "CzechRepublic",
-               "Greece", "Latvia", "Denmark", "Hungary", "Poland", "Luxembourg",
-               "Estonia", "Lithuania", "Serbia", "Norway", "Croatia", "FaroeIslands",
-               "NorthMacedonia", "Slovenia", "BosniaandHerzegovina", "Georgia",
-               "Belarus", "Iceland", "Russia", "Moldova", "Ukraine", "Slovakia",
-               "Bulgaria", "Austria", "Bucuresti", "Andorra", "Cyprus", "Finland",
-               "Montenegro", "Gibraltar", "Malta", "Crimea", "UnitedKingdom",
-               ],
+    "CentralAsia": ["Kazakhstan", "Kyrgyzstan", "Tajikistan", "Turkmenistan", "Uzbekistan"],
 
-    "NorthAmerica": ["USA", "Canada", "Mexico"],
-    "CentralAmerica": ["CostaRica", "DominicanRepublic", "Belize", "Guatemala", "Panama",
-                       "Curacao", "Aruba", "Cuba", "PuertoRico", "Jamaica"],
-    "SouthAmerica": ["Brazil", "Peru", "Colombia", "Suriname", "Ecuador", "Chile",
-                     "Gambia", "Uruguay", "Argentina", "Venezuela"],
+    "EastAsia": ["China", "HongKong", "Japan", "Korea", "Macao", "Mongolia", "Taiwan"],
 
-    "Oceania": ["Australia", "NewZealand", "Guam"]
+    "Europe": ["ÅlandIslands", "Albania", "Andorra", "Austria", "Belarus", "Belgium",
+               "BosniaandHerzegovina", "Bulgaria", "Croatia", "Czechia", "Denmark", "Estonia",
+               "FaroeIslands", "Finland", "France", "Germany", "Gibraltar", "Greece", "Guernsey",
+               "HolySee", "Hungary", "Iceland", "Ireland", "IsleofMan", "Italy", "Jersey",
+               "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova",
+               "Monaco", "Montenegro", "Netherlands", "NorthMacedonia", "Norway", "Poland",
+               "Portugal", "Romania", "RussianFederation", "SanMarino", "Serbia", "Slovakia",
+               "Slovenia", "Spain", "SvalbardandJanMayen", "Sweden", "Switzerland", "Ukraine"],
+
+    "NorthAfrica": ["Algeria", "Egypt", "Libya", "Morocco", "Sudan", "Tunisia", "WesternSahara"],
+
+    "NorthAmerica": ["Bermuda", "Canada", "Greenland", "SaintPierreandMiquelon", "USA"],
+
+    "Oceania": ["AmericanSamoa", "Australia", "ChristmasIsland", "Cocos(Keeling)Islands",
+                "CookIslands", "Fiji", "FrenchPolynesia", "Guam", "HeardIslandandMcDonaldIslands",
+                "Kiribati", "MarshallIslands", "Micronesia", "Nauru", "NewCaledonia", "NewZealand",
+                "Niue", "NorfolkIsland", "NorthernMarianaIslands", "Palau", "PapuaNewGuinea",
+                "Pitcairn", "Samoa", "SolomonIslands", "Tokelau", "Tonga", "Tuvalu",
+                "Vanuatu", "WallisandFutuna"],
+
+    "SouthAmerica": ["Argentina", "Bolivia", "BouvetIsland", "Brazil", "Chile", "Colombia",
+                     "Ecuador", "FalklandIslands", "FrenchGuiana", "Guyana", "Paraguay", "Peru",
+                     "SouthGeorgiaandtheSouthSandwichIslands", "Suriname", "Uruguay", "Venezuela"],
+
+    "SouthAsia": ["Afghanistan", "Bangladesh", "Bhutan", "India", "Iran",
+                  "Maldives", "Nepal", "Pakistan", "SriLanka"],
+
+    "SouthEastAsia": ["BruneiDarussalam", "Cambodia", "Indonesia", "LaoPeople'sDemocraticRepublic",
+                      "Malaysia", "Myanmar", "Philippines", "Singapore", "Thailand", "Timor-Leste",
+                      "Vietnam"],
+
+    "SubSaharanAfrica": ["Angola", "Benin", "Botswana", "BritishIndianOceanTerritory",
+                         "BurkinaFaso", "Burundi", "CaboVerde", "Cameroon",
+                         "CentralAfricanRepublic", "Chad", "Comoros", "Congo", "CongoDemocraticRepublicofthe", "Côted'Ivoire", "Djibouti",
+                         "EquatorialGuinea", "Eritrea", "Eswatini", "Ethiopia",
+                         "FrenchSouthernTerritories", "Gabon", "Gambia", "Ghana", "Guinea",
+                         "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Madagascar", "Malawi",
+                         "Mali", "Mauritania", "Mauritius", "Mayotte", "Mozambique", "Namibia",
+                         "Niger", "Nigeria", "Réunion", "Rwanda",
+                         "SaintHelena,AscensionandTristandaCunha", "SaoTomeandPrincipe",
+                         "Senegal", "Seychelles", "SierraLeone", "Somalia", "SouthAfrica",
+                         "SouthSudan", "Tanzania,UnitedRepublicof", "Togo", "Uganda", "Zambia",
+                         "Zimbabwe"],
+
+    "UnitedKingdom": ["England", "Wales", "Scotland", "NorthernIreland", "UnitedKingdom"],
+
+    "WestAsia": ["Armenia", "Azerbaijan", "Bahrain", "Cyprus", "Georgia", "Iraq", "Israel",
+                 "Jordan", "Kuwait", "Lebanon", "Oman", "Palestine,Stateof", "Qatar",
+                 "SaudiArabia", "SyrianArabRepublic", "Turkey", "UnitedArabEmirates", "Yemen"]
 }
+NAME_TO_REGION = {i: k for k, v in NAME_REGIONS.items() for i in v}
+
+ALPHA_REGIONS = {
+    "Caribbean": ["AIA", "ATG", "ABW", "BHS", "BRB", "BES", "CYM", "CUB", "CUW", "DMA", "DOM",
+                  "GRD", "GLP", "HTI", "JAM", "MTQ", "MSR", "PRI", "BLM", "KNA", "LCA", "MAF",
+                  "VCT", "SXM", "TTO", "TCA", "VGB", "VIR"],
+
+    "CentralAmerica": ["BLZ", "CRI", "SLV", "GTM", "HND", "MEX", "NIC", "PAN"],
+
+    "CentralAsia": ["KAZ", "KGZ", "TJK", "TKM", "UZB"],
+
+    "EastAsia": ["CHN", "HKG", "JPN", "PRK", "KOR", "MAC", "MNG", "TWN"],
+
+    "Europe": ["ALA", "ALB", "AND", "AUT", "BLR", "BEL", "BIH", "BGR", "HRV", "CZE", "DNK", "EST",
+               "FRO", "FIN", "FRA", "DEU", "GIB", "GRC", "GGY", "VAT", "HUN", "ISL", "IRL", "IMN",
+               "ITA", "JEY", "LVA", "LIE", "LTU", "LUX", "MLT", "MDA", "MCO", "MNE", "NLD", "MKD",
+               "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SJM", "SWE",
+               "CHE", "UKR"],
+
+    "NorthAfrica": ["DZA", "EGY", "LBY", "MAR", "SDN", "TUN", "ESH"],
+
+    "NorthAmerica": ["BMU", "CAN", "GRL", "SPM", "USA"],
+
+    "Oceania": ["ASM", "AUS", "CXR", "CCK", "COK", "FJI", "PYF", "GUM", "HMD", "KIR", "MHL", "FSM",
+                "NRU", "NCL", "NZL", "NIU", "NFK", "MNP", "PLW", "PNG", "PCN", "WSM", "SLB", "TKL",
+                "TON", "TUV", "UMI", "VUT", "WLF"],
+
+    "SouthAmerica": ["ARG", "BOL", "BVT", "BRA", "CHL", "COL", "ECU", "FLK", "GUF", "GUY", "PRY",
+                     "PER", "SGS", "SUR", "URY", "VEN"],
+
+    "SouthAsia": ["AFG", "BGD", "BTN", "IND", "IRN", "MDV", "NPL", "PAK", "LKA"],
+
+    "SouthEastAsia": ["BRN", "KHM", "IDN", "LAO", "MYS", "MMR", "PHL", "SGP", "THA", "TLS", "VNM"],
+
+    "SubSaharanAfrica": ["AGO", "BEN", "BWA", "IOT", "BFA", "BDI", "CPV", "CMR", "CAF", "TCD",
+                         "COM", "COG", "COD", "CIV", "DJI", "GNQ", "ERI", "SWZ", "ETH", "ATF",
+                         "GAB", "GMB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "MDG", "MWI",
+                         "MLI", "MRT", "MUS", "MYT", "MOZ", "NAM", "NER", "NGA", "REU", "RWA",
+                         "SHN", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "TZA", "TGO",
+                         "UGA", "ZMB", "ZWE"],
+
+    "UnitedKingdom": ['GBR'],
+
+    "WestAsia": ["ARM", "AZE", "BHR", "CYP", "GEO", "IRQ", "ISR", "JOR", "KWT", "LBN", "OMN",
+                 "PSE", "QAT", "SAU", "SYR", "TUR", "ARE", "YEM"]
+}
+ALPHA_TO_REGION = {i: k for k, v in ALPHA_REGIONS.items() for i in v}
 
 @dataclass
 class Sample:
     region: str
-    sample_id: str
-    year: int
-    gisaid_id: str
     date: date
-    species: str
     string: str
 
     @staticmethod
     def from_string(string):
         """
-        Get Sample from an ID string of the format region/sample_id/year|GISAID_ID|year-month-day.
+        Get Sample from an ID string. Often in the format country/sample_id/year|year-month-day.
         Year is given as two digits only in the date string. Sometimes day and or month are missing
         in which case the date is assumed to be 1st January 2020 or 1st December 2019, depending on
-        the year.
+        the year. Regions are assigned assuming the first field is the country, in cases where this
+        isn't true no region is given.
         """
         try:
             sections = string.replace('/', '|').split('|')
 
-            species = 'human'
-            if len(sections) == 6:
-                species = sections[0]
-                sections = sections[1:]
+            country = sections[0] # Can also be other keys in some cases, discard those
+            region = ''
+            if country in NAME_TO_REGION:
+                region = NAME_TO_REGION[country]
+            elif country in ALPHA_TO_REGION:
+                region = ALPHA_TO_REGION[country]
 
-            sample_date = Sample.parse_sample_date(sections[4])
+            sample_date = Sample.parse_sample_date(sections[-1])
 
-            return Sample(sections[0], sections[1], int(sections[2]),
-                          sections[3], sample_date, species, string)
+            return Sample(region, sample_date, string)
+
         except Exception as e:
             print(string)
             raise e
@@ -91,15 +163,23 @@ class Sample:
         If day is missing it defaults to 1.
         """
         sample_date = string.split('-')
-        year = 2000 + int(sample_date[0])
+        try:
+            if len(sample_date[0]) == 4:
+                year = int(sample_date[0])
+            else:
+                year = 2000 + int(sample_date[0])
+        except:
+            year = 2020
 
         try:
             month = int(sample_date[1])
+            month = month if month > 0 else 1
         except IndexError:
             month = 12 if year == 2019 else 1
 
         try:
             day = int(sample_date[2])
+            day = day if day > 0 else 1
         except IndexError:
             # Some dates don't have days
             day = 1
@@ -108,7 +188,6 @@ class Sample:
             day = 1
 
         return date(year, month, day)
-
 
 def get_vcf_samples(path):
     """
@@ -134,11 +213,11 @@ def main(args):
 
     if args.tsv:
         with open(args.tsv, 'w') as tsv_file:
-            print('string', 'region', 'year', 'month', 'day', 'species',
+            print('string', 'region', 'year', 'month', 'day',
                   sep='\t', file=tsv_file)
             for s in samples:
                 print(s.string, s.region, s.date.year,
-                      s.date.month, s.date.day, s.species,
+                      s.date.month, s.date.day,
                       sep='\t', file=tsv_file)
 
     if not os.path.isdir(args.dir):
@@ -147,14 +226,22 @@ def main(args):
     # Filter all samples here?
 
     # Identify Subsets
-    today = date.today()
-    period = timedelta(days=90)
-    subsets = {}
+    subsets = {region: [] for region in NAME_REGIONS}
     subsets['overall'] = [i.string for i in samples]
-    subsets['last90days'] = [i.string for i in samples if (today - i.date) < period]
 
-    for region, areas in REGIONS.items():
-        subsets[region] = [i.string for i in samples if i.region in areas]
+    # Date based periods
+    today = date.today()
+    month_period = timedelta(days=30)
+    three_month_period = timedelta(days=90)
+    six_month_period = timedelta(days=180)
+
+    subsets['last30days'] = [i.string for i in samples if (today - i.date) < month_period]
+    subsets['last90days'] = [i.string for i in samples if (today - i.date) < three_month_period]
+    subsets['last180days'] = [i.string for i in samples if (today - i.date) < six_month_period]
+
+    for sample in samples:
+        if sample.region in NAME_REGIONS:
+            subsets[sample.region].append(sample.string)
 
     if args.summary:
         with open(args.summary, 'w') as summary_file:
@@ -162,10 +249,14 @@ def main(args):
             for name, subset in subsets.items():
                 if name == 'overall':
                     desc = 'All samples'
+                elif name == 'last30days':
+                    desc = f'Samples taken in up to 30 days before {today}'
                 elif name == 'last90days':
                     desc = f'Samples taken in up to 90 days before {today}'
+                elif name == 'last180days':
+                    desc = f'Samples taken in up to 180 days before {today}'
                 else:
-                    desc = ', '.join(REGIONS[name])
+                    desc = ', '.join(NAME_REGIONS[name])
                 print(name, len(subset), desc, sep='\t', file=summary_file)
 
     # Print Subsets
