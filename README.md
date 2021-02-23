@@ -12,7 +12,7 @@ It is managed by Snakemake, with a master `Snakefile` and additional rulesets fo
 Scripts for various sections of the pipeline are found in `bin/` and some modules are in `src/`.
 Incorporating the phosphorylation data requires supplementary data file S2 from [Bouhaddou et al. (2020)](https://www.cell.com/cell/fulltext/S0092-8674\(20\)30811-4), saved as data/ptms/SuppTable\_annotated\_viral\_phosphosites\_revised.tsv.
 Antibody escape data comes from Table S1 from [Greaney et al. (2021)](https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(20\)30624-7), which must be saved as data/greaney\_spike\_antibody.csv
-Calculating variant frequencies requires a VCF file, placed in data/frequency with a path specified in snakemake.yaml, for example using [sarscov2phylo](https://github.com/roblanf/sarscov2phylo).
+Calculating variant frequencies requires a VCF file, placed in data/frequency with a path specified in snakemake.yaml, for example using the VCF from [sarscov2phylo](https://github.com/roblanf/sarscov2phylo).
 
 ## Analysis
 
