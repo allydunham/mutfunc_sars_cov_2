@@ -27,15 +27,22 @@ kemp_summary <- pivot_longer(kemp_variants, `1`:`101`, names_to = 'day', values_
          ptm = str_to_title(replace_na(ptm, 'None'))) %>%
   filter(!str_detect(int_name, 'Chain'))
 
-kemp_sig_counts <- group_by(kemp_summary, name, position, wt, mut, max_kemp_freq) %>% 
+sig_counts <- group_by(variants, name, position, wt, mut, freq) %>% 
   summarise(sig_sift = any(sift_score < 0.05),
             fx_sig = any(abs(total_energy) > 1),
             ptm_sig = any(ptm == 'phosphosite'),
             int_sig = any(abs(diff_interaction_energy) > 1),
             .groups = 'drop') %>% 
-  filter(max_kemp_freq > 10) %>% 
   replace_na(list(sig_sift=FALSE, fx_sig=FALSE, ptm_sig=FALSE, int_sig=FALSE)) %>% 
-  mutate(any_sig = sig_sift | fx_sig | ptm_sig | int_sig)
+  mutate(any_sig = sig_sift | fx_sig | ptm_sig | int_sig,
+         any_struct = fx_sig | ptm_sig | int_sig) %>%
+  left_join(select(kemp_summary, name, position, wt, mut, max_kemp_freq), by = c('name', 'position', 'wt', 'mut'))
+
+### Binary test
+# n <- filter(sig_counts, max_kemp_freq > 10) %>% nrow()
+# successes <- filter(sig_counts, max_kemp_freq > 10) %>% pull(any_struct) %>% sum()
+# p <- filter(sig_counts, freq > 0.01) %>% summarise(p = sum(any_struct) / n()) %>% pull(p)
+# binom.test(successes, n, p, 'greater')
 
 ### Overview
 p_overview <- filter(kemp_summary, max_kemp_freq > 10) %>%
