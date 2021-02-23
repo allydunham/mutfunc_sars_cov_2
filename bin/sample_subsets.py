@@ -231,11 +231,9 @@ def main(args):
 
     # Date based periods
     today = date.today()
-    month_period = timedelta(days=30)
     three_month_period = timedelta(days=90)
     six_month_period = timedelta(days=180)
 
-    subsets['last30days'] = [i.string for i in samples if (today - i.date) < month_period]
     subsets['last90days'] = [i.string for i in samples if (today - i.date) < three_month_period]
     subsets['last180days'] = [i.string for i in samples if (today - i.date) < six_month_period]
 

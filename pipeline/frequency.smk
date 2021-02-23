@@ -132,17 +132,21 @@ rule sample_subsets:
         "data/frequency/subsets/summary.tsv",
         "data/frequency/subsets/overall.samples",
         "data/frequency/subsets/last90days.samples",
-        "data/frequency/subsets/NorthAfrica.samples",
-        "data/frequency/subsets/SubSaharanAfrica.samples",
-        "data/frequency/subsets/MiddleEast.samples",
-        "data/frequency/subsets/SouthAsia.samples",
-        "data/frequency/subsets/EastAsia.samples",
-        "data/frequency/subsets/SouthEastAsia.samples",
-        "data/frequency/subsets/Europe.samples",
-        "data/frequency/subsets/NorthAmerica.samples",
+        "data/frequency/subsets/last180days.samples",
+        "data/frequency/subsets/Caribbean.samples",
         "data/frequency/subsets/CentralAmerica.samples",
+        "data/frequency/subsets/CentralAsia.samples",
+        "data/frequency/subsets/EastAsia.samples",
+        "data/frequency/subsets/Europe.samples",
+        "data/frequency/subsets/NorthAfrica.samples",
+        "data/frequency/subsets/NorthAmerica.samples",
+        "data/frequency/subsets/Oceania.samples",
         "data/frequency/subsets/SouthAmerica.samples",
-        "data/frequency/subsets/Oceania.samples"
+        "data/frequency/subsets/SouthAsia.samples",
+        "data/frequency/subsets/SouthEastAsia.samples",
+        "data/frequency/subsets/SubSaharanAfrica.samples",
+        "data/frequency/subsets/UnitedKingdom.samples",
+        "data/frequency/subsets/WestAsia.samples"
 
     log:
         "logs/sample_subsets.log"
@@ -216,17 +220,21 @@ rule frequency_tsv:
         "data/frequency/variant_annotation.tsv",
         "data/frequency/subsets/overall.tsv",
         "data/frequency/subsets/last90days.tsv",
-        "data/frequency/subsets/NorthAfrica.tsv",
-        "data/frequency/subsets/SubSaharanAfrica.tsv",
-        "data/frequency/subsets/MiddleEast.tsv",
-        "data/frequency/subsets/SouthAsia.tsv",
-        "data/frequency/subsets/EastAsia.tsv",
-        "data/frequency/subsets/SouthEastAsia.tsv",
-        "data/frequency/subsets/Europe.tsv",
-        "data/frequency/subsets/NorthAmerica.tsv",
+        "data/frequency/subsets/last180days.tsv",
+        "data/frequency/subsets/Caribbean.tsv",
         "data/frequency/subsets/CentralAmerica.tsv",
+        "data/frequency/subsets/CentralAsia.tsv",
+        "data/frequency/subsets/EastAsia.tsv",
+        "data/frequency/subsets/Europe.tsv",
+        "data/frequency/subsets/NorthAfrica.tsv",
+        "data/frequency/subsets/NorthAmerica.tsv",
+        "data/frequency/subsets/Oceania.tsv",
         "data/frequency/subsets/SouthAmerica.tsv",
-        "data/frequency/subsets/Oceania.tsv"
+        "data/frequency/subsets/SouthAsia.tsv",
+        "data/frequency/subsets/SouthEastAsia.tsv",
+        "data/frequency/subsets/SubSaharanAfrica.tsv",
+        "data/frequency/subsets/UnitedKingdom.tsv",
+        "data/frequency/subsets/WestAsia.tsv"
 
     output:
         "data/output/frequency.tsv"
