@@ -13,7 +13,6 @@ spike <- read_csv('data/starr_ace2_spike.csv') %>%
 
 ### Panel 1 - Schematic
 ensembl_img <- readPNG('figures/figures/misc_parts/ensembl_logo.png')
-gisaid_img <- readPNG('figures/figures/misc_parts/gisaid_logo.png')
 pdbe_img <- readPNG('figures/figures/misc_parts/pdbe_logo.png')
 swissmodel_img <- readPNG('figures/figures/misc_parts/swissmodel.png')
 uniprot_img <- readPNG('figures/figures/misc_parts/uniprot.png')
@@ -48,8 +47,7 @@ p_schematic <- ggplot() +
   annotation_raster(swissmodel_img, xmin = 0.4, xmax = 0.6, ymin = 0.615, ymax = 0.765) +
   annotation_raster(pdbe_img, xmin = 0.3, xmax = 0.7, ymin = 0.43, ymax = 0.55) +
   annotate('text', x = 0.5, y = 0.3, label = 'Bouhaddou et al. (2020)', size = main_size) +
-  annotation_raster(ensembl_img, xmin = 0.2, xmax = 0.45, ymin = 0.05, ymax = 0.133) +
-  annotation_raster(gisaid_img, xmin = 0.575, xmax = 0.875, ymin = 0.05, ymax = 0.1625) +
+  annotation_raster(ensembl_img, xmin = 0.3, xmax = 0.7, ymin = 0.05, ymax = 0.15) +
   
   # Input Data
   annotation_raster(sequence_img, xmin = 1.07, xmax = 1.47, ymin = 0.9, ymax = 0.93) +
