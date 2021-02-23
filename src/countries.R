@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 # Convert country table to Python object
+# Based on https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv
 source('src/config.R')
 
 get_region <- function(region, sub, intermediate){
@@ -18,7 +19,16 @@ get_region <- function(region, sub, intermediate){
 }
 
 countries <- read_csv('docs/countries.csv') %>% 
-  mutate(out_region = get_region(region, `sub-region`, `intermediate-region`)) %>%
-  drop_na(out_region)
+  mutate(out_region = get_region(region, `sub-region`, `intermediate-region`),
+         name = str_remove_all(name, ' ')) %>%
+  drop_na(out_region) %>%
+  add_row(name=c('England', 'Wales', 'Scotland', 'NorthernIreland', 'UnitedKingdom'), out_region='UnitedKingdom') %>%
+  arrange(out_region)
 
-name_to_region <- str_c('"', countries$name, '": "', countries$`sub-region`, '"') %>% str_c(collapse = ',') %>% str_c('{', ., '}')
+regions <- group_by(countries, out_region) %>%
+  summarise(name_str = str_c('"', name, '"') %>% str_c(collapse = ', '),
+            alpha_str = str_c('"', `alpha-3`, '"') %>% str_c(collapse = ', '),
+            .groups = 'drop')
+
+name_dict <- str_c('"', regions$out_region, '": [', regions$name_str, ']') %>% str_c(collapse = ',\n')
+alpha_dict <- str_c('"', regions$out_region, '": [', regions$alpha_str, ']') %>% replace_na('') %>% str_c(collapse = ',\n')
