@@ -26,7 +26,7 @@ select(variants, `#chrom` = chrom, rna_position) %>% distinct() %>% write_tsv('d
 
 # Load and melt vcf (must use data.table initially to quickly handle large number of columns)
 # Filter to cases where a sample has a variant in a position with at least one destabilising variant
-samples <- fread(file = 'data/spike_destabilising_positions.vcf', sep = '\t', header = TRUE, skip = 3, colClasses = 'character')
+samples <- fread(file = 'data/spike_destabilising_positions.vcf', sep = '\t', header = TRUE, skip = 1, colClasses = 'character')
 sample_names <- colnames(samples)[10:ncol(samples)]
 n_samples <- length(sample_names)
 samples <- melt(samples, id.vars = c("#CHROM", "POS", "ID", "REF", "ALT", "QUAL", "FILTER", "INFO", "FORMAT"),
@@ -46,7 +46,7 @@ sample_counts <- as_tibble(samples) %>%
             n_struct = sum(total_energy > 1 | int_ddg_s > 1 | int_ddg_ace2 > 1, na.rm = TRUE),
             n_sift = sum(sift_score < 0.05, na.rm = TRUE),
             n_foldx = sum(total_energy > 1, na.rm = TRUE),
-            n_foldx_not_sift = sum(total_energy > 1 & sift_score < 0.05, na.rm = TRUE),
+            n_foldx_not_sift = sum(total_energy > 1 & sift_score > 0.05, na.rm = TRUE),
             n_int_s = sum(int_ddg_s > 1, na.rm = TRUE),
             n_int_ace2 = sum(int_ddg_ace2 > 1, na.rm = TRUE),
             .groups = 'drop') %>%
