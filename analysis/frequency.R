@@ -141,7 +141,7 @@ plots$changing_frequency_variants <- labeled_plot(changing_top_freq_plot(variant
 # Regional frequency changes
 plots$freq_per_region <- mutate_at(freqs, .vars = vars(-uniprot, -name, -position, -wt, -mut), .funs = ~log10(. + 0.00001)) %>%
   select(-last90days) %>%
-  pivot_longer(NorthAfrica:Oceania, names_to = 'region', values_to = 'freq') %>%
+  pivot_longer(Caribbean:WestAsia, names_to = 'region', values_to = 'freq') %>%
   ggplot(aes(x = overall, y = freq, colour = region)) +
   facet_wrap(~region) +
   geom_point(show.legend = FALSE) +
@@ -152,8 +152,9 @@ plots$freq_per_region <- mutate_at(freqs, .vars = vars(-uniprot, -name, -positio
   geom_abline(slope = 1, intercept = -1, linetype = 'dotted') +
   labs(x = 'Overall frequency', y = 'Regional Frequency')
 
-regional_freq_tests <- select(freqs, -last90days) %>%
-  pivot_longer(NorthAfrica:Oceania, names_to='region', values_to='freq') %>%
+# Warning - this step takes a while (30+ mins on macbook pro 2015)
+regional_freq_tests <- select(freqs, -last90days, -last180days) %>%
+  pivot_longer(Caribbean:WestAsia, names_to='region', values_to='freq') %>%
   left_join(select(subsets, region=name, n), by='region') %>%
   mutate(count = round(n*freq),
          binom = pmap(list(overall, n, count), ~tidy(binom.test(..3, ..2, ..1)))) %>%
@@ -176,9 +177,9 @@ regional_top_freq_plot <- function(regional_freq_tests){
     mutate(str = str_c(name, ' ', wt, position, mut), sift_sig = sift_score < 0.05 & sift_median < 3.5 & sift_median > 2.75)
   frequent_variants_unique <- distinct(frequent_variants, name, position, wt, mut, .keep_all = TRUE)
   
-  region_cols <- c(NorthAfrica='#33a02c', SubSaharanAfrica='#b2df8a', MiddleEast='#cab2d6', SouthAsia='#1f78b4',
-                   EastAsia='#a6cee3', SouthEastAsia='#fdbf6f', Europe='#6a3d9a', NorthAmerica='#fb9a99',
-                   CentralAmerica='#e31a1c', SouthAmerica='#ff7f00', Oceania='#ffff99')
+  region_cols <- c(Caribbean='firebrick2', CentralAmerica='#e31a1c', CentralAsia='cyan', EastAsia='#a6cee3', Europe='#6a3d9a', 
+                   NorthAfrica='#33a02c', NorthAmerica='#fb9a99', Oceania='#ffff99', SouthAmerica='#ff7f00', SouthAsia='#1f78b4', 
+                   SouthEastAsia='#fdbf6f', SubSaharanAfrica='#b2df8a', UnitedKingdom='#f781bf', WestAsia='#cab2d6')
   p_freq <- ggplot(frequent_variants, mapping = aes(y = reorder(str, overall_freq))) +
     geom_point(mapping = aes(x = overall_freq), shape = 15, colour = 'black', size = 2) +
     geom_point(mapping = aes(x = regional_freq, fill = region), shape = 21) +
