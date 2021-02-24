@@ -160,15 +160,15 @@ plots$high_escape_per_position <- (ggplot(positions, aes(x = ddg, y = escape, co
   labeled_plot(units = 'cm', height = 20, width = 30)
 
 ### Experiment vs FoldX predictions
-plots$foldx_vs_experiment <- filter(variants, str_detect(int_name, 'chain')) %>%
+plots$foldx_vs_experiment <- filter(variants, str_detect(int_name, 'Chain')) %>%
   ggplot(aes(x = mut_escape_max, y = diff_interaction_energy, colour = int_name)) +
   geom_point()
 
-plots$foldx_vs_experiment_cat <- filter(variants, str_detect(int_name, 'chain')) %>%
+plots$foldx_vs_experiment_cat <- filter(variants, str_detect(int_name, 'Chain')) %>%
   mutate(exp_cat = ifelse(mut_escape_max > 0.1, 'Mean Escape > 0.1', 'Mean Escape ≤ 0.1')) %>%
   ggplot(aes(x = exp_cat, y = diff_interaction_energy)) +
   geom_boxplot(fill = 'red') +
   stat_compare_means(comparisons = list(c('Mean Escape > 0.1', 'Mean Escape ≤ 0.1')))
 
 ### Save plots ###
-save_plotlist(plots, 'figures/antibody_escape', verbose = 2)
+save_plotlist(plots, 'figures/antibody_escape', verbose = 2, overwrite = 'all')
