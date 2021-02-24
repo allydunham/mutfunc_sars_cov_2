@@ -1,9 +1,8 @@
-# SARS-CoV-2 Mutfunc
+# Mutfunc: SARS-CoV-2
 
-This repository contains the code for the SARS-CoV-2 Mutfunc pipeline and website.
-The project has been published in PAPER, where the methods and dataset are described.
-This repo contains code for running the data pipeline and analysis scripts.
-The source code for the [web interface](https://github.com/allydunham/mutfunc_sars_cov_2_frontend/) is stored separately.
+This repository contains the code for the [Mutfunc SARS-CoV-2](http://sars.mutfunc.com) pipeline, analysis and figures.
+The project is available as a [BioRxiv preprint](http://sars.mutfunc.com), where the methods and dataset are described.
+The source code for the [web interface](https://github.com/allydunham/mutfunc_sars_cov_2_frontend/) is in a separate repository.
 
 ## Pipeline
 
@@ -17,7 +16,7 @@ Calculating variant frequencies requires a VCF file, placed in data/frequency wi
 ## Analysis
 
 The analysis scripts found in `analysis/` generate figures summarising the data.
-`spike_experiment.R` requires data from Starr et al. 2020 (media-3.csv from <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7310626/>) to be downloaded to `data/starr_ace2_spike.csv`.
+`spike_experiment.R` and figures 1 and 2 require data from Starr et al. 2020 (media-3.csv from <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7310626/>) to be downloaded to `data/starr_ace2_spike.csv`.
 `evcouplings.R` requires EVCouplings predictions from <https://marks.hms.harvard.edu/sars-cov-2/> to be downloaded to `data/evcouplings`.
 
 ## Dependancies
