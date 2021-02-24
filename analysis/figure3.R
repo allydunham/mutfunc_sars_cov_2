@@ -27,7 +27,7 @@ p_s_variants <- ggplot() +
   # All strains
   annotate('segment', x = 0.48, xend = 0.5, y = 0.1, yend = 0.37) +
   annotate('richtext', x = 0.5, y = 0.09, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>D614G (All)</b><br>87% Frequency',
+           label = '<b>D614G (All)</b><br>94% Frequency',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.62, xend = 0.63, y = 0.86, yend = 0.725) +
@@ -121,7 +121,7 @@ p_orf8_variants <- ggplot() +
   
   annotate('segment', x = 0.33, xend = 0.33, y = 0.16, yend = 0.41) +
   annotate('richtext', x = 0.35, y = 0.15, hjust = 1, vjust = 1, size = label_text_size,
-           label = '<b>S24L (4%)</b><br>&Delta;&Delta;G = -1.3&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>S24L (3.18%)</b><br>&Delta;&Delta;G = -1.3&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.36, xend = 0.55, y = 0.86, yend = 0.57) +
@@ -153,22 +153,22 @@ p_orf3a_variants <- ggplot() +
   
   #annotate('segment', x = 1, xend = 0.71, y = 0.82, yend = 0.87) +
   annotate('richtext', x = 1, y = 0.87, hjust = 1, vjust = 0, size = label_text_size,
-           label = '<b>T223I (1.1%)</b><br>In dimer interface<br>Int. &Delta;&Delta;G = 1.05&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>T223I (2.14%)</b><br>In dimer interface<br>Int. &Delta;&Delta;G = 1.05&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.39, xend = 0.39, y = 0.79, yend = 0.46) +
   annotate('richtext', x = 0.4, y = 0.8, hjust = 1, vjust = 0, size = label_text_size,
-           label = '<b>Q57H (25%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface',
+           label = '<b>Q57H (15.2%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
-  annotate('segment', x = 0.7, xend = 0.625, y = 0.25, yend = 0.41) +
+  annotate('segment', x = 0.7, xend = 0.52, y = 0.25, yend = 0.44) +
   annotate('richtext', x = 0.705, y = 0.26, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>R126S (0.2%)</b><br>&Delta;&Delta;G = 3.43&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>K75N (1.5%)</b><br>&Delta;&Delta;G = 2.05&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.19, xend = 0.32, y = 0.13, yend = 0.26) +
   annotate('richtext', x = 0.17, y = 0.12, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>L46F (0.3%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface<br>Int. &Delta;&Delta;G = 2.51&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>L46F (0.13%)</b><br>&Delta;&Delta;G = 1.48&thinsp;kJ.mol<sup>-1</sup><br>In dimer interface<br>Int. &Delta;&Delta;G = 2.51&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   theme(axis.title = element_blank(), axis.text = element_blank(),
@@ -194,17 +194,17 @@ p_nsp7_nsp8_nsp12_variants <- ggplot() +
   
   annotate('segment', x = 0.4, xend = 0.6, y = 0.75, yend = 0.6) +
   annotate('richtext', x = 0.39, y = 0.76, hjust = 1, vjust = 1, size = label_text_size, 
-           label = '<b>nsp7 S25L (1.6%)</b><br>In nsp8 interfaces<br>Int. &Delta;&Delta;G < -1.32&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>nsp7 S25L (0.6%)</b><br>In nsp8 interfaces<br>Int. &Delta;&Delta;G < -1.32&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.535, xend = 0.535, y = 0.22, yend = 0.35) +
   annotate('richtext', x = 0.525, y = 0.21, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>RdRp P323L (87%)</b><br>Linked to S D614G<br>Not predicted significant',
+           label = '<b>RdRp P323L (93.9%)</b><br>Linked to S D614G<br>Not predicted significant',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.05, xend = 0.425, y = 0.12, yend = 0.32) +
   annotate('richtext', x = 0.02, y = 0.115, hjust = 0, vjust = 1, size = label_text_size,
-           label = '<b>RdRp E254D (1%)</b><br>&Delta;&Delta;G = 2.32&thinsp;kJ.mol<sup>-1</sup>',
+           label = '<b>RdRp E254D (1.9%)</b><br>&Delta;&Delta;G = 2.32&thinsp;kJ.mol<sup>-1</sup>',
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   geom_point(aes(x = -1, y = -1, colour = c('nsp7', 'nsp8', 'RdRp')), shape = 15, size = 4) +
