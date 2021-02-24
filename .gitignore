@@ -10,6 +10,6 @@ snakemake.yaml
 .Rproj.user
 figures/*
 docs/methods.md
-docs/sars_mutfunc_paper.pdf
+docs/sars_mutfunc_paper*
 Unrecognized_molecules.txt
 rotabase.txt
