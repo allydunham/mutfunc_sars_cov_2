@@ -47,7 +47,7 @@ p_schematic <- ggplot() +
   annotation_raster(swissmodel_img, xmin = 0.4, xmax = 0.6, ymin = 0.615, ymax = 0.765) +
   annotation_raster(pdbe_img, xmin = 0.3, xmax = 0.7, ymin = 0.43, ymax = 0.55) +
   annotate('text', x = 0.5, y = 0.3, label = 'Bouhaddou et al. (2020)', size = main_size) +
-  annotation_raster(ensembl_img, xmin = 0.3, xmax = 0.7, ymin = 0.05, ymax = 0.15) +
+  annotation_raster(ensembl_img, xmin = 0.35, xmax = 0.65, ymin = 0.05, ymax = 0.15) +
   
   # Input Data
   annotation_raster(sequence_img, xmin = 1.07, xmax = 1.47, ymin = 0.9, ymax = 0.93) +
