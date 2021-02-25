@@ -1,13 +1,12 @@
-# Mutfunc: SARS-CoV-2
+# Mutfunc: SARS-CoV-2 (Pipeline)
 
-This repository contains the frontend code for [Mutfunc: SARS-CoV-2](http://sars.mutfunc.com), which is a resource containing variant effect predictions and annotations for all possible SARS-CoV-2 amino acid substitutions.
+This repository contains the data generation pipeline for [Mutfunc: SARS-CoV-2](http://sars.mutfunc.com), which is a resource containing variant effect predictions and annotations for all possible SARS-CoV-2 amino acid substitutions.
 The source code for the web interface is in a separate [repository](https://github.com/allydunham/mutfunc_sars_cov_2_frontend/).
+The dataset and methods are described in detail in the Mutfunc: SARS-CoV-2 [preprint](https://www.biorxiv.org/content/10.1101/2021.02.24.432721v1).
 
-## About
+## Citation
 
-The dataset and methods are described in a bioRxiv preprint:
-
-Alistair Dunham, Gwendolyn M Jang, Monita Muralidharan, Danielle Swaney & Pedro Beltrao. 2021. A missense variant effect prediction and annotation resource for SARS-CoV-2 [(bioRxiv)](https://www.biorxiv.org/content/10.1101/2021.02.24.432721v1)
+Alistair Dunham, Gwendolyn M Jang, Monita Muralidharan, Danielle Swaney & Pedro Beltrao. 2021. A missense variant effect prediction and annotation resource for SARS-CoV-2 ([bioRxiv](https://www.biorxiv.org/content/10.1101/2021.02.24.432721v1))
 
 ## Installation
 
