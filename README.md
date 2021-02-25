@@ -53,8 +53,8 @@ I used Python 3.8.2 and R 3.6.3, but any version supporting the required package
 Various additional data file are required for parts of the pipeline and analysis:
 
 * An aligned SAR-CoV-2 variant VCF file, placed in a location defined in `snakemake.yaml`. This is used to calculate variant frequencies. I use a version of the VCF used by [sarscov2phylo](https://github.com/roblanf/sarscov2phylo) pruned to only include public sequences.
-* supplementary data file S2 from [Bouhaddou et al. (2020)](https://www.cell.com/cell/fulltext/S0092-8674\(20\)30811-4), saved as `data/ptms/SuppTable\_annotated\_viral\_phosphosites\_revised.tsv`. This is used to source PTM data.
-* Table S1 from [Greaney et al. (2021)](https://www.cell.com/cell-host-microbe/fulltext/S1931-3128(20\)30624-7), `saved as data/greaney\_spike\_antibody.csv`. This is used for antibody escape data.
+* supplementary data file S2 from [Bouhaddou et al. (2020)](https://www.cell.com/cell/fulltext/S0092-8674\(20\)30811-4), saved as `data/ptms/SuppTable_annotated_viral_phosphosites_revised.tsv`. This is used to source PTM data.
+* Table S1 from [Greaney et al. (2021)](https://www.cell.com/cell-host-microbe/fulltext/S1931-3128\(20\)30624-7), saved as `data/greaney_spike_antibody.csv`. This is used for antibody escape data.
 * `media-3.csv` from [Starr et al. (2020)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7310626/), saved as `data/starr_ace2_spike.csv`. This is used to compare predictions to the Spike DMS study in the analysis and is not used in the pipeline.
 * [EVCouplings predictions](https://marks.hms.harvard.edu/sars-cov-2/), saved in `data/evcouplings`. This is only used for `analysis/evcouplings.R`
 
