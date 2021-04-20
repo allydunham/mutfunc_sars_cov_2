@@ -57,3 +57,17 @@ P0DTD1	nsp13	341	E	D	Present in strain P.1, detected in Manaus, Brazil in Decemb
 P0DTC8	orf8	92	E	K	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
 P0DTC9	nc	80	P	R	Present in strain P.1, detected in Manaus, Brazil in December 2020 [(Faria et al. 2021)](https://virological.org/t/genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-manaus-preliminary-findings/586)
 
+# Indian Variant B.1.617
+P0DTC2	s	681	P	R	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTC2	s	452	L	R	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTC2	s	484	E	Q	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTC9	nc	203	R	M	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTC9	nc	377	D	Y	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTC7	orf7a	82	V	A	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp3	749	T	I	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp6	77	T	A	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp12	323	P	L	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp13	429	M	I	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp15	259	K	R	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+P0DTD1	nsp16	93	T	M	Present in strain B.1.617, detected in India in January 2021 [(outbreak.info)](https://outbreak.info/situation-reports?pango=B.1.617)
+
