@@ -5,6 +5,7 @@ source("src/config.R")
 foldx <- bind_rows(open = read_tsv("data/s_foldx/open/average.fxout"),
                    closed = read_tsv("data/s_foldx/closed/average.fxout"),
                    .id = "state")
+write_tsv(foldx, "data/s_foldx/average.tsv")
 
 classify <- function(open, closed) {
   out <- rep(NA, length(open))
