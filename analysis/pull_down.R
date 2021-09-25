@@ -1,5 +1,6 @@
 #!/usr/bin/env Rscript
 # Analyse results of variant protein pull down
+library(biomaRt)
 source("src/config.R")
 source("src/analysis.R")
 
@@ -51,3 +52,20 @@ results_summary <- filter(results, !variant %in% c("WT", "nature")) %>%
          n_lost = map_int(lost, length),
          n_change = n_gained + n_lost) %>%
   left_join(variants, by = c("name", "position", "wt", "mut"))
+
+ensembl <- useEnsembl(biomart="ensembl", dataset = "hsapiens_gene_ensembl")
+
+counts <- select(results_summary, name, position, wt, mut, gained, lost) %>%
+  pivot_longer(c(gained, lost), names_to = "type", values_to = "gene") %>%
+  unnest(gene) %>%
+  group_by(gene) %>%
+  summarise(n_gained = sum(type == "gained"),
+            n_lost = sum(type == "lost"),
+            n_tot = n_gained + n_lost) %>%
+  arrange(desc(n_tot)) %>%
+  {
+    uniprot <- unique(.$gene)
+    bm <- as_tibble(getBM(c("uniprotswissprot", "external_gene_name", "description"), filters = "uniprotswissprot", values = uniprot, mart = ensembl))
+    left_join(., bm, by = c(gene = "uniprotswissprot"))
+  }
+  
