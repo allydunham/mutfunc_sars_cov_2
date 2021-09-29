@@ -67,8 +67,10 @@ p_schematic <- ggplot() +
   annotation_raster(sift_img, xmin = 2.25, xmax = 2.45, ymin = 0.75, ymax = 0.95) +
   annotate('text', label='Conservation\nSIFT4G Score', x = 2.5, y = 0.865, vjust = 0.5, hjust = 0, size = main_size) +
   annotation_raster(foldx_img, xmin = 2.2, xmax = 2.45, ymin = 0.568, ymax = 0.682) +
-  annotate('richtext', label='Folding &Delta;&Delta;G', x = 2.5, y = 0.675, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
-  annotate('richtext', label='Binding &Delta;&Delta;G', x = 2.5, y = 0.575, vjust = 0.5, hjust = 0, fill = NA, label.color = NA, size = main_size) +
+  annotate('richtext', label='Folding &Delta;&Delta;G', x = 2.5, y = 0.675, vjust = 0.5, hjust = 0, fill = NA,
+           label.color = NA, size = main_size) +
+  annotate('richtext', label='Binding &Delta;&Delta;G', x = 2.5, y = 0.575, vjust = 0.5, hjust = 0, fill = NA,
+           label.color = NA, size = main_size) +
   annotate('text', label='PTM Locations', x = 2.5, y = 0.3, vjust = 0, hjust = 0.5, size = main_size) +
   annotate('text', label='Variant Frequency', x = 2.5, y = 0.1, vjust = 0, hjust = 0.5, size = main_size) +
   
@@ -193,7 +195,8 @@ p_structure <- ggplot() +
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.5, xend = 0.56, y = 0.21, yend = 0.405) +
-  annotate('richtext', x = 0.5, y = 0.2, label = 'V445!P/W/Y', hjust = 0.5, vjust = 1, size = label_text_size, # A/C/D/E/F/G/H/I/K/L/M/N/Q/R/S/T
+  annotate('richtext', x = 0.5, y = 0.2, label = 'V445<span style="color:magenta">!</span>P/W/Y', hjust = 0.5, vjust = 1,
+           size = label_text_size, # A/C/D/E/F/G/H/I/K/L/M/N/Q/R/S/T
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.41, xend = 0.49, y = 0.6, yend = 0.545, colour = 'red') +
@@ -205,7 +208,8 @@ p_structure <- ggplot() +
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.69, xend = 0.575, y = 0.57, yend = 0.54) +
-  annotate('richtext', x = 0.7, y = 0.57, label = 'E484!I/P/W', hjust = 0, vjust = 0.5, size = label_text_size, #A/C/D/F/G/H/K/L/M/N/Q/R/S/T/V/Y
+  annotate('richtext', x = 0.7, y = 0.57, label = 'E484<span style="color:magenta">!</span>I/P/W', hjust = 0, vjust = 0.5,
+           size = label_text_size, #A/C/D/F/G/H/K/L/M/N/Q/R/S/T/V/Y
            fill = NA, label.color = NA, label.padding = grid::unit(rep(0, 4), "pt")) +
   
   annotate('segment', x = 0.74, xend = 0.575, y = 0.65, yend = 0.585) +
@@ -266,6 +270,8 @@ figure <- multi_panel_figure(width = 180, height = c(45, 45, 90), columns = 2, u
   fill_panel(p5, row = 3, column = 1) %>%
   fill_panel(p6, row = 3, column = 2)
 
-ggsave('figures/figures/summary_figure.pdf', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm', device = cairo_pdf)
+ggsave('figures/figures/summary_figure.pdf', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm',
+       device = cairo_pdf)
 ggsave('figures/figures/summary_figure.png', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm')
-ggsave('figures/figures/mutfunc_schematic.pdf', p_schematic + theme(text = element_text(size = )), width = 160, height = 80, units = 'mm')
+ggsave('figures/figures/mutfunc_schematic.pdf', p_schematic + theme(text = element_text(size = )), width = 160, height = 80, units = 'mm',
+       device = cairo_pdf)
