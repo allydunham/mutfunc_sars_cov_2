@@ -179,9 +179,12 @@ p_experiment <- drop_na(s_variants, mut_escape_max) %>%
   scale_colour_manual(values = c(Deleterious = 'red', Neutral = 'black'), name = 'SIFT4G') +
   scale_shape_manual(values = c(Destabilising=8, Neutral=4, Stabilising=3), na.translate = FALSE,
                      name = 'ACE2 Interface') +
+  guides(shape = guide_legend(nrow = 2, title.position = "top"),
+         colour = guide_legend(nrow = 2, title.position = "top")) +
   theme(legend.position = 'bottom',
-        legend.box = 'vertical',
-        legend.margin = margin(-15,0,0,0))
+        legend.box = 'horizontal',
+        legend.margin = margin(-10,0,0,0),
+        legend.key.size = unit(2.5, "mm"))
 
 ### Panel - Variants visualised on S
 label_text_size = 3
@@ -273,5 +276,4 @@ figure <- multi_panel_figure(width = 180, height = c(45, 45, 90), columns = 2, u
 ggsave('figures/figures/summary_figure.pdf', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm',
        device = cairo_pdf)
 ggsave('figures/figures/summary_figure.png', figure, width = figure_width(figure), height = figure_height(figure), units = 'mm')
-ggsave('figures/figures/mutfunc_schematic.pdf', p_schematic + theme(text = element_text(size = )), width = 160, height = 80, units = 'mm',
-       device = cairo_pdf)
+ggsave('figures/figures/mutfunc_schematic.pdf', p_schematic, width = 165, height = 80, units = 'mm', device = cairo_pdf)
