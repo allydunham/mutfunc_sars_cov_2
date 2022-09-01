@@ -109,7 +109,7 @@ int_colour_scale <- c(None='black', ace2='#a6cee3', tom70='brown', nsp10='#1f78b
 display_names <- c(nsp1='nsp1', nsp2='nsp2', nsp3='nsp3', nsp4='nsp4', nsp5='3CL-PRO', nsp6='nsp6',
                    nsp7='nsp7', nsp8='nsp8', nsp9='nsp9', nsp10='nsp10', nsp11='nsp11', nsp12='RdRp',
                    nsp13='Hel', nsp14='ExoN', nsp15='nsp15', nsp16='nsp16', s='S', orf3a='orf3a', e='E', 
-                   m='M', orf6='orf6', orf7a='orf7a', orf7b='orf7b', orf8='orf8', nc='N', orf10='orf10',
+                   m='M', orf6='orf6', orf7a='orf7a', orf7b='orf7b', orf8='orf8', n="N", nc='N', orf10='orf10',
                    orf9b='orf9b', orf14='orf14',
                    ace2='ACE2', `40s`='40S', tom70='TOM70', `40S ribosomal protein S3`='40S',
                    `40S ribosomal protein S30`='40S', `18S ribosomal RNA`='40S',

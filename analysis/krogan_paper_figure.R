@@ -5,6 +5,7 @@ source('src/analysis.R')
 plots <- list()
 
 feature_names <- c(sift_score = '"SIFT4G Score"',
+                   log10_sift = 'log[10]~"SIFT4G Score"',
                    relative_surface_accessibility = '"Relative Surface Acc."',
                    total_energy = '"FoldX"~Delta*Delta*"G"',
                    diff_interaction_energy = '"Interface"~Delta*Delta*"G"')
@@ -19,7 +20,8 @@ strain_colours <- c("alpha_20I_V1" = "#e41a1c", "beta_20H_V2" = "#377eb8",
 
 variants <- load_variants() %>%
   mutate(total_energy = clamp(total_energy, -10, 10),
-         diff_interaction_energy = clamp(diff_interaction_energy, -10, 10))
+         diff_interaction_energy = clamp(diff_interaction_energy, -10, 10)) %>%
+  write_tsv("figures/krogan/all_variants.tsv")
 
 strains <- read_tsv("data/strain_variants.tsv") %>%
   extract(variant, c("wt", "position", "mut"), "([A-Z])([0-9]*)([A-Z\\-\\*]*)", convert = TRUE) %>%
@@ -29,19 +31,22 @@ strains <- read_tsv("data/strain_variants.tsv") %>%
                           nchar(mut) > 1 ~ "insertion",
                           TRUE ~ "substitution"),
          name = str_to_lower(name),
-         name = ifelse(name == "orf1a", split_orf1a(position), name),
+         name = ifelse(name %in% c("orf1a", "orf1b", "orf1ab"), split_orf1a(position), name),
          position = ifelse(str_starts(name, "nsp"), convert_orf1a_position(position, name), position)) %>%
-  left_join(select(variants, name, position, wt, mut, sift_score, relative_surface_accessibility, total_energy, 
+  left_join(select(variants, name, position, wt, mut, log10_sift, sift_score, relative_surface_accessibility, total_energy, 
                    int_template, int_name, diff_interaction_energy),
-            by = c("name", "position", "wt", "mut"))
+            by = c("name", "position", "wt", "mut")) %>%
+  write_tsv("figures/krogan/strain_variants.tsv")
 
+# Feature distributions
 feature_distributions <- bind_rows(
   filter(strains, type == "substitution") %>%
-    select(strain, name, position, wt, mut, sift_score, relative_surface_accessibility, total_energy, diff_interaction_energy),
-  select(variants, name, position, wt, mut, sift_score, relative_surface_accessibility, total_energy, diff_interaction_energy) %>%
+    select(strain, name, position, wt, mut, log10_sift, relative_surface_accessibility, total_energy, diff_interaction_energy),
+  filter(variants, !is.na(log10_freq)) %>%
+    select(name, position, wt, mut, log10_sift, relative_surface_accessibility, total_energy, diff_interaction_energy) %>%
     mutate(strain = "background")
 ) %>%
-  pivot_longer(sift_score:diff_interaction_energy, names_to = "metric", values_to = "score") %>%
+  pivot_longer(log10_sift:diff_interaction_energy, names_to = "metric", values_to = "score") %>%
   drop_na()
 
 plots$distributions <- ggplot(mapping = aes(x = score, y = ..scaled..)) +
@@ -54,13 +59,96 @@ plots$distributions <- ggplot(mapping = aes(x = score, y = ..scaled..)) +
   theme(axis.title.x = element_blank(),
         strip.placement = "outside")
 
+test_dists <- function(tbl, tstrain, tmetric) {
+  other <- filter(feature_distributions, !strain == tstrain, metric == tmetric)
+  
+  suppressWarnings(
+    group_by(other, strain) %>%
+      group_modify(~broom::tidy(ks.test(tbl$score, .x$score, exact = FALSE))) %>%
+      rename(strain2 = strain)
+  )
+}
+
+feature_distribution_p_values <- group_by(feature_distributions, metric, strain) %>%
+  group_modify(~test_dists(.x, .y$strain, .y$metric)) %>%
+  write_tsv("figures/krogan/distribution_ks_tests.tsv")
+
+# Sift position breakdown
+plots$sift_distributions <- semi_join(variants, filter(strains, !is.na(log10_sift)) %>% select(name, position), by = c("name", "position")) %>% 
+  select(name, position, wt, mut, log10_sift) %>% 
+  distinct() %>%
+  drop_na() %>%
+  {ggplot(., aes(x = str_c(position, wt), y = log10_sift)) +
+      facet_wrap(~name, scales = "free_x", ncol = 1) +
+      geom_boxplot(outlier.shape = 20) +
+      geom_point(data = filter(strains, type == "substitution", !is.na(log10_sift)) %>% distinct(name, position, mut, .keep_all = TRUE),
+                  aes(colour = strain, group = strain), position = position_dodge(width = 0.4)) +
+      geom_hline(yintercept = log10(0.05), linetype = "dashed") +
+      scale_colour_manual(name = "", values = strain_colours, labels = strain_names) +
+      labs(x = "", y = expression("log[10]~\"SIFT4G Score\"")) +
+      theme(legend.position = "top")} %>%
+  labeled_plot(units = "cm", width = 20, height = 40)
+
+# Sift bars
+plots$sift_bars <- filter(feature_distributions, metric == "log10_sift") %>%
+  mutate(sig = score < log10(0.05)) %>%
+  group_by(strain) %>%
+  summarise(Significant = sum(sig) / n(),
+            Tolerated = 1 - Significant) %>%
+  pivot_longer(c(Significant, Tolerated), names_to = "type", values_to = "p") %>%
+  mutate(strain = factor(strain, levels = names(strain_names)),
+         type = factor(type, levels = c("Tolerated", "Significant"))) %>%
+  ggplot(aes(x = strain, y = p, fill = type)) +
+  geom_col(width = 0.6) +
+  scale_fill_brewer(name = "", palette = "Paired", direction = 1) +
+  scale_x_discrete(labels = strain_names) + 
+  scale_y_continuous(expand = expansion(0)) +
+  labs(x = "", y = "Proportion of Variants")
+
+# Breakdown of impactful variants
+plots$significant_variants <- filter(strains, type == "substitution") %>%
+  group_by(strain, name, wt, position, mut) %>%
+  summarise(sift_sig = any(sift_score < 0.05),
+            foldx_sig = any(abs(total_energy) > 1),
+            int_sig = any(abs(diff_interaction_energy) > 1),
+            .groups = "drop") %>%
+  mutate(class = case_when(
+    sift_sig & foldx_sig & int_sig ~ "All",
+    foldx_sig & int_sig ~ "FoldX & Interface",
+    sift_sig & int_sig ~ "SIFT4G & Interface",
+    sift_sig & foldx_sig ~ "SIFT4G & FoldX",
+    int_sig ~ "Interface",
+    foldx_sig ~ "FoldX",
+    sift_sig ~ "SIFT4G",
+    TRUE ~ "None"
+  )) %>%
+  count(strain, name, class) %>%
+  mutate(strain = strain_names[strain],
+         name = display_names[name],
+         class = factor(class, levels = c("All", "FoldX & Interface", "SIFT4G & Interface", "SIFT4G & FoldX", 
+                                          "Interface", "FoldX", "SIFT4G", "None"))) %>%
+  ggplot(aes(x = name, y = n, fill = class)) + 
+  facet_wrap(~strain, scales = "free", strip.position = "top") +
+  geom_col() +
+  coord_flip() +
+  labs(x = "", y = "Count") +
+  scale_fill_manual(name = "Significance", values = c("All"="black", "FoldX & Interface"="#1b9e77", "SIFT4G & Interface"="#e6ab02",
+                                                      "SIFT4G & FoldX"="#984ea3", "Interface"="#4daf4a", "FoldX"="#377eb8",
+                                                      "SIFT4G"="#e41a1c", "None"="grey")) +
+  guides(fill = guide_legend(byrow = TRUE)) +
+  theme(panel.grid.major.x = element_line(linetype = "dotted", colour = "grey"),
+        panel.grid.major.y = element_blank(),
+        legend.position = "bottom")
+
+# Interface Probabilities
 human_complexes <- c('7kdt', '6m0j')
 antibody_complexes <- c('6xdg', '7cai', '7cak', '7jmo')
 
 interface_probability <- bind_rows(
   filter(strains, type == "substitution") %>%
     select(strain, name, position, wt, mut, int_template, int_name, diff_interaction_energy),
-  select(variants, name, position, wt, mut, int_template, int_name, diff_interaction_energy) %>%
+  filter(variants, !is.na(log10_freq)) %>%
+    select(name, position, wt, mut, int_template, int_name, diff_interaction_energy) %>%
     mutate(strain = "background")
 ) %>%
   filter(name == "s") %>%
